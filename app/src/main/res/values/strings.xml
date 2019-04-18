@@ -84,5 +84,9 @@
     <string name="empty_screen">We do not have anything\nhere right now.</string>
     <string name="please_retry">Please Retry</string>
     <string name="retry">Retry</string>
+    <string name="settings">Settings</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_notification">Notifications</string>
+    <string name="nav_category">Category</string>
 
 </resources>

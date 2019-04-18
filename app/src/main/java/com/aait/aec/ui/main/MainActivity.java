@@ -320,14 +320,16 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         mDrawer.closeDrawer(GravityCompat.START);
                         switch (item.getItemId()) {
-                            case R.id.nav_item_about:
+                            case R.id.nav_home:
                                 mPresenter.onDrawerOptionAboutClick();
                                 return true;
-                            case R.id.nav_item_rate_us:
+                            case R.id.nav_notification:
                                 mPresenter.onDrawerRateUsClick();
                                 return true;
-                            case R.id.nav_item_feed:
+                            case R.id.nav_category:
                                 mPresenter.onDrawerMyFeedClick();
+                                return true;
+                            case R.id.nav_settings:
                                 return true;
                             case R.id.nav_item_logout:
                                 mPresenter.onDrawerOptionLogoutClick();
