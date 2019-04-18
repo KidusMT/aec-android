@@ -14,9 +14,9 @@
   -->
 
 <resources>
-    <color name="colorPrimary">@color/blue_black_light</color>
-    <color name="colorPrimaryDark">@color/black</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">@color/primary</color>
+    <color name="colorPrimaryDark">@color/primary_dark</color>
+    <color name="colorAccent">@color/accent</color>
     <color name="light_gray">#dbdbdb</color>
     <color name="gray">#7e7e7e</color>
     <color name="semi_gray">#979797</color>
@@ -30,6 +30,8 @@
     <color name="translucent_white">#88ffffff</color>
     <color name="fb">#3b5998</color>
     <color name="google">#d34836</color>
+
+    <color name="email_password_field_background_color">#f1f1f1</color>
 
     <!--Design colors-->
     <color name="red_dark">#F06423</color>
@@ -46,4 +48,8 @@
     <color name="blue_grey_light">#A5B4C8</color>
     <color name="orange">#FFA500</color>
     <color name="yellow">#fff44f</color>
+
+    <color name="primary">#212121</color>
+    <color name="primary_dark">#00796B</color>
+    <color name="accent">#FF9800</color>
 </resources>
