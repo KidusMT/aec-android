@@ -41,7 +41,7 @@
                     android:id="@+id/toolbar"
                     style="@style/Toolbar"
                     app:subtitleTextColor="@color/white"
-                    app:title="@string/app_name"
+                    app:title="AEC"
                     app:titleTextAppearance="@style/Toolbar.TitleText"
                     app:titleTextColor="@color/white" />
 
