@@ -18,10 +18,6 @@ package com.aait.aec.ui.feed;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,7 +25,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.aait.aec.R;
+import com.aait.aec.data.db.model.Category;
 import com.aait.aec.ui.base.BaseActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -56,6 +56,8 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
 
     @Inject
     LinearLayoutManager mLayoutManager;
+
+    List<Category> categoryList = new ArrayList<>();
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, FeedActivity.class);
@@ -87,6 +89,8 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
 
         setUpRecyclerView();
 
+        prepareCategorys();
+
     }
 
     private void setUpRecyclerView() {
@@ -105,4 +109,36 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
         mPresenter.onDetach();
         super.onDestroy();
     }
+
+    private void prepareCategorys() {
+        int[] covers = new int[]{
+                R.drawable.category_comp_arch,
+                R.drawable.category_software,
+                R.drawable.category_oop,
+                R.drawable.category_distributed_db,
+                R.drawable.category_design_pattern,
+                R.drawable.category_operating_system};
+
+        Category a = new Category("Computer Architecture", "Mr. Abebe", covers[0]);
+        categoryList.add(a);
+
+        a = new Category("Software Eng.", "Mr. Natnael A.", covers[1]);
+        categoryList.add(a);
+
+        a = new Category("OOP", "Mr. Yosef A. ", covers[2]);
+        categoryList.add(a);
+
+        a = new Category("Distributed DB", "Mr. Wondimagegn", covers[3]);
+        categoryList.add(a);
+
+        a = new Category("Design Pattern", "Dr. Vittapu", covers[4]);
+        categoryList.add(a);
+
+        a = new Category("Operating System", "Mr. Eyob W.", covers[5]);
+        categoryList.add(a);
+
+
+        mPagerAdapter.addItems(categoryList);
+    }
+
 }
