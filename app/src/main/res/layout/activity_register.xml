@@ -55,7 +55,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:background="@drawable/rounded_grey_rectangle">
 
                     <EditText
@@ -79,8 +78,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/rounded_grey_rectangle">
 
                     <EditText
@@ -165,10 +165,16 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="@dimen/activity_horizontal_margin"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/horizontal_margin_8"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
                     android:id="@+id/tv_hv_account"
                     android:textAlignment="center"
-                    android:text="have an account? Login"
+                    android:text="Have an account? Login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
