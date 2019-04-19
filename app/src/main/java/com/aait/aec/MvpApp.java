@@ -16,6 +16,7 @@
 package com.aait.aec;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.interceptors.HttpLoggingInterceptor.Level;
@@ -44,6 +45,8 @@ public class MvpApp extends Application {
 
     private ApplicationComponent mApplicationComponent;
 
+    public static Context context;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -61,6 +64,8 @@ public class MvpApp extends Application {
         }
 
         CalligraphyConfig.initDefault(mCalligraphyConfig);
+
+        context = this;
     }
 
     public ApplicationComponent getComponent() {
@@ -71,5 +76,9 @@ public class MvpApp extends Application {
     // Needed to replace the component with a test specific one
     public void setComponent(ApplicationComponent applicationComponent) {
         mApplicationComponent = applicationComponent;
+    }
+
+    public static Context getContext(){
+        return context;
     }
 }

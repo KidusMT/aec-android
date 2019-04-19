@@ -19,9 +19,11 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.provider.Settings;
+import android.util.TypedValue;
 import android.widget.Toast;
 
 import com.aait.aec.MvpApp;
@@ -66,7 +68,7 @@ public final class CommonUtils {
     }
     
     public static void toast(String message){
-//        Toast.makeText(MvpApp., "", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MvpApp.getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     public static boolean isEmailValid(String email) {
@@ -96,5 +98,13 @@ public final class CommonUtils {
 
     public static String getTimeStamp() {
         return new SimpleDateFormat(AppConstants.TIMESTAMP_FORMAT, Locale.US).format(new Date());
+    }
+
+    /**
+     * Converting dp to pixel
+     */
+    public static int dpToPx(int dp) {
+        Resources r = MvpApp.getContext().getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 }

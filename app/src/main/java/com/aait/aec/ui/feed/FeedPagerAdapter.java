@@ -16,6 +16,7 @@
 package com.aait.aec.ui.feed;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +26,10 @@ import android.widget.TextView;
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Category;
 import com.aait.aec.ui.base.BaseViewHolder;
+import com.aait.aec.utils.CommonUtils;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.common.internal.service.Common;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -56,8 +58,6 @@ public class FeedPagerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         holder.onBind(position);
-        Category album = albumList.get(position);
-
     }
 
 
@@ -74,7 +74,6 @@ public class FeedPagerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public class MyViewHolder extends BaseViewHolder {
 
-
         @BindView(R.id.category_title)
         TextView title;
 
@@ -85,35 +84,38 @@ public class FeedPagerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         ImageView icon;
 
         Category album;
+
         public MyViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, itemView);
-            title = (TextView) view.findViewById(R.id.title);
-
-
         }
 
         public void onBind(int position) {
 
             album = albumList.get(position);
+            if (album != null) {
 
-            title.setText(String.valueOf(album.title));
-            subtitle.setText(String.valueOf(album.subTitle));
+                title.setText(String.valueOf(album.getTitle()));
+                subtitle.setText(String.valueOf(album.getSubTitle()));
 
-            // loading album cover using Glide library
-            Glide.with(itemView.getContext()).load(album.thumb).into(icon);
+                // loading album cover using Glide library
+                Glide.with(itemView.getContext()).load(album.getThumb()).into(icon);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 //                showPopupMenu(holder.overflow);
-                }
-            });
+                        CommonUtils.toast(album.getTitle());
+                    }
+                });
+            }
+
         }
 
         @Override
         protected void clear() {
-
+            title.setText("");
+            subtitle.setText("");
         }
     }
 }

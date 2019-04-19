@@ -18,7 +18,6 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:src="@drawable/aau_logo"
                 android:id="@+id/thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/album_cover_height"
@@ -28,7 +27,6 @@
 
             <TextView
                 android:id="@+id/category_title"
-                android:text="@string/about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/thumbnail"
@@ -41,7 +39,6 @@
             <TextView
                 android:id="@+id/category_count"
                 android:layout_width="match_parent"
-                android:text="@string/about"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/category_title"
                 android:paddingBottom="@dimen/songs_count_padding_bottom"

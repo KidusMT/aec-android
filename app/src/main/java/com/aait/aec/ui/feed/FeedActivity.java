@@ -19,14 +19,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Category;
 import com.aait.aec.ui.base.BaseActivity;
+import com.aait.aec.utils.GridSpacingItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,8 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.aait.aec.utils.CommonUtils.dpToPx;
 
 /**
  * Created by janisharali on 25/05/17.
@@ -54,8 +59,8 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
     @BindView(R.id.sensor_recycler)
     RecyclerView mRecyclerView;
 
-    @Inject
-    LinearLayoutManager mLayoutManager;
+//    @Inject
+//    LinearLayoutManager mLayoutManager;
 
     List<Category> categoryList = new ArrayList<>();
 
@@ -89,14 +94,17 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
 
         setUpRecyclerView();
 
-        prepareCategorys();
+        prepareCategories();
 
     }
 
     private void setUpRecyclerView() {
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mPagerAdapter);
+
     }
 
     @Override
@@ -110,7 +118,7 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
         super.onDestroy();
     }
 
-    private void prepareCategorys() {
+    private void prepareCategories() {
         int[] covers = new int[]{
                 R.drawable.category_comp_arch,
                 R.drawable.category_software,
@@ -119,24 +127,19 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
                 R.drawable.category_design_pattern,
                 R.drawable.category_operating_system};
 
-        Category a = new Category("Computer Architecture", "Mr. Abebe", covers[0]);
-        categoryList.add(a);
+        Category a1 = new Category("Computer Architecture", "Mr. Abebe", covers[0]);
+        Category a2 = new Category("Software Eng.", "Mr. Natnael A.", covers[1]);
+        Category a3 = new Category("OOP", "Mr. Yosef A. ", covers[2]);
+        Category a4 = new Category("Distributed DB", "Mr. Wondimagegn", covers[3]);
+        Category a5 = new Category("Design Pattern", "Dr. Vittapu", covers[4]);
+        Category a6 = new Category("Operating System", "Mr. Eyob W.", covers[5]);
 
-        a = new Category("Software Eng.", "Mr. Natnael A.", covers[1]);
-        categoryList.add(a);
-
-        a = new Category("OOP", "Mr. Yosef A. ", covers[2]);
-        categoryList.add(a);
-
-        a = new Category("Distributed DB", "Mr. Wondimagegn", covers[3]);
-        categoryList.add(a);
-
-        a = new Category("Design Pattern", "Dr. Vittapu", covers[4]);
-        categoryList.add(a);
-
-        a = new Category("Operating System", "Mr. Eyob W.", covers[5]);
-        categoryList.add(a);
-
+        categoryList.add(a1);
+        categoryList.add(a2);
+        categoryList.add(a3);
+        categoryList.add(a4);
+        categoryList.add(a5);
+        categoryList.add(a6);
 
         mPagerAdapter.addItems(categoryList);
     }

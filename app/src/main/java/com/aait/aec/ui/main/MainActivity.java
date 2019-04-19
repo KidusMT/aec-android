@@ -331,7 +331,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 //                                Toast.makeText(MainActivity.this, "Notification", Toast.LENGTH_SHORT).show();
                                 return true;
                             case R.id.nav_category:
-//                                mPresenter.onDrawerMyFeedClick();
+                                mPresenter.onDrawerMyFeedClick();
                                 return true;
                             case R.id.nav_settings:
                                 return true;
