@@ -21,6 +21,7 @@ import android.os.Bundle;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
+import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.MainActivity;
 
 import javax.inject.Inject;
@@ -44,11 +45,6 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
 //    @BindView(R.id.et_password)
 //    EditText mPasswordEditText;
 
-    @OnClick(R.id.btn_login)
-    void onLoginClicked() {
-        startActivity(MainActivity.getStartIntent(this));
-    }
-
     public static Intent getStartIntent(Context context) {
         return new Intent(context, RegisterActivity.class);
     }
@@ -65,21 +61,10 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
         mPresenter.onAttach(RegisterActivity.this);
     }
 
-//    @OnClick(R.id.btn_server_login)
-//    void onServerLoginClick(View v) {
-//        mPresenter.onServerLoginClick(mEmailEditText.getText().toString(),
-//                mPasswordEditText.getText().toString());
-//    }
-//
-//    @OnClick(R.id.ib_google_login)
-//    void onGoogleLoginClick(View v) {
-//        mPresenter.onGoogleLoginClick();
-//    }
-//
-//    @OnClick(R.id.ib_fb_login)
-//    void onFbLoginClick(View v) {
-//        mPresenter.onFacebookLoginClick();
-//    }
+    @OnClick(R.id.tv_hv_account)
+    void onLoginClicked() {
+        startActivity(LoginActivity.getStartIntent(this));
+    }
 
     @Override
     public void openMainActivity() {
