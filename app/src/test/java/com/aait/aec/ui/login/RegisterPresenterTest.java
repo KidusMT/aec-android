@@ -39,7 +39,7 @@ import static org.mockito.Mockito.verify;
  * Created by amitshekhar on 02/02/17.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class LoginPresenterTest {
+public class RegisterPresenterTest {
 
     @Mock
     LoginMvpView mMockLoginMvpView;

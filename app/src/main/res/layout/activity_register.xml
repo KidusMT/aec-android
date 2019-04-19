@@ -36,7 +36,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
@@ -50,6 +50,31 @@
                     android:text="Automated Exam Corrector"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:background="@drawable/rounded_grey_rectangle">
+
+                    <EditText
+                        android:id="@+id/et_email"
+                        style="@style/TextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/vertical_margin_12"
+                        android:background="@color/transparent"
+                        android:cursorVisible="true"
+                        android:gravity="center|left|bottom"
+                        android:hint="email"
+                        android:inputType="textVisiblePassword|textNoSuggestions|textEmailAddress"
+                        android:maxLength="50"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/black_effective"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -101,6 +126,31 @@
                         android:textSize="18sp" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/rounded_grey_rectangle">
+
+                    <EditText
+                        android:id="@+id/et_password_confirm"
+                        style="@style/TextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/vertical_margin_12"
+                        android:background="@color/transparent"
+                        android:cursorVisible="true"
+                        android:gravity="center|left|bottom"
+                        android:hint="confirm password"
+                        android:inputType="textPassword"
+                        android:maxLength="50"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/black_effective"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
                 <Button
                     android:id="@+id/btn_login"
                     android:layout_width="match_parent"
@@ -110,30 +160,17 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/bg_btn_curved_accent_color"
-                    android:text="@string/login"
+                    android:text="Register"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
-                <com.google.android.gms.common.SignInButton
-                    android:id="@+id/btn_google_login"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="10dp" />
-
-
                 <TextView
-                    android:id="@+id/tv_don_hv_account"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:id="@+id/tv_hv_account"
+                    android:textAlignment="center"
+                    android:text="have an account? Login"
                     android:layout_width="match_parent"
-                    android:layout_height="21dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="30dp"
-                    android:text="don't have an account? Login"
-                    android:textAlignment="center" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 

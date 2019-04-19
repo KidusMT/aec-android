@@ -25,6 +25,7 @@ import com.aait.aec.ui.feed.opensource.OpenSourceFragment;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.ui.main.rating.RateUsDialog;
+import com.aait.aec.ui.register.RegisterActivity;
 import com.aait.aec.ui.splash.SplashActivity;
 
 import dagger.Component;
@@ -52,5 +53,7 @@ public interface ActivityComponent {
     void inject(BlogFragment fragment);
 
     void inject(RateUsDialog dialog);
+
+    void inject(RegisterActivity activity);
 
 }

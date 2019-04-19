@@ -13,9 +13,8 @@
  * limitations under the License
  */
 
-package com.aait.aec.ui.login;
+package com.aait.aec.ui.register;
 
-import com.androidnetworking.error.ANError;
 import com.aait.aec.R;
 import com.aait.aec.data.DataManager;
 import com.aait.aec.data.network.model.LoginRequest;
@@ -23,6 +22,7 @@ import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.ui.base.BasePresenter;
 import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.rx.SchedulerProvider;
+import com.androidnetworking.error.ANError;
 
 import javax.inject.Inject;
 
@@ -33,15 +33,15 @@ import io.reactivex.functions.Consumer;
  * Created by janisharali on 27/01/17.
  */
 
-public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
-        implements LoginMvpPresenter<V> {
+public class RegisterPresenter<V extends RegisterMvpView> extends BasePresenter<V>
+        implements RegisterMvpPresenter<V> {
 
     private static final String TAG = "RegisterPresenter";
 
     @Inject
-    public LoginPresenter(DataManager dataManager,
-                          SchedulerProvider schedulerProvider,
-                          CompositeDisposable compositeDisposable) {
+    public RegisterPresenter(DataManager dataManager,
+                             SchedulerProvider schedulerProvider,
+                             CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 

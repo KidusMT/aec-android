@@ -13,17 +13,15 @@
  * limitations under the License
  */
 
-package com.aait.aec.ui.login;
+package com.aait.aec.ui.register;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.main.MainActivity;
-import com.aait.aec.ui.register.RegisterActivity;
 
 import javax.inject.Inject;
 
@@ -35,10 +33,10 @@ import butterknife.OnClick;
  * Created by janisharali on 27/01/17.
  */
 
-public class LoginActivity extends BaseActivity implements LoginMvpView {
+public class RegisterActivity extends BaseActivity implements RegisterMvpView {
 
     @Inject
-    LoginMvpPresenter<LoginMvpView> mPresenter;
+    RegisterMvpPresenter<RegisterMvpView> mPresenter;
 
 //    @BindView(R.id.et_email)
 //    EditText mEmailEditText;
@@ -52,20 +50,19 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     }
 
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
-        return intent;
+        return new Intent(context, RegisterActivity.class);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
 
         getActivityComponent().inject(this);
 
         setUnBinder(ButterKnife.bind(this));
 
-        mPresenter.onAttach(LoginActivity.this);
+        mPresenter.onAttach(RegisterActivity.this);
     }
 
 //    @OnClick(R.id.btn_server_login)
@@ -84,14 +81,9 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
 //        mPresenter.onFacebookLoginClick();
 //    }
 
-    @OnClick(R.id.tv_don_hv_account)
-    void onRegisterClicked() {
-        startActivity(RegisterActivity.getStartIntent(this));
-    }
-
     @Override
     public void openMainActivity() {
-        Intent intent = MainActivity.getStartIntent(LoginActivity.this);
+        Intent intent = MainActivity.getStartIntent(RegisterActivity.this);
         startActivity(intent);
         finish();
     }

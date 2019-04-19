@@ -49,7 +49,7 @@
     <color name="orange">#FFA500</color>
     <color name="yellow">#fff44f</color>
 
-    <color name="primary">#212121</color>
-    <color name="primary_dark">#00796B</color>
+    <color name="primary">#19334d</color>
+    <color name="primary_dark">#2e3338</color>
     <color name="accent">#FF9800</color>
 </resources>

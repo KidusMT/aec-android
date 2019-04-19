@@ -48,6 +48,9 @@ import com.aait.aec.ui.main.MainPresenter;
 import com.aait.aec.ui.main.rating.RatingDialogMvpPresenter;
 import com.aait.aec.ui.main.rating.RatingDialogMvpView;
 import com.aait.aec.ui.main.rating.RatingDialogPresenter;
+import com.aait.aec.ui.register.RegisterMvpPresenter;
+import com.aait.aec.ui.register.RegisterMvpView;
+import com.aait.aec.ui.register.RegisterPresenter;
 import com.aait.aec.ui.splash.SplashMvpPresenter;
 import com.aait.aec.ui.splash.SplashMvpView;
 import com.aait.aec.ui.splash.SplashPresenter;
@@ -143,6 +146,12 @@ public class ActivityModule {
     @Provides
     BlogMvpPresenter<BlogMvpView> provideBlogMvpPresenter(
             BlogPresenter<BlogMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    RegisterMvpPresenter<RegisterMvpView> provideRegisterMvpPresenter(
+            RegisterPresenter<RegisterMvpView> presenter) {
         return presenter;
     }
 
