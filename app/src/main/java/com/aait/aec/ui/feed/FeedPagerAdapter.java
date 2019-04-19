@@ -15,45 +15,105 @@
 
 package com.aait.aec.ui.feed;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.aait.aec.ui.feed.blogs.BlogFragment;
-import com.aait.aec.ui.feed.opensource.OpenSourceFragment;
+import com.aait.aec.R;
+import com.aait.aec.data.db.model.Category;
+import com.aait.aec.ui.base.BaseViewHolder;
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Janisharali on 25/05/2017.
  */
 
-public class FeedPagerAdapter extends FragmentStatePagerAdapter {
+public class FeedPagerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
-    private int mTabCount;
+    List<Category> albumList;
 
-    public FeedPagerAdapter(FragmentManager fragmentManager) {
-        super(fragmentManager);
-        this.mTabCount = 0;
+    public FeedPagerAdapter(List<Category> categories) {
+        this.albumList = categories;
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_category, parent, false);
 
-        switch (position) {
-            case 0:
-                return BlogFragment.newInstance();
-            case 1:
-                return OpenSourceFragment.newInstance();
-            default:
-                return null;
+        return new MyViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(BaseViewHolder holder, int position) {
+        holder.onBind(position);
+        Category album = albumList.get(position);
+
+    }
+
+
+    public void addItems(List<Category> sensors) {
+        this.albumList.clear();
+        this.albumList.addAll(sensors);
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public int getItemCount() {
+        return albumList.size();
+    }
+
+    public class MyViewHolder extends BaseViewHolder {
+
+
+        @BindView(R.id.category_title)
+        TextView title;
+
+        @BindView(R.id.category_count)
+        TextView subtitle;
+
+        @BindView(R.id.thumbnail)
+        ImageView icon;
+
+        Category album;
+        public MyViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, itemView);
+            title = (TextView) view.findViewById(R.id.title);
+
+
         }
-    }
 
-    @Override
-    public int getCount() {
-        return mTabCount;
-    }
+        public void onBind(int position) {
 
-    public void setCount(int count) {
-        mTabCount = count;
+            album = albumList.get(position);
+
+            title.setText(String.valueOf(album.title));
+            subtitle.setText(String.valueOf(album.subTitle));
+
+            // loading album cover using Glide library
+            Glide.with(itemView.getContext()).load(album.thumb).into(icon);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                showPopupMenu(holder.overflow);
+                }
+            });
+        }
+
+        @Override
+        protected void clear() {
+
+        }
     }
 }

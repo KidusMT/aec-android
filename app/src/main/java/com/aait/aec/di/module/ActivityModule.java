@@ -19,6 +19,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.aait.aec.data.db.model.Category;
 import com.aait.aec.data.network.model.BlogResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
 import com.aait.aec.di.ActivityContext;
@@ -54,6 +55,7 @@ import com.aait.aec.utils.rx.AppSchedulerProvider;
 import com.aait.aec.utils.rx.SchedulerProvider;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;
@@ -145,8 +147,8 @@ public class ActivityModule {
     }
 
     @Provides
-    FeedPagerAdapter provideFeedPagerAdapter(AppCompatActivity activity) {
-        return new FeedPagerAdapter(activity.getSupportFragmentManager());
+    FeedPagerAdapter provideFeedPagerAdapter() {
+        return new FeedPagerAdapter(new ArrayList<Category>());
     }
 
     @Provides

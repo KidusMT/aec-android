@@ -22,6 +22,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
@@ -48,15 +51,14 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    @BindView(R.id.feed_view_pager)
-    ViewPager mViewPager;
+    @BindView(R.id.sensor_recycler)
+    RecyclerView mRecyclerView;
 
-    @BindView(R.id.tab_layout)
-    TabLayout mTabLayout;
+    @Inject
+    LinearLayoutManager mLayoutManager;
 
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, FeedActivity.class);
-        return intent;
+        return new Intent(context, FeedActivity.class);
     }
 
     @Override
@@ -83,57 +85,18 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        mPagerAdapter.setCount(2);
+        setUpRecyclerView();
 
-        mViewPager.setAdapter(mPagerAdapter);
+    }
 
-        mTabLayout.addTab(mTabLayout.newTab().setText(getString(R.string.blog)));
-        mTabLayout.addTab(mTabLayout.newTab().setText(getString(R.string.open_source)));
-
-        mViewPager.setOffscreenPageLimit(mTabLayout.getTabCount());
-
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
-
-        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                mViewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
+    private void setUpRecyclerView() {
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(mPagerAdapter);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                Intent upIntent = NavUtils.getParentActivityIntent(this);
-                upIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
-                    // This activity is NOT part of this app's task, so create a new task
-                    // when navigating up, with a synthesized back stack.
-                    TaskStackBuilder.create(this)
-                            // Add all of this activity's parents to the back stack
-                            .addNextIntentWithParentStack(upIntent)
-                            // Navigate up to the closest parent
-                            .startActivities();
-                } else {
-                    // This activity is part of this app's task, so simply
-                    // navigate up to the logical parent activity.
-                    NavUtils.navigateUpTo(this, upIntent);
-                }
-                return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 

@@ -14,7 +14,7 @@
   -->
 
 <resources>
-    <string name="app_name">MvpApp</string>
+    <string name="app_name">AEC</string>
 
     <!--Toolbar menus-->
     <string name="clear">Clear</string>
@@ -88,5 +88,6 @@
     <string name="nav_home">Home</string>
     <string name="nav_notification">Notifications</string>
     <string name="nav_category">Category</string>
+    <string name="no_category_items" >No category item found.</string>
 
 </resources>

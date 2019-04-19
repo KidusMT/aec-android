@@ -36,6 +36,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aait.aec.BuildConfig;
 import com.aait.aec.R;
@@ -46,6 +47,7 @@ import com.aait.aec.ui.custom.RoundedImageView;
 import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.rating.RateUsDialog;
+import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.ScreenUtils;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
@@ -324,10 +326,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                                 mPresenter.onDrawerOptionAboutClick();
                                 return true;
                             case R.id.nav_notification:
-                                mPresenter.onDrawerRateUsClick();
+//                                mPresenter.onDrawerRateUsClick();
+//                                CommonUtils.
+//                                Toast.makeText(MainActivity.this, "Notification", Toast.LENGTH_SHORT).show();
                                 return true;
                             case R.id.nav_category:
-                                mPresenter.onDrawerMyFeedClick();
+//                                mPresenter.onDrawerMyFeedClick();
                                 return true;
                             case R.id.nav_settings:
                                 return true;
