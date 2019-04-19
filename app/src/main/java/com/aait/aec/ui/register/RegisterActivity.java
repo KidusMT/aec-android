@@ -23,6 +23,7 @@ import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.MainActivity;
+import com.aait.aec.utils.CommonUtils;
 
 import javax.inject.Inject;
 
@@ -59,6 +60,8 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
         setUnBinder(ButterKnife.bind(this));
 
         mPresenter.onAttach(RegisterActivity.this);
+
+        CommonUtils.hideKeyboard(this);
     }
 
     @OnClick(R.id.tv_hv_account)

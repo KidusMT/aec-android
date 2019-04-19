@@ -57,9 +57,6 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
     @BindView(R.id.sensor_recycler)
     RecyclerView mRecyclerView;
 
-//    @Inject
-//    LinearLayoutManager mLayoutManager;
-
     List<Category> categoryList = new ArrayList<>();
 
     public static Intent getStartIntent(Context context) {

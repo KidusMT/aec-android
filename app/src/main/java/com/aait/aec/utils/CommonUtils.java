@@ -16,6 +16,7 @@
 package com.aait.aec.utils;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -24,6 +25,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.provider.Settings;
 import android.util.TypedValue;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.aait.aec.MvpApp;
@@ -65,6 +67,10 @@ public final class CommonUtils {
     @SuppressLint("all")
     public static String getDeviceId(Context context) {
         return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
     
     public static void toast(String message){

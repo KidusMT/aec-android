@@ -12,35 +12,51 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License
   -->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@drawable/bg_design"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/light_light_gray"
+    android:orientation="vertical">
 
-    <com.aait.aec.ui.custom.RoundedImageView
-        android:id="@+id/iv_profile_pic"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="40dp"
+    <ImageView
         android:scaleType="fitCenter"
-        android:src="@drawable/user_profile_gray" />
-
-    <TextView
-        android:id="@+id/tv_name"
-        style="@style/TextStyle.Title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Kidus M. Tekeste" />
+        android:layout_centerVertical="true"
+        android:src="@drawable/drawer_logo" />
 
-    <TextView
-        android:id="@+id/tv_email"
-        style="@style/TextStyle.Title.Sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="kidus@aait.edu.et" />
+    <LinearLayout
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
-</LinearLayout>
+        <com.aait.aec.ui.custom.RoundedImageView
+            android:id="@+id/iv_profile_pic"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/user_profile_gray" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TextStyle.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Kidus M. Tekeste" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            style="@style/TextStyle.Title.Sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kidus@aait.edu.et" />
+
+    </LinearLayout>
+
+</RelativeLayout>

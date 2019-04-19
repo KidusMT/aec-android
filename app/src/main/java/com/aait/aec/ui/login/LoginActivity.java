@@ -24,6 +24,8 @@ import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.ui.register.RegisterActivity;
+import com.aait.aec.utils.CommonUtils;
+import com.google.android.gms.common.internal.service.Common;
 
 import javax.inject.Inject;
 
@@ -66,6 +68,8 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
         setUnBinder(ButterKnife.bind(this));
 
         mPresenter.onAttach(LoginActivity.this);
+
+        CommonUtils.hideKeyboard(this);
     }
 
     @OnClick(R.id.tv_don_hv_account)
