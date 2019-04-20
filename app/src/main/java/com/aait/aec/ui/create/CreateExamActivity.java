@@ -18,18 +18,17 @@ package com.aait.aec.ui.create;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
-import com.aait.aec.ui.forgot.ForgotActivity;
-import com.aait.aec.ui.main.MainActivity;
-import com.aait.aec.ui.register.RegisterActivity;
 import com.aait.aec.utils.CommonUtils;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 
 /**
@@ -41,9 +40,11 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     @Inject
     CreateExamMvpPresenter<CreateExamMvpView> mPresenter;
 
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, CreateExamActivity.class);
-        return intent;
+        return new Intent(context, CreateExamActivity.class);
     }
 
     @Override
@@ -58,6 +59,8 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         mPresenter.onAttach(CreateExamActivity.this);
 
         CommonUtils.hideKeyboard(this);
+
+        setUp();
     }
 
     @Override
@@ -69,5 +72,18 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     @Override
     protected void setUp() {
 
+        setSupportActionBar(mToolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
 }

@@ -45,6 +45,7 @@ import com.aait.aec.data.db.model.Exam;
 import com.aait.aec.data.db.model.Question;
 import com.aait.aec.ui.about.AboutFragment;
 import com.aait.aec.ui.base.BaseActivity;
+import com.aait.aec.ui.create.CreateExamActivity;
 import com.aait.aec.ui.custom.RoundedImageView;
 import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.login.LoginActivity;
@@ -120,7 +121,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @OnClick(R.id.fab_exam)
     void onFabClicked() {
-
+        startActivity(CreateExamActivity.getStartIntent(this));
     }
 
     @Override

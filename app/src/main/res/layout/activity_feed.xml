@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:subtitleTextColor="@color/white"
-            app:title="@string/title"
+            app:title="Categories"
             app:titleTextAppearance="@style/Toolbar.TitleText"
             app:titleTextColor="@color/white" />
 

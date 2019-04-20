@@ -40,7 +40,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/user_profile_gray" />
+            android:src="@drawable/user_profile" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -48,7 +48,6 @@
             android:fontFamily="sans-serif-medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="Kidus M. Tekeste" />
 
         <TextView
