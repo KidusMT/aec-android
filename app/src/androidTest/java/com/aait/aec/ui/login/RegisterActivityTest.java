@@ -21,6 +21,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.aait.aec.R;
 import com.aait.aec.TestComponentRule;
+import com.aait.aec.ui.register.RegisterActivity;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -44,8 +45,8 @@ public class RegisterActivityTest {
     public final TestComponentRule component =
             new TestComponentRule(InstrumentationRegistry.getTargetContext());
 
-    public final IntentsTestRule<LoginActivity> main =
-            new IntentsTestRule<>(LoginActivity.class, false, false);
+    public final IntentsTestRule<RegisterActivity> main =
+            new IntentsTestRule<>(RegisterActivity.class, false, false);
 
     @Rule
     public TestRule chain = RuleChain.outerRule(component).around(main);
@@ -57,7 +58,7 @@ public class RegisterActivityTest {
 
     @Test
     public void checkViewsDisplay() {
-        main.launchActivity(LoginActivity.getStartIntent(component.getContext()));
+        main.launchActivity(RegisterActivity.getStartIntent(component.getContext()));
 
         onView(withId(R.id.et_email))
                 .check(matches(isDisplayed()));
@@ -65,16 +66,5 @@ public class RegisterActivityTest {
         onView(withId(R.id.et_password))
                 .check(matches(isDisplayed()));
 
-        onView(withId(R.id.btn_server_login))
-                .check(matches(isDisplayed()));
-
-        onView(withText(R.string.login))
-                .check(matches(isDisplayed()));
-
-        onView(withId(R.id.ib_google_login))
-                .check(matches(isDisplayed()));
-
-        onView(withId(R.id.ib_fb_login))
-                .check(matches(isDisplayed()));
     }
 }

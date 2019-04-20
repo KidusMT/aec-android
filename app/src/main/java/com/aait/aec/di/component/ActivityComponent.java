@@ -28,6 +28,7 @@ import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.ui.main.rating.RateUsDialog;
 import com.aait.aec.ui.register.RegisterActivity;
 import com.aait.aec.ui.splash.SplashActivity;
+import com.aait.aec.ui.subject.SubjectActivity;
 
 import dagger.Component;
 
@@ -60,5 +61,7 @@ public interface ActivityComponent {
     void inject(ForgotActivity activity);
 
     void inject(CreateExamActivity activity);
+
+    void inject(SubjectActivity activity);
 
 }

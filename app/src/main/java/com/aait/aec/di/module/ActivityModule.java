@@ -62,6 +62,9 @@ import com.aait.aec.ui.register.RegisterPresenter;
 import com.aait.aec.ui.splash.SplashMvpPresenter;
 import com.aait.aec.ui.splash.SplashMvpView;
 import com.aait.aec.ui.splash.SplashPresenter;
+import com.aait.aec.ui.subject.SubjectMvpPresenter;
+import com.aait.aec.ui.subject.SubjectMvpView;
+import com.aait.aec.ui.subject.SubjectPresenter;
 import com.aait.aec.utils.rx.AppSchedulerProvider;
 import com.aait.aec.utils.rx.SchedulerProvider;
 
@@ -166,6 +169,12 @@ public class ActivityModule {
     @Provides
     ForgotMvpPresenter<ForgotMvpView> provideForgotMvpPresenter(
             ForgotPresenter<ForgotMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    SubjectMvpPresenter<SubjectMvpView> provideSubjectMvpPresenter(
+            SubjectPresenter<SubjectMvpView> presenter) {
         return presenter;
     }
 
