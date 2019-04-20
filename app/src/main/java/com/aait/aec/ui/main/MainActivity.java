@@ -58,6 +58,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -115,6 +116,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mPresenter.onAttach(this);
 
         setUp();
+    }
+
+    @OnClick(R.id.fab_exam)
+    void onFabClicked() {
+
     }
 
     @Override
@@ -208,8 +214,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void showAboutFragment() {
-        lockDrawer();
-
+//        lockDrawer();
+//
 //        getSupportFragmentManager()
 //                .beginTransaction()
 //                .disallowAddToBackStack()
@@ -390,15 +396,15 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     private void prepareExams() {
 
-        Exam a1 = new Exam(R.drawable.drawer_logo, "Object Oriented Programming", "April 12, 2019","Quiz: ",  "Mr. Fitsum A.", "5%");
-        Exam a2 = new Exam(R.drawable.drawer_logo, "Software Engineering", "Mid Exam 1: ","April 12, 2019",  "Mr. Natnael A.", "20%");
-        Exam a3 = new Exam(R.drawable.drawer_logo, "Operating System", "Mid Exam 1: ","April 12, 2019",  "Mr. Eyob", "20%");
+        Exam a1 = new Exam(R.drawable.drawer_logo, "Object Oriented Programming", "April 12, 2019", "Quiz: ", "Mr. Fitsum A.", "5%");
+        Exam a2 = new Exam(R.drawable.drawer_logo, "Software Engineering", "Mid Exam 1: ", "April 12, 2019", "Mr. Natnael A.", "20%");
+        Exam a3 = new Exam(R.drawable.drawer_logo, "Operating System", "Mid Exam 1: ", "April 12, 2019", "Mr. Eyob", "20%");
         Exam a4 = new Exam(R.drawable.drawer_logo, "Int. to Networking", "Quiz: ", "April 12, 2019", "Mr. Tigabu", "20%");
         Exam a5 = new Exam(R.drawable.drawer_logo, "Web Programming", "Mid Exam: ", "April 12, 2019", "Mr. Eskindir", "20%");
         Exam a6 = new Exam(R.drawable.drawer_logo, "Advan. Mobile Programming", "Final Exam: ", "April 12, 2019", "Mr. Yosef A.", "20%");
         Exam a7 = new Exam(R.drawable.drawer_logo, "Software Project Management", "Mid Exam: ", "April 12, 2019", "Mr. Dagnachew", "25%");
-        Exam a8 = new Exam(R.drawable.drawer_logo, "Software Quality Assurance", "Final Exam: ","April 12, 2019",  "Mr. Dagnachew", "20%");
-        Exam a9 = new Exam(R.drawable.drawer_logo, "Distributed System", "Mid Exam: ","April 12, 2019",  "Mr. Dagnachew", "20%");
+        Exam a8 = new Exam(R.drawable.drawer_logo, "Software Quality Assurance", "Final Exam: ", "April 12, 2019", "Mr. Dagnachew", "20%");
+        Exam a9 = new Exam(R.drawable.drawer_logo, "Distributed System", "Mid Exam: ", "April 12, 2019", "Mr. Dagnachew", "20%");
         Exam a10 = new Exam(R.drawable.drawer_logo, "FPGA", "Mid Exam: ", "April 12, 2019", "Mr. Dagnachew", "15%");
 
         exams.add(a1);
