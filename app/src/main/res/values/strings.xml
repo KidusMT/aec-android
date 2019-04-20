@@ -90,4 +90,10 @@
     <string name="nav_category">Category</string>
     <string name="no_category_items" >No category item found.</string>
 
+    <string-array name="visibility_options">
+        <item>Quiz</item>
+        <item>Mid Exam</item>
+        <item>Final Exam</item>
+    </string-array>
+
 </resources>

@@ -1,27 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_gray"
-    android:orientation="vertical"
-    tools:context=".ui.create.CreateExamActivity">
+    android:fillViewport="true">
 
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        android:orientation="vertical"
+        tools:context=".ui.create.CreateExamActivity">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            style="@style/Toolbar"
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:subtitleTextColor="@color/white"
+                app:title="Create Exam"
+                app:titleTextAppearance="@style/Toolbar.TitleText"
+                app:titleTextColor="@color/white" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:subtitleTextColor="@color/white"
-            app:title="Create Exam"
-            app:titleTextAppearance="@style/Toolbar.TitleText"
-            app:titleTextColor="@color/white" />
+            android:orientation="vertical">
 
-    </android.support.design.widget.AppBarLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Exam Description"
+                android:textAlignment="center"
+                android:textSize="25sp" />
 
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_grey_rectangle">
+
+                <EditText
+                    android:id="@+id/et_course_name"
+                    style="@style/TextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/vertical_margin_12"
+                    android:background="@color/transparent"
+                    android:cursorVisible="true"
+                    android:gravity="center|left|bottom"
+                    android:hint="course name"
+                    android:inputType="textVisiblePassword|textNoSuggestions"
+                    android:maxLength="50"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/black_effective"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_grey_rectangle">
+
+                <Spinner
+                    android:id="@+id/register_sensor_visibility"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginStart="@dimen/vertical_margin_4"
+                    android:layout_marginEnd="@dimen/vertical_margin_4"
+                    android:entries="@array/visibility_options" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_grey_rectangle">
+
+                <EditText
+                    android:id="@+id/et_username"
+                    style="@style/TextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/vertical_margin_12"
+                    android:background="@color/transparent"
+                    android:cursorVisible="true"
+                    android:gravity="center|left|bottom"
+                    android:hint="assesment date"
+                    android:inputType="textVisiblePassword|textNoSuggestions"
+                    android:maxLength="50"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/black_effective"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_grey_rectangle">
+
+                <EditText
+                    android:id="@+id/et_weight"
+                    style="@style/TextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/vertical_margin_12"
+                    android:background="@color/transparent"
+                    android:cursorVisible="true"
+                    android:gravity="center|left|bottom"
+                    android:hint="total weight"
+                    android:inputType="textVisiblePassword|textNoSuggestions"
+                    android:maxLength="50"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/black_effective"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_grey_rectangle">
+
+                <EditText
+                    android:id="@+id/et_number_of_question"
+                    style="@style/TextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/vertical_margin_12"
+                    android:background="@color/transparent"
+                    android:cursorVisible="true"
+                    android:gravity="center|left|bottom"
+                    android:hint="number of questions"
+                    android:inputType="textVisiblePassword|textNoSuggestions|number"
+                    android:maxLength="50"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/black_effective"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_marginTop="30dp"
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_btn_curved_accent_color"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+</ScrollView>

@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
-            app:backgroundTint="@color/colorPrimary"
+            app:backgroundTint="@color/accent"
             app:layout_anchor="@id/flContent"
             app:layout_anchorGravity="bottom|right|end"
             app:srcCompat="@drawable/ic_add" />
