@@ -40,11 +40,6 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
     @Inject
     RegisterMvpPresenter<RegisterMvpView> mPresenter;
 
-//    @BindView(R.id.et_email)
-//    EditText mEmailEditText;
-//
-//    @BindView(R.id.et_password)
-//    EditText mPasswordEditText;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, RegisterActivity.class);
@@ -62,6 +57,11 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
         mPresenter.onAttach(RegisterActivity.this);
 
         CommonUtils.hideKeyboard(this);
+    }
+
+    @OnClick(R.id.btn_register)
+    void onRegisterClicked() {
+        startActivity(LoginActivity.getStartIntent(this));
     }
 
     @OnClick(R.id.tv_hv_account)

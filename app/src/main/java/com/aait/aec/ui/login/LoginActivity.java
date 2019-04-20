@@ -21,6 +21,7 @@ import android.os.Bundle;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
+import com.aait.aec.ui.forgot.ForgotActivity;
 import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.ui.register.RegisterActivity;
 import com.aait.aec.utils.CommonUtils;
@@ -39,12 +40,6 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
 
     @Inject
     LoginMvpPresenter<LoginMvpView> mPresenter;
-
-//    @BindView(R.id.et_email)
-//    EditText mEmailEditText;
-//
-//    @BindView(R.id.et_password)
-//    EditText mPasswordEditText;
 
     @OnClick(R.id.btn_login)
     void onLoginClicked() {
@@ -72,7 +67,7 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
 
     @OnClick(R.id.tv_forgot_pass)
     void onForgotPasswordClicked() {
-
+        onForgotClicked();
     }
 
     @OnClick(R.id.tv_don_hv_account)
@@ -85,6 +80,11 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
         Intent intent = MainActivity.getStartIntent(LoginActivity.this);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onForgotClicked() {
+        startActivity(ForgotActivity.getStartIntent(this));
     }
 
     @Override

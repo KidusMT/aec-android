@@ -40,20 +40,8 @@ public class ForgotActivity extends BaseActivity implements ForgotMvpView {
     @Inject
     ForgotMvpPresenter<ForgotMvpView> mPresenter;
 
-//    @BindView(R.id.et_email)
-//    EditText mEmailEditText;
-//
-//    @BindView(R.id.et_password)
-//    EditText mPasswordEditText;
-
-    @OnClick(R.id.btn_login)
-    void onLoginClicked() {
-        startActivity(MainActivity.getStartIntent(this));
-    }
-
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, ForgotActivity.class);
-        return intent;
+        return new Intent(context, ForgotActivity.class);
     }
 
     @Override
