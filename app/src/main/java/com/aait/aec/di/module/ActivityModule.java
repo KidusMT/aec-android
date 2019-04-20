@@ -28,6 +28,9 @@ import com.aait.aec.di.PerActivity;
 import com.aait.aec.ui.about.AboutMvpPresenter;
 import com.aait.aec.ui.about.AboutMvpView;
 import com.aait.aec.ui.about.AboutPresenter;
+import com.aait.aec.ui.create.CreateExamMvpPresenter;
+import com.aait.aec.ui.create.CreateExamMvpView;
+import com.aait.aec.ui.create.CreateExamPresenter;
 import com.aait.aec.ui.feed.FeedMvpPresenter;
 import com.aait.aec.ui.feed.FeedMvpView;
 import com.aait.aec.ui.feed.FeedPagerAdapter;
@@ -163,6 +166,12 @@ public class ActivityModule {
     @Provides
     ForgotMvpPresenter<ForgotMvpView> provideForgotMvpPresenter(
             ForgotPresenter<ForgotMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    CreateExamMvpPresenter<CreateExamMvpView> provideCreateExamMvpPresenter(
+            CreateExamPresenter<CreateExamMvpView> presenter) {
         return presenter;
     }
 

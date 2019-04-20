@@ -18,6 +18,7 @@ package com.aait.aec.di.component;
 import com.aait.aec.di.PerActivity;
 import com.aait.aec.di.module.ActivityModule;
 import com.aait.aec.ui.about.AboutFragment;
+import com.aait.aec.ui.create.CreateExamActivity;
 import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.feed.blogs.BlogFragment;
 import com.aait.aec.ui.feed.opensource.OpenSourceFragment;
@@ -57,5 +58,7 @@ public interface ActivityComponent {
     void inject(RegisterActivity activity);
 
     void inject(ForgotActivity activity);
+
+    void inject(CreateExamActivity activity);
 
 }
