@@ -20,7 +20,6 @@ import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -28,6 +27,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -36,10 +38,10 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aait.aec.BuildConfig;
 import com.aait.aec.R;
+import com.aait.aec.data.db.model.Exam;
 import com.aait.aec.data.db.model.Question;
 import com.aait.aec.ui.about.AboutFragment;
 import com.aait.aec.ui.base.BaseActivity;
@@ -47,12 +49,9 @@ import com.aait.aec.ui.custom.RoundedImageView;
 import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.rating.RateUsDialog;
-import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.ScreenUtils;
-import com.mindorks.placeholderview.SwipeDecor;
-import com.mindorks.placeholderview.SwipePlaceHolderView;
-import com.mindorks.placeholderview.listeners.ItemRemovedListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -69,6 +68,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Inject
     MainMvpPresenter<MainMvpView> mPresenter;
 
+    @Inject
+    MainAdapter mAdapter;
+
+    @Inject
+    LinearLayoutManager mLayoutManager;
+
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
@@ -81,6 +86,9 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @BindView(R.id.tv_app_version)
     TextView mAppVersionTextView;
 
+    @BindView(R.id.exam_recycler)
+    RecyclerView mRecyclerView;
+
     private TextView mNameTextView;
 
     private TextView mEmailTextView;
@@ -89,9 +97,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     private ActionBarDrawerToggle mDrawerToggle;
 
+    List<Exam> exams = new ArrayList<>();
+
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, MainActivity.class);
-        return intent;
+        return new Intent(context, MainActivity.class);
     }
 
     @Override
@@ -200,12 +209,13 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     public void showAboutFragment() {
         lockDrawer();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .disallowAddToBackStack()
-                .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
-                .add(R.id.cl_root_view, AboutFragment.newInstance(), AboutFragment.TAG)
-                .commit();
+
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .disallowAddToBackStack()
+//                .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
+//                .add(R.id.cl_root_view, AboutFragment.newInstance(), AboutFragment.TAG)
+//                .commit();
     }
 
     @Override
@@ -233,18 +243,19 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         if (drawable instanceof Animatable) {
             ((Animatable) drawable).start();
         }
-        switch (item.getItemId()) {
-            case R.id.action_cut:
-                return true;
-            case R.id.action_copy:
-                return true;
-            case R.id.action_share:
-                return true;
-            case R.id.action_delete:
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+//        switch (item.getItemId()) {
+//            case R.id.action_cut:
+//                return true;
+//            case R.id.action_copy:
+//                return true;
+//            case R.id.action_share:
+//                return true;
+//            case R.id.action_delete:
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -273,6 +284,16 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mPresenter.onNavMenuCreated();
         setupCardContainerView();
         mPresenter.onViewInitialized();
+
+        setUpRecyclerView();
+        prepareExams();
+    }
+
+    private void setUpRecyclerView() {
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(mAdapter);
+
     }
 
     private void setupCardContainerView() {
@@ -305,6 +326,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 //                }
 //            }
 //        });
+
+
     }
 
     void setupNavMenu() {
@@ -363,5 +386,32 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         if (mDrawer != null) {
             mDrawer.closeDrawer(Gravity.START);
         }
+    }
+
+    private void prepareExams() {
+
+        Exam a1 = new Exam(R.drawable.drawer_logo, "Object Oriented Programming", "April 12, 2019","Quiz: ",  "Mr. Fitsum A.", "5%");
+        Exam a2 = new Exam(R.drawable.drawer_logo, "Software Engineering", "Mid Exam 1: ","April 12, 2019",  "Mr. Natnael A.", "20%");
+        Exam a3 = new Exam(R.drawable.drawer_logo, "Operating System", "Mid Exam 1: ","April 12, 2019",  "Mr. Eyob", "20%");
+        Exam a4 = new Exam(R.drawable.drawer_logo, "Int. to Networking", "Quiz: ", "April 12, 2019", "Mr. Tigabu", "20%");
+        Exam a5 = new Exam(R.drawable.drawer_logo, "Web Programming", "Mid Exam: ", "April 12, 2019", "Mr. Eskindir", "20%");
+        Exam a6 = new Exam(R.drawable.drawer_logo, "Advan. Mobile Programming", "Final Exam: ", "April 12, 2019", "Mr. Yosef A.", "20%");
+        Exam a7 = new Exam(R.drawable.drawer_logo, "Software Project Management", "Mid Exam: ", "April 12, 2019", "Mr. Dagnachew", "25%");
+        Exam a8 = new Exam(R.drawable.drawer_logo, "Software Quality Assurance", "Final Exam: ","April 12, 2019",  "Mr. Dagnachew", "20%");
+        Exam a9 = new Exam(R.drawable.drawer_logo, "Distributed System", "Mid Exam: ","April 12, 2019",  "Mr. Dagnachew", "20%");
+        Exam a10 = new Exam(R.drawable.drawer_logo, "FPGA", "Mid Exam: ", "April 12, 2019", "Mr. Dagnachew", "15%");
+
+        exams.add(a1);
+        exams.add(a2);
+        exams.add(a3);
+        exams.add(a4);
+        exams.add(a5);
+        exams.add(a6);
+        exams.add(a7);
+        exams.add(a8);
+        exams.add(a9);
+        exams.add(a10);
+
+        mAdapter.addItems(exams);
     }
 }

@@ -110,26 +110,6 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     }
 
     @Override
-    public void onCardExhausted() {
-        getCompositeDisposable().add(getDataManager()
-                .getAllQuestions()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<Question>>() {
-                    @Override
-                    public void accept(List<Question> questionList) throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
-
-                        if (questionList != null) {
-                            getMvpView().reloadQuestionnaire(questionList);
-                        }
-                    }
-                }));
-    }
-
-    @Override
     public void onNavMenuCreated() {
         if (!isViewAttached()) {
             return;
@@ -150,12 +130,6 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         if (profilePicUrl != null && !profilePicUrl.isEmpty()) {
             getMvpView().updateUserProfilePic(profilePicUrl);
         }
-    }
-
-    @Override
-    public void onDrawerRateUsClick() {
-        getMvpView().closeNavigationDrawer();
-        getMvpView().showRateUsDialog();
     }
 
     @Override

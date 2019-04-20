@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.aait.aec.data.db.model.Category;
+import com.aait.aec.data.db.model.Exam;
 import com.aait.aec.data.network.model.BlogResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
 import com.aait.aec.di.ActivityContext;
@@ -42,6 +43,7 @@ import com.aait.aec.ui.feed.opensource.OpenSourcePresenter;
 import com.aait.aec.ui.login.LoginMvpPresenter;
 import com.aait.aec.ui.login.LoginMvpView;
 import com.aait.aec.ui.login.LoginPresenter;
+import com.aait.aec.ui.main.MainAdapter;
 import com.aait.aec.ui.main.MainMvpPresenter;
 import com.aait.aec.ui.main.MainMvpView;
 import com.aait.aec.ui.main.MainPresenter;
@@ -158,6 +160,11 @@ public class ActivityModule {
     @Provides
     FeedPagerAdapter provideFeedPagerAdapter() {
         return new FeedPagerAdapter(new ArrayList<Category>());
+    }
+
+    @Provides
+    MainAdapter provideMainAdapter() {
+        return new MainAdapter(new ArrayList<Exam>());
     }
 
     @Provides

@@ -19,7 +19,6 @@ import com.aait.aec.di.PerActivity;
 import com.aait.aec.di.module.ActivityModule;
 import com.aait.aec.ui.about.AboutFragment;
 import com.aait.aec.ui.feed.FeedActivity;
-import com.aait.aec.ui.feed.FeedPagerAdapter;
 import com.aait.aec.ui.feed.blogs.BlogFragment;
 import com.aait.aec.ui.feed.opensource.OpenSourceFragment;
 import com.aait.aec.ui.login.LoginActivity;

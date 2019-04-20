@@ -45,6 +45,7 @@
         <TextView
             android:id="@+id/tv_name"
             style="@style/TextStyle.Title"
+            android:fontFamily="sans-serif-medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
