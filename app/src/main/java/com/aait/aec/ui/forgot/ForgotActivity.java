@@ -13,7 +13,7 @@
  * limitations under the License
  */
 
-package com.aait.aec.ui.login;
+package com.aait.aec.ui.forgot;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,8 +21,8 @@ import android.os.Bundle;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
+import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.MainActivity;
-import com.aait.aec.ui.register.RegisterActivity;
 import com.aait.aec.utils.CommonUtils;
 
 import javax.inject.Inject;
@@ -35,10 +35,10 @@ import butterknife.OnClick;
  * Created by janisharali on 27/01/17.
  */
 
-public class LoginActivity extends BaseActivity implements LoginMvpView {
+public class ForgotActivity extends BaseActivity implements ForgotMvpView {
 
     @Inject
-    LoginMvpPresenter<LoginMvpView> mPresenter;
+    ForgotMvpPresenter<ForgotMvpView> mPresenter;
 
 //    @BindView(R.id.et_email)
 //    EditText mEmailEditText;
@@ -52,39 +52,37 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     }
 
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
+        Intent intent = new Intent(context, ForgotActivity.class);
         return intent;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_forgot);
 
         getActivityComponent().inject(this);
 
         setUnBinder(ButterKnife.bind(this));
 
-        mPresenter.onAttach(LoginActivity.this);
+        mPresenter.onAttach(ForgotActivity.this);
 
         CommonUtils.hideKeyboard(this);
     }
 
-    @OnClick(R.id.tv_forgot_pass)
-    void onForgotPasswordClicked() {
-
-    }
-
-    @OnClick(R.id.tv_don_hv_account)
-    void onRegisterClicked() {
-        startActivity(RegisterActivity.getStartIntent(this));
-    }
-
     @Override
-    public void openMainActivity() {
-        Intent intent = MainActivity.getStartIntent(LoginActivity.this);
-        startActivity(intent);
-        finish();
+    public void openLoginActivity() {
+        startActivity(LoginActivity.getStartIntent(this));
+    }
+
+    @OnClick(R.id.btn_submit)
+    void onSubmitClicked() {
+        mPresenter.onLoginClicked();
+    }
+
+    @OnClick(R.id.tv_return_login)
+    void onRegisterClicked() {
+        mPresenter.onLoginClicked();
     }
 
     @Override

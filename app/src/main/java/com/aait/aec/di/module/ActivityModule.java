@@ -40,6 +40,9 @@ import com.aait.aec.ui.feed.opensource.OpenSourceAdapter;
 import com.aait.aec.ui.feed.opensource.OpenSourceMvpPresenter;
 import com.aait.aec.ui.feed.opensource.OpenSourceMvpView;
 import com.aait.aec.ui.feed.opensource.OpenSourcePresenter;
+import com.aait.aec.ui.forgot.ForgotMvpPresenter;
+import com.aait.aec.ui.forgot.ForgotMvpView;
+import com.aait.aec.ui.forgot.ForgotPresenter;
 import com.aait.aec.ui.login.LoginMvpPresenter;
 import com.aait.aec.ui.login.LoginMvpView;
 import com.aait.aec.ui.login.LoginPresenter;
@@ -154,6 +157,12 @@ public class ActivityModule {
     @Provides
     RegisterMvpPresenter<RegisterMvpView> provideRegisterMvpPresenter(
             RegisterPresenter<RegisterMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    ForgotMvpPresenter<ForgotMvpView> provideForgotMvpPresenter(
+            ForgotPresenter<ForgotMvpView> presenter) {
         return presenter;
     }
 

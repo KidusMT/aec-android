@@ -56,6 +56,16 @@
                         android:text="Automated Exam Corrector"
                         android:textAlignment="center" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Forgot your password?" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -72,7 +82,7 @@
                             android:background="@color/transparent"
                             android:cursorVisible="true"
                             android:gravity="center|left|bottom"
-                            android:hint="username"
+                            android:hint="email"
                             android:inputType="textVisiblePassword|textNoSuggestions"
                             android:maxLength="50"
                             android:paddingBottom="5dp"
@@ -81,78 +91,31 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@drawable/rounded_grey_rectangle">
-
-                        <EditText
-                            android:id="@+id/et_password"
-                            style="@style/TextStyle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/vertical_margin_12"
-                            android:background="@color/transparent"
-                            android:cursorVisible="true"
-                            android:gravity="center|left|bottom"
-                            android:hint="password"
-                            android:inputType="textPassword"
-                            android:maxLength="50"
-                            android:paddingBottom="5dp"
-                            android:textColor="@color/black_effective"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
                     <Button
-                        android:id="@+id/btn_login"
+                        android:id="@+id/btn_submit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/bg_btn_curved_accent_color"
-                        android:text="@string/login"
+                        android:text="Submit"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
-                    <com.google.android.gms.common.SignInButton
-                        android:id="@+id/btn_google_login"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="10dp" />
 
                     <TextView
-                        android:id="@+id/tv_forgot_pass"
+                        android:id="@+id/tv_return_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/activity_horizontal_margin"
-                        android:layout_marginTop="@dimen/horizontal_margin_8"
-                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                        android:paddingStart="@dimen/activity_horizontal_margin"
-                        android:paddingEnd="@dimen/activity_horizontal_margin"
-                        android:paddingBottom="@dimen/activity_horizontal_margin"
-                        android:text="Forgot password?"
-                        android:textAlignment="center" />
-
-                    <TextView
-                        android:id="@+id/tv_don_hv_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/activity_horizontal_margin"
-                        android:layout_marginTop="@dimen/horizontal_margin_8"
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
                         android:layout_marginEnd="@dimen/activity_horizontal_margin"
                         android:layout_marginBottom="@dimen/activity_horizontal_margin"
                         android:paddingStart="@dimen/activity_horizontal_margin"
                         android:paddingEnd="@dimen/activity_horizontal_margin"
                         android:paddingBottom="@dimen/activity_horizontal_margin"
-                        android:text="Don't have an account? Register"
+                        android:text="Return to login"
                         android:textAlignment="center" />
 
                 </LinearLayout>

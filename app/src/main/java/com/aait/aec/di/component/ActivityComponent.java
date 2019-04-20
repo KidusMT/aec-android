@@ -21,6 +21,7 @@ import com.aait.aec.ui.about.AboutFragment;
 import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.feed.blogs.BlogFragment;
 import com.aait.aec.ui.feed.opensource.OpenSourceFragment;
+import com.aait.aec.ui.forgot.ForgotActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.ui.main.rating.RateUsDialog;
@@ -54,5 +55,7 @@ public interface ActivityComponent {
     void inject(RateUsDialog dialog);
 
     void inject(RegisterActivity activity);
+
+    void inject(ForgotActivity activity);
 
 }
