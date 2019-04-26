@@ -43,6 +43,6 @@ public class StudentPresenter<V extends StudentMvpView> extends BasePresenter<V>
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
         // display students from excel sheet
-        getMvpView().loadStudentsFromExcelFile();
+//        getMvpView().loadStudentsFromExcelFile();
     }
 }

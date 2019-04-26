@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.ListView;
 
@@ -108,8 +109,13 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
     @Override
     protected void setUp() {
+
+        lastDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/student.xlsx";
+
+//        Log.e("--->lastDirectory", lastDirectory);
         uploadData = new ArrayList<>();
 
+        loadStudentsFromExcelFile();
 
     }
 
@@ -167,7 +173,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
                         String value = getCellAsString(row, c, formulaEvaluator);
                         String cellInfo = "r:" + r + "; c:" + c + "; v:" + value;
                         Log.d(TAG, "readExcelData: Data from row: " + cellInfo);
-                        sb.append(value + ", ");
+                        sb.append(value).append(", ");
                     }
                 }
                 sb.append(":");
@@ -247,6 +253,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
                 //add the the uploadData ArrayList
                 uploadData.add(new SheetValue(x, y));
+
 
             } catch (NumberFormatException e) {
 
