@@ -41,11 +41,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     @Inject
     StudentMvpPresenter<StudentMvpView> mPresenter;
 
-    @OnClick(R.id.btn_login)
-    void onLoginClicked() {
-        startActivity(MainActivity.getStartIntent(this));
-    }
-
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, StudentActivity.class);
         return intent;
@@ -63,28 +58,8 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         mPresenter.onAttach(StudentActivity.this);
 
         CommonUtils.hideKeyboard(this);
-    }
 
-    @OnClick(R.id.tv_forgot_pass)
-    void onForgotPasswordClicked() {
-        onForgotClicked();
-    }
-
-    @OnClick(R.id.tv_don_hv_account)
-    void onRegisterClicked() {
-        startActivity(RegisterActivity.getStartIntent(this));
-    }
-
-    @Override
-    public void openMainActivity() {
-        Intent intent = MainActivity.getStartIntent(StudentActivity.this);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    public void onForgotClicked() {
-        startActivity(ForgotActivity.getStartIntent(this));
+        setUp();
     }
 
     @Override
@@ -95,6 +70,11 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
     @Override
     protected void setUp() {
+
+    }
+
+    @Override
+    public void loadStudentsFromExcelFile() {
 
     }
 }

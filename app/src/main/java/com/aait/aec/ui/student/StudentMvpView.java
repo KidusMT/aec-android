@@ -23,7 +23,5 @@ import com.aait.aec.ui.base.MvpView;
 
 public interface StudentMvpView extends MvpView {
 
-    void openMainActivity();
-
-    void onForgotClicked();
+    void loadStudentsFromExcelFile();
 }
