@@ -32,6 +32,8 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
 
     void onDrawerMyFeedClick();
 
+    void onDrawerNotificationClick();
+
     void onViewInitialized();
 
     void onNavMenuCreated();

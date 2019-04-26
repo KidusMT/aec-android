@@ -50,6 +50,7 @@ import com.aait.aec.ui.custom.RoundedImageView;
 import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.rating.RateUsDialog;
+import com.aait.aec.ui.student.StudentActivity;
 import com.aait.aec.utils.ScreenUtils;
 
 import java.util.ArrayList;
@@ -386,6 +387,13 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     public void openMyFeedActivity() {
         startActivity(FeedActivity.getStartIntent(this));
+    }
+
+    @Override
+    public void openNotificationActivity() {
+        // todo to be replaced later with Notification Activity
+        startActivity(StudentActivity.getStartIntent(this));
+        finish();
     }
 
     @Override

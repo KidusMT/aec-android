@@ -46,6 +46,8 @@ public interface MainMvpView extends MvpView {
 
     void openMyFeedActivity();
 
+    void openNotificationActivity();
+
     void closeNavigationDrawer();
 
     void lockDrawer();
