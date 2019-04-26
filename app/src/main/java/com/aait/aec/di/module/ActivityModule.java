@@ -62,6 +62,9 @@ import com.aait.aec.ui.register.RegisterPresenter;
 import com.aait.aec.ui.splash.SplashMvpPresenter;
 import com.aait.aec.ui.splash.SplashMvpView;
 import com.aait.aec.ui.splash.SplashPresenter;
+import com.aait.aec.ui.student.StudentMvpPresenter;
+import com.aait.aec.ui.student.StudentMvpView;
+import com.aait.aec.ui.student.StudentPresenter;
 import com.aait.aec.ui.subject.SubjectMvpPresenter;
 import com.aait.aec.ui.subject.SubjectMvpView;
 import com.aait.aec.ui.subject.SubjectPresenter;
@@ -181,6 +184,12 @@ public class ActivityModule {
     @Provides
     CreateExamMvpPresenter<CreateExamMvpView> provideCreateExamMvpPresenter(
             CreateExamPresenter<CreateExamMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    StudentMvpPresenter<StudentMvpView> provideStudentMvpPresenter(
+            StudentPresenter<StudentMvpView> presenter) {
         return presenter;
     }
 
