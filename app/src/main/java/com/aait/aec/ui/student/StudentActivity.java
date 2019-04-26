@@ -18,13 +18,15 @@ package com.aait.aec.ui.student;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ListView;
 
 import com.aait.aec.R;
+import com.aait.aec.data.db.model.SheetValue;
 import com.aait.aec.ui.base.BaseActivity;
-import com.aait.aec.ui.forgot.ForgotActivity;
-import com.aait.aec.ui.main.MainActivity;
-import com.aait.aec.ui.register.RegisterActivity;
 import com.aait.aec.utils.CommonUtils;
+
+import java.io.File;
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -40,6 +42,20 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
     @Inject
     StudentMvpPresenter<StudentMvpView> mPresenter;
+
+    // Declare variables
+    private String[] FilePathStrings;
+    private String[] FileNameStrings;
+    private File[] listFile;
+    File file;
+
+    ArrayList<String> pathHistory;
+    String lastDirectory;
+    int count = 0;
+
+    ArrayList<SheetValue> uploadData;
+
+    ListView lvInternalStorage;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, StudentActivity.class);
@@ -62,6 +78,11 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         setUp();
     }
 
+    @OnClick(R.id.btn_import)
+    void onImportClicked() {
+        CommonUtils.toast("Import clicked");
+    }
+
     @Override
     protected void onDestroy() {
         mPresenter.onDetach();
@@ -70,7 +91,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
     @Override
     protected void setUp() {
-
+        uploadData = new ArrayList<>();
     }
 
     @Override
