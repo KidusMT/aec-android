@@ -54,7 +54,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_student);
 
         getActivityComponent().inject(this);
 
