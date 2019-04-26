@@ -47,7 +47,7 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_exam, parent, false);
+                .inflate(R.layout.item_student, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -71,23 +71,14 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public class MyViewHolder extends BaseViewHolder {
 
-        @BindView(R.id.exam_date)
-        TextView exDate;
+        @BindView(R.id.std_row)
+        TextView stdRow;
 
-        @BindView(R.id.exam_title)
-        TextView exTitle;
+        @BindView(R.id.std_name)
+        TextView stdName;
 
-        @BindView(R.id.exam_type)
-        TextView exType;
-
-        @BindView(R.id.exam_weight)
-        TextView exWeight;
-
-        @BindView(R.id.exam_instructor)
-        TextView exInst;
-
-        @BindView(R.id.exam_img_thumb)
-        ImageView exIcon;
+        @BindView(R.id.std_id)
+        TextView stdId;
 
         Exam album;
 
