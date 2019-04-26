@@ -5,7 +5,10 @@
     android:background="@color/white"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:padding="5dp">
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingTop="5dp"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
+    android:paddingBottom="5dp">
 
     <TextView
         android:id="@+id/std_row"
