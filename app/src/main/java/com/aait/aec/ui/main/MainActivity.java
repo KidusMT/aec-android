@@ -354,7 +354,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                                 mPresenter.onDrawerOptionAboutClick();
                                 return true;
                             case R.id.nav_notification:
-//                                mPresenter.onDrawerRateUsClick();
+                                mPresenter.onDrawerNotificationClick();
 //                                CommonUtils.
 //                                Toast.makeText(MainActivity.this, "Notification", Toast.LENGTH_SHORT).show();
                                 return true;
@@ -393,7 +393,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void openNotificationActivity() {
         // todo to be replaced later with Notification Activity
         startActivity(StudentActivity.getStartIntent(this));
-        finish();
     }
 
     @Override
