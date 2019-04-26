@@ -19,11 +19,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aait.aec.R;
-import com.aait.aec.data.db.model.Exam;
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseViewHolder;
 import com.aait.aec.utils.CommonUtils;
 
@@ -38,9 +37,9 @@ import butterknife.ButterKnife;
 
 public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
-    List<Exam> albumList;
+    List<Student> albumList;
 
-    public StudentAdapter(List<Exam> categories) {
+    public StudentAdapter(List<Student> categories) {
         this.albumList = categories;
     }
 
@@ -57,8 +56,7 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         holder.onBind(position);
     }
 
-
-    public void addItems(List<Exam> sensors) {
+    public void addItems(List<Student> sensors) {
         this.albumList.clear();
         this.albumList.addAll(sensors);
         notifyDataSetChanged();
@@ -80,7 +78,7 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @BindView(R.id.std_id)
         TextView stdId;
 
-        Exam album;
+        Student album;
 
         public MyViewHolder(View view) {
             super(view);
@@ -92,20 +90,14 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             album = albumList.get(position);
             if (album != null) {
 
-                exDate.setText(String.valueOf(album.getDate()));
-                exInst.setText(String.valueOf(album.getInst()));
-                exTitle.setText(String.valueOf(album.getTitle()));
-                exWeight.setText(String.valueOf(album.getWeight()));
-                exType.setText(String.valueOf(album.getType()));
-
-                // loading album cover using Glide library
-//                Glide.with(itemView.getContext()).load(album.getThumb()).into(album.getThumb());
+                stdRow.setText(String.valueOf(album.getRow()));
+                stdName.setText(String.valueOf(album.getName()));
+                stdId.setText(String.valueOf(album.getId()));
 
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-//                showPopupMenu(holder.overflow);
-                        CommonUtils.toast(album.getTitle());
+                        CommonUtils.toast(album.getName());
                     }
                 });
             }
@@ -114,11 +106,9 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         @Override
         protected void clear() {
-            exDate.setText("");
-            exInst.setText("");
-            exTitle.setText("");
-            exWeight.setText("");
-            exType.setText("");
+            stdRow.setText("");
+            stdName.setText("");
+            stdId.setText("");
         }
     }
 }
