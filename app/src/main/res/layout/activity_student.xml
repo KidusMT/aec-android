@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="3dp"
+            android:layout_marginBottom="70dp"
             android:scrollbars="vertical"
             tools:listitem="@layout/item_student" />
 
@@ -30,5 +31,20 @@
             android:textSize="18sp"
             android:visibility="gone" />
 
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_btn_curved_accent_color"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
     </RelativeLayout>
+
 </ScrollView>
