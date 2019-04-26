@@ -42,6 +42,9 @@ public class StudentPresenter<V extends StudentMvpView> extends BasePresenter<V>
     @Override
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
+
+        // shows the loading till the lists are prepared
+        getMvpView().showLoading();
         // display students from excel sheet
 //        getMvpView().loadStudentsFromExcelFile();
     }

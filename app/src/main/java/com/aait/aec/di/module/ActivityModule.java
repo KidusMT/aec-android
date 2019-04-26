@@ -21,6 +21,8 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.aait.aec.data.db.model.Category;
 import com.aait.aec.data.db.model.Exam;
+import com.aait.aec.data.db.model.SheetValue;
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.data.network.model.BlogResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
 import com.aait.aec.di.ActivityContext;
@@ -62,6 +64,7 @@ import com.aait.aec.ui.register.RegisterPresenter;
 import com.aait.aec.ui.splash.SplashMvpPresenter;
 import com.aait.aec.ui.splash.SplashMvpView;
 import com.aait.aec.ui.splash.SplashPresenter;
+import com.aait.aec.ui.student.StudentAdapter;
 import com.aait.aec.ui.student.StudentMvpPresenter;
 import com.aait.aec.ui.student.StudentMvpView;
 import com.aait.aec.ui.student.StudentPresenter;
@@ -196,6 +199,11 @@ public class ActivityModule {
     @Provides
     FeedPagerAdapter provideFeedPagerAdapter() {
         return new FeedPagerAdapter(new ArrayList<Category>());
+    }
+
+    @Provides
+    StudentAdapter provideStudentAdapter() {
+        return new StudentAdapter(new ArrayList<Student>());
     }
 
     @Provides

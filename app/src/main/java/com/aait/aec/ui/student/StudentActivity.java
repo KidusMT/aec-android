@@ -21,11 +21,16 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ListView;
 
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.SheetValue;
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
 
@@ -44,9 +49,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -61,16 +68,29 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
     @Inject
     StudentMvpPresenter<StudentMvpView> mPresenter;
+
+    @Inject
+    StudentAdapter mAdapter;
+
+    @Inject
+    LinearLayoutManager mLayoutManager;
+
     File file;
     ArrayList<String> pathHistory;
     String lastDirectory;
     int count = 0;
-    ArrayList<SheetValue> uploadData;
+    List<Student> uploadData;
     ListView lvInternalStorage;
     // Declare variables
     private String[] FilePathStrings;
     private String[] FileNameStrings;
     private File[] listFile;
+
+    @BindView(R.id.import_toolbar)
+    Toolbar mToolbar;
+
+    @BindView(R.id.import_recycler)
+    RecyclerView mRecyclerView;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, StudentActivity.class);
@@ -110,12 +130,28 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     @Override
     protected void setUp() {
 
+        setSupportActionBar(mToolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
+        setUpRecyclerView();
+
         lastDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/student.xlsx";
 
 //        Log.e("--->lastDirectory", lastDirectory);
         uploadData = new ArrayList<>();
 
         loadStudentsFromExcelFile();
+
+    }
+
+    private void setUpRecyclerView() {
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(mAdapter);
 
     }
 
@@ -245,15 +281,19 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
             //use try catch to make sure there are no "" that try to parse into doubles.
             try {
-                double x = Double.parseDouble(columns[0]);
-                double y = Double.parseDouble(columns[1]);
+//                double x = Double.parseDouble(columns[0]);
+//                double y = Double.parseDouble(columns[1]);
+
+                String x = String.valueOf(columns[0]);
+                String y = String.valueOf(columns[1]);
 
                 String cellInfo = "(x,y): (" + x + "," + y + ")";
                 Log.d(TAG, "ParseStringBuilder: Data from row: " + cellInfo);
 
                 //add the the uploadData ArrayList
-                uploadData.add(new SheetValue(x, y));
+                uploadData.add(new Student(i, x, y));
 
+                mAdapter.addItems(uploadData);
 
             } catch (NumberFormatException e) {
 
@@ -262,16 +302,20 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
             }
         }
 
-        printDataToLog();
+//        printDataToLog();
+
+        hideLoading();
     }
 
     private void printDataToLog() {
         Log.d(TAG, "printDataToLog: Printing data to log...");
 
         for (int i = 0; i < uploadData.size(); i++) {
-            double x = uploadData.get(i).getX();
-            double y = uploadData.get(i).getY();
-            Log.d(TAG, "printDataToLog: (x,y): (" + x + "," + y + ")");
+//            double x = uploadData.get(i).getX();
+//            double y = uploadData.get(i).getY();
+            Log.d(TAG, "printDataToLog: (x,y): (" +
+                    String.valueOf(uploadData.get(i).getName()) + "," +
+                    String.valueOf(uploadData.get(i).getId()) + ")");
         }
     }
 }
