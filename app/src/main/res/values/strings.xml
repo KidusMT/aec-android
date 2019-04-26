@@ -89,6 +89,7 @@
     <string name="nav_notification">Notifications</string>
     <string name="nav_category">Category</string>
     <string name="no_category_items" >No category item found.</string>
+    <string name="import_str">IMPORT</string>
 
     <string-array name="visibility_options">
         <item>Quiz</item>
