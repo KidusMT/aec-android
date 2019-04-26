@@ -1,11 +1,11 @@
 package com.aait.aec.data.db.model
 
 class SheetValue {
-    var name: String? = null
-    var id: String? = null
+    var x: Double? = null
+    var y: Double? = null
 
-    constructor(name: String?, id: String?) {
-        this.name = name
-        this.id = id
+    constructor(x: Double?, y: Double?) {
+        this.x = x
+        this.y = y
     }
 }
