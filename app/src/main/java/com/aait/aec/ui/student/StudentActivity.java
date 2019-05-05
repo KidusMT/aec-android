@@ -141,7 +141,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
         lastDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/student.xlsx";
 
-//        Log.e("--->lastDirectory", lastDirectory);
         uploadData = new ArrayList<>();
 
         loadStudentsFromExcelFile();
