@@ -50,6 +50,7 @@ import com.aait.aec.ui.custom.RoundedImageView;
 import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.rating.RateUsDialog;
+import com.aait.aec.ui.result.ResultActivity;
 import com.aait.aec.ui.student.StudentActivity;
 import com.aait.aec.utils.ScreenUtils;
 
@@ -66,7 +67,7 @@ import butterknife.OnClick;
  * Created by janisharali on 27/01/17.
  */
 
-public class MainActivity extends BaseActivity implements MainMvpView {
+public class MainActivity extends BaseActivity implements MainMvpView, MainAdapter.Callback {
 
     @Inject
     MainMvpPresenter<MainMvpView> mPresenter;
@@ -91,16 +92,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @BindView(R.id.exam_recycler)
     RecyclerView mRecyclerView;
-
-    private TextView mNameTextView;
-
-    private TextView mEmailTextView;
-
-    private RoundedImageView mProfileImageView;
-
-    private ActionBarDrawerToggle mDrawerToggle;
-
     List<Exam> exams = new ArrayList<>();
+    private TextView mNameTextView;
+    private TextView mEmailTextView;
+    private RoundedImageView mProfileImageView;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, MainActivity.class);
@@ -116,6 +112,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         setUnBinder(ButterKnife.bind(this));
 
         mPresenter.onAttach(this);
+        mAdapter.setCallback(this);
 
         setUp();
     }
@@ -427,5 +424,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         exams.add(a10);
 
         mAdapter.addItems(exams);
+    }
+
+    @Override
+    public void onItemClicked() {
+        startActivity(ResultActivity.getStartIntent(this));
     }
 }

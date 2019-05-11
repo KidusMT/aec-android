@@ -25,6 +25,7 @@ import android.widget.TextView;
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Category;
 import com.aait.aec.data.db.model.Exam;
+import com.aait.aec.ui.addAnswerDialog.AnswerAdapter;
 import com.aait.aec.ui.base.BaseViewHolder;
 import com.aait.aec.utils.CommonUtils;
 import com.bumptech.glide.Glide;
@@ -45,6 +46,8 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     public MainAdapter(List<Exam> categories) {
         this.albumList = categories;
     }
+
+    Callback mCallback;
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -69,6 +72,14 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     @Override
     public int getItemCount() {
         return albumList.size();
+    }
+
+    public void setCallback(Callback callback) {
+        mCallback = callback;
+    }
+
+    public interface Callback {
+        void onItemClicked();
     }
 
     public class MyViewHolder extends BaseViewHolder {
@@ -112,12 +123,9 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 // loading album cover using Glide library
 //                Glide.with(itemView.getContext()).load(album.getThumb()).into(album.getThumb());
 
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+                itemView.setOnClickListener(view -> {
 //                showPopupMenu(holder.overflow);
-                        CommonUtils.toast(album.getTitle());
-                    }
+                    CommonUtils.toast(album.getTitle());
                 });
             }
 
