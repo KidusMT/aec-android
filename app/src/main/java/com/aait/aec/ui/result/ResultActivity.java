@@ -125,7 +125,6 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
             CommonUtils.toast("working");
         }
 
-
         return super.onOptionsItemSelected(item);
     }
 
