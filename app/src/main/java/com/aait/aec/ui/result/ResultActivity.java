@@ -119,6 +119,12 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home)
             finish();
+        else if (item.getItemId() == R.id.import_toolbar){
+            //open image selection icon
+            // open two options for the user. to select image
+            CommonUtils.toast("working");
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
