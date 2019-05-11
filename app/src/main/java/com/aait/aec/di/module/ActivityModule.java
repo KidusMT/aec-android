@@ -30,6 +30,10 @@ import com.aait.aec.di.PerActivity;
 import com.aait.aec.ui.about.AboutMvpPresenter;
 import com.aait.aec.ui.about.AboutMvpView;
 import com.aait.aec.ui.about.AboutPresenter;
+import com.aait.aec.ui.addAnswerDialog.AddAnswerMvpPresenter;
+import com.aait.aec.ui.addAnswerDialog.AddAnswerMvpView;
+import com.aait.aec.ui.addAnswerDialog.AddAnswerPresenter;
+import com.aait.aec.ui.base.MvpPresenter;
 import com.aait.aec.ui.create.CreateExamMvpPresenter;
 import com.aait.aec.ui.create.CreateExamMvpView;
 import com.aait.aec.ui.create.CreateExamPresenter;
@@ -193,6 +197,12 @@ public class ActivityModule {
     @Provides
     StudentMvpPresenter<StudentMvpView> provideStudentMvpPresenter(
             StudentPresenter<StudentMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    AddAnswerMvpPresenter<AddAnswerMvpView> provideAddAnswerMvpPresenter(
+            AddAnswerPresenter<AddAnswerMvpView> presenter) {
         return presenter;
     }
 

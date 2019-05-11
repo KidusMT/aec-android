@@ -18,6 +18,7 @@ package com.aait.aec.di.component;
 import com.aait.aec.di.PerActivity;
 import com.aait.aec.di.module.ActivityModule;
 import com.aait.aec.ui.about.AboutFragment;
+import com.aait.aec.ui.addAnswerDialog.AddAnswerDialog;
 import com.aait.aec.ui.create.CreateExamActivity;
 import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.feed.blogs.BlogFragment;
@@ -66,5 +67,7 @@ public interface ActivityComponent {
     void inject(SubjectActivity activity);
 
     void inject(StudentActivity activity);
+
+    void inject(AddAnswerDialog dialog);
 
 }

@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.aait.aec.R;
+import com.aait.aec.ui.addAnswerDialog.AddAnswerDialog;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
 
@@ -130,7 +131,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
 
     @OnClick(R.id.lbl_attachment)
     void onAddAnswerClicked() {
-
+        AddAnswerDialog.newInstance().show(getSupportFragmentManager(), "");
     }
 
 }
