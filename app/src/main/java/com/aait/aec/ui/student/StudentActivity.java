@@ -64,7 +64,7 @@ import butterknife.OnClick;
 
 public class StudentActivity extends BaseActivity implements StudentMvpView {
 
-    public static final String TAG = "StudentActivity";
+    public static final String TAG = "ResultActivity";
 
     @Inject
     StudentMvpPresenter<StudentMvpView> mPresenter;

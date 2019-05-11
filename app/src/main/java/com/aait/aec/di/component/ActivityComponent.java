@@ -28,6 +28,7 @@ import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.ui.main.rating.RateUsDialog;
 import com.aait.aec.ui.register.RegisterActivity;
+import com.aait.aec.ui.result.ResultActivity;
 import com.aait.aec.ui.splash.SplashActivity;
 import com.aait.aec.ui.student.StudentActivity;
 import com.aait.aec.ui.subject.SubjectActivity;
@@ -69,5 +70,7 @@ public interface ActivityComponent {
     void inject(StudentActivity activity);
 
     void inject(AddAnswerDialog dialog);
+
+    void inject(ResultActivity activity);
 
 }

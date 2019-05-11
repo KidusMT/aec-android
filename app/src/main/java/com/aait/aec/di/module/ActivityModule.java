@@ -64,6 +64,7 @@ import com.aait.aec.ui.main.rating.RatingDialogPresenter;
 import com.aait.aec.ui.register.RegisterMvpPresenter;
 import com.aait.aec.ui.register.RegisterMvpView;
 import com.aait.aec.ui.register.RegisterPresenter;
+import com.aait.aec.ui.result.ResultAdapter;
 import com.aait.aec.ui.splash.SplashMvpPresenter;
 import com.aait.aec.ui.splash.SplashMvpView;
 import com.aait.aec.ui.splash.SplashPresenter;
@@ -211,7 +212,12 @@ public class ActivityModule {
 
     @Provides
     StudentAdapter provideStudentAdapter() {
-        return new StudentAdapter(new ArrayList<Student>());
+        return new StudentAdapter(new ArrayList<>());
+    }
+
+    @Provides
+    ResultAdapter provideResultAdapter() {
+        return new ResultAdapter(new ArrayList<>());
     }
 
     @Provides
