@@ -189,6 +189,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
      * @return
      */
     private void readExcelData(String filePath) {
+        showLoading();//loading
         Log.d(TAG, "readExcelData: Reading Excel File.");
 
         //decarle input file
@@ -231,6 +232,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         } catch (IOException e) {
             Log.e(TAG, "readExcelData: Error reading inputstream. " + e.getMessage());
         }
+        hideLoading();//hiding the loading dialog
     }
 
     /**
