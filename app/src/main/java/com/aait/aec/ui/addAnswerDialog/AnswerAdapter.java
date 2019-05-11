@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -19,6 +18,8 @@ import butterknife.ButterKnife;
 public class AnswerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     int numOfQues;
+
+    private Callback mCallback;
 
     public AnswerAdapter(int numOfQues) {
         this.numOfQues = numOfQues;
@@ -48,25 +49,21 @@ public class AnswerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         return numOfQues;
     }
 
+    public void setCallback(Callback callback) {
+        mCallback = callback;
+    }
+
+    public interface Callback {
+        void onItemClicked(int position, String answer);
+    }
+
     public class MyViewHolder extends BaseViewHolder {
 
         @BindView(R.id.choice_answer)
         RadioGroup mRadioGroup;
 
-        @BindView(R.id.ans_a)
-        RadioButton answerA;
-
-        @BindView(R.id.ans_b)
-        RadioButton answerB;
-
-        @BindView(R.id.ans_c)
-        RadioButton answerC;
-
-        @BindView(R.id.ans_d)
-        RadioButton answerD;
-
         @BindView(R.id.roll_no)
-        TextView roolNo;
+        TextView rollNo;
 
         public MyViewHolder(View view) {
             super(view);
@@ -76,10 +73,29 @@ public class AnswerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @SuppressLint("DefaultLocale")
         public void onBind(int position) {
 
-            roolNo.setText(String.format("%d.  ", position + 1));
+            rollNo.setText(String.format("%d.  ", position + 1));
 
-            int selectedId = mRadioGroup.getCheckedRadioButtonId();
-            Log.e("--->selectedId", String.valueOf(selectedId));
+            mRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+
+                int selectedId = mRadioGroup.getCheckedRadioButtonId();
+                String answer = "";
+                switch (selectedId) {
+                    case R.id.ans_a:
+                        answer = "A";
+                        break;
+                    case R.id.ans_b:
+                        answer = "B";
+                        break;
+                    case R.id.ans_c:
+                        answer = "C";
+                        break;
+                    case R.id.ans_d:
+                        answer = "D";
+                        break;
+                }
+                mCallback.onItemClicked(position, answer);
+
+            });
         }
 
         @Override
