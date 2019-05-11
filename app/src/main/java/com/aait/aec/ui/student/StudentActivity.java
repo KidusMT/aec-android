@@ -30,7 +30,6 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.aait.aec.R;
-import com.aait.aec.data.db.model.SheetValue;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
@@ -82,16 +81,14 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     int count = 0;
     List<Student> uploadData;
     ListView lvInternalStorage;
+    @BindView(R.id.import_toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.import_recycler)
+    RecyclerView mRecyclerView;
     // Declare variables
     private String[] FilePathStrings;
     private String[] FileNameStrings;
     private File[] listFile;
-
-    @BindView(R.id.import_toolbar)
-    Toolbar mToolbar;
-
-    @BindView(R.id.import_recycler)
-    RecyclerView mRecyclerView;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, StudentActivity.class);

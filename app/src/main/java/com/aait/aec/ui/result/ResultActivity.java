@@ -18,8 +18,10 @@ package com.aait.aec.ui.result;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,6 +34,8 @@ import android.widget.Toast;
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
+
+import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -61,6 +65,8 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
 
     @BindView(R.id.import_recycler)
     RecyclerView mRecyclerView;
+
+    private final int PICK_IMAGE_REQUEST = 10;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, ResultActivity.class);
@@ -148,5 +154,29 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
         }
     }
 
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null )
+        {
+//            filePath = data.getData();
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+//                imageView.setImageBitmap(bitmap);
+//            }
+//            catch (IOException e)
+//            {
+//                e.printStackTrace();
+//            }
+        }
+    }
 
 }
