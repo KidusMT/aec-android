@@ -111,7 +111,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_import, menu);
         return true;
     }
 
