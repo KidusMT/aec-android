@@ -15,13 +15,16 @@
 
 package com.aait.aec.ui.result;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -99,7 +102,8 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
 
         setUpRecyclerView();
 
-        loadStudentsFromExcelFile();
+        //need to check the permissions
+        checkFilePermissions();
     }
 
     private void setUpRecyclerView() {
@@ -129,9 +133,20 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void loadStudentsFromExcelFile() {
-
+    private void checkFilePermissions() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                int permissionCheck = 0;
+                permissionCheck = this.checkSelfPermission("Manifest.permission.READ_EXTERNAL_STORAGE");
+                permissionCheck += this.checkSelfPermission("Manifest.permission.WRITE_EXTERNAL_STORAGE");
+                if (permissionCheck != 0) {
+                    this.requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 1001); //Any number
+                }
+            }
+        } else {
+            Log.d(TAG, "checkBTPermissions: No need to check permissions. SDK version < LOLLIPOP.");
+        }
     }
+
 
 }

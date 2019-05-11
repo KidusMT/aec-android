@@ -113,8 +113,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
         setUp();
 
-        //need to check the permissions
-        checkFilePermissions();
     }
 
     @OnClick(R.id.btn_import)
@@ -139,6 +137,9 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         }
 
         setUpRecyclerView();
+
+        //need to check the permissions
+        checkFilePermissions();
 
         lastDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/student.xlsx";
 
