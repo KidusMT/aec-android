@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -60,6 +61,9 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
 
     @BindView(R.id.create_assessment_date)
     EditText assessmentDate;
+
+    @BindView(R.id.et_number_of_question)
+    EditText numberOfQuestion;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, CreateExamActivity.class);
@@ -131,7 +135,15 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
 
     @OnClick(R.id.lbl_attachment)
     void onAddAnswerClicked() {
-        AddAnswerDialog.newInstance().show(getSupportFragmentManager(), "");
+        // todo can add more constraints later. enough for now
+        int nOfQ = TextUtils.isEmpty(numberOfQuestion.getText()) ? 0 :
+                Integer.parseInt(String.valueOf(numberOfQuestion.getText()));
+        if (nOfQ > 0)
+            AddAnswerDialog.newInstance().show(getSupportFragmentManager(), "");
+        else {
+            CommonUtils.toast("Please insert Number of questions before adding answers.");
+            numberOfQuestion.requestFocus();
+        }
     }
 
 }
