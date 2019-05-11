@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.aait.aec.R;
 import com.aait.aec.di.component.ActivityComponent;
 import com.aait.aec.ui.base.BaseDialog;
+import com.aait.aec.ui.main.MainActivity;
 
 import java.util.ArrayList;
 
@@ -103,12 +104,9 @@ public class AddAnswerDialog extends BaseDialog implements AddAnswerMvpView, Ans
     public void openConfirmReturnDialog() {
         // todo has to update the list in the home activity
         // todo has to send the list of answers to the api when the api is ready
-//        dismiss();
-//        startActivity(MainActivity.getStartIntent(getBaseActivity()));
-//        getBaseActivity().finish();// finishing the parent activity's activity rather than opening a new one
-        for (String s : answerList) {
-            Log.e("---->ans", String.valueOf(s));
-        }
+        dismiss();
+        startActivity(MainActivity.getStartIntent(getBaseActivity()));
+        getBaseActivity().finish();// finishing the parent activity's activity rather than opening a new one
 
     }
 
