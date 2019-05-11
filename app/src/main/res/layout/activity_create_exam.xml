@@ -29,210 +29,227 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_grey_rectangle">
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/et_course_name"
-                    style="@style/TextStyle"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/vertical_margin_12"
-                    android:background="@color/transparent"
-                    android:cursorVisible="true"
-                    android:gravity="center|left|bottom"
-                    android:hint="course name"
-                    android:inputType="textVisiblePassword|textNoSuggestions"
-                    android:maxLength="50"
-                    android:paddingBottom="5dp"
-                    android:textColor="@color/black_effective"
-                    android:textSize="18sp"
-                    android:visibility="gone" />
+                    android:orientation="vertical">
 
-                <Spinner
-                    android:id="@+id/exam_course_name"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_grey_rectangle">
+
+                        <Spinner
+                            android:id="@+id/exam_course_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="@dimen/vertical_margin_4"
+                            android:layout_marginEnd="@dimen/vertical_margin_4"
+                            android:entries="@array/exam_course_type" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_grey_rectangle">
+
+                        <Spinner
+                            android:id="@+id/exam_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="@dimen/vertical_margin_4"
+                            android:layout_marginEnd="@dimen/vertical_margin_4"
+                            android:entries="@array/exam_type" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_grey_rectangle"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/create_assessment_date"
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/vertical_margin_12"
+                            android:layout_weight="0.85"
+                            android:background="@color/transparent"
+                            android:clickable="true"
+                            android:cursorVisible="true"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:gravity="center|left|bottom"
+                            android:hint="Exam date"
+                            android:inputType="textVisiblePassword|textNoSuggestions"
+                            android:maxLength="50"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/black_effective"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:id="@+id/exam_date_calendar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.15"
+                            app:srcCompat="@drawable/ic_calendar" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_grey_rectangle">
+
+                        <Spinner
+                            android:id="@+id/exam_marking_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="@dimen/vertical_margin_4"
+                            android:layout_marginEnd="@dimen/vertical_margin_4"
+                            android:entries="@array/exam_exam_marking_type" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_grey_rectangle">
+
+                        <EditText
+                            android:id="@+id/et_weight"
+                            style="@style/TextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/vertical_margin_12"
+                            android:background="@color/transparent"
+                            android:cursorVisible="true"
+                            android:gravity="center|left|bottom"
+                            android:hint="Exam weight"
+                            android:inputType="textVisiblePassword|textNoSuggestions"
+                            android:maxLength="50"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/black_effective"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_grey_rectangle">
+
+                        <EditText
+                            android:id="@+id/et_number_of_question"
+                            style="@style/TextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/vertical_margin_12"
+                            android:background="@color/transparent"
+                            android:cursorVisible="true"
+                            android:gravity="center|left|bottom"
+                            android:hint="Number of questions"
+                            android:inputType="textVisiblePassword|textNoSuggestions|number"
+                            android:maxLength="50"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/black_effective"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_grey_rectangle">
+
+                        <TextView
+                            android:id="@+id/lbl_attachment"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_dashed_border"
+                            android:ems="10"
+                            android:gravity="center"
+                            android:hint="Add Answer"
+                            android:scrollbars="vertical" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_grey_rectangle">
+
+                        <EditText
+                            android:id="@+id/input_incident_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:background="@color/transparent"
+                            android:ems="10"
+                            android:gravity="top"
+                            android:hint="Exam Description"
+                            android:padding="8dp"
+                            android:scrollbars="vertical" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_login"
                     android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:layout_marginStart="@dimen/vertical_margin_4"
-                    android:layout_marginEnd="@dimen/vertical_margin_4"
-                    android:entries="@array/exam_course_type" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_grey_rectangle">
-
-                <Spinner
-                    android:id="@+id/exam_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:layout_marginStart="@dimen/vertical_margin_4"
-                    android:layout_marginEnd="@dimen/vertical_margin_4"
-                    android:entries="@array/exam_type" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal"
-                android:background="@drawable/rounded_grey_rectangle">
-
-                <EditText
-                    android:id="@+id/create_assessment_date"
-                    style="@style/TextStyle"
-                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/vertical_margin_12"
-                    android:background="@color/transparent"
-                    android:clickable="true"
-                    android:cursorVisible="true"
-                    android:layout_weight="0.85"
-                    android:editable="false"
-                    android:focusable="false"
-                    android:gravity="center|left|bottom"
-                    android:hint="Exam date"
-                    android:inputType="textVisiblePassword|textNoSuggestions"
-                    android:maxLength="50"
-                    android:paddingBottom="5dp"
-                    android:textColor="@color/black_effective"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bg_btn_curved_accent_color"
+                    android:text="@string/submit"
+                    android:textColor="@color/white"
                     android:textSize="18sp" />
-
-                <ImageView
-                    android:id="@+id/exam_date_calendar"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_calendar"
-                    android:layout_weight="0.15"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content" />
-
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_grey_rectangle">
+        </ScrollView>
 
-                <Spinner
-                    android:id="@+id/exam_marking_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:layout_marginStart="@dimen/vertical_margin_4"
-                    android:layout_marginEnd="@dimen/vertical_margin_4"
-                    android:entries="@array/exam_exam_marking_type" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_grey_rectangle">
-
-                <EditText
-                    android:id="@+id/et_weight"
-                    style="@style/TextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/vertical_margin_12"
-                    android:background="@color/transparent"
-                    android:cursorVisible="true"
-                    android:gravity="center|left|bottom"
-                    android:hint="Exam weight"
-                    android:inputType="textVisiblePassword|textNoSuggestions"
-                    android:maxLength="50"
-                    android:paddingBottom="5dp"
-                    android:textColor="@color/black_effective"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_grey_rectangle">
-
-                <EditText
-                    android:id="@+id/et_number_of_question"
-                    style="@style/TextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/vertical_margin_12"
-                    android:background="@color/transparent"
-                    android:cursorVisible="true"
-                    android:gravity="center|left|bottom"
-                    android:hint="Number of questions"
-                    android:inputType="textVisiblePassword|textNoSuggestions|number"
-                    android:maxLength="50"
-                    android:paddingBottom="5dp"
-                    android:textColor="@color/black_effective"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_grey_rectangle">
-
-                <EditText
-                    android:id="@+id/input_incident_details"
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@color/transparent"
-                    android:ems="10"
-                    android:gravity="top"
-                    android:hint="Exam Description"
-                    android:padding="8dp"
-                    android:scrollbars="vertical" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/bg_btn_curved_accent_color"
-            android:text="@string/submit"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
     </LinearLayout>
 </ScrollView>

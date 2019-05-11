@@ -36,6 +36,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -125,6 +126,11 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
             finish();
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick(R.id.lbl_attachment)
+    void onAddAnswerClicked() {
+
     }
 
 }
