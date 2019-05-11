@@ -16,8 +16,6 @@ import com.aait.aec.di.component.ActivityComponent;
 import com.aait.aec.ui.base.BaseDialog;
 import com.aait.aec.ui.main.MainActivity;
 
-import java.util.ArrayList;
-
 import javax.inject.Inject;
 
 import butterknife.BindView;
