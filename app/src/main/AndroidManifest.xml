@@ -47,6 +47,11 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name="com.aait.aec.ui.result.ResultActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name="com.aait.aec.ui.register.RegisterActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
