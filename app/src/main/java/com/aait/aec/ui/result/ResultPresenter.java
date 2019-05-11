@@ -43,9 +43,7 @@ public class ResultPresenter<V extends ResultMvpView> extends BasePresenter<V>
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
 
-        // shows the loading till the lists are prepared
         getMvpView().showLoading();
-        // display students from excel sheet
-//        getMvpView().loadStudentsFromExcelFile();
+        getMvpView().hideLoading();
     }
 }

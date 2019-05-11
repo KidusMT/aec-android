@@ -60,7 +60,7 @@ public final class CommonUtils {
         progressDialog.setContentView(R.layout.progress_dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
-        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setCanceledOnTouchOutside(true);
         return progressDialog;
     }
 
