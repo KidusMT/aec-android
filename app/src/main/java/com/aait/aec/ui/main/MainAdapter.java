@@ -126,6 +126,7 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 itemView.setOnClickListener(view -> {
 //                showPopupMenu(holder.overflow);
                     CommonUtils.toast(album.getTitle());
+                    mCallback.onItemClicked();
                 });
             }
 
