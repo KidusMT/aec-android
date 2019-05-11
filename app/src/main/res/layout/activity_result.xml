@@ -185,6 +185,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.3"
+            android:fontFamily="sans-serif-black"
             android:text="Std. Id"
             android:textAlignment="center" />
 
@@ -192,6 +193,7 @@
             android:id="@+id/result_std_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.2"
             android:text="Result"
