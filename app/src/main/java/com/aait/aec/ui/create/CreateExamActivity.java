@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
@@ -52,6 +53,9 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
+    @BindView(R.id.exam_date_calendar)
+    ImageView ivCalendar;
+
     @BindView(R.id.create_assessment_date)
     EditText assessmentDate;
 
@@ -75,6 +79,10 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         setUp();
 
         assessmentDate.setOnClickListener(v -> new DatePickerDialog(CreateExamActivity.this, date, myCalendar
+                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)).show());
+
+        ivCalendar.setOnClickListener(v -> new DatePickerDialog(CreateExamActivity.this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show());
     }

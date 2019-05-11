@@ -91,10 +91,30 @@
     <string name="no_category_items" >No category item found.</string>
     <string name="import_str">IMPORT</string>
 
-    <string-array name="visibility_options">
+    <string-array name="exam_type">
+        <item>- Select Exam Type -</item>
         <item>Quiz</item>
         <item>Mid Exam</item>
         <item>Final Exam</item>
+    </string-array>
+
+    <string-array name="exam_exam_marking_type">
+        <item>- Select Marking Type -</item>
+        <item>Human Marked(OMR)</item>
+        <item>Character(Human Hand Written)</item>
+    </string-array>
+
+    <string-array name="exam_course_type">
+        <item>- Select Exam Course -</item>
+        <item>Software Engineering I</item>
+        <item>Software Engineering II</item>
+        <item>Introduction to Programming</item>
+        <item>Fundamentals of IT</item>
+        <item>Fundamentals of Networking</item>
+        <item>Operating System</item>
+        <item>System Programming</item>
+        <item>Advanced Mobile Programming</item>
+        <item>Advanced IT Security</item>
     </string-array>
 
 </resources>
