@@ -24,6 +24,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
@@ -119,7 +120,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home)
             finish();
-        else if (item.getItemId() == R.id.import_toolbar){
+        else if (item.getItemId() == R.id.action_import){
             //open image selection icon
             // open two options for the user. to select image
             CommonUtils.toast("working");
