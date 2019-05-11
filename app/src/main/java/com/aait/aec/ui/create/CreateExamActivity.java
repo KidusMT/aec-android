@@ -139,7 +139,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         int nOfQ = TextUtils.isEmpty(numberOfQuestion.getText()) ? 0 :
                 Integer.parseInt(String.valueOf(numberOfQuestion.getText()));
         if (nOfQ > 0)
-            AddAnswerDialog.newInstance().show(getSupportFragmentManager(), "");
+            AddAnswerDialog.newInstance(nOfQ).show(getSupportFragmentManager(), "");
         else {
             CommonUtils.toast("Please insert Number of questions before adding answers.");
             numberOfQuestion.requestFocus();

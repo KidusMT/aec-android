@@ -16,6 +16,7 @@
         app:cardUseCompatPadding="true">
 
         <LinearLayout
+            android:id="@+id/flContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -24,44 +25,32 @@
             <TextView
                 android:id="@+id/dialog_measurement_detail_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginBottom="5dp"
+                android:textAlignment="center"
+                android:layout_weight="0.1"
                 android:ellipsize="end"
+                android:gravity="center_vertical"
                 android:maxLines="3"
-                android:text="Please Enter Your Confirmation Number"
+                android:text="Question Answer"
                 android:textSize="18sp" />
 
-            <RelativeLayout
-                android:id="@+id/flContent"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/answer_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/exam_recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:scrollbars="vertical"
-                    tools:listitem="@layout/item_answer" />
-
-                <TextView
-                    android:id="@+id/tv_no_exam"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_margin="5dp"
-                    android:text="@string/no_category_items"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:visibility="gone" />
-
-            </RelativeLayout>
+                android:layout_height="0dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.8"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_answer" />
 
             <LinearLayout
+                android:id="@+id/bottom_options"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
                 android:gravity="end"
                 android:orientation="horizontal">
 
@@ -69,8 +58,8 @@
                     android:id="@+id/btn_dialog_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/horizontal_margin_8"
                     android:padding="5dp"
                     android:text="CANCEL"
                     android:textSize="14sp" />
@@ -79,13 +68,15 @@
                     android:id="@+id/btn_dialog_decline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/horizontal_margin_8"
                     android:padding="5dp"
                     android:text="CONFIRM"
                     android:textSize="14sp" />
 
             </LinearLayout>
+
         </LinearLayout>
+
     </android.support.v7.widget.CardView>
 </LinearLayout>

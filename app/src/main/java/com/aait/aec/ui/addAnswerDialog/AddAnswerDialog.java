@@ -3,10 +3,12 @@ package com.aait.aec.ui.addAnswerDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import com.aait.aec.R;
 import com.aait.aec.di.component.ActivityComponent;
@@ -21,10 +23,22 @@ import butterknife.OnClick;
 
 public class AddAnswerDialog extends BaseDialog implements AddAnswerMvpView {
 
+    private static int numOfQuest;
+
     @Inject
     AddAnswerMvpPresenter<AddAnswerMvpView> mPresenter;
 
-    public static AddAnswerDialog newInstance() {
+    @Inject
+    LinearLayoutManager mLayoutManager;
+
+    @BindView(R.id.answer_recycler)
+    RecyclerView mRecyclerView;
+
+    @Inject
+    AnswerAdapter mAdapter;
+
+    public static AddAnswerDialog newInstance(int numberOfQuestions) {
+        numOfQuest = numberOfQuestions;
         AddAnswerDialog fragment = new AddAnswerDialog();
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
@@ -48,7 +62,6 @@ public class AddAnswerDialog extends BaseDialog implements AddAnswerMvpView {
 
         setUp(view);
 
-
         return view;
     }
 
@@ -64,7 +77,14 @@ public class AddAnswerDialog extends BaseDialog implements AddAnswerMvpView {
 
     @Override
     protected void setUp(View view) {
+        setUpRecyclerView();
+        mAdapter.addItems(numOfQuest);
+    }
 
+    private void setUpRecyclerView() {
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override

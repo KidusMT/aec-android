@@ -21,7 +21,6 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.aait.aec.data.db.model.Category;
 import com.aait.aec.data.db.model.Exam;
-import com.aait.aec.data.db.model.SheetValue;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.data.network.model.BlogResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
@@ -33,7 +32,7 @@ import com.aait.aec.ui.about.AboutPresenter;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerMvpPresenter;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerMvpView;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerPresenter;
-import com.aait.aec.ui.base.MvpPresenter;
+import com.aait.aec.ui.addAnswerDialog.AnswerAdapter;
 import com.aait.aec.ui.create.CreateExamMvpPresenter;
 import com.aait.aec.ui.create.CreateExamMvpView;
 import com.aait.aec.ui.create.CreateExamPresenter;
@@ -79,7 +78,6 @@ import com.aait.aec.utils.rx.AppSchedulerProvider;
 import com.aait.aec.utils.rx.SchedulerProvider;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;
@@ -219,6 +217,11 @@ public class ActivityModule {
     @Provides
     MainAdapter provideMainAdapter() {
         return new MainAdapter(new ArrayList<Exam>());
+    }
+
+    @Provides
+    AnswerAdapter provideAnswerAdapter() {
+        return new AnswerAdapter(0);// we can pass empty by default
     }
 
     @Provides
