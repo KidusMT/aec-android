@@ -152,6 +152,53 @@
 
     </LinearLayout>
 
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:paddingLeft="@dimen/horizontal_margin_8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.1"
+            android:fontFamily="sans-serif-black"
+            android:text="No." />
+
+        <TextView
+            android:id="@+id/result_std_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.45"
+            android:fontFamily="sans-serif-black"
+            android:text="Student Name"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/result_std_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.3"
+            android:text="Std. Id"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/result_std_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.2"
+            android:text="Result"
+            android:textAlignment="textEnd"  />
+
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/flContent"
         android:layout_width="match_parent"
@@ -163,7 +210,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="3dp"
             android:scrollbars="vertical"
-            tools:listitem="@layout/item_student" />
+            tools:listitem="@layout/item_result" />
 
         <TextView
             android:id="@+id/tv_no_exam"

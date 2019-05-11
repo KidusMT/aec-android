@@ -23,7 +23,7 @@
         android:id="@+id/result_std_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.55"
+        android:layout_weight="0.45"
         android:fontFamily="sans-serif-black"
         android:text="Kidus M. Tekeste"
         android:textSize="18sp" />
@@ -42,7 +42,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_weight="0.1"
+        android:layout_weight="0.2"
         android:text="100"
         android:textAlignment="textEnd" />
 
