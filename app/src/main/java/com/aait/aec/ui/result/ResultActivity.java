@@ -16,12 +16,14 @@
 package com.aait.aec.ui.result;
 
 import android.Manifest;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,13 +31,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
 
-import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -50,23 +51,19 @@ import butterknife.ButterKnife;
 public class ResultActivity extends BaseActivity implements ResultMvpView {
 
     public static final String TAG = "ResultActivity";
-
+    private final int PICK_IMAGE_REQUEST = 10;
     @Inject
     ResultMvpPresenter<ResultMvpView> mPresenter;
-
     @Inject
     ResultAdapter mAdapter;
-
     @Inject
     LinearLayoutManager mLayoutManager;
-
-    @BindView(R.id.import_toolbar)
+    @BindView(R.id.result_toolbar)
     Toolbar mToolbar;
-
     @BindView(R.id.import_recycler)
     RecyclerView mRecyclerView;
-
-    private final int PICK_IMAGE_REQUEST = 10;
+    Uri photoURI;
+    private Uri filePath;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, ResultActivity.class);
@@ -130,10 +127,11 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home)
             finish();
-        else if (item.getItemId() == R.id.action_import){
+        else if (item.getItemId() == R.id.action_import) {
             //open image selection icon
             // open two options for the user. to select image
-            CommonUtils.toast("working");
+//            CommonUtils.toast("working");
+            chooseImage();
         }
 
         return super.onOptionsItemSelected(item);
@@ -155,28 +153,71 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
     }
 
     private void chooseImage() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        try {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("image/*");
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        } catch (Exception e) {
+            Log.e("chooseGallery Exception", String.valueOf(e.getMessage()));
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null )
-        {
-//            filePath = data.getData();
-//            try {
-//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-//                imageView.setImageBitmap(bitmap);
-//            }
-//            catch (IOException e)
-//            {
-//                e.printStackTrace();
-//            }
+        ArrayList<Uri> fileUris = new ArrayList<>();
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            filePath = data.getData();
+            ClipData clipData = data.getClipData();
+            if (clipData != null) {
+                if (clipData.getItemCount() > 1) { // for multiple image
+                    for (int i = 0; i < clipData.getItemCount(); i++) {
+                        ClipData.Item item = clipData.getItemAt(i);
+                        Uri uri = item.getUri();
+                        photoURI = uri;
+                        fileUris.add(uri);
+                        String filename = getFileName(uri);
+//                        mPresenter.setfilepath(filename);
+                        Log.e("Multiple ", filename + " " + fileUris.size());
+                    }
+                }
+            } else { // for single image
+                Uri singleuri = data.getData();
+                photoURI = singleuri;
+                fileUris.add(photoURI);
+                String filename = getFileName(photoURI);
+                Log.e("Single ", filename + " " + fileUris.size());
+//                mPresenter.setfilepath(filename);
+            }
         }
+    }
+
+    public String getFileName(Uri uri) {
+        String result = null;
+        if (uri.getScheme() != null)
+            if (uri.getScheme().equals("content")) {
+                Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+                try {
+                    if (cursor != null && cursor.moveToFirst()) {
+                        result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                    }
+                } finally {
+                    if (cursor != null)
+                        cursor.close();
+                }
+            }
+        if (result == null) {
+            result = uri.getPath();
+            if (result != null) {
+                int cut = result.lastIndexOf('/');
+                if (cut != -1) {
+                    result = result.substring(cut + 1);
+                }
+            }
+        }
+        return result;
     }
 
 }
