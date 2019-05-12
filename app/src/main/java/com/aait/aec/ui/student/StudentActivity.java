@@ -299,7 +299,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
                 Log.d(TAG, "ParseStringBuilder: Data from row: " + cellInfo);
 
                 //add the the uploadData ArrayList
-                uploadData.add(new Student(i, x, y));
+                uploadData.add(new Student(i, x, y, 1.0));
 
                 mAdapter.addItems(uploadData);
 

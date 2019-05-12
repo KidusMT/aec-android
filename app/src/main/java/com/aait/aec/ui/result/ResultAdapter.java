@@ -22,8 +22,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aait.aec.R;
+import com.aait.aec.data.db.model.Exam;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseViewHolder;
+import com.aait.aec.ui.main.MainAdapter;
 import com.aait.aec.utils.CommonUtils;
 
 import java.util.List;
@@ -43,10 +45,12 @@ public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         this.albumList = categories;
     }
 
+    private Callback mCallback;
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_student, parent, false);
+                .inflate(R.layout.item_result, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -67,15 +71,26 @@ public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         return albumList.size();
     }
 
+    public void setCallback(Callback callback) {
+        mCallback = callback;
+    }
+
+    public interface Callback {
+        void onItemClicked(Student student);
+    }
+
     public class MyViewHolder extends BaseViewHolder {
 
-        @BindView(R.id.std_row)
+        @BindView(R.id.result_std_row)
         TextView stdRow;
 
-        @BindView(R.id.std_name)
+        @BindView(R.id.result_std_result)
+        TextView strScore;
+
+        @BindView(R.id.result_std_name)
         TextView stdName;
 
-        @BindView(R.id.std_id)
+        @BindView(R.id.result_std_id)
         TextView stdId;
 
         Student album;
@@ -93,13 +108,9 @@ public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 stdRow.setText(String.valueOf(album.getRow()));
                 stdName.setText(String.valueOf(album.getName()));
                 stdId.setText(String.valueOf(album.getId()));
+                strScore.setText(String.valueOf(album.getScore()));
 
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        CommonUtils.toast(album.getName());
-                    }
-                });
+                itemView.setOnClickListener(view -> mCallback.onItemClicked(album));
             }
 
         }

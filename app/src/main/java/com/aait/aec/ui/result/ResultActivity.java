@@ -35,6 +35,7 @@ import android.widget.TextView;
 
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Exam;
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
 
@@ -50,7 +51,7 @@ import butterknife.ButterKnife;
  * Created by janisharali on 27/01/17.
  */
 
-public class ResultActivity extends BaseActivity implements ResultMvpView {
+public class ResultActivity extends BaseActivity implements ResultMvpView, ResultAdapter.Callback {
 
     public static final String TAG = "ResultActivity";
     private static Exam mExam;
@@ -68,6 +69,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
     @BindView(R.id.detail_result_date)
     TextView result_date;
     Uri photoURI;
+    ArrayList<Student> students = new ArrayList<>();
     private Uri filePath;
 
     public static Intent getStartIntent(Context context, Exam exam) {
@@ -86,6 +88,8 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
         setUnBinder(ButterKnife.bind(this));
 
         mPresenter.onAttach(ResultActivity.this);
+
+        mAdapter.setCallback(this);
 
         CommonUtils.hideKeyboard(this);
 
@@ -111,11 +115,12 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        if (mExam.getDate() !=null){
+        if (mExam.getDate() != null) {
             result_date.setText(mExam.getDate());
         }
 
         setUpRecyclerView();
+        prepareStudents();
 
         //need to check the permissions
         checkFilePermissions();
@@ -194,8 +199,8 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
                     }
                 }
             } else { // for single image
-                Uri singleuri = data.getData();
-                photoURI = singleuri;
+                Uri singleUri = data.getData();
+                photoURI = singleUri;
                 fileUris.add(photoURI);
                 String filename = getFileName(photoURI);
                 Log.e("Single ", filename + " " + fileUris.size());
@@ -229,4 +234,41 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
         return result;
     }
 
+    private void prepareStudents() {
+
+        Student student1 = new Student(1, "Kidus Mamuye", "ATR/6157/07", 10.2);
+        Student student2 = new Student(2, "Nathaniel Awoke", "ATR/6157/07", 10.2);
+        Student student3 = new Student(3, "Solomon Shiferaw", "ATR/6157/07", 10.2);
+        Student student4 = new Student(4, "Samuel Mussie", "ATR/6157/07", 10.2);
+        Student student5 = new Student(5, "Yehualashet Abebe", "ATR/6157/07", 10.2);
+        Student student6 = new Student(6, "Robel Tullu", "ATR/6157/07", 10.2);
+        Student student7 = new Student(7, "Danawit Shimels", "ATR/6157/07", 10.2);
+        Student student8 = new Student(8, "Selam Kiros", "ATR/6157/07", 10.2);
+        Student student9 = new Student(9, "Yosef Abate", "ATR/6157/07", 10.2);
+        Student student10 = new Student(10, "Teshale Tesema", "ATR/6157/07", 10.2);
+        Student student11 = new Student(11, "Henok Bahiru", "ATR/6157/07", 10.2);
+        Student student12 = new Student(12, "Dereje Matiwos", "ATR/6157/07", 10.2);
+        Student student13 = new Student(13, "Temam Teshale", "ATR/6157/07", 10.2);
+
+        students.add(student1);
+        students.add(student2);
+        students.add(student3);
+        students.add(student4);
+        students.add(student5);
+        students.add(student6);
+        students.add(student7);
+        students.add(student8);
+        students.add(student9);
+        students.add(student10);
+        students.add(student11);
+        students.add(student12);
+        students.add(student13);
+
+        mAdapter.addItems(students);
+    }
+
+    @Override
+    public void onItemClicked(Student student) {
+        CommonUtils.toast(student.getName());
+    }
 }
