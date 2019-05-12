@@ -120,11 +120,7 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 exWeight.setText(String.valueOf(album.getWeight()));
                 exType.setText(String.valueOf(album.getType()));
 
-                // loading album cover using Glide library
-//                Glide.with(itemView.getContext()).load(album.getThumb()).into(album.getThumb());
-
                 itemView.setOnClickListener(view -> {
-//                showPopupMenu(holder.overflow);
                     CommonUtils.toast(album.getTitle());
                     mCallback.onItemClicked(album);
                 });

@@ -314,30 +314,27 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
         mEmailTextView = headerLayout.findViewById(R.id.tv_email);
 
         mNavigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        mDrawer.closeDrawer(GravityCompat.START);
-                        switch (item.getItemId()) {
-                            case R.id.nav_home:
-                                mPresenter.onDrawerOptionAboutClick();
-                                return true;
-                            case R.id.nav_notification:
-                                mPresenter.onDrawerNotificationClick();
+                item -> {
+                    mDrawer.closeDrawer(GravityCompat.START);
+                    switch (item.getItemId()) {
+                        case R.id.nav_home:
+                            mPresenter.onDrawerOptionAboutClick();
+                            return true;
+                        case R.id.nav_notification:
+                            mPresenter.onDrawerNotificationClick();
 //                                CommonUtils.
 //                                Toast.makeText(MainActivity.this, "Notification", Toast.LENGTH_SHORT).show();
-                                return true;
-                            case R.id.nav_category:
-                                mPresenter.onDrawerMyFeedClick();
-                                return true;
-                            case R.id.nav_settings:
-                                return true;
-                            case R.id.nav_item_logout:
-                                mPresenter.onDrawerOptionLogoutClick();
-                                return true;
-                            default:
-                                return false;
-                        }
+                            return true;
+                        case R.id.nav_category:
+                            mPresenter.onDrawerMyFeedClick();
+                            return true;
+                        case R.id.nav_settings:
+                            return true;
+                        case R.id.nav_item_logout:
+                            mPresenter.onDrawerOptionLogoutClick();
+                            return true;
+                        default:
+                            return false;
                     }
                 });
     }
@@ -373,7 +370,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     private void prepareExams() {
 
-        Exam a1 = new Exam(R.drawable.drawer_logo, "Object Oriented Programming", "April 12, 2019", "Quiz: ", "Mr. Fitsum A.", "5%");
+        Exam a1 = new Exam(R.drawable.drawer_logo, "Object Oriented Programming", "Quiz: ", "April 12, 2019", "Mr. Fitsum A.", "5%");
         Exam a2 = new Exam(R.drawable.drawer_logo, "Software Engineering", "Mid Exam 1: ", "April 12, 2019", "Mr. Natnael A.", "20%");
         Exam a3 = new Exam(R.drawable.drawer_logo, "Operating System", "Mid Exam 1: ", "April 12, 2019", "Mr. Eyob", "20%");
         Exam a4 = new Exam(R.drawable.drawer_logo, "Int. to Networking", "Quiz: ", "April 12, 2019", "Mr. Tigabu", "20%");
