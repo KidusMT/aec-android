@@ -32,10 +32,6 @@ public interface DataManager extends DbHelper, PreferencesHelper, ApiHelper {
 
     void setUserAsLoggedOut();
 
-    Observable<Boolean> seedDatabaseQuestions();
-
-    Observable<Boolean> seedDatabaseOptions();
-
     void updateUserInfo(
             String accessToken,
             Long userId,

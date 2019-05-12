@@ -15,8 +15,6 @@
 
 package com.aait.aec.data.db;
 
-import com.aait.aec.data.db.model.Option;
-import com.aait.aec.data.db.model.Question;
 import com.aait.aec.data.db.model.User;
 
 import java.util.List;
@@ -34,17 +32,4 @@ public interface DbHelper {
 
     Observable<List<User>> getAllUsers();
 
-    Observable<List<Question>> getAllQuestions();
-
-    Observable<Boolean> isQuestionEmpty();
-
-    Observable<Boolean> isOptionEmpty();
-
-    Observable<Boolean> saveQuestion(Question question);
-
-    Observable<Boolean> saveOption(Option option);
-
-    Observable<Boolean> saveQuestionList(List<Question> questionList);
-
-    Observable<Boolean> saveOptionList(List<Option> optionList);
 }

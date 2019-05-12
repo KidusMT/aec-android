@@ -35,14 +35,11 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 
 import com.aait.aec.BuildConfig;
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Exam;
-import com.aait.aec.data.db.model.Question;
 import com.aait.aec.ui.about.AboutFragment;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.create.CreateExamActivity;
@@ -131,31 +128,6 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
         } else {
             onFragmentDetached(AboutFragment.TAG);
         }
-    }
-
-    @Override
-    public void refreshQuestionnaire(List<Question> questionList) {
-        for (Question question : questionList) {
-            if (question != null
-                    && question.getOptionList() != null
-                    && question.getOptionList().size() == 3) {
-//                mCardsContainerView.addView(new QuestionCard(question));
-            }
-        }
-    }
-
-    @Override
-    public void reloadQuestionnaire(List<Question> questionList) {
-        refreshQuestionnaire(questionList);
-        ScaleAnimation animation =
-                new ScaleAnimation(
-                        1.15f, 1, 1.15f, 1,
-                        Animation.RELATIVE_TO_SELF, 0.5f,
-                        Animation.RELATIVE_TO_SELF, 0.5f);
-
-//        mCardsContainerView.setAnimation(animation);
-        animation.setDuration(100);
-        animation.start();
     }
 
     @Override
@@ -337,9 +309,9 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     void setupNavMenu() {
         View headerLayout = mNavigationView.getHeaderView(0);
-        mProfileImageView = (RoundedImageView) headerLayout.findViewById(R.id.iv_profile_pic);
-        mNameTextView = (TextView) headerLayout.findViewById(R.id.tv_name);
-        mEmailTextView = (TextView) headerLayout.findViewById(R.id.tv_email);
+        mProfileImageView = headerLayout.findViewById(R.id.iv_profile_pic);
+        mNameTextView = headerLayout.findViewById(R.id.tv_name);
+        mEmailTextView = headerLayout.findViewById(R.id.tv_email);
 
         mNavigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {

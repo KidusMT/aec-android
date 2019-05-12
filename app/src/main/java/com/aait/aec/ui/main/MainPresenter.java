@@ -15,19 +15,13 @@
 
 package com.aait.aec.ui.main;
 
-import com.androidnetworking.error.ANError;
 import com.aait.aec.data.DataManager;
-import com.aait.aec.data.db.model.Question;
-import com.aait.aec.data.network.model.LogoutResponse;
 import com.aait.aec.ui.base.BasePresenter;
 import com.aait.aec.utils.rx.SchedulerProvider;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
 
 
 /**
@@ -66,9 +60,9 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 //                            return;
 //                        }
 
-                        getDataManager().setUserAsLoggedOut();
-                        getMvpView().hideLoading();
-                        getMvpView().openLoginActivity();
+        getDataManager().setUserAsLoggedOut();
+        getMvpView().hideLoading();
+        getMvpView().openLoginActivity();
 //                    }
 //                }, new Consumer<Throwable>() {
 //                    @Override
@@ -91,19 +85,19 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
     @Override
     public void onViewInitialized() {
-        getCompositeDisposable().add(getDataManager()
-                .getAllQuestions()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(questionList -> {
-                    if (!isViewAttached()) {
-                        return;
-                    }
-
-                    if (questionList != null) {
-                        getMvpView().refreshQuestionnaire(questionList);
-                    }
-                }));
+//        getCompositeDisposable().add(getDataManager()
+//                .getAllQuestions()
+//                .subscribeOn(getSchedulerProvider().io())
+//                .observeOn(getSchedulerProvider().ui())
+//                .subscribe(questionList -> {
+//                    if (!isViewAttached()) {
+//                        return;
+//                    }
+//
+//                    if (questionList != null) {
+//                        getMvpView().refreshQuestionnaire(questionList);
+//                    }
+//                }));
     }
 
     @Override

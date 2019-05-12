@@ -15,17 +15,13 @@
 
 package com.aait.aec.ui.splash;
 
-import com.aait.aec.R;
 import com.aait.aec.data.DataManager;
 import com.aait.aec.ui.base.BasePresenter;
 import com.aait.aec.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 
-import io.reactivex.ObservableSource;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -47,36 +43,7 @@ public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V>
 
         getMvpView().startSyncService();
 
-        getCompositeDisposable().add(getDataManager()
-                .seedDatabaseQuestions()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .concatMap(new Function<Boolean, ObservableSource<Boolean>>() {
-                    @Override
-                    public ObservableSource<Boolean> apply(Boolean aBoolean) throws Exception {
-                        return getDataManager().seedDatabaseOptions();
-                    }
-                })
-                .subscribe(new Consumer<Boolean>() {
-                    @Override
-                    public void accept(Boolean aBoolean) throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
-                        decideNextActivity();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
-                        getMvpView().onError(R.string.some_error);
-                        decideNextActivity();
-                    }
-                }));
-
-
+        decideNextActivity();
     }
 
     private void decideNextActivity() {
