@@ -31,8 +31,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.aait.aec.R;
+import com.aait.aec.data.db.model.Exam;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
 
@@ -51,6 +53,7 @@ import butterknife.ButterKnife;
 public class ResultActivity extends BaseActivity implements ResultMvpView {
 
     public static final String TAG = "ResultActivity";
+    private static Exam mExam;
     private final int PICK_IMAGE_REQUEST = 10;
     @Inject
     ResultMvpPresenter<ResultMvpView> mPresenter;
@@ -62,10 +65,13 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
     Toolbar mToolbar;
     @BindView(R.id.import_recycler)
     RecyclerView mRecyclerView;
+    @BindView(R.id.detail_result_date)
+    TextView result_date;
     Uri photoURI;
     private Uri filePath;
 
-    public static Intent getStartIntent(Context context) {
+    public static Intent getStartIntent(Context context, Exam exam) {
+        mExam = exam;
         Intent intent = new Intent(context, ResultActivity.class);
         return intent;
     }
@@ -96,11 +102,17 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
     @Override
     protected void setUp() {
 
+        if (mExam.getTitle() != null)
+            mToolbar.setTitle(mExam.getTitle());
         setSupportActionBar(mToolbar);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
+        if (mExam.getDate() !=null){
+            result_date.setText(mExam.getDate());
         }
 
         setUpRecyclerView();
@@ -128,9 +140,6 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
         if (item.getItemId() == android.R.id.home)
             finish();
         else if (item.getItemId() == R.id.action_import) {
-            //open image selection icon
-            // open two options for the user. to select image
-//            CommonUtils.toast("working");
             chooseImage();
         }
 
@@ -181,7 +190,6 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
                         photoURI = uri;
                         fileUris.add(uri);
                         String filename = getFileName(uri);
-//                        mPresenter.setfilepath(filename);
                         Log.e("Multiple ", filename + " " + fileUris.size());
                     }
                 }
@@ -191,7 +199,6 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
                 fileUris.add(photoURI);
                 String filename = getFileName(photoURI);
                 Log.e("Single ", filename + " " + fileUris.size());
-//                mPresenter.setfilepath(filename);
             }
         }
     }

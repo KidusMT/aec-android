@@ -79,7 +79,7 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     public interface Callback {
-        void onItemClicked();
+        void onItemClicked(Exam exam);
     }
 
     public class MyViewHolder extends BaseViewHolder {
@@ -126,7 +126,7 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 itemView.setOnClickListener(view -> {
 //                showPopupMenu(holder.overflow);
                     CommonUtils.toast(album.getTitle());
-                    mCallback.onItemClicked();
+                    mCallback.onItemClicked(album);
                 });
             }
 

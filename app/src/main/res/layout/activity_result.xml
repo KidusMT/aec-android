@@ -49,7 +49,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/detail_sensor_date"
+                    android:id="@+id/detail_result_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -67,7 +67,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/detail_sensor_domain_title"
+                    android:id="@+id/detail_result_domain_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
@@ -75,7 +75,7 @@
                     android:textColor="@color/white" />
 
                 <TextView
-                    android:id="@+id/detail_sensor_domain"
+                    android:id="@+id/detail_result_domain"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.8"
@@ -91,7 +91,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/detail_sensor_owner_title"
+                    android:id="@+id/detail_result_owner_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
@@ -99,7 +99,7 @@
                     android:textColor="@color/white" />
 
                 <TextView
-                    android:id="@+id/detail_sensor_owner"
+                    android:id="@+id/detail_result_owner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.8"
@@ -117,7 +117,7 @@
             android:layout_weight="0.75">
 
             <TextView
-                android:id="@+id/sensor_measurements_title"
+                android:id="@+id/result_measurements_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -128,7 +128,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/detail_sensor_add_measurement"
+            android:id="@+id/detail_result_add_measurement"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

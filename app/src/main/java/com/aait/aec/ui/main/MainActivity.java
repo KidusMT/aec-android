@@ -427,7 +427,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     }
 
     @Override
-    public void onItemClicked() {
-        startActivity(ResultActivity.getStartIntent(this));
+    public void onItemClicked(Exam exam) {
+        startActivity(ResultActivity.getStartIntent(this, exam));
     }
 }
