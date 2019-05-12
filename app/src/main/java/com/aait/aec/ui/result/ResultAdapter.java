@@ -22,11 +22,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aait.aec.R;
-import com.aait.aec.data.db.model.Exam;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseViewHolder;
-import com.aait.aec.ui.main.MainAdapter;
-import com.aait.aec.utils.CommonUtils;
 
 import java.util.List;
 
@@ -40,12 +37,11 @@ import butterknife.ButterKnife;
 public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     List<Student> albumList;
+    private Callback mCallback;
 
     public ResultAdapter(List<Student> categories) {
         this.albumList = categories;
     }
-
-    private Callback mCallback;
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -105,7 +101,7 @@ public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             album = albumList.get(position);
             if (album != null) {
 
-                stdRow.setText(String.valueOf(album.getRow()));
+                stdRow.setText(String.format(" %d.", album.getRow()));
                 stdName.setText(String.valueOf(album.getName()));
                 stdId.setText(String.valueOf(album.getId()));
                 strScore.setText(String.valueOf(album.getScore()));
