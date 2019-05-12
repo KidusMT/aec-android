@@ -168,7 +168,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView {
         super.onActivityResult(requestCode, resultCode, data);
         ArrayList<Uri> fileUris = new ArrayList<>();
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null) {
+                && data != null) {
             filePath = data.getData();
             ClipData clipData = data.getClipData();
             if (clipData != null) {
