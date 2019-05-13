@@ -19,17 +19,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aait.aec.R;
-import com.aait.aec.data.db.model.Category;
 import com.aait.aec.data.db.model.Exam;
-import com.aait.aec.ui.addAnswerDialog.AnswerAdapter;
 import com.aait.aec.ui.base.BaseViewHolder;
 import com.aait.aec.utils.CommonUtils;
-import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -39,15 +39,18 @@ import butterknife.ButterKnife;
  * Created by Janisharali on 25/05/2017.
  */
 
-public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+
+public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> implements Filterable {
 
     List<Exam> albumList;
+    List<Exam> filteredAlbumList;
+    Callback mCallback;
 
     public MainAdapter(List<Exam> categories) {
         this.albumList = categories;
+        filteredAlbumList = new ArrayList<>();
+        filteredAlbumList.addAll(categories);
     }
-
-    Callback mCallback;
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -69,6 +72,25 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         notifyDataSetChanged();
     }
 
+
+    public void filter(String queryText) {
+        albumList.clear();
+
+        if (queryText.isEmpty()) {
+            albumList.addAll(filteredAlbumList);
+        } else {
+            for (Exam exam : filteredAlbumList) {
+                if (exam.getTitle() != null)
+                    if (exam.getTitle().toLowerCase().contains(queryText.toLowerCase())) {
+                        albumList.add(exam);
+                    }
+            }
+        }
+
+        notifyDataSetChanged();
+    }
+
+
     @Override
     public int getItemCount() {
         return albumList.size();
@@ -76,6 +98,42 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public void setCallback(Callback callback) {
         mCallback = callback;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    filteredAlbumList = albumList;
+                } else {
+                    List<Exam> filteredList = new ArrayList<>();
+                    for (Exam row : albumList) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.getTitle() != null)
+                            if (row.getTitle().toLowerCase().contains(charString.toLowerCase())) {// || row.getType().toLowerCase().contains(charSequence)) {
+                                filteredList.add(row);
+                            }
+                    }
+
+                    filteredAlbumList = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filteredAlbumList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filteredAlbumList = (ArrayList<Exam>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public interface Callback {

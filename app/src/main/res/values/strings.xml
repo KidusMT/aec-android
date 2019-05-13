@@ -90,6 +90,7 @@
     <string name="nav_category">Category</string>
     <string name="no_category_items" >No category item found.</string>
     <string name="import_str">IMPORT</string>
+    <string name="search_hint">Search</string>
 
     <string-array name="exam_type">
         <item>- Select Exam Type -</item>

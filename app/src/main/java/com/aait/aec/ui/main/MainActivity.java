@@ -15,12 +15,12 @@
 
 package com.aait.aec.ui.main;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -28,8 +28,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -49,6 +51,7 @@ import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.rating.RateUsDialog;
 import com.aait.aec.ui.result.ResultActivity;
 import com.aait.aec.ui.student.StudentActivity;
+import com.aait.aec.utils.MyDividerItemDecoration;
 import com.aait.aec.utils.ScreenUtils;
 
 import java.util.ArrayList;
@@ -209,8 +212,32 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
+
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem mSearch = menu.findItem(R.id.action_search);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView mSearchView = (SearchView) mSearch.getActionView();
+
+        mSearchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        mSearchView.setMaxWidth(Integer.MAX_VALUE);
+
+        // listening to search query text change
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // filter recycler view when query submitted
+                mAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                // filter recycler view when text is changed
+                mAdapter.getFilter().filter(query);
+                return false;
+            }
+        });
         return true;
     }
 
@@ -269,6 +296,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     private void setUpRecyclerView() {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.addItemDecoration(new MyDividerItemDecoration(this, DividerItemDecoration.VERTICAL, 36));
         mRecyclerView.setAdapter(mAdapter);
 
     }
@@ -277,33 +305,6 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
         int screenWidth = ScreenUtils.getScreenWidth(this);
         int screenHeight = ScreenUtils.getScreenHeight(this);
-
-//        mCardsContainerView.getBuilder()
-//                .setDisplayViewCount(3)
-//                .setHeightSwipeDistFactor(10)
-//                .setWidthSwipeDistFactor(5)
-//                .setSwipeDecor(new SwipeDecor()
-//                        .setViewWidth((int) (0.90 * screenWidth))
-//                        .setViewHeight((int) (0.75 * screenHeight))
-//                        .setPaddingTop(20)
-//                        .setSwipeRotationAngle(10)
-//                        .setRelativeScale(0.01f));
-
-//        mCardsContainerView.addItemRemoveListener(new ItemRemovedListener() {
-//            @Override
-//            public void onItemRemoved(int count) {
-//                if (count == 0) {
-//                    // reload the contents again after 1 sec delay
-//                    new Handler(getMainLooper()).postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            mPresenter.onCardExhausted();
-//                        }
-//                    }, 800);
-//                }
-//            }
-//        });
-
 
     }
 
@@ -322,8 +323,6 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
                             return true;
                         case R.id.nav_notification:
                             mPresenter.onDrawerNotificationClick();
-//                                CommonUtils.
-//                                Toast.makeText(MainActivity.this, "Notification", Toast.LENGTH_SHORT).show();
                             return true;
                         case R.id.nav_category:
                             mPresenter.onDrawerMyFeedClick();
