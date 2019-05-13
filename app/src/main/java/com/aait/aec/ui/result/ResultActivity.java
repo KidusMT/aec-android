@@ -58,16 +58,30 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
     private final int PICK_IMAGE_REQUEST = 10;
     @Inject
     ResultMvpPresenter<ResultMvpView> mPresenter;
+
     @Inject
     ResultAdapter mAdapter;
+
     @Inject
     LinearLayoutManager mLayoutManager;
+
     @BindView(R.id.result_toolbar)
     Toolbar mToolbar;
+
     @BindView(R.id.import_recycler)
     RecyclerView mRecyclerView;
+
     @BindView(R.id.detail_result_date)
     TextView result_date;
+
+    @BindView(R.id.detail_result_instructor_value)
+    TextView resultInstructor;
+
+    @BindView(R.id.detail_result_type_value)
+    TextView resultType;
+
+    @BindView(R.id.detail_result_weight)
+    TextView resultWeight;
     Uri photoURI;
     ArrayList<Student> students = new ArrayList<>();
     private Uri filePath;
@@ -117,6 +131,18 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
 
         if (mExam.getDate() != null) {
             result_date.setText(mExam.getDate());
+        }
+
+        if (mExam.getWeight() != null) {
+            resultInstructor.setText(mExam.getWeight());
+        }
+
+        if (mExam.getType() != null) {
+            resultInstructor.setText(mExam.getType());
+        }
+
+        if (mExam.getInst() != null) {
+            resultInstructor.setText(mExam.getInst());
         }
 
         setUpRecyclerView();
