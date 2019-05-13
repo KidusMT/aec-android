@@ -134,11 +134,11 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
         }
 
         if (mExam.getWeight() != null) {
-            resultInstructor.setText(mExam.getWeight());
+            resultWeight.setText(mExam.getWeight());
         }
 
         if (mExam.getType() != null) {
-            resultInstructor.setText(mExam.getType());
+            resultType.setText(mExam.getType());
         }
 
         if (mExam.getInst() != null) {
