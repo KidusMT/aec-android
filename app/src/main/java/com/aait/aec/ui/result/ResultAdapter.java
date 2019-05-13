@@ -89,6 +89,15 @@ public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @BindView(R.id.result_std_id)
         TextView stdId;
 
+        @BindView(R.id.detail_result_instructor_value)
+        TextView resultInstor;
+
+        @BindView(R.id.detail_result_type_value)
+        TextView resultType;
+
+        @BindView(R.id.detail_result_weight)
+        TextView resultWeight;
+
         Student album;
 
         public MyViewHolder(View view) {
@@ -101,10 +110,12 @@ public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             album = albumList.get(position);
             if (album != null) {
 
-                stdRow.setText(String.format(" %d.", album.getRow()));
+                stdRow.setText(String.format(" %d", album.getRow()));
                 stdName.setText(String.valueOf(album.getName()));
                 stdId.setText(String.valueOf(album.getId()));
                 strScore.setText(String.valueOf(album.getScore()));
+
+//                resultInstor.setText(album.get);
 
                 itemView.setOnClickListener(view -> mCallback.onItemClicked(album));
             }
