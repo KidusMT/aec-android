@@ -214,8 +214,8 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem mSearch = menu.findItem(R.id.action_search);
 
+        MenuItem mSearch = menu.findItem(R.id.action_search);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView mSearchView = (SearchView) mSearch.getActionView();
 
@@ -247,18 +247,10 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
         if (drawable instanceof Animatable) {
             ((Animatable) drawable).start();
         }
-//        switch (item.getItemId()) {
-//            case R.id.action_cut:
-//                return true;
-//            case R.id.action_copy:
-//                return true;
-//            case R.id.action_share:
-//                return true;
-//            case R.id.action_delete:
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
+        //noinspection SimplifiableIfStatement
+        if (item.getItemId() == R.id.action_search) {
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

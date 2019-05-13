@@ -67,33 +67,18 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
 
 
     public void addItems(List<Exam> sensors) {
-        this.albumList.clear();
-        this.albumList.addAll(sensors);
-        notifyDataSetChanged();
-    }
-
-
-    public void filter(String queryText) {
         albumList.clear();
+        albumList.addAll(sensors);
 
-        if (queryText.isEmpty()) {
-            albumList.addAll(filteredAlbumList);
-        } else {
-            for (Exam exam : filteredAlbumList) {
-                if (exam.getTitle() != null)
-                    if (exam.getTitle().toLowerCase().contains(queryText.toLowerCase())) {
-                        albumList.add(exam);
-                    }
-            }
-        }
-
+        filteredAlbumList.clear();
+        filteredAlbumList.addAll(sensors);
         notifyDataSetChanged();
     }
 
 
     @Override
     public int getItemCount() {
-        return albumList.size();
+        return filteredAlbumList.size();
     }
 
     public void setCallback(Callback callback) {
@@ -169,7 +154,7 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
 
         public void onBind(int position) {
 
-            album = albumList.get(position);
+            album = filteredAlbumList.get(position);
             if (album != null) {
 
                 exDate.setText(String.valueOf(album.getDate()));
