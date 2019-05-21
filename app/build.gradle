@@ -18,6 +18,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'org.greenrobot.greendao'
 apply from: '../config/quality/quality.gradle'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -126,6 +127,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:16.2.1'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Firebase - core
+    implementation 'com.google.firebase:firebase-core:16.0.9'
 }
 
 configurations.all {

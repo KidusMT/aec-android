@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "60819732714",
+    "firebase_url": "https://vereitalia-e62fe.firebaseio.com",
+    "project_id": "vereitalia-e62fe",
+    "storage_bucket": "vereitalia-e62fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60819732714:android:8c2148655c9e5590",
+        "android_client_info": {
+          "package_name": "com.aait.aec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60819732714-8jm6ncvaiqnrv90am1u6qfhkce8lufjg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB67AyAAWqv4ODSzltnoqwcmM_hoa7bz1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60819732714-8jm6ncvaiqnrv90am1u6qfhkce8lufjg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60819732714:android:dd1e0fd1b755aea0",
+        "android_client_info": {
+          "package_name": "com.med.addis.vere_italie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60819732714-8jm6ncvaiqnrv90am1u6qfhkce8lufjg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB67AyAAWqv4ODSzltnoqwcmM_hoa7bz1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60819732714-8jm6ncvaiqnrv90am1u6qfhkce8lufjg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
