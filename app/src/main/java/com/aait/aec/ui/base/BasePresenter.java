@@ -1,40 +1,9 @@
-/*
- * Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://mindorks.com/license/apache-v2
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License
- */
-
 package com.aait.aec.ui.base;
 
-/**
- * Created by janisharali on 27/01/17.
- */
-
-import android.util.Log;
-
-import com.androidnetworking.common.ANConstants;
-import com.androidnetworking.error.ANError;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
-import com.aait.aec.R;
-import com.aait.aec.data.DataManager;
-import com.aait.aec.data.network.model.ApiError;
-import com.aait.aec.utils.AppConstants;
-import com.aait.aec.utils.rx.SchedulerProvider;
-
 import javax.inject.Inject;
-import javax.net.ssl.HttpsURLConnection;
 
+import eu.waziup.app.data.DataManager;
+import eu.waziup.app.utils.rx.SchedulerProvider;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -96,52 +65,52 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
         return mCompositeDisposable;
     }
 
-    @Override
-    public void handleApiError(ANError error) {
-
-        if (error == null || error.getErrorBody() == null) {
-            getMvpView().onError(R.string.api_default_error);
-            return;
-        }
-
-        if (error.getErrorCode() == AppConstants.API_STATUS_CODE_LOCAL_ERROR
-                && error.getErrorDetail().equals(ANConstants.CONNECTION_ERROR)) {
-            getMvpView().onError(R.string.connection_error);
-            return;
-        }
-
-        if (error.getErrorCode() == AppConstants.API_STATUS_CODE_LOCAL_ERROR
-                && error.getErrorDetail().equals(ANConstants.REQUEST_CANCELLED_ERROR)) {
-            getMvpView().onError(R.string.api_retry_error);
-            return;
-        }
-
-        final GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
-        final Gson gson = builder.create();
-
-        try {
-            ApiError apiError = gson.fromJson(error.getErrorBody(), ApiError.class);
-
-            if (apiError == null || apiError.getMessage() == null) {
-                getMvpView().onError(R.string.api_default_error);
-                return;
-            }
-
-            switch (error.getErrorCode()) {
-                case HttpsURLConnection.HTTP_UNAUTHORIZED:
-                case HttpsURLConnection.HTTP_FORBIDDEN:
-                    setUserAsLoggedOut();
-                    getMvpView().openActivityOnTokenExpire();
-                case HttpsURLConnection.HTTP_INTERNAL_ERROR:
-                case HttpsURLConnection.HTTP_NOT_FOUND:
-                default:
-                    getMvpView().onError(apiError.getMessage());
-            }
-        } catch (JsonSyntaxException | NullPointerException e) {
-            Log.e(TAG, "handleApiError", e);
-            getMvpView().onError(R.string.api_default_error);
-        }
-    }
+//    @Override
+//    public void handleApiError(ANError error) {
+//
+//        if (error == null || error.getErrorBody() == null) {
+//            getMvpView().onError(R.string.api_default_error);
+//            return;
+//        }
+//
+//        if (error.getErrorCode() == AppConstants.API_STATUS_CODE_LOCAL_ERROR
+//                && error.getErrorDetail().equals(ANConstants.CONNECTION_ERROR)) {
+//            getMvpView().onError(R.string.connection_error);
+//            return;
+//        }
+//
+//        if (error.getErrorCode() == AppConstants.API_STATUS_CODE_LOCAL_ERROR
+//                && error.getErrorDetail().equals(ANConstants.REQUEST_CANCELLED_ERROR)) {
+//            getMvpView().onError(R.string.api_retry_error);
+//            return;
+//        }
+//
+//        final GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+//        final Gson gson = builder.create();
+//
+//        try {
+//            ApiError apiError = gson.fromJson(error.getErrorBody(), ApiError.class);
+//
+//            if (apiError == null || apiError.getMessage() == null) {
+//                getMvpView().onError(R.string.api_default_error);
+//                return;
+//            }
+//
+//            switch (error.getErrorCode()) {
+//                case HttpsURLConnection.HTTP_UNAUTHORIZED:
+//                case HttpsURLConnection.HTTP_FORBIDDEN:
+//                    setUserAsLoggedOut();
+//                    getMvpView().openActivityOnTokenExpire();
+//                case HttpsURLConnection.HTTP_INTERNAL_ERROR:
+//                case HttpsURLConnection.HTTP_NOT_FOUND:
+//                default:
+//                    getMvpView().onError(apiError.getMessage());
+//            }
+//        } catch (JsonSyntaxException | NullPointerException e) {
+//            Log.e(TAG, "handleApiError", e);
+//            getMvpView().onError(R.string.api_default_error);
+//        }
+//    }
 
     @Override
     public void setUserAsLoggedOut() {

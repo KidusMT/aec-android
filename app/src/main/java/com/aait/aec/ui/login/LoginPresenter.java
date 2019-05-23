@@ -50,12 +50,12 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(response -> {
                     getDataManager().updateUserInfo(
-                            response.getAccessToken(),
+                            response.getId(),
                             response.getUserId(),
                             DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER,
-                            response.getUserName(),
-                            response.getUserEmail(),
-                            response.getGoogleProfilePicUrl());
+                            String.format("%s %s",response.getUser().getFirstName(),  response.getUser().getLastName()),
+                            response.getUser().getPhoneNo());
+
 
                     if (!isViewAttached()) {
                         return;

@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://mindorks.com/license/apache-v2
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License
- */
-
 package com.aait.aec.ui.base;
 
 import android.app.ProgressDialog;
@@ -23,16 +8,12 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.aait.aec.di.component.ActivityComponent;
-import com.aait.aec.utils.CommonUtils;
-
 import butterknife.Unbinder;
+import eu.waziup.app.di.component.ActivityComponent;
+import eu.waziup.app.utils.CommonUtils;
 
-/**
- * Created by janisharali on 27/01/17.
- */
 
-public abstract class BaseFragment extends Fragment implements MvpView {
+public abstract class BaseFragment extends Fragment implements MvpView, OnBackPressed{
 
     private BaseActivity mActivity;
     private Unbinder mUnBinder;
@@ -116,13 +97,6 @@ public abstract class BaseFragment extends Fragment implements MvpView {
     }
 
     @Override
-    public void hideKeyboard() {
-        if (mActivity != null) {
-            mActivity.hideKeyboard();
-        }
-    }
-
-    @Override
     public void openActivityOnTokenExpire() {
         if (mActivity != null) {
             mActivity.openActivityOnTokenExpire();
@@ -158,6 +132,6 @@ public abstract class BaseFragment extends Fragment implements MvpView {
 
         void onFragmentAttached();
 
-        void onFragmentDetached(String tag);
+        void onFragmentDetached(String tag, String parent);
     }
 }

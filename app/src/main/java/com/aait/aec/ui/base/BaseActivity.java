@@ -1,23 +1,10 @@
-/*
- * Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://mindorks.com/license/apache-v2
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License
- */
-
 package com.aait.aec.ui.base;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,26 +13,26 @@ import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aait.aec.MvpApp;
-import com.aait.aec.R;
-import com.aait.aec.di.component.ActivityComponent;
-import com.aait.aec.di.component.DaggerActivityComponent;
-import com.aait.aec.di.module.ActivityModule;
-import com.aait.aec.ui.login.LoginActivity;
-import com.aait.aec.utils.CommonUtils;
-import com.aait.aec.utils.NetworkUtils;
-
 import butterknife.Unbinder;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import eu.waziup.app.DaApp;
+import eu.waziup.app.R;
+import eu.waziup.app.di.component.ActivityComponent;
+import eu.waziup.app.di.component.DaggerActivityComponent;
+import eu.waziup.app.di.module.ActivityModule;
+import eu.waziup.app.ui.login.LoginActivity;
+import eu.waziup.app.utils.CommonUtils;
+import eu.waziup.app.utils.ConnectivityUtil;
 
-/**
- * Created by janisharali on 27/01/17.
- */
+import static android.content.pm.PackageManager.GET_META_DATA;
+
 
 public abstract class BaseActivity extends AppCompatActivity
         implements MvpView, BaseFragment.Callback {
@@ -56,14 +43,39 @@ public abstract class BaseActivity extends AppCompatActivity
 
     private Unbinder mUnBinder;
 
+    private static final String TAG = "BaseActivity";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //for supporting vector image for api less than 21
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         mActivityComponent = DaggerActivityComponent.builder()
                 .activityModule(new ActivityModule(this))
-                .applicationComponent(((MvpApp) getApplication()).getComponent())
+                .applicationComponent(((DaApp) getApplication()).getComponent())
                 .build();
+        resetTitles();
+    }
 
+    private void resetTitles() {
+        try {
+            ActivityInfo info = getPackageManager().getActivityInfo(getComponentName(), GET_META_DATA);
+            if (info.labelRes != 0) {
+                setTitle(info.labelRes);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     public ActivityComponent getActivityComponent() {
@@ -72,7 +84,8 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+        super.attachBaseContext(newBase);
+        Log.d(TAG, "attachBaseContext");
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -101,7 +114,7 @@ public abstract class BaseActivity extends AppCompatActivity
         }
     }
 
-    private void showSnackBar(String message) {
+    public void showSnackBar(String message) {
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
                 message, Snackbar.LENGTH_SHORT);
         View sbView = snackbar.getView();
@@ -141,7 +154,7 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     public boolean isNetworkConnected() {
-        return NetworkUtils.isNetworkConnected(getApplicationContext());
+        return ConnectivityUtil.isConnected(getApplicationContext());
     }
 
     @Override
@@ -150,17 +163,19 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     @Override
-    public void onFragmentDetached(String tag) {
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public void onFragmentDetached(String tag, String parent) {
 
     }
 
-    public void hideKeyboard() {
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager)
-                    getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
+    public void hideKeyboard(Activity activity) {
+        //hides the keyboard till the User selects to an edit text
+        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
     }
 
     @Override

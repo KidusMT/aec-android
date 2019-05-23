@@ -34,11 +34,10 @@ public interface DataManager extends DbHelper, PreferencesHelper, ApiHelper {
 
     void updateUserInfo(
             String accessToken,
-            Long userId,
+            String userId,
             LoggedInMode loggedInMode,
             String userName,
-            String email,
-            String profilePicPath);
+            String phoneNumber);
 
     enum LoggedInMode {
 
