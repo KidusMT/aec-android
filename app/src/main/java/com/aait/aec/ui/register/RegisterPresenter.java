@@ -42,19 +42,27 @@ public class RegisterPresenter<V extends RegisterMvpView> extends BasePresenter<
     }
 
     @Override
-    public void onRegisterationClicked(String email, String password) {
-        if (email == null || email.isEmpty()) {
+    public void onRegistrationClicked(String firstName, String lastName, String username, String sex, String password, String confirmPassword, String phoneNumber) {
+        if (firstName == null || firstName.isEmpty()) {
             getMvpView().onError(R.string.empty_email);
             return;
         }
-//        if (!CommonUtils.isEmailValid(email)) {
-//            getMvpView().onError(R.string.invalid_email);
-//            return;
-//        }
+
+        if (username == null || username.isEmpty()) {
+            getMvpView().onError(R.string.empty_email);
+            return;
+        }
+
         if (password == null || password.isEmpty()) {
-            getMvpView().onError(R.string.empty_password);
+            getMvpView().onError(R.string.empty_email);
+            return;
+        }
+
+        if (phoneNumber == null || phoneNumber.isEmpty()) {
+            getMvpView().onError(R.string.empty_email);
             return;
         }
         getMvpView().showLoading();
+
     }
 }

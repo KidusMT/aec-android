@@ -63,7 +63,7 @@
                         android:background="@drawable/rounded_grey_rectangle">
 
                         <EditText
-                            android:id="@+id/et_email"
+                            android:id="@+id/register_et_first_name"
                             style="@style/TextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                             android:background="@color/transparent"
                             android:cursorVisible="true"
                             android:gravity="center|left|bottom"
-                            android:hint="email"
+                            android:hint="first name"
                             android:inputType="textVisiblePassword|textNoSuggestions|textEmailAddress"
                             android:maxLength="50"
                             android:paddingBottom="5dp"
@@ -89,7 +89,33 @@
                         android:background="@drawable/rounded_grey_rectangle">
 
                         <EditText
-                            android:id="@+id/et_username"
+                            android:id="@+id/register_et_last_name"
+                            style="@style/TextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/vertical_margin_12"
+                            android:background="@color/transparent"
+                            android:cursorVisible="true"
+                            android:gravity="center|left|bottom"
+                            android:hint="last name"
+                            android:inputType="textVisiblePassword|textNoSuggestions|textEmailAddress"
+                            android:maxLength="50"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/black_effective"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/rounded_grey_rectangle">
+
+                        <EditText
+                            android:id="@+id/register_et_username"
                             style="@style/TextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -115,7 +141,59 @@
                         android:background="@drawable/rounded_grey_rectangle">
 
                         <EditText
-                            android:id="@+id/et_password"
+                            android:id="@+id/register_et_phone_number"
+                            style="@style/TextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/vertical_margin_12"
+                            android:background="@color/transparent"
+                            android:cursorVisible="true"
+                            android:gravity="center|left|bottom"
+                            android:hint="phone number"
+                            android:inputType="textVisiblePassword|textNoSuggestions|phone"
+                            android:maxLength="50"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/black_effective"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/rounded_grey_rectangle">
+
+                        <EditText
+                            android:id="@+id/register_et_sex"
+                            style="@style/TextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/vertical_margin_12"
+                            android:background="@color/transparent"
+                            android:cursorVisible="true"
+                            android:gravity="center|left|bottom"
+                            android:hint="sex"
+                            android:inputType="textVisiblePassword|textNoSuggestions"
+                            android:maxLength="50"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/black_effective"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/rounded_grey_rectangle">
+
+                        <EditText
+                            android:id="@+id/register_et_password"
                             style="@style/TextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -140,7 +218,7 @@
                         android:background="@drawable/rounded_grey_rectangle">
 
                         <EditText
-                            android:id="@+id/et_password_confirm"
+                            android:id="@+id/register_et_password_confirm"
                             style="@style/TextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

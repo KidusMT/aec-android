@@ -18,6 +18,7 @@ package com.aait.aec.ui.register;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
@@ -27,6 +28,7 @@ import com.aait.aec.utils.CommonUtils;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -39,6 +41,27 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
 
     @Inject
     RegisterMvpPresenter<RegisterMvpView> mPresenter;
+
+    @BindView(R.id.register_et_first_name)
+    EditText etFirstName;
+
+    @BindView(R.id.register_et_last_name)
+    EditText etLastName;
+
+    @BindView(R.id.register_et_username)
+    EditText etUsername;
+
+    @BindView(R.id.register_et_sex)
+    EditText etSex;
+
+    @BindView(R.id.register_et_password)
+    EditText etPassword;
+
+    @BindView(R.id.register_et_password_confirm)
+    EditText etPasswordConfirm;
+
+    @BindView(R.id.register_et_phone_number)
+    EditText etPhone;
 
 
     public static Intent getStartIntent(Context context) {
@@ -62,6 +85,9 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
     @OnClick(R.id.btn_register)
     void onRegisterClicked() {
         startActivity(LoginActivity.getStartIntent(this));
+        mPresenter.onRegistrationClicked(etFirstName.getText().toString(), etLastName.getText().toString(),
+                etUsername.getText().toString(), etSex.getText().toString(), etPassword.getText().toString(),
+                etPasswordConfirm.getText().toString(), etPhone.getText().toString());
     }
 
     @OnClick(R.id.tv_hv_account)
