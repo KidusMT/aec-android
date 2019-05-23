@@ -3,6 +3,7 @@ package com.aait.aec.data.network;
 import com.aait.aec.BuildConfig;
 import com.aait.aec.data.network.model.LoginRequest;
 import com.aait.aec.data.network.model.LoginResponse;
+import com.aait.aec.data.network.model.RegistrationRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -29,6 +30,10 @@ public interface ApiCall {
     @POST(ApiEndPoint.LOGIN)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<LoginResponse> login(@Body LoginRequest request);
+
+    @POST(ApiEndPoint.REGISTRATION)
+    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
+    Observable<RegistrationRequest> register(@Body RegistrationRequest request);
 
     class Factory {
 

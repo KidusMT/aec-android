@@ -5,6 +5,7 @@ import com.aait.aec.data.network.model.LoginRequest;
 import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.LogoutResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
+import com.aait.aec.data.network.model.RegistrationRequest;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -36,6 +37,11 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Observable<LoginResponse> doServerLoginApiCall(LoginRequest request) {
         return mApiCall.login(request);
+    }
+
+    @Override
+    public Observable<RegistrationRequest> doRegistrationApiCall(RegistrationRequest request) {
+        return mApiCall.register(request);
     }
 
 

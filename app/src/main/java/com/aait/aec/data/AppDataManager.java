@@ -12,6 +12,7 @@ import com.aait.aec.data.network.model.LoginRequest;
 import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.LogoutResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
+import com.aait.aec.data.network.model.RegistrationRequest;
 import com.aait.aec.data.prefs.PreferencesHelper;
 import com.aait.aec.di.ApplicationContext;
 
@@ -56,6 +57,11 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<LoginResponse> doServerLoginApiCall(LoginRequest request) {
         return mApiHelper.doServerLoginApiCall(request);
+    }
+
+    @Override
+    public Observable<RegistrationRequest> doRegistrationApiCall(RegistrationRequest request) {
+        return mApiHelper.doRegistrationApiCall(request);
     }
 
     @Override

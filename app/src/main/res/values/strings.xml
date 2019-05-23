@@ -46,7 +46,12 @@
     <string name="password">Password</string>
 
     <!--Login Validation-->
-    <string name="empty_email">Please provide a non empty email.</string>
+    <string name="empty_username">Please provide a non empty email.</string>
+    <string name="empty_first_name">Please provide a non empty first name.</string>
+    <string name="empty_last_name">Please provide a non empty last name.</string>
+    <string name="empty_age">Please provide a non empty age.</string>
+    <string name="empty_phone_number">Please provide a non empty phone number.</string>
+    <string name="empty_confirmation">Please provide a non empty password.</string>
     <string name="invalid_email">Please provide a valid email.</string>
     <string name="empty_password">Please provide a non empty password.</string>
 

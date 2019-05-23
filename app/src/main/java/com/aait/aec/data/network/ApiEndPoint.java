@@ -26,6 +26,9 @@ public final class ApiEndPoint {
     public static final String LOGIN = BuildConfig.BASE_URL
             + "Users/login";
 
+    public static final String REGISTRATION = BuildConfig.BASE_URL
+            + "Users";
+
     private ApiEndPoint() {
         // This class is not publicly instantiable
     }

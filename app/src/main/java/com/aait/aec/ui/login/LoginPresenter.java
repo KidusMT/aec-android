@@ -31,7 +31,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
     public void onServerLoginClick(String email, String password) {
         //validate email and password
         if (email == null || email.isEmpty()) {
-            getMvpView().onError(R.string.empty_email);
+            getMvpView().onError(R.string.empty_username);
             return;
         }
 //        if (!CommonUtils.isEmailValid(email)) {

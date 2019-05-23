@@ -17,8 +17,8 @@ package com.aait.aec.ui.register;
 
 import com.aait.aec.R;
 import com.aait.aec.data.DataManager;
+import com.aait.aec.data.network.model.RegistrationRequest;
 import com.aait.aec.ui.base.BasePresenter;
-import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
@@ -44,25 +44,46 @@ public class RegisterPresenter<V extends RegisterMvpView> extends BasePresenter<
     @Override
     public void onRegistrationClicked(String firstName, String lastName, String username, String sex, String password, String confirmPassword, String phoneNumber) {
         if (firstName == null || firstName.isEmpty()) {
-            getMvpView().onError(R.string.empty_email);
+            getMvpView().onError(R.string.empty_first_name);
             return;
         }
 
         if (username == null || username.isEmpty()) {
-            getMvpView().onError(R.string.empty_email);
+            getMvpView().onError(R.string.empty_username);
             return;
         }
 
         if (password == null || password.isEmpty()) {
-            getMvpView().onError(R.string.empty_email);
+            getMvpView().onError(R.string.empty_password);
             return;
         }
 
         if (phoneNumber == null || phoneNumber.isEmpty()) {
-            getMvpView().onError(R.string.empty_email);
+            getMvpView().onError(R.string.empty_phone_number);
             return;
         }
         getMvpView().showLoading();
+
+
+        getCompositeDisposable().add(getDataManager()
+                .doRegistrationApiCall(new RegistrationRequest(firstName, lastName, phoneNumber, password, sex, username))
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(registrationRequest -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+
+                    // todo handle api response here
+
+                }, throwable -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+
+                    // todo handle api error here
+
+                }));
 
     }
 }
