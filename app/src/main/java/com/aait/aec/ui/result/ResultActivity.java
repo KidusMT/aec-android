@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://mindorks.com/license/apache-v2
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License
- */
-
 package com.aait.aec.ui.result;
 
 import android.Manifest;
@@ -24,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,17 +25,17 @@ import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-
-/**
- * Created by janisharali on 27/01/17.
- */
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class ResultActivity extends BaseActivity implements ResultMvpView, ResultAdapter.Callback {
 
@@ -83,7 +69,9 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
     @BindView(R.id.detail_result_weight)
     TextView resultWeight;
     Uri photoURI;
+
     ArrayList<Student> students = new ArrayList<>();
+    List<MultipartBody.Part> parts = new ArrayList<>();
     private Uri filePath;
 
     public static Intent getStartIntent(Context context, Exam exam) {
@@ -222,7 +210,11 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
                         fileUris.add(uri);
                         String filename = getFileName(uri);
                         Log.e("Multiple ", filename + " " + fileUris.size());
+
+                        parts.add(prepareFilePart(uri));
                     }
+
+                    mPresenter.onUploadClicked("images", parts);
                 }
             } else { // for single image
                 Uri singleUri = data.getData();
@@ -230,8 +222,28 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
                 fileUris.add(photoURI);
                 String filename = getFileName(photoURI);
                 Log.e("Single ", filename + " " + fileUris.size());
+
+                parts.add(prepareFilePart(singleUri));
+                mPresenter.onUploadClicked("images", parts);
             }
         }
+    }
+
+    @NonNull
+    private MultipartBody.Part prepareFilePart(Uri fileUri) {
+        // https://github.com/iPaulPro/aFileChooser/blob/master/aFileChooser/src/com/ipaulpro/afilechooser/utils/FileUtils.java
+        // use the FileUtils to get the actual file by uri
+        File file = new File(getFileName(fileUri));
+
+        // create RequestBody instance from file
+        RequestBody requestFile =
+                RequestBody.create(
+                        MediaType.parse(getContentResolver().getType(fileUri)),
+                        file
+                );
+
+        // MultipartBody.Part is used to send also the actual file name
+        return MultipartBody.Part.createFormData("image file", file.getName(), requestFile);
     }
 
     public String getFileName(Uri uri) {

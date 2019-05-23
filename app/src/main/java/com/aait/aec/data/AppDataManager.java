@@ -8,6 +8,7 @@ import com.aait.aec.data.db.model.User;
 import com.aait.aec.data.network.ApiHeader;
 import com.aait.aec.data.network.ApiHelper;
 import com.aait.aec.data.network.model.BlogResponse;
+import com.aait.aec.data.network.model.Image.ImageUploadResponse;
 import com.aait.aec.data.network.model.LoginRequest;
 import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.LogoutResponse;
@@ -23,6 +24,7 @@ import javax.inject.Singleton;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
+import okhttp3.MultipartBody;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -62,6 +64,11 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<RegistrationRequest> doRegistrationApiCall(RegistrationRequest request) {
         return mApiHelper.doRegistrationApiCall(request);
+    }
+
+    @Override
+    public Observable<ImageUploadResponse> upload(String container, List<MultipartBody.Part> files) {
+        return mApiHelper.upload(container, files);
     }
 
     @Override

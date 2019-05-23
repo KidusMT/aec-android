@@ -15,13 +15,23 @@
 
 package com.aait.aec.ui.result;
 
+import android.net.Uri;
+
+import com.aait.aec.MvpApp;
 import com.aait.aec.data.DataManager;
 import com.aait.aec.ui.base.BasePresenter;
+import com.aait.aec.utils.PathUtil;
 import com.aait.aec.utils.rx.SchedulerProvider;
+
+import java.io.File;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -45,5 +55,20 @@ public class ResultPresenter<V extends ResultMvpView> extends BasePresenter<V>
 
         getMvpView().showLoading();
         getMvpView().hideLoading();
+    }
+
+    @Override
+    public void onUploadClicked(String container, List<MultipartBody.Part> parts) {
+
+        getCompositeDisposable().add(getDataManager()
+                .upload(container, parts)
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(imageUploadResponse -> {
+
+                        },
+                        throwable -> {
+
+                        }));
     }
 }

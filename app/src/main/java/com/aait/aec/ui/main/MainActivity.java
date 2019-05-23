@@ -43,6 +43,7 @@ import com.aait.aec.data.db.model.Exam;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.create.CreateExamActivity;
 import com.aait.aec.ui.custom.RoundedImageView;
+import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.result.ResultActivity;
 import com.aait.aec.ui.student.StudentActivity;
@@ -316,6 +317,11 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
         if (mDrawer != null) {
             mDrawer.closeDrawer(Gravity.START);
         }
+    }
+
+    @Override
+    public void openMyFeedActivity() {
+        startActivity(FeedActivity.getStartIntent(this));
     }
 
     private void prepareExams() {

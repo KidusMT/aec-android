@@ -19,6 +19,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.aait.aec.data.db.model.Category;
 import com.aait.aec.data.db.model.Exam;
 import com.aait.aec.di.ActivityContext;
 import com.aait.aec.di.PerActivity;
@@ -29,6 +30,10 @@ import com.aait.aec.ui.addAnswerDialog.AnswerAdapter;
 import com.aait.aec.ui.create.CreateExamMvpPresenter;
 import com.aait.aec.ui.create.CreateExamMvpView;
 import com.aait.aec.ui.create.CreateExamPresenter;
+import com.aait.aec.ui.feed.FeedMvpPresenter;
+import com.aait.aec.ui.feed.FeedMvpView;
+import com.aait.aec.ui.feed.FeedPagerAdapter;
+import com.aait.aec.ui.feed.FeedPresenter;
 import com.aait.aec.ui.forgot.ForgotMvpPresenter;
 import com.aait.aec.ui.forgot.ForgotMvpView;
 import com.aait.aec.ui.forgot.ForgotPresenter;
@@ -136,6 +141,17 @@ public class ActivityModule {
     SubjectMvpPresenter<SubjectMvpView> provideSubjectMvpPresenter(
             SubjectPresenter<SubjectMvpView> presenter) {
         return presenter;
+    }
+
+    @Provides
+    FeedMvpPresenter<FeedMvpView> provideFeedPresenter(
+            FeedPresenter<FeedMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    FeedPagerAdapter provideFeedPagerAdapter() {
+        return new FeedPagerAdapter(new ArrayList<Category>());
     }
 
     @Provides

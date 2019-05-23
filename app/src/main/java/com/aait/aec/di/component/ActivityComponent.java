@@ -19,6 +19,7 @@ import com.aait.aec.di.PerActivity;
 import com.aait.aec.di.module.ActivityModule;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerDialog;
 import com.aait.aec.ui.create.CreateExamActivity;
+import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.forgot.ForgotActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.MainActivity;
@@ -57,5 +58,7 @@ public interface ActivityComponent {
     void inject(AddAnswerDialog dialog);
 
     void inject(ResultActivity activity);
+
+    void inject(FeedActivity activity);
 
 }
