@@ -1,12 +1,12 @@
 package com.aait.aec.ui.base;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.aait.aec.di.component.ActivityComponent;
 import com.aait.aec.utils.CommonUtils;
@@ -18,7 +18,7 @@ public abstract class BaseFragment extends Fragment implements MvpView, OnBackPr
 
     private BaseActivity mActivity;
     private Unbinder mUnBinder;
-    private ProgressDialog mProgressDialog;
+    private ProgressBar progressBar;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,13 +45,13 @@ public abstract class BaseFragment extends Fragment implements MvpView, OnBackPr
     @Override
     public void showLoading() {
         hideLoading();
-        mProgressDialog = CommonUtils.showLoadingDialog(this.getContext());
+        progressBar = CommonUtils.showLoadingDialog(this.getContext());
     }
 
     @Override
     public void hideLoading() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.cancel();
+        if (progressBar != null ) {//&& progressBar.isShowing()
+            progressBar.setVisibility(View.GONE);
         }
     }
 

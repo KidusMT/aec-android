@@ -28,7 +28,7 @@ import io.reactivex.Observable;
 
 public interface DataManager extends DbHelper, PreferencesHelper, ApiHelper {
 
-    void updateApiHeader(Long userId, String accessToken);
+    void updateApiHeader(String userId, String accessToken);
 
     void setUserAsLoggedOut();
 

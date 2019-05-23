@@ -25,11 +25,4 @@ import com.aait.aec.ui.base.MvpPresenter;
 
 @PerActivity
 public interface SubjectMvpPresenter<V extends SubjectMvpView> extends MvpPresenter<V> {
-
-    void onServerLoginClick(String email, String password);
-
-    void onGoogleLoginClick();
-
-    void onFacebookLoginClick();
-
 }

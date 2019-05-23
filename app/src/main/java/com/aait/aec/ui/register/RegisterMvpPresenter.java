@@ -26,10 +26,7 @@ import com.aait.aec.ui.base.MvpPresenter;
 @PerActivity
 public interface RegisterMvpPresenter<V extends RegisterMvpView> extends MvpPresenter<V> {
 
-    void onServerLoginClick(String email, String password);
+    void onRegisterationClicked(String email, String password);
 
-    void onGoogleLoginClick();
-
-    void onFacebookLoginClick();
 
 }

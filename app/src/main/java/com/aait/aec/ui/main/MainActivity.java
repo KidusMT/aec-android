@@ -22,8 +22,6 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -42,13 +40,10 @@ import android.widget.TextView;
 import com.aait.aec.BuildConfig;
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Exam;
-import com.aait.aec.ui.about.AboutFragment;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.create.CreateExamActivity;
 import com.aait.aec.ui.custom.RoundedImageView;
-import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.login.LoginActivity;
-import com.aait.aec.ui.main.rating.RateUsDialog;
 import com.aait.aec.ui.result.ResultActivity;
 import com.aait.aec.ui.student.StudentActivity;
 import com.aait.aec.utils.MyDividerItemDecoration;
@@ -124,13 +119,13 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     @Override
     public void onBackPressed() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = fragmentManager.findFragmentByTag(AboutFragment.TAG);
-        if (fragment == null) {
-            super.onBackPressed();
-        } else {
-            onFragmentDetached(AboutFragment.TAG);
-        }
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        Fragment fragment = fragmentManager.findFragmentByTag(AboutFragment.TAG);
+//        if (fragment == null) {
+//            super.onBackPressed();
+//        } else {
+//            onFragmentDetached(AboutFragment.TAG);
+//        }
     }
 
     @Override
@@ -171,32 +166,6 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     public void onFragmentAttached() {
     }
 
-    @Override
-    public void onFragmentDetached(String tag) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = fragmentManager.findFragmentByTag(tag);
-        if (fragment != null) {
-            fragmentManager
-                    .beginTransaction()
-                    .disallowAddToBackStack()
-                    .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
-                    .remove(fragment)
-                    .commitNow();
-            unlockDrawer();
-        }
-    }
-
-    @Override
-    public void showAboutFragment() {
-//        lockDrawer();
-//
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .disallowAddToBackStack()
-//                .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
-//                .add(R.id.cl_root_view, AboutFragment.newInstance(), AboutFragment.TAG)
-//                .commit();
-    }
 
     @Override
     public void lockDrawer() {
@@ -266,7 +235,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                hideKeyboard();
+                hideKeyboard(MainActivity.this);
             }
 
             @Override
@@ -334,16 +303,6 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     public void openLoginActivity() {
         startActivity(LoginActivity.getStartIntent(this));
         finish();
-    }
-
-    @Override
-    public void showRateUsDialog() {
-        RateUsDialog.newInstance().show(getSupportFragmentManager());
-    }
-
-    @Override
-    public void openMyFeedActivity() {
-        startActivity(FeedActivity.getStartIntent(this));
     }
 
     @Override

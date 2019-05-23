@@ -22,7 +22,6 @@ import android.os.Bundle;
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.login.LoginActivity;
-import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.utils.CommonUtils;
 
 import javax.inject.Inject;

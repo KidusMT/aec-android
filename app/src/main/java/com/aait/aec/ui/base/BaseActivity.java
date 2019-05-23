@@ -2,7 +2,6 @@ package com.aait.aec.ui.base;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -18,6 +17,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +38,7 @@ import static android.content.pm.PackageManager.GET_META_DATA;
 public abstract class BaseActivity extends AppCompatActivity
         implements MvpView, BaseFragment.Callback {
 
-    private ProgressDialog mProgressDialog;
+    private ProgressBar progressBar;
 
     private ActivityComponent mActivityComponent;
 
@@ -105,13 +105,13 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     public void showLoading() {
         hideLoading();
-        mProgressDialog = CommonUtils.showLoadingDialog(this);
+        progressBar = CommonUtils.showLoadingDialog(this);
     }
 
     @Override
     public void hideLoading() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.cancel();
+        if (progressBar != null ) {//&& progressBar.isShowing()
+            progressBar.setVisibility(View.GONE);
         }
     }
 

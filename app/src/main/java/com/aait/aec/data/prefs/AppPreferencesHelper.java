@@ -56,9 +56,9 @@ public class AppPreferencesHelper implements PreferencesHelper {
     }
 
     @Override
-    public void setCurrentUserId(Long userId) {
-        long id = userId == null ? AppConstants.NULL_INDEX : userId;
-        mPrefs.edit().putLong(PREF_KEY_CURRENT_USER_ID, id).apply();
+    public void setCurrentUserId(String userId) {
+        String id = userId;
+        mPrefs.edit().putString(PREF_KEY_CURRENT_USER_ID, id).apply();
     }
 
     @Override

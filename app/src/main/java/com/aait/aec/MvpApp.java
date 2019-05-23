@@ -18,8 +18,6 @@ package com.aait.aec;
 import android.app.Application;
 import android.content.Context;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.interceptors.HttpLoggingInterceptor.Level;
 import com.aait.aec.data.DataManager;
 import com.aait.aec.di.component.ApplicationComponent;
 import com.aait.aec.di.component.DaggerApplicationComponent;
@@ -58,10 +56,6 @@ public class MvpApp extends Application {
 
         AppLogger.init();
 
-        AndroidNetworking.initialize(getApplicationContext());
-        if (BuildConfig.DEBUG) {
-            AndroidNetworking.enableLogging(Level.BODY);
-        }
 
         CalligraphyConfig.initDefault(mCalligraphyConfig);
 

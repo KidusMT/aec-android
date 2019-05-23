@@ -17,16 +17,11 @@ package com.aait.aec.di.component;
 
 import com.aait.aec.di.PerActivity;
 import com.aait.aec.di.module.ActivityModule;
-import com.aait.aec.ui.about.AboutFragment;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerDialog;
 import com.aait.aec.ui.create.CreateExamActivity;
-import com.aait.aec.ui.feed.FeedActivity;
-import com.aait.aec.ui.feed.blogs.BlogFragment;
-import com.aait.aec.ui.feed.opensource.OpenSourceFragment;
 import com.aait.aec.ui.forgot.ForgotActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.MainActivity;
-import com.aait.aec.ui.main.rating.RateUsDialog;
 import com.aait.aec.ui.register.RegisterActivity;
 import com.aait.aec.ui.result.ResultActivity;
 import com.aait.aec.ui.splash.SplashActivity;
@@ -48,16 +43,6 @@ public interface ActivityComponent {
     void inject(LoginActivity activity);
 
     void inject(SplashActivity activity);
-
-    void inject(FeedActivity activity);
-
-    void inject(AboutFragment fragment);
-
-    void inject(OpenSourceFragment fragment);
-
-    void inject(BlogFragment fragment);
-
-    void inject(RateUsDialog dialog);
 
     void inject(RegisterActivity activity);
 

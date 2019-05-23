@@ -26,6 +26,7 @@ import android.net.Uri;
 import android.provider.OpenableColumns;
 import android.provider.Settings;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.aait.aec.MvpApp;
@@ -49,23 +50,23 @@ public final class CommonUtils {
         // This utility class is not publicly instantiable
     }
 
-    public static ProgressDialog showLoadingDialog(Context context) {
+    public static ProgressBar showLoadingDialog(Context context) {
         if (context != null) {
-            ProgressDialog progressDialog = new ProgressDialog(context);
-            progressDialog.show();
-            if (progressDialog.getWindow() != null) {
-                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            }
-            progressDialog.setContentView(R.layout.progress_dialog);
-            progressDialog.setIndeterminate(true);
-//        progressDialog.setCancelable(false);//todo cancel this when needed
-//        progressDialog.setCanceledOnTouchOutside(false);
-            return progressDialog;
+//            ProgressDialog progressDialog = new ProgressDialog(context);
+//            progressDialog.show();
+//            if (progressDialog.getWindow() != null) {
+//                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//            }
+//            progressDialog.setContentView(R.layout.progress_dialog);
+//            progressDialog.setIndeterminate(true);
+////        progressDialog.setCancelable(false);//todo cancel this when needed
+////        progressDialog.setCanceledOnTouchOutside(false);
+//            return progressDialog;
+            return new ProgressBar(context, null, android.R.attr.progressBarStyleSmall);
+
         } else {
             return null;
         }
-
-
     }
 
     @SuppressLint("all")

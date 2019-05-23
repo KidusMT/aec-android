@@ -29,7 +29,7 @@ public interface PreferencesHelper {
 
     Long getCurrentUserId();
 
-    void setCurrentUserId(Long userId);
+    void setCurrentUserId(String userId);
 
     String getCurrentUserName();
 

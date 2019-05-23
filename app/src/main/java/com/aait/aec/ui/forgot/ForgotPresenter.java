@@ -15,19 +15,13 @@
 
 package com.aait.aec.ui.forgot;
 
-import com.aait.aec.R;
 import com.aait.aec.data.DataManager;
-import com.aait.aec.data.network.model.LoginRequest;
-import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.ui.base.BasePresenter;
-import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.rx.SchedulerProvider;
-import com.androidnetworking.error.ANError;
 
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
 
 /**
  * Created by janisharali on 27/01/17.

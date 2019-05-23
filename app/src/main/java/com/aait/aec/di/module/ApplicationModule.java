@@ -24,8 +24,10 @@ import com.aait.aec.data.AppDataManager;
 import com.aait.aec.data.DataManager;
 import com.aait.aec.data.db.AppDbHelper;
 import com.aait.aec.data.db.DbHelper;
+import com.aait.aec.data.network.ApiCall;
 import com.aait.aec.data.network.ApiHeader;
 import com.aait.aec.data.network.ApiHelper;
+import com.aait.aec.data.network.ApiInterceptor;
 import com.aait.aec.data.network.AppApiHelper;
 import com.aait.aec.data.prefs.AppPreferencesHelper;
 import com.aait.aec.data.prefs.PreferencesHelper;
@@ -109,20 +111,22 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    ApiHeader.ProtectedApiHeader provideProtectedApiHeader(@ApiInfo String apiKey,
-                                                           PreferencesHelper preferencesHelper) {
-        return new ApiHeader.ProtectedApiHeader(
-                apiKey,
-                preferencesHelper.getCurrentUserId(),
-                preferencesHelper.getAccessToken());
-    }
-
-    @Provides
-    @Singleton
     CalligraphyConfig provideCalligraphyDefaultConfig() {
         return new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/source-sans-pro/SourceSansPro-Regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build();
+    }
+
+    @Provides
+    @Singleton
+    ApiHeader provideApiHeader(PreferencesHelper preferencesHelper) {
+        return new ApiHeader(preferencesHelper.getAccessToken());
+    }
+
+    @Provides
+    @Singleton
+    ApiCall provideApiCall(ApiInterceptor apiInterceptor) {
+        return ApiCall.Factory.create(apiInterceptor);
     }
 }
