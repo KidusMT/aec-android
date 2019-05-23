@@ -24,4 +24,6 @@ import com.aait.aec.ui.base.MvpView;
 public interface RegisterMvpView extends MvpView {
 
     void openMainActivity();
+
+    void openLoginActivity();
 }
