@@ -9,7 +9,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Single;
+import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -28,7 +28,7 @@ public interface ApiCall {
 
     @POST(ApiEndPoint.LOGIN)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
-    Single<LoginResponse> login(@Body LoginRequest request);
+    Observable<LoginResponse> login(@Body LoginRequest request);
 
     class Factory {
 

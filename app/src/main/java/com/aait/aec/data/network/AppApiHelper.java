@@ -9,6 +9,7 @@ import com.aait.aec.data.network.model.OpenSourceResponse;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import io.reactivex.Observable;
 import io.reactivex.Single;
 
 /**
@@ -24,6 +25,7 @@ public class AppApiHelper implements ApiHelper {
     @Inject
     public AppApiHelper(ApiHeader apiHeader, ApiCall apiCall) {
         mApiHeader = apiHeader;
+        mApiCall = apiCall;
     }
 
     @Override
@@ -32,7 +34,7 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Single<LoginResponse> doServerLoginApiCall(LoginRequest request) {
+    public Observable<LoginResponse> doServerLoginApiCall(LoginRequest request) {
         return mApiCall.login(request);
     }
 

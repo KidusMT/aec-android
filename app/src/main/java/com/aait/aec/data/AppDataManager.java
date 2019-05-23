@@ -54,8 +54,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<LoginResponse> doServerLoginApiCall(LoginRequest request) {
-        return null;
+    public Observable<LoginResponse> doServerLoginApiCall(LoginRequest request) {
+        return mApiHelper.doServerLoginApiCall(request);
     }
 
     @Override

@@ -21,6 +21,7 @@ import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.LogoutResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
 
+import io.reactivex.Observable;
 import io.reactivex.Single;
 
 /**
@@ -31,7 +32,7 @@ public interface ApiHelper {
 
     ApiHeader getApiHeader();
 
-    Single<LoginResponse> doServerLoginApiCall(LoginRequest request);
+    Observable<LoginResponse> doServerLoginApiCall(LoginRequest request);
 
     Single<LogoutResponse> doLogoutApiCall();
 
