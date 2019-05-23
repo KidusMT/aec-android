@@ -64,7 +64,7 @@
                         android:background="@drawable/rounded_grey_rectangle">
 
                         <EditText
-                            android:id="@+id/et_username"
+                            android:id="@+id/login_et_username"
                             style="@style/TextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                         android:background="@drawable/rounded_grey_rectangle">
 
                         <EditText
-                            android:id="@+id/et_password"
+                            android:id="@+id/login_et_password"
                             style="@style/TextStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

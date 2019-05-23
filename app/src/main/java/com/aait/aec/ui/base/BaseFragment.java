@@ -46,6 +46,7 @@ public abstract class BaseFragment extends Fragment implements MvpView, OnBackPr
     public void showLoading() {
         hideLoading();
         progressBar = CommonUtils.showLoadingDialog(this.getContext());
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override

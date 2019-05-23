@@ -106,6 +106,7 @@ public abstract class BaseActivity extends AppCompatActivity
     public void showLoading() {
         hideLoading();
         progressBar = CommonUtils.showLoadingDialog(this);
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override

@@ -18,6 +18,7 @@ package com.aait.aec.ui.login;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
@@ -28,6 +29,7 @@ import com.aait.aec.utils.CommonUtils;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -41,9 +43,15 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     @Inject
     LoginMvpPresenter<LoginMvpView> mPresenter;
 
+    @BindView(R.id.login_et_username)
+    EditText etUsername;
+
+    @BindView(R.id.login_et_password)
+    EditText etPassword;
+
     @OnClick(R.id.btn_login)
     void onLoginClicked() {
-        startActivity(MainActivity.getStartIntent(this));
+        mPresenter.onServerLoginClick(etUsername.getText().toString(), etPassword.getText().toString());
     }
 
     public static Intent getStartIntent(Context context) {
