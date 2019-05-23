@@ -17,8 +17,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
 
+import com.aait.aec.di.component.ActivityComponent;
+
 import butterknife.Unbinder;
-import eu.waziup.app.di.component.ActivityComponent;
 
 public abstract class BaseDialog extends DialogFragment implements DialogMvpView {
 

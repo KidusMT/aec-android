@@ -8,12 +8,13 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.aait.aec.di.component.ActivityComponent;
+import com.aait.aec.utils.CommonUtils;
+
 import butterknife.Unbinder;
-import eu.waziup.app.di.component.ActivityComponent;
-import eu.waziup.app.utils.CommonUtils;
 
 
-public abstract class BaseFragment extends Fragment implements MvpView, OnBackPressed{
+public abstract class BaseFragment extends Fragment implements MvpView, OnBackPressed {
 
     private BaseActivity mActivity;
     private Unbinder mUnBinder;

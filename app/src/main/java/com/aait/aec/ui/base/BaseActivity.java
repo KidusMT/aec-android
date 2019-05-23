@@ -21,15 +21,16 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aait.aec.MvpApp;
+import com.aait.aec.R;
+import com.aait.aec.di.component.ActivityComponent;
+import com.aait.aec.di.component.DaggerActivityComponent;
+import com.aait.aec.di.module.ActivityModule;
+import com.aait.aec.ui.login.LoginActivity;
+import com.aait.aec.utils.CommonUtils;
+import com.aait.aec.utils.ConnectivityUtil;
+
 import butterknife.Unbinder;
-import eu.waziup.app.DaApp;
-import eu.waziup.app.R;
-import eu.waziup.app.di.component.ActivityComponent;
-import eu.waziup.app.di.component.DaggerActivityComponent;
-import eu.waziup.app.di.module.ActivityModule;
-import eu.waziup.app.ui.login.LoginActivity;
-import eu.waziup.app.utils.CommonUtils;
-import eu.waziup.app.utils.ConnectivityUtil;
 
 import static android.content.pm.PackageManager.GET_META_DATA;
 
@@ -52,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         mActivityComponent = DaggerActivityComponent.builder()
                 .activityModule(new ActivityModule(this))
-                .applicationComponent(((DaApp) getApplication()).getComponent())
+                .applicationComponent(((MvpApp) getApplication()).getComponent())
                 .build();
         resetTitles();
     }

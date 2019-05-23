@@ -1,9 +1,10 @@
 package com.aait.aec.ui.base;
 
+import com.aait.aec.data.DataManager;
+import com.aait.aec.utils.rx.SchedulerProvider;
+
 import javax.inject.Inject;
 
-import eu.waziup.app.data.DataManager;
-import eu.waziup.app.utils.rx.SchedulerProvider;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
