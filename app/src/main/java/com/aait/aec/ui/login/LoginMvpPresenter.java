@@ -28,8 +28,4 @@ public interface LoginMvpPresenter<V extends LoginMvpView> extends MvpPresenter<
 
     void onServerLoginClick(String email, String password);
 
-    void onGoogleLoginClick();
-
-    void onFacebookLoginClick();
-
 }

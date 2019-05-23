@@ -35,13 +35,13 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/v2\"")
+            buildConfigField("String", "BASE_URL", "\"http://10.4.121.252:3000/api/\"")
             buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/v2\"")
+            buildConfigField("String", "BASE_URL", "\"http://10.4.121.252:3000/api/\"")
             buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
     }
@@ -78,9 +78,12 @@ dependencies {
     implementation "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
 
     // network
-    implementation "com.amitshekhar.android:rx2-android-networking:$rootProject.rx2FastAndroidNetworking"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0-RC1'
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.retrofitInterceptorVersion"
 
-    // image
+    // image'
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
 
     // parser
