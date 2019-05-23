@@ -33,7 +33,7 @@ public class AppApiHelper implements ApiHelper {
 
     @Override
     public Single<LoginResponse> doServerLoginApiCall(LoginRequest request) {
-        return null;
+        return mApiCall.login(request);
     }
 
 
