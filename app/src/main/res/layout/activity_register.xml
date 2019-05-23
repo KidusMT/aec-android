@@ -11,6 +11,8 @@
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
         android:gravity="center"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
         android:orientation="vertical"
         tools:context=".ui.login.LoginActivity">
 

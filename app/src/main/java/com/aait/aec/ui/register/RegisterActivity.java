@@ -82,6 +82,7 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
 
     @Override
     public void openMainActivity() {
+        hideLoading();
         Intent intent = MainActivity.getStartIntent(RegisterActivity.this);
         startActivity(intent);
         finish();
@@ -89,6 +90,7 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
 
     @Override
     public void openLoginActivity() {
+        hideLoading();
         Intent intent = LoginActivity.getStartIntent(RegisterActivity.this);
         startActivity(intent);
         finish();

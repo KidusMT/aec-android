@@ -55,13 +55,15 @@ public class RegisterPresenter<V extends RegisterMvpView> extends BasePresenter<
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(registrationRequest -> {
+
                     if (!isViewAttached()) {
                         return;
                     }
 
-                    // todo handle api response here
+                    getMvpView().openLoginActivity();
 
                 }, throwable -> {
+
                     if (!isViewAttached()) {
                         return;
                     }
