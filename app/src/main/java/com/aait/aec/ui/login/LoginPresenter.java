@@ -66,11 +66,11 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
 
                 }, throwable -> {
 
-                    if (!isViewAttached()) {
+                    if (!isViewAttached())
                         return;
-                    }
 
                     getMvpView().hideLoading();
+                    getMvpView().onError(CommonUtils.getErrorMessage(throwable));
 
                 }));
     }

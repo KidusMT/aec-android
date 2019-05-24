@@ -236,11 +236,13 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
         File file = new File(getFileName(fileUri));
 
         // create RequestBody instance from file
-        RequestBody requestFile =
-                RequestBody.create(
-                        MediaType.parse(getContentResolver().getType(fileUri)),
-                        file
-                );
+//        RequestBody requestFile =
+//                RequestBody.create(
+//                        MediaType.parse(getContentResolver().getType(fileUri)),
+//                        file
+//                );
+
+        RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
 
         // MultipartBody.Part is used to send also the actual file name
         return MultipartBody.Part.createFormData("image file", file.getName(), requestFile);

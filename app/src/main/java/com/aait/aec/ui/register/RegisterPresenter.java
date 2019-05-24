@@ -4,6 +4,7 @@ import com.aait.aec.R;
 import com.aait.aec.data.DataManager;
 import com.aait.aec.data.network.model.RegistrationRequest;
 import com.aait.aec.ui.base.BasePresenter;
+import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
@@ -64,11 +65,11 @@ public class RegisterPresenter<V extends RegisterMvpView> extends BasePresenter<
 
                 }, throwable -> {
 
-                    if (!isViewAttached()) {
+                    if (!isViewAttached())
                         return;
-                    }
 
-                    // todo handle api error here
+                    getMvpView().hideLoading();
+                    getMvpView().onError(CommonUtils.getErrorMessage(throwable));
 
                 }));
 
