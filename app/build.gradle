@@ -35,13 +35,13 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"http://192.168.0.136:3000/api/\"")
+            buildConfigField("String", "BASE_URL", "\"http://192.168.43.242\"")//http://10.5.84.101:3000/api/
             buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", "\"http://192.168.0.136:3000/api/\"")
+            buildConfigField("String", "BASE_URL", "\"http://192.168.43.242\"")
             buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
     }

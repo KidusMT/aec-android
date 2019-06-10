@@ -59,8 +59,11 @@ public interface ApiCall {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE);
             builder.addInterceptor(logging);
-            builder.readTimeout(NETWORK_CALL_TIMEOUT, TimeUnit.SECONDS);
-            builder.writeTimeout(NETWORK_CALL_TIMEOUT, TimeUnit.SECONDS);
+            builder.connectTimeout(30, TimeUnit.SECONDS)
+                    .writeTimeout(30, TimeUnit.SECONDS)
+                    .readTimeout(30, TimeUnit.SECONDS);
+//            builder.readTimeout(NETWORK_CALL_TIMEOUT, TimeUnit.SECONDS);
+//            builder.writeTimeout(NETWORK_CALL_TIMEOUT, TimeUnit.SECONDS);
 
             Gson gson = new GsonBuilder()
                     .setLenient()
