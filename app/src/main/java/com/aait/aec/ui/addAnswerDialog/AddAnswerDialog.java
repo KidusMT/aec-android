@@ -103,8 +103,8 @@ public class AddAnswerDialog extends BaseDialog implements AddAnswerMvpView, Ans
         // todo has to update the list in the home activity
         // todo has to send the list of answers to the api when the api is ready
         dismiss();
-        startActivity(MainActivity.getStartIntent(getBaseActivity()));
-        getBaseActivity().finish();// finishing the parent activity's activity rather than opening a new one
+//        startActivity(MainActivity.getStartIntent(getBaseActivity()));
+//        getBaseActivity().finish();// finishing the parent activity's activity rather than opening a new one
 
     }
 
