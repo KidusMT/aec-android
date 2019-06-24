@@ -31,6 +31,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,6 +48,7 @@ import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.result.ResultActivity;
 import com.aait.aec.ui.student.StudentActivity;
+import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.MyDividerItemDecoration;
 import com.aait.aec.utils.ScreenUtils;
 
@@ -88,6 +90,10 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     @BindView(R.id.exam_recycler)
     RecyclerView mRecyclerView;
+
+    @BindView(R.id.tv_no_exam)
+    TextView tvNoExams;
+
     List<Exam> exams = new ArrayList<>();
     private TextView mNameTextView;
     private TextView mEmailTextView;
@@ -167,7 +173,6 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     public void onFragmentAttached() {
     }
 
-
     @Override
     public void lockDrawer() {
         if (mDrawer != null)
@@ -178,6 +183,27 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     public void unlockDrawer() {
         if (mDrawer != null)
             mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+    }
+
+    @Override
+    public void showExams(List<Exam> exams) {
+        if (exams != null) {
+            if (exams.size() > 0) {
+                if (tvNoExams != null && tvNoExams.getVisibility() == View.VISIBLE)
+                    tvNoExams.setVisibility(View.GONE);
+                if (mRecyclerView != null && mRecyclerView.getVisibility() == View.GONE)
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                mAdapter.addItems(exams);
+            } else {
+                if (tvNoExams != null && tvNoExams.getVisibility() == View.GONE) {
+                    tvNoExams.setVisibility(View.VISIBLE);
+                    tvNoExams.setText(getString(R.string.no_exam_list_found));
+                }
+                if (mRecyclerView != null && mRecyclerView.getVisibility() == View.VISIBLE)
+                    mRecyclerView.setVisibility(View.GONE);
+            }
+        }
+        hideLoading();
     }
 
     @Override
@@ -252,7 +278,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
         mPresenter.onViewInitialized();
 
         setUpRecyclerView();
-        prepareExams();
+//        prepareExams();
     }
 
     private void setUpRecyclerView() {
