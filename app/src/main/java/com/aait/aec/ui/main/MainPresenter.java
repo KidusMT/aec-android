@@ -15,6 +15,8 @@
 
 package com.aait.aec.ui.main;
 
+import android.util.Log;
+
 import com.aait.aec.data.DataManager;
 import com.aait.aec.ui.base.BasePresenter;
 import com.aait.aec.utils.CommonUtils;
@@ -96,6 +98,9 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                     }
 
                     getMvpView().showExams(exams);
+//
+                    CommonUtils.toast(getDataManager().getCurrentUserId());
+//                    Log.e(TAG, String.format("userId:===> %d", getDataManager().getCurrentUserId()));
                 }, throwable -> {
                     if (!isViewAttached()) {
                         return;

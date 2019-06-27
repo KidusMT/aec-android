@@ -48,6 +48,7 @@ import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.result.ResultActivity;
 import com.aait.aec.ui.student.StudentActivity;
+import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.MyDividerItemDecoration;
 import com.aait.aec.utils.ScreenUtils;
 

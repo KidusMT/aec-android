@@ -50,9 +50,8 @@ public class AppPreferencesHelper implements PreferencesHelper {
     }
 
     @Override
-    public Long getCurrentUserId() {
-        long userId = mPrefs.getLong(PREF_KEY_CURRENT_USER_ID, AppConstants.NULL_INDEX);
-        return userId == AppConstants.NULL_INDEX ? null : userId;
+    public String getCurrentUserId() {
+        return mPrefs.getString(PREF_KEY_CURRENT_USER_ID, null);
     }
 
     @Override
