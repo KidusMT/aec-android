@@ -17,9 +17,11 @@ package com.aait.aec.data.db;
 
 import com.aait.aec.data.db.model.DaoMaster;
 import com.aait.aec.data.db.model.DaoSession;
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.data.db.model.User;
 
 import java.util.List;
+import java.util.Observer;
 import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
@@ -52,5 +54,10 @@ public class AppDbHelper implements DbHelper {
         return Observable.fromCallable(() -> mDaoSession.getUserDao().loadAll());
     }
 
+    @Override
+    public Observable<String> insertStudents(List<Student> students) {
+        mDaoSession.getStudentDao().insertOrReplaceInTx(students);
+        return Observable.fromCallable(() -> "successful");
+    }
 
 }

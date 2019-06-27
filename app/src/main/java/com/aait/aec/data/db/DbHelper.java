@@ -15,6 +15,7 @@
 
 package com.aait.aec.data.db;
 
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.data.db.model.User;
 
 import java.util.List;
@@ -29,6 +30,8 @@ import io.reactivex.Observable;
 public interface DbHelper {
 
     Observable<Long> insertUser(final User user);
+
+    Observable<String> insertStudents(List<Student> students);
 
     Observable<List<User>> getAllUsers();
 

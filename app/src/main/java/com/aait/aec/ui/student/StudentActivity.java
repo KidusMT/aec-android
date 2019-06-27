@@ -299,7 +299,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
                 Log.d(TAG, "ParseStringBuilder: Data from row: " + cellInfo);
 
                 //add the the uploadData ArrayList
-                uploadData.add(new Student(i, x, y, 1.0));
+//                uploadData.add(new Student(i, x, y, 1.0)); todo get back here later with a new model
 
                 mAdapter.addItems(uploadData);
 
@@ -318,12 +318,12 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     private void printDataToLog() {
         Log.d(TAG, "printDataToLog: Printing data to log...");
 
-        for (int i = 0; i < uploadData.size(); i++) {
+//        for (int i = 0; i < uploadData.size(); i++) {
 //            double x = uploadData.get(i).getX();
 //            double y = uploadData.get(i).getY();
-            Log.d(TAG, "printDataToLog: (x,y): (" +
-                    String.valueOf(uploadData.get(i).getName()) + "," +
-                    String.valueOf(uploadData.get(i).getId()) + ")");
-        }
+//            Log.d(TAG, "printDataToLog: (x,y): (" +
+//                    String.valueOf(uploadData.get(i).getName()) + "," +
+//                    String.valueOf(uploadData.get(i).getId()) + ")");
+//        }
     }
 }

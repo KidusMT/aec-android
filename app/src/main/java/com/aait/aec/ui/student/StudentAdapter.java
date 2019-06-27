@@ -90,16 +90,11 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             album = albumList.get(position);
             if (album != null) {
 
-                stdRow.setText(String.valueOf(album.getRow()));
-                stdName.setText(String.valueOf(album.getName()));
-                stdId.setText(String.valueOf(album.getId()));
+//                stdRow.setText(String.valueOf(album.getRow()));
+//                stdName.setText(String.valueOf(album.getName()));
+//                stdId.setText(String.valueOf(album.getId()));
 
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        CommonUtils.toast(album.getName());
-                    }
-                });
+                itemView.setOnClickListener(view -> CommonUtils.toast(album.getName()));
             }
 
         }

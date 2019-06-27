@@ -4,6 +4,7 @@ package com.aait.aec.data;
 import android.content.Context;
 
 import com.aait.aec.data.db.DbHelper;
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.data.db.model.User;
 import com.aait.aec.data.network.ApiHeader;
 import com.aait.aec.data.network.ApiHelper;
@@ -86,6 +87,11 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<Long> insertUser(User user) {
         return mDbHelper.insertUser(user);
+    }
+
+    @Override
+    public Observable<String> insertStudents(List<Student> students) {
+        return mDbHelper.insertStudents(students);
     }
 
     @Override
