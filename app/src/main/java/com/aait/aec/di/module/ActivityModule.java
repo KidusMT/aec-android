@@ -20,7 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.aait.aec.data.db.model.Category;
-import com.aait.aec.data.db.model.Exam;
+import com.aait.aec.data.network.model.exam.Exam;
 import com.aait.aec.di.ActivityContext;
 import com.aait.aec.di.PerActivity;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerMvpPresenter;
