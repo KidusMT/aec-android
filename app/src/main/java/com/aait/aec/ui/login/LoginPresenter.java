@@ -74,4 +74,17 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                 }));
     }
 
+    public void onDecideNextActivity() {
+        if (getDataManager().getCurrentUserLoggedInMode()
+                != DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.getType()) {
+            getMvpView().openMainActivity();
+        }
+    }
+
+    @Override
+    public void onAttach(V mvpView) {
+        super.onAttach(mvpView);
+//        onDecideNextActivity();
+    }
+
 }
