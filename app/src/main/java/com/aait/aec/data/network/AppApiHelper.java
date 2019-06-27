@@ -70,6 +70,11 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
+    public Observable<Exam> createExam(Exam exam) {
+        return mApiCall.createExam(exam);
+    }
+
+    @Override
     public Single<OpenSourceResponse> getOpenSourceApiCall() {
         return null;
     }

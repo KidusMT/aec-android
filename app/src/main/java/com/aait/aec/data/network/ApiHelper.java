@@ -31,5 +31,7 @@ public interface ApiHelper {
 
     Observable<List<Exam>> getExams();
 
+    Observable<Exam> createExam(Exam exam);
+
     Single<OpenSourceResponse> getOpenSourceApiCall();
 }

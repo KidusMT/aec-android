@@ -192,6 +192,11 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Observable<Exam> createExam(Exam exam) {
+        return mApiHelper.createExam(exam);
+    }
+
+    @Override
     public Single<OpenSourceResponse> getOpenSourceApiCall() {
         return mApiHelper.getOpenSourceApiCall();
     }
