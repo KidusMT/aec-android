@@ -27,14 +27,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/activity_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <android.support.design.widget.AppBarLayout
+                android:id="@+id/app_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:elevation="5dp">
@@ -55,6 +55,7 @@
             </android.support.design.widget.AppBarLayout>
 
             <android.support.v4.widget.SwipeRefreshLayout
+                android:layout_below="@id/app_bar"
                 android:id="@+id/exam_swipe_to_refresh"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -96,7 +97,7 @@
                 </android.support.v4.widget.NestedScrollView>
             </android.support.v4.widget.SwipeRefreshLayout>
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_exam"

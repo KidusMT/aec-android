@@ -123,20 +123,20 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
         }
 
         if (mExam.getCreatedDate() != null) {
-            result_date.setText(mExam.getCreatedDate());
+            result_date.setText(String.valueOf(mExam.getCreatedDate()));
         }
 
         if (mExam.getExamWeight() != null) {
-            resultWeight.setText(mExam.getExamWeight());
+            resultWeight.setText(String.valueOf(mExam.getExamWeight()));
         }
 
         if (mExam.getExamType() != null) {
-            resultType.setText(mExam.getExamType());
+            resultType.setText(String.valueOf(mExam.getExamType()));
         }
 
         // todo find a way for adding the inst name later - or from db
         if (mExam.getUserId() != null) {
-            resultInstructor.setText(mExam.getUserId());
+            resultInstructor.setText(String.valueOf(mExam.getUserId()));
         }
 
         setUpRecyclerView();
