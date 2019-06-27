@@ -29,50 +29,50 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
 
     @Override
     public void onServerLoginClick(String email, String password) {
-        //validate email and password
-//        if (email == null || email.isEmpty()) {
-//            getMvpView().onError(R.string.empty_username);
+//        validate email and password
+        if (email == null || email.isEmpty()) {
+            getMvpView().onError(R.string.empty_username);
+            return;
+        }
+//        if (!CommonUtils.isEmailValid(email)) {
+//            getMvpView().onError(R.string.invalid_email);
 //            return;
 //        }
-////        if (!CommonUtils.isEmailValid(email)) {
-////            getMvpView().onError(R.string.invalid_email);
-////            return;
-////        }
-//        if (password == null || password.isEmpty()) {
-//            getMvpView().onError(R.string.empty_password);
-//            return;
-//        }
+        if (password == null || password.isEmpty()) {
+            getMvpView().onError(R.string.empty_password);
+            return;
+        }
         getMvpView().showLoading();
 
-//        getCompositeDisposable().add(getDataManager()
-//                .doServerLoginApiCall(new LoginRequest(email, password))
-//                .subscribeOn(getSchedulerProvider().io())
-//                .observeOn(getSchedulerProvider().ui())
-//                .subscribe(response -> {
-//                    getDataManager().updateUserInfo(
-//                            response.getId(),
-//                            response.getUserId(),
-//                            DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER,
-//                            String.format("%s %s",response.getUser().getFirstName(),  response.getUser().getLastName()),
-//                            response.getUser().getPhoneNo());
-//
-//
-//                    if (!isViewAttached()) {
-//                        return;
-//                    }
+        getCompositeDisposable().add(getDataManager()
+                .doServerLoginApiCall(new LoginRequest(email, password))
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(response -> {
+                    getDataManager().updateUserInfo(
+                            response.getId(),
+                            response.getUserId(),
+                            DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER,
+                            String.format("%s %s",response.getUser().getFirstName(),  response.getUser().getLastName()),
+                            response.getUser().getPhoneNo());
+
+
+                    if (!isViewAttached()) {
+                        return;
+                    }
 
                     getMvpView().hideLoading();
                     getMvpView().openMainActivity();
 
-//                }, throwable -> {
-//
-//                    if (!isViewAttached())
-//                        return;
-//
-//                    getMvpView().hideLoading();
-//                    getMvpView().onError(CommonUtils.getErrorMessage(throwable));
-//
-//                }));
+                }, throwable -> {
+
+                    if (!isViewAttached())
+                        return;
+
+                    getMvpView().hideLoading();
+                    getMvpView().onError(CommonUtils.getErrorMessage(throwable));
+
+                }));
     }
 
 }
