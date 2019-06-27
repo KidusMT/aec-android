@@ -61,7 +61,6 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                         return;
                     }
 
-                    getMvpView().hideLoading();
                     getMvpView().openMainActivity();
 
                 }, throwable -> {
