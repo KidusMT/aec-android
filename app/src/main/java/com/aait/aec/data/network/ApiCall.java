@@ -5,6 +5,7 @@ import com.aait.aec.data.network.model.Image.ImageUploadResponse;
 import com.aait.aec.data.network.model.LoginRequest;
 import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.RegistrationRequest;
+import com.aait.aec.data.network.model.exam.Exam;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -20,6 +21,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -41,6 +43,10 @@ public interface ApiCall {
     @POST(ApiEndPoint.REGISTRATION)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<RegistrationRequest> register(@Body RegistrationRequest request);
+
+    @GET(ApiEndPoint.EXAM)
+    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
+    Observable<List<Exam>> loadExams();
 
     @Multipart
     @POST(ApiEndPoint.UPLOAD)
