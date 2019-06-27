@@ -96,4 +96,12 @@ public class Exam {
         this.students = students;
     }
 
+    public Exam(String examName, String examType, Integer examWeight, Answers answers, String userId, List<Student> students) {
+        this.examName = examName;
+        this.examType = examType;
+        this.examWeight = examWeight;
+        this.answers = answers;
+        this.userId = userId;
+        this.students = students;
+    }
 }

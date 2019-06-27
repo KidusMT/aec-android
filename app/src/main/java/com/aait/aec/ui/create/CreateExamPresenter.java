@@ -22,6 +22,8 @@ import com.aait.aec.ui.base.BasePresenter;
 import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.rx.SchedulerProvider;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -45,7 +47,9 @@ public class CreateExamPresenter<V extends CreateExamMvpView> extends BasePresen
     @Override
     public void createExam(String examName, String examType, int examWeight, Answers answers) {
 
-        Exam exam = null;
+        // todo should be able to get the users database
+        Exam exam = new Exam(examName, examType, examWeight, answers, getDataManager().getCurrentUserId(), new ArrayList<>());
+
         getCompositeDisposable().add(getDataManager()
                 .createExam(exam).subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
