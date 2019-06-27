@@ -17,6 +17,7 @@ package com.aait.aec.ui.main;
 
 import com.aait.aec.data.DataManager;
 import com.aait.aec.ui.base.BasePresenter;
+import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
@@ -81,6 +82,25 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         if (profilePicUrl != null && !profilePicUrl.isEmpty()) {
             getMvpView().updateUserProfilePic(profilePicUrl);
         }
+    }
+
+    @Override
+    public void loadExams() {
+
+        getCompositeDisposable().add(getDataManager()
+                .getExams().subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(exams -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                }, throwable -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
+                    getMvpView().hideLoading();
+                    getMvpView().onError(CommonUtils.getErrorMessage(throwable));
+                }));
     }
 
     @Override

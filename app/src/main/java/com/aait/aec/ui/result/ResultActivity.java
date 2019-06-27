@@ -25,8 +25,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.aait.aec.R;
-import com.aait.aec.data.db.model.Exam;
 import com.aait.aec.data.db.model.Student;
+import com.aait.aec.data.network.model.exam.Exam;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
 
@@ -113,8 +113,8 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
     @Override
     protected void setUp() {
 
-        if (mExam.getTitle() != null)
-            mToolbar.setTitle(mExam.getTitle());
+        if (mExam.getExamName() != null)
+            mToolbar.setTitle(mExam.getExamName());
         setSupportActionBar(mToolbar);
 
         if (getSupportActionBar() != null) {
@@ -122,20 +122,21 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        if (mExam.getDate() != null) {
-            result_date.setText(mExam.getDate());
+        if (mExam.getCreatedDate() != null) {
+            result_date.setText(mExam.getCreatedDate());
         }
 
-        if (mExam.getWeight() != null) {
-            resultWeight.setText(mExam.getWeight());
+        if (mExam.getExamWeight() != null) {
+            resultWeight.setText(mExam.getExamWeight());
         }
 
-        if (mExam.getType() != null) {
-            resultType.setText(mExam.getType());
+        if (mExam.getExamType() != null) {
+            resultType.setText(mExam.getExamType());
         }
 
-        if (mExam.getInst() != null) {
-            resultInstructor.setText(mExam.getInst());
+        // todo find a way for adding the inst name later - or from db
+        if (mExam.getUserId() != null) {
+            resultInstructor.setText(mExam.getUserId());
         }
 
         setUpRecyclerView();

@@ -39,7 +39,7 @@ import android.widget.TextView;
 
 import com.aait.aec.BuildConfig;
 import com.aait.aec.R;
-import com.aait.aec.data.db.model.Exam;
+import com.aait.aec.data.network.model.exam.Exam;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.create.CreateExamActivity;
 import com.aait.aec.ui.custom.RoundedImageView;
@@ -350,29 +350,30 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     private void prepareExams() {
 
-        Exam a1 = new Exam(R.drawable.drawer_logo, "Object Oriented Programming", "Quiz: ", "April 12, 2019", "Mr. Fitsum A.", "5%");
-        Exam a2 = new Exam(R.drawable.drawer_logo, "Software Engineering", "Mid Exam 1: ", "April 12, 2019", "Mr. Natnael A.", "20%");
-        Exam a3 = new Exam(R.drawable.drawer_logo, "Operating System", "Mid Exam 1: ", "April 12, 2019", "Mr. Eyob", "20%");
-        Exam a4 = new Exam(R.drawable.drawer_logo, "Int. to Networking", "Quiz: ", "April 12, 2019", "Mr. Tigabu", "20%");
-        Exam a5 = new Exam(R.drawable.drawer_logo, "Web Programming", "Mid Exam: ", "April 12, 2019", "Mr. Eskindir", "20%");
-        Exam a6 = new Exam(R.drawable.drawer_logo, "Advan. Mobile Programming", "Final Exam: ", "April 12, 2019", "Mr. Yosef A.", "20%");
-        Exam a7 = new Exam(R.drawable.drawer_logo, "Software Project Management", "Mid Exam: ", "April 12, 2019", "Mr. Dagnachew", "25%");
-        Exam a8 = new Exam(R.drawable.drawer_logo, "Software Quality Assurance", "Final Exam: ", "April 12, 2019", "Mr. Dagnachew", "20%");
-        Exam a9 = new Exam(R.drawable.drawer_logo, "Distributed System", "Mid Exam: ", "April 12, 2019", "Mr. Dagnachew", "20%");
-        Exam a10 = new Exam(R.drawable.drawer_logo, "FPGA", "Mid Exam: ", "April 12, 2019", "Mr. Dagnachew", "15%");
-
-        exams.add(a1);
-        exams.add(a2);
-        exams.add(a3);
-        exams.add(a4);
-        exams.add(a5);
-        exams.add(a6);
-        exams.add(a7);
-        exams.add(a8);
-        exams.add(a9);
-        exams.add(a10);
-
-        mAdapter.addItems(exams);
+        // todo handle this later
+//        Exam a1 = new Exam(R.drawable.drawer_logo, "Object Oriented Programming", "Quiz: ", "April 12, 2019", "Mr. Fitsum A.", "5%");
+//        Exam a2 = new Exam(R.drawable.drawer_logo, "Software Engineering", "Mid Exam 1: ", "April 12, 2019", "Mr. Natnael A.", "20%");
+//        Exam a3 = new Exam(R.drawable.drawer_logo, "Operating System", "Mid Exam 1: ", "April 12, 2019", "Mr. Eyob", "20%");
+//        Exam a4 = new Exam(R.drawable.drawer_logo, "Int. to Networking", "Quiz: ", "April 12, 2019", "Mr. Tigabu", "20%");
+//        Exam a5 = new Exam(R.drawable.drawer_logo, "Web Programming", "Mid Exam: ", "April 12, 2019", "Mr. Eskindir", "20%");
+//        Exam a6 = new Exam(R.drawable.drawer_logo, "Advan. Mobile Programming", "Final Exam: ", "April 12, 2019", "Mr. Yosef A.", "20%");
+//        Exam a7 = new Exam(R.drawable.drawer_logo, "Software Project Management", "Mid Exam: ", "April 12, 2019", "Mr. Dagnachew", "25%");
+//        Exam a8 = new Exam(R.drawable.drawer_logo, "Software Quality Assurance", "Final Exam: ", "April 12, 2019", "Mr. Dagnachew", "20%");
+//        Exam a9 = new Exam(R.drawable.drawer_logo, "Distributed System", "Mid Exam: ", "April 12, 2019", "Mr. Dagnachew", "20%");
+//        Exam a10 = new Exam(R.drawable.drawer_logo, "FPGA", "Mid Exam: ", "April 12, 2019", "Mr. Dagnachew", "15%");
+//
+//        exams.add(a1);
+//        exams.add(a2);
+//        exams.add(a3);
+//        exams.add(a4);
+//        exams.add(a5);
+//        exams.add(a6);
+//        exams.add(a7);
+//        exams.add(a8);
+//        exams.add(a9);
+//        exams.add(a10);
+//
+//        mAdapter.addItems(exams);
     }
 
     @Override

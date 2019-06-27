@@ -25,7 +25,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aait.aec.R;
-import com.aait.aec.data.db.model.Exam;
+import com.aait.aec.data.network.model.exam.Exam;
 import com.aait.aec.ui.base.BaseViewHolder;
 import com.aait.aec.utils.CommonUtils;
 
@@ -99,8 +99,8 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
 
                         // name match condition. this might differ depending on your requirement
                         // here we are looking for name or phone number match
-                        if (row.getTitle() != null)
-                            if (row.getTitle().toLowerCase().contains(charString.toLowerCase())) {// || row.getType().toLowerCase().contains(charSequence)) {
+                        if (row.getExamName() != null)
+                            if (row.getExamName().toLowerCase().contains(charString.toLowerCase())) {// || row.getType().toLowerCase().contains(charSequence)) {
                                 filteredList.add(row);
                             }
                     }
@@ -157,14 +157,14 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
             album = filteredAlbumList.get(position);
             if (album != null) {
 
-                exDate.setText(String.valueOf(album.getDate()));
-                exInst.setText(String.valueOf(album.getInst()));
-                exTitle.setText(String.valueOf(album.getTitle()));
-                exWeight.setText(String.valueOf(album.getWeight()));
-                exType.setText(String.valueOf(album.getType()));
+                exDate.setText(String.valueOf(album.getCreatedDate()));
+                exInst.setText(String.valueOf(album.getUserId()));
+                exTitle.setText(String.valueOf(album.getExamName()));
+                exWeight.setText(String.valueOf(album.getExamWeight()));
+                exType.setText(String.valueOf(album.getExamType()));
 
                 itemView.setOnClickListener(view -> {
-                    CommonUtils.toast(album.getTitle());
+                    CommonUtils.toast(album.getExamName());
                     mCallback.onItemClicked(album);
                 });
             }

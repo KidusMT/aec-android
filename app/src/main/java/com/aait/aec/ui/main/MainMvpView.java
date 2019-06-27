@@ -1,6 +1,6 @@
 package com.aait.aec.ui.main;
 
-import com.aait.aec.data.db.model.Exam;
+import com.aait.aec.data.network.model.exam.Exam;
 import com.aait.aec.ui.base.MvpView;
 
 import java.util.List;
