@@ -99,8 +99,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
                     getMvpView().showExams(exams);
 //
-                    CommonUtils.toast(getDataManager().getCurrentUserId());
-//                    Log.e(TAG, String.format("userId:===> %d", getDataManager().getCurrentUserId()));
+//                    Log.e(TAG, String.format("userId:===> %s", getDataManager().getCurrentUserId()));
                 }, throwable -> {
                     if (!isViewAttached()) {
                         return;

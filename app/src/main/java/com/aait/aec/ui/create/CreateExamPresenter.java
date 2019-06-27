@@ -16,6 +16,7 @@
 package com.aait.aec.ui.create;
 
 import com.aait.aec.data.DataManager;
+import com.aait.aec.data.network.model.exam.Answers;
 import com.aait.aec.ui.base.BasePresenter;
 import com.aait.aec.utils.rx.SchedulerProvider;
 
@@ -39,4 +40,9 @@ public class CreateExamPresenter<V extends CreateExamMvpView> extends BasePresen
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 
+    @Override
+    public void createExam(String examName, String examType, int examWeight, Answers answers) {
+
+//        getCompositeDisposable().add(getDataManager())
+    }
 }

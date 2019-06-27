@@ -16,8 +16,12 @@
 package com.aait.aec.ui.create;
 
 
+import com.aait.aec.data.db.model.Student;
+import com.aait.aec.data.network.model.exam.Answers;
 import com.aait.aec.di.PerActivity;
 import com.aait.aec.ui.base.MvpPresenter;
+
+import java.util.List;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -25,5 +29,7 @@ import com.aait.aec.ui.base.MvpPresenter;
 
 @PerActivity
 public interface CreateExamMvpPresenter<V extends CreateExamMvpView> extends MvpPresenter<V> {
+
+    void createExam(String examName, String examType, int examWeight, Answers answers);
 
 }
