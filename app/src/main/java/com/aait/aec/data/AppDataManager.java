@@ -14,6 +14,7 @@ import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.LogoutResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
 import com.aait.aec.data.network.model.RegistrationRequest;
+import com.aait.aec.data.network.model.exam.Exam;
 import com.aait.aec.data.prefs.PreferencesHelper;
 import com.aait.aec.di.ApplicationContext;
 
@@ -183,6 +184,11 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<BlogResponse> getBlogApiCall() {
         return mApiHelper.getBlogApiCall();
+    }
+
+    @Override
+    public Observable<List<Exam>> getExams() {
+        return mApiHelper.getExams();
     }
 
     @Override

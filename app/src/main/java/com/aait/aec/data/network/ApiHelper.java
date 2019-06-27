@@ -7,6 +7,7 @@ import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.LogoutResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
 import com.aait.aec.data.network.model.RegistrationRequest;
+import com.aait.aec.data.network.model.exam.Exam;
 
 import java.util.List;
 
@@ -27,6 +28,8 @@ public interface ApiHelper {
     Single<LogoutResponse> doLogoutApiCall();
 
     Single<BlogResponse> getBlogApiCall();
+
+    Observable<List<Exam>> getExams();
 
     Single<OpenSourceResponse> getOpenSourceApiCall();
 }

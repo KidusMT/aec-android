@@ -7,6 +7,7 @@ import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.LogoutResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
 import com.aait.aec.data.network.model.RegistrationRequest;
+import com.aait.aec.data.network.model.exam.Exam;
 
 import java.util.List;
 
@@ -61,6 +62,11 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<BlogResponse> getBlogApiCall() {
         return null;
+    }
+
+    @Override
+    public Observable<List<Exam>> getExams() {
+        return mApiCall.loadExams();
     }
 
     @Override
