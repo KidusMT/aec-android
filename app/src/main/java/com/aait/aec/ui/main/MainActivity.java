@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -92,6 +93,9 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     @BindView(R.id.tv_no_exam)
     TextView tvNoExams;
 
+    @BindView(R.id.exam_swipe_to_refresh)
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
     List<Exam> exams = new ArrayList<>();
     private TextView mNameTextView;
     private TextView mEmailTextView;
@@ -115,6 +119,11 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
         mAdapter.setCallback(this);
 
         setUp();
+
+        mSwipeRefreshLayout.setOnRefreshListener(() -> {
+            mPresenter.loadExams();
+            mSwipeRefreshLayout.setRefreshing(false);
+        });
     }
 
     @OnClick(R.id.fab_exam)
@@ -276,7 +285,9 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
         mPresenter.onViewInitialized();
 
         setUpRecyclerView();
-        prepareExams();
+//        prepareExams();
+
+        mPresenter.loadExams();
     }
 
     private void setUpRecyclerView() {

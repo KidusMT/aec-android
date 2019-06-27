@@ -86,7 +86,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
     @Override
     public void loadExams() {
-
+        getMvpView().showLoading();
         getCompositeDisposable().add(getDataManager()
                 .getExams().subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
@@ -94,6 +94,8 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                     if (!isViewAttached()) {
                         return;
                     }
+
+                    getMvpView().showExams(exams);
                 }, throwable -> {
                     if (!isViewAttached()) {
                         return;
