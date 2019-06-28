@@ -205,7 +205,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
             } else {
                 if (tvNoExams != null && tvNoExams.getVisibility() == View.GONE) {
                     tvNoExams.setVisibility(View.VISIBLE);
-                    tvNoExams.setText(getString(R.string.no_exam_list_found));
+                    tvNoExams.setText("No exam list found");
                 }
                 if (mRecyclerView != null && mRecyclerView.getVisibility() == View.VISIBLE)
                     mRecyclerView.setVisibility(View.GONE);

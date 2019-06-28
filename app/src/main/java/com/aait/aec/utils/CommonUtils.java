@@ -122,7 +122,7 @@ public final class CommonUtils {
                 return MvpApp.getContext().getString(R.string.error_server_unreachable);
             } else {
 
-                return MvpApp.getContext().getString(R.string.error_something_wrong_happend);
+                return "Something wrong happened. Please try again later.";
 //                ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
 //                try {//should display the correct error message form the http protocol
 //                    if (responseBody != null) {
