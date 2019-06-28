@@ -11,9 +11,6 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-/**
- * Created by janisharali on 27/01/17.
- */
 
 public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
         implements LoginMvpPresenter<V> {
