@@ -158,7 +158,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mAdapter);
-
     }
 
     private void checkFilePermissions() {
@@ -178,6 +177,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
     @Override
     public void loadStudentsFromExcelFile() {
+        showLoading();//loading
         readExcelData(lastDirectory);
     }
 
@@ -187,7 +187,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
      * @return
      */
     private void readExcelData(String filePath) {
-        showLoading();//loading
         Log.d(TAG, "readExcelData: Reading Excel File.");
 
         //decarle input file
@@ -201,7 +200,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
             FormulaEvaluator formulaEvaluator = workbook.getCreationHelper().createFormulaEvaluator();
             StringBuilder sb = new StringBuilder();
 
-            //outter loop, loops through rows
+            //outer loop, loops through rows
             for (int r = 1; r < rowsCount; r++) {
                 Row row = sheet.getRow(r);
                 int cellsCount = row.getPhysicalNumberOfCells();
@@ -298,8 +297,8 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
                 String cellInfo = "(x,y): (" + x + "," + y + ")";
                 Log.d(TAG, "ParseStringBuilder: Data from row: " + cellInfo);
 
-                //add the the uploadData ArrayList
-//                uploadData.add(new Student(i, x, y, 1.0)); todo get back here later with a new model
+                //add the the uploadData ArrayList String name, String score, String stdId
+                uploadData.add(new Student(x, String.valueOf(0), y));
 
                 mAdapter.addItems(uploadData);
 
@@ -311,8 +310,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         }
 
 //        printDataToLog();
-
-        hideLoading();
     }
 
     private void printDataToLog() {

@@ -15,8 +15,6 @@
 
 package com.aait.aec.ui.main;
 
-import android.util.Log;
-
 import com.aait.aec.data.DataManager;
 import com.aait.aec.ui.base.BasePresenter;
 import com.aait.aec.utils.CommonUtils;
@@ -118,6 +116,6 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     @Override
     public void onDrawerStudentsClick() {
         getMvpView().closeNavigationDrawer();
-        getMvpView().openNotificationActivity();
+        getMvpView().openStudentsActivity();
     }
 }

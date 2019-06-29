@@ -344,8 +344,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     }
 
     @Override
-    public void openNotificationActivity() {
-        // todo to be replaced later with Notification Activity
+    public void openStudentsActivity() {
         startActivity(StudentActivity.getStartIntent(this));
     }
 

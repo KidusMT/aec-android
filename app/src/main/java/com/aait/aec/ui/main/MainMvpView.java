@@ -21,7 +21,7 @@ public interface MainMvpView extends MvpView {
 
     void updateAppVersion();
 
-    void openNotificationActivity();
+    void openStudentsActivity();
 
     void closeNavigationDrawer();
 
