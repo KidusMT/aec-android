@@ -22,9 +22,9 @@
             android:icon="@drawable/ic_home"
             android:title="@string/nav_home" />
         <item
-            android:id="@+id/nav_notification"
+            android:id="@+id/nav_students"
             android:icon="@drawable/ic_notifications"
-            android:title="@string/nav_notification" />
+            android:title="@string/nav_students" />
         <item
             android:id="@+id/nav_category"
             android:icon="@drawable/ic_category"
