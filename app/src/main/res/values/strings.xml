@@ -92,7 +92,7 @@
     <string name="settings">Settings</string>
     <string name="nav_home">Home</string>
     <string name="nav_students">Students</string>
-    <string name="nav_category">Category</string>
+    <string name="nav_courses">Courses</string>
     <string name="no_category_items" >No category item found.</string>
     <string name="import_str">IMPORT</string>
     <string name="search_hint">Search</string>

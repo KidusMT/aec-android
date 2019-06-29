@@ -319,10 +319,10 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
                         case R.id.nav_home:
                             mPresenter.onDrawerOptionAboutClick();
                             return true;
-                        case R.id.nav_notification:
+                        case R.id.nav_students:
                             mPresenter.onDrawerNotificationClick();
                             return true;
-                        case R.id.nav_category:
+                        case R.id.nav_course:
                             mPresenter.onDrawerMyFeedClick();
                             return true;
                         case R.id.nav_settings:

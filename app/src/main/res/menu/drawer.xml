@@ -26,9 +26,9 @@
             android:icon="@drawable/ic_notifications"
             android:title="@string/nav_students" />
         <item
-            android:id="@+id/nav_category"
+            android:id="@+id/nav_course"
             android:icon="@drawable/ic_category"
-            android:title="@string/nav_category" />
+            android:title="@string/nav_courses" />
 
     </group>
     <group
