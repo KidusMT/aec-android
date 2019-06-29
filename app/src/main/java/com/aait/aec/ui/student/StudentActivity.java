@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://mindorks.com/license/apache-v2
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License
- */
-
 package com.aait.aec.ui.student;
 
 import android.Manifest;
@@ -60,13 +45,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-/**
- * Created by janisharali on 27/01/17.
- */
-
 public class StudentActivity extends BaseActivity implements StudentMvpView {
 
-    public static final String TAG = "ResultActivity";
+    public static final String TAG = "StudentActivity";
 
     @Inject
     StudentMvpPresenter<StudentMvpView> mPresenter;
@@ -118,6 +99,13 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
         setUp();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        showStudents(uploadData);
     }
 
     @OnClick(R.id.btn_import)
@@ -191,17 +179,21 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
     @Override
     public void showStudents(List<Student> students) {
+        Log.e(TAG, "===> topLevel showStudents");
         if (students != null) {
+            Log.e(TAG, "===> students != null");
             if (students.size() > 0) {
+                Log.e(TAG, "===> students.size() > 0");
                 if (tvNoStudents != null && tvNoStudents.getVisibility() == View.VISIBLE)
                     tvNoStudents.setVisibility(View.GONE);
                 if (mRecyclerView != null && mRecyclerView.getVisibility() == View.GONE)
                     mRecyclerView.setVisibility(View.VISIBLE);
                 mAdapter.addItems(students);
             } else {
+                Log.e(TAG, "===> else");
                 if (tvNoStudents != null && tvNoStudents.getVisibility() == View.GONE) {
                     tvNoStudents.setVisibility(View.VISIBLE);
-                    tvNoStudents.setText("No exam list found");
+                    tvNoStudents.setText("No student list found");
                 }
                 if (mRecyclerView != null && mRecyclerView.getVisibility() == View.VISIBLE)
                     mRecyclerView.setVisibility(View.GONE);
@@ -260,6 +252,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         }
         hideLoading();//hiding the loading dialog
     }
+//    10.6.250.89
 
     /**
      * Returns the cell as a string from the excel file
@@ -329,7 +322,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
                 //add the the uploadData ArrayList String name, String score, String stdId
                 uploadData.add(new Student(x, String.valueOf(0), y));
 
-                showStudents(uploadData);
 //                mAdapter.addItems(uploadData);
 
             } catch (NumberFormatException e) {
