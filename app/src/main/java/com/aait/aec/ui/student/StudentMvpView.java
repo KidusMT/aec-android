@@ -15,7 +15,10 @@
 
 package com.aait.aec.ui.student;
 
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.MvpView;
+
+import java.util.List;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -24,4 +27,6 @@ import com.aait.aec.ui.base.MvpView;
 public interface StudentMvpView extends MvpView {
 
     void loadStudentsFromExcelFile();
+
+    void showStudents(List<Student> students);
 }

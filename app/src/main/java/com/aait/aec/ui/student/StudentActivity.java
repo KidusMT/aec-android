@@ -27,7 +27,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Student;
@@ -81,10 +83,16 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     int count = 0;
     List<Student> uploadData;
     ListView lvInternalStorage;
+
     @BindView(R.id.import_toolbar)
     Toolbar mToolbar;
+
     @BindView(R.id.import_recycler)
     RecyclerView mRecyclerView;
+
+    @BindView(R.id.tv_no_students)
+    TextView tvNoStudents;
+
     // Declare variables
     private String[] FilePathStrings;
     private String[] FileNameStrings;
@@ -179,6 +187,27 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     public void loadStudentsFromExcelFile() {
         showLoading();//loading
         readExcelData(lastDirectory);
+    }
+
+    @Override
+    public void showStudents(List<Student> students) {
+        if (students != null) {
+            if (students.size() > 0) {
+                if (tvNoStudents != null && tvNoStudents.getVisibility() == View.VISIBLE)
+                    tvNoStudents.setVisibility(View.GONE);
+                if (mRecyclerView != null && mRecyclerView.getVisibility() == View.GONE)
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                mAdapter.addItems(students);
+            } else {
+                if (tvNoStudents != null && tvNoStudents.getVisibility() == View.GONE) {
+                    tvNoStudents.setVisibility(View.VISIBLE);
+                    tvNoStudents.setText("No exam list found");
+                }
+                if (mRecyclerView != null && mRecyclerView.getVisibility() == View.VISIBLE)
+                    mRecyclerView.setVisibility(View.GONE);
+            }
+        }
+        hideLoading();
     }
 
     /**
@@ -300,7 +329,8 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
                 //add the the uploadData ArrayList String name, String score, String stdId
                 uploadData.add(new Student(x, String.valueOf(0), y));
 
-                mAdapter.addItems(uploadData);
+                showStudents(uploadData);
+//                mAdapter.addItems(uploadData);
 
             } catch (NumberFormatException e) {
 
