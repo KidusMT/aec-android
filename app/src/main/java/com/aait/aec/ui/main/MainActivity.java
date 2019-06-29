@@ -320,12 +320,13 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
                             mPresenter.onDrawerOptionAboutClick();
                             return true;
                         case R.id.nav_students:
-                            mPresenter.onDrawerNotificationClick();
+                            mPresenter.onDrawerStudentsClick();
                             return true;
                         case R.id.nav_course:
-                            mPresenter.onDrawerMyFeedClick();
+                            mPresenter.onDrawerCourseClick();
                             return true;
                         case R.id.nav_settings:
+                            CommonUtils.toast(getString(R.string.settings));
                             return true;
                         case R.id.nav_item_logout:
                             mPresenter.onDrawerOptionLogoutClick();
