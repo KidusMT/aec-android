@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -139,14 +140,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
         loadStudentsFromExcelFile();
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-            finish();
-
-        return super.onOptionsItemSelected(item);
     }
 
     private void setUpRecyclerView() {
@@ -339,5 +332,23 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 //                    String.valueOf(uploadData.get(i).getName()) + "," +
 //                    String.valueOf(uploadData.get(i).getId()) + ")");
 //        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_import, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            finish();
+        else if (item.getItemId() == R.id.action_import) {
+//            chooseImage();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
