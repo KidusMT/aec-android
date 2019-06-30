@@ -52,7 +52,7 @@ public class RegisterPresenter<V extends RegisterMvpView> extends BasePresenter<
 
 
         getCompositeDisposable().add(getDataManager()
-                .doRegistrationApiCall(new RegistrationRequest(firstName, lastName, phoneNumber, password, sex, username))
+                .doRegistrationApiCall(new RegistrationRequest(firstName, lastName, phoneNumber, password, username))
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(registrationRequest -> {

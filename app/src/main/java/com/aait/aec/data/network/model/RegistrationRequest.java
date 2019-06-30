@@ -42,7 +42,7 @@ public class RegistrationRequest {
     @Expose
     private String id;
 
-    public RegistrationRequest(String firstName, String lastName, String phoneNo, String password, String sex, String username) {
+    public RegistrationRequest(String firstName, String lastName, String phoneNo, String password, String username) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNo = phoneNo;
