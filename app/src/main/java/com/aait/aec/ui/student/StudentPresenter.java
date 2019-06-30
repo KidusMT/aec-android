@@ -44,6 +44,12 @@ public class StudentPresenter<V extends StudentMvpView> extends BasePresenter<V>
     }
 
     @Override
+    public void onAttach(V mvpView) {
+        super.onAttach(mvpView);
+        loadStudentsFromDb();
+    }
+
+    @Override
     public void loadStudentsFromDb() {
         getMvpView().showLoading();
         getMvpView().showStudents(getDataManager().getStudents().blockingFirst());

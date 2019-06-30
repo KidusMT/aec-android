@@ -74,13 +74,11 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
     @BindView(R.id.tv_no_students)
     TextView tvNoStudents;
-
+    FileDialog fileDialog;
     // Declare variables
     private String[] FilePathStrings;
     private String[] FileNameStrings;
     private File[] listFile;
-
-    FileDialog fileDialog;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, StudentActivity.class);
@@ -101,13 +99,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
         setUp();
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        showStudents(importedStudentList);
     }
 
     @OnClick(R.id.btn_import)
@@ -166,26 +157,26 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     public void loadStudentsFromExcelFile(String filePath) {
         showLoading();//loading
         readExcelData(filePath);
+        showStudents(importedStudentList);
     }
 
     @Override
     public void showStudents(List<Student> students) {
-        if (students != null) {
-            if (students.size() > 0) {
-                if (tvNoStudents != null && tvNoStudents.getVisibility() == View.VISIBLE)
-                    tvNoStudents.setVisibility(View.GONE);
-                if (mRecyclerView != null && mRecyclerView.getVisibility() == View.GONE)
-                    mRecyclerView.setVisibility(View.VISIBLE);
-                mAdapter.addItems(students);
-            } else {
-                if (tvNoStudents != null && tvNoStudents.getVisibility() == View.GONE) {
-                    tvNoStudents.setVisibility(View.VISIBLE);
-                    tvNoStudents.setText("No student list found");
-                }
-                if (mRecyclerView != null && mRecyclerView.getVisibility() == View.VISIBLE)
-                    mRecyclerView.setVisibility(View.GONE);
+        if (students.size() > 0) {
+            if (tvNoStudents != null && tvNoStudents.getVisibility() == View.VISIBLE)
+                tvNoStudents.setVisibility(View.GONE);
+            if (mRecyclerView != null && mRecyclerView.getVisibility() == View.GONE)
+                mRecyclerView.setVisibility(View.VISIBLE);
+            mAdapter.addItems(students);
+        } else {
+            if (tvNoStudents != null && tvNoStudents.getVisibility() == View.GONE) {
+                tvNoStudents.setVisibility(View.VISIBLE);
+                tvNoStudents.setText("No student list found");
             }
+            if (mRecyclerView != null && mRecyclerView.getVisibility() == View.VISIBLE)
+                mRecyclerView.setVisibility(View.GONE);
         }
+
         hideLoading();
     }
 
@@ -209,7 +200,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
             StringBuilder sb = new StringBuilder();
 
             //outer loop, loops through rows
-            for (int r = 1; r < rowsCount; r++) {
+            for (int r = 0; r < rowsCount; r++) {
                 Row row = sheet.getRow(r);
                 int cellsCount = row.getPhysicalNumberOfCells();
                 //inner loop, loops through columns
@@ -237,7 +228,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         } catch (IOException e) {
             Log.e(TAG, "readExcelData: Error reading inputstream. " + e.getMessage());
         }
-        hideLoading();//hiding the loading dialog
     }
 
     /**
@@ -315,6 +305,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
                 Log.e(TAG, "parseStringBuilder: NumberFormatException: " + e.getMessage());
 
             }
+
         }
 
 //        printDataToLog();
