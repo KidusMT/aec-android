@@ -26,7 +26,7 @@ import com.aait.aec.ui.base.MvpPresenter;
 @PerActivity
 public interface RegisterMvpPresenter<V extends RegisterMvpView> extends MvpPresenter<V> {
 
-    void onRegistrationClicked(String firstName, String lastName, String username, String sex,
+    void onRegistrationClicked(String firstName, String lastName, String username,
                                String password, String confirmPassword, String phoneNumber);
 
 

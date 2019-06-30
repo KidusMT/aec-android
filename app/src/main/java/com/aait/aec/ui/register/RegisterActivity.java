@@ -36,8 +36,8 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
     @BindView(R.id.register_et_username)
     EditText etUsername;
 
-    @BindView(R.id.register_et_sex)
-    EditText etSex;
+//    @BindView(R.id.register_et_sex)
+//    EditText etSex;
 
     @BindView(R.id.register_et_password)
     EditText etPassword;
@@ -71,7 +71,7 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
     void onRegisterClicked() {
         startActivity(LoginActivity.getStartIntent(this));
         mPresenter.onRegistrationClicked(etFirstName.getText().toString(), etLastName.getText().toString(),
-                etUsername.getText().toString(), etSex.getText().toString(), etPassword.getText().toString(),
+                etUsername.getText().toString(), etPassword.getText().toString(),
                 etPasswordConfirm.getText().toString(), etPhone.getText().toString());
     }
 
