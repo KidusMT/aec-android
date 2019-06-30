@@ -16,12 +16,15 @@
 package com.aait.aec.ui.student;
 
 import com.aait.aec.data.DataManager;
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BasePresenter;
+import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.rx.SchedulerProvider;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -41,18 +44,17 @@ public class StudentPresenter<V extends StudentMvpView> extends BasePresenter<V>
     }
 
     @Override
-    public void onAttach(V mvpView) {
-        super.onAttach(mvpView);
-
-        // shows the loading till the lists are prepared
-//        getMvpView().showLoading();
-        // display students from excel sheet
-//        getMvpView().loadStudentsFromExcelFile();
-    }
-
-    @Override
     public void loadStudentsFromDb() {
         getMvpView().showLoading();
         getMvpView().showStudents(getDataManager().getStudents().blockingFirst());
+    }
+
+    @Override
+    public void onSaveClicked(List<Student> list) {
+        getMvpView().showLoading();
+        if (list.size() > 0)
+            getDataManager().insertStudents(list);
+        else
+            CommonUtils.toast("Empty excel file, Please add some entries.");
     }
 }

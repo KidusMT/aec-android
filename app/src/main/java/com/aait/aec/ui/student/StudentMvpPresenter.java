@@ -16,8 +16,11 @@
 package com.aait.aec.ui.student;
 
 
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.di.PerActivity;
 import com.aait.aec.ui.base.MvpPresenter;
+
+import java.util.List;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -27,4 +30,5 @@ import com.aait.aec.ui.base.MvpPresenter;
 public interface StudentMvpPresenter<V extends StudentMvpView> extends MvpPresenter<V> {
 
     void loadStudentsFromDb();
+    void onSaveClicked(List<Student> list);
 }

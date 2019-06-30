@@ -1,16 +1,11 @@
 package com.aait.aec.ui.student;
 
 import android.Manifest;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,7 +20,6 @@ import android.widget.TextView;
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseActivity;
-import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.FileDialog;
 
@@ -69,7 +63,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     File file;
     ArrayList<String> pathHistory;
     int count = 0;
-    List<Student> uploadData;
+    List<Student> importedStudentList;
     ListView lvInternalStorage;
 
     @BindView(R.id.import_toolbar)
@@ -113,12 +107,13 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     protected void onStart() {
         super.onStart();
 
-        showStudents(uploadData);
+        showStudents(importedStudentList);
     }
 
     @OnClick(R.id.btn_import)
-    void onImportClicked() {
-        CommonUtils.toast("Import clicked");
+    void onSaveClicked() {
+        mPresenter.onSaveClicked(importedStudentList);
+        hideLoading();
     }
 
     @Override
@@ -142,7 +137,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         //need to check the permissions
         checkFilePermissions();
 
-        uploadData = new ArrayList<>();
+        importedStudentList = new ArrayList<>();
 
     }
 
@@ -168,9 +163,9 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     }
 
     @Override
-    public void loadStudentsFromExcelFile(String lastDirectory) {
+    public void loadStudentsFromExcelFile(String filePath) {
         showLoading();//loading
-        readExcelData(lastDirectory);
+        readExcelData(filePath);
     }
 
     @Override
@@ -244,7 +239,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         }
         hideLoading();//hiding the loading dialog
     }
-//    10.6.250.89
 
     /**
      * Returns the cell as a string from the excel file
@@ -311,10 +305,10 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
                 String cellInfo = "(x,y): (" + x + "," + y + ")";
                 Log.d(TAG, "ParseStringBuilder: Data from row: " + cellInfo);
 
-                //add the the uploadData ArrayList String name, String score, String stdId
-                uploadData.add(new Student(x, String.valueOf(0), y));
+                //add the the importedStudentList ArrayList String name, String score, String stdId
+                importedStudentList.add(new Student(x, String.valueOf(0), y));
 
-//                mAdapter.addItems(uploadData);
+//                mAdapter.addItems(importedStudentList);
 
             } catch (NumberFormatException e) {
 
@@ -329,12 +323,12 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     private void printDataToLog() {
         Log.d(TAG, "printDataToLog: Printing data to log...");
 
-//        for (int i = 0; i < uploadData.size(); i++) {
-//            double x = uploadData.get(i).getX();
-//            double y = uploadData.get(i).getY();
+//        for (int i = 0; i < importedStudentList.size(); i++) {
+//            double x = importedStudentList.get(i).getX();
+//            double y = importedStudentList.get(i).getY();
 //            Log.d(TAG, "printDataToLog: (x,y): (" +
-//                    String.valueOf(uploadData.get(i).getName()) + "," +
-//                    String.valueOf(uploadData.get(i).getId()) + ")");
+//                    String.valueOf(importedStudentList.get(i).getName()) + "," +
+//                    String.valueOf(importedStudentList.get(i).getId()) + ")");
 //        }
     }
 
