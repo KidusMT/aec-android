@@ -2,7 +2,6 @@ package com.aait.aec.utils;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -10,22 +9,17 @@ import android.util.Log;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FileDialog {
     private static final String PARENT_DIR = "..";
     private final String TAG = getClass().getName();
+    private final Activity activity;
     private String[] fileList;
     private File currentPath;
-    public interface FileSelectedListener {
-        void fileSelected(File file);
-    }
-    public interface DirectorySelectedListener {
-        void directorySelected(File directory);
-    }
     private ListenerList<FileSelectedListener> fileListenerList = new ListenerList<>();
     private ListenerList<DirectorySelectedListener> dirListenerList = new ListenerList<>();
-    private final Activity activity;
     private boolean selectDirectoryOption;
     private String fileEndsWith;
 
@@ -73,7 +67,6 @@ public class FileDialog {
         dialog = builder.show();
         return dialog;
     }
-
 
     public void addFileListener(FileSelectedListener listener) {
         fileListenerList.add(listener);
@@ -125,9 +118,9 @@ public class FileDialog {
                 }
             };
             String[] fileList1 = path.list(filter);
-            for (String file : fileList1) {
-                r.add(file);
-            }
+            if (fileList1 != null)
+                Collections.addAll(r, fileList1);
+            // todo find a way for telling the user its not possible to navigate to SD card
         }
         fileList = (String[]) r.toArray(new String[]{});
     }
@@ -139,5 +132,13 @@ public class FileDialog {
 
     private void setFileEndsWith(String fileEndsWith) {
         this.fileEndsWith = fileEndsWith != null ? fileEndsWith.toLowerCase() : fileEndsWith;
+    }
+
+    public interface FileSelectedListener {
+        void fileSelected(File file);
+    }
+
+    public interface DirectorySelectedListener {
+        void directorySelected(File directory);
     }
 }

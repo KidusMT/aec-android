@@ -26,7 +26,7 @@ import java.util.List;
 
 public interface StudentMvpView extends MvpView {
 
-    void loadStudentsFromExcelFile();
+    void loadStudentsFromExcelFile(String lastDirectory);
 
     void showStudents(List<Student> students);
 

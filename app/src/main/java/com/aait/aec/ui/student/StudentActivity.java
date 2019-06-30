@@ -27,6 +27,7 @@ import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.utils.CommonUtils;
+import com.aait.aec.utils.FileDialog;
 
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
@@ -67,7 +68,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
     File file;
     ArrayList<String> pathHistory;
-    String lastDirectory;
     int count = 0;
     List<Student> uploadData;
     ListView lvInternalStorage;
@@ -85,6 +85,8 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     private String[] FilePathStrings;
     private String[] FileNameStrings;
     private File[] listFile;
+
+    FileDialog fileDialog;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, StudentActivity.class);
@@ -140,11 +142,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         //need to check the permissions
         checkFilePermissions();
 
-        lastDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/student.xlsx";
-
         uploadData = new ArrayList<>();
-
-        loadStudentsFromExcelFile();
 
     }
 
@@ -170,7 +168,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     }
 
     @Override
-    public void loadStudentsFromExcelFile() {
+    public void loadStudentsFromExcelFile(String lastDirectory) {
         showLoading();//loading
         readExcelData(lastDirectory);
     }
@@ -352,33 +350,28 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         if (item.getItemId() == android.R.id.home)
             finish();
         else if (item.getItemId() == R.id.action_import) {
-            chooseImage();
+            selectFile();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private void chooseImage() {
-        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
-        AlertDialog.Builder builder = new AlertDialog.Builder(StudentActivity.this);
-        builder.setTitle("Import Photo");
-        builder.setItems(options, (dialog, item) -> {
-            if (options[item].equals("Take Photo"))
-            {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                File f = new File(Environment.getExternalStorageDirectory(), "temp.jpg");
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                startActivityForResult(intent, 1);
-            }
-            else if (options[item].equals("Choose from Gallery"))
-            {
-                Intent intent = new   Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 2);
-            }
-            else if (options[item].equals("Cancel")) {
-                dialog.dismiss();
+    private void selectFile() {
+        File mPath = new File(Environment.getExternalStorageDirectory() + "//DIR//");
+        fileDialog = new FileDialog(this, mPath, ".xlsx");
+        fileDialog.addFileListener(new FileDialog.FileSelectedListener() {
+            public void fileSelected(File file) {
+//                CommonUtils.toast(String.format( "selected file %s" , file.getAbsolutePath()));
+                Log.d(getClass().getName(), "selected file " + file.toString());
+                loadStudentsFromExcelFile(file.getAbsolutePath());
             }
         });
-        builder.show();
+        //fileDialog.addDirectoryListener(new FileDialog.DirectorySelectedListener() {
+        //  public void directorySelected(File directory) {
+        //      Log.d(getClass().getName(), "selected dir " + directory.toString());
+        //  }
+        //});
+        //fileDialog.setSelectDirectoryOption(false);
+        fileDialog.showDialog();
     }
 }
