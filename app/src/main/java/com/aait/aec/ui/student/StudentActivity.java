@@ -2,10 +2,14 @@ package com.aait.aec.ui.student;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +24,7 @@ import android.widget.TextView;
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseActivity;
+import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.utils.CommonUtils;
 
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
@@ -346,9 +351,33 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         if (item.getItemId() == android.R.id.home)
             finish();
         else if (item.getItemId() == R.id.action_import) {
-//            chooseImage();
+            chooseImage();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void chooseImage() {
+        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(StudentActivity.this);
+        builder.setTitle("Import Photo");
+        builder.setItems(options, (dialog, item) -> {
+            if (options[item].equals("Take Photo"))
+            {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                File f = new File(Environment.getExternalStorageDirectory(), "temp.jpg");
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                startActivityForResult(intent, 1);
+            }
+            else if (options[item].equals("Choose from Gallery"))
+            {
+                Intent intent = new   Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 2);
+            }
+            else if (options[item].equals("Cancel")) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
     }
 }
