@@ -28,7 +28,7 @@ public class RegisterPresenter<V extends RegisterMvpView> extends BasePresenter<
     }
 
     @Override
-    public void onRegistrationClicked(String firstName, String lastName, String username, String sex, String password, String confirmPassword, String phoneNumber) {
+    public void onRegistrationClicked(String firstName, String lastName, String username, String password, String confirmPassword, String phoneNumber) {
         if (firstName == null || firstName.isEmpty()) {
             getMvpView().onError(R.string.empty_first_name);
             return;
