@@ -100,6 +100,11 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Observable<List<Student>> getStudents() {
+        return mDbHelper.getStudents();
+    }
+
+    @Override
     public Single<LogoutResponse> doLogoutApiCall() {
         return mApiHelper.doLogoutApiCall();
     }

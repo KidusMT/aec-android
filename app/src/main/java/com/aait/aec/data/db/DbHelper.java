@@ -35,4 +35,6 @@ public interface DbHelper {
 
     Observable<List<User>> getAllUsers();
 
+    Observable<List<Student>> getStudents();
+
 }

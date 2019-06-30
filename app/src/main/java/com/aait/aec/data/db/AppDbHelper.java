@@ -55,6 +55,11 @@ public class AppDbHelper implements DbHelper {
     }
 
     @Override
+    public Observable<List<Student>> getStudents() {
+        return Observable.fromCallable(()-> mDaoSession.getStudentDao().loadAll());
+    }
+
+    @Override
     public Observable<String> insertStudents(List<Student> students) {
         mDaoSession.getStudentDao().insertOrReplaceInTx(students);
         return Observable.fromCallable(() -> "successful");

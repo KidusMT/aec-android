@@ -21,6 +21,7 @@ import com.aait.aec.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -47,5 +48,11 @@ public class StudentPresenter<V extends StudentMvpView> extends BasePresenter<V>
 //        getMvpView().showLoading();
         // display students from excel sheet
 //        getMvpView().loadStudentsFromExcelFile();
+    }
+
+    @Override
+    public void loadStudentsFromDb() {
+        getMvpView().showLoading();
+        getMvpView().showStudents(getDataManager().getStudents().blockingFirst());
     }
 }

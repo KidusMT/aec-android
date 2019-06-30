@@ -80,8 +80,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
     private File[] listFile;
 
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, StudentActivity.class);
-        return intent;
+        return new Intent(context, StudentActivity.class);
     }
 
     @Override
