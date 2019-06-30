@@ -179,18 +179,14 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
 
     @Override
     public void showStudents(List<Student> students) {
-        Log.e(TAG, "===> topLevel showStudents");
         if (students != null) {
-            Log.e(TAG, "===> students != null");
             if (students.size() > 0) {
-                Log.e(TAG, "===> students.size() > 0");
                 if (tvNoStudents != null && tvNoStudents.getVisibility() == View.VISIBLE)
                     tvNoStudents.setVisibility(View.GONE);
                 if (mRecyclerView != null && mRecyclerView.getVisibility() == View.GONE)
                     mRecyclerView.setVisibility(View.VISIBLE);
                 mAdapter.addItems(students);
             } else {
-                Log.e(TAG, "===> else");
                 if (tvNoStudents != null && tvNoStudents.getVisibility() == View.GONE) {
                     tvNoStudents.setVisibility(View.VISIBLE);
                     tvNoStudents.setText("No student list found");

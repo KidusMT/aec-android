@@ -57,7 +57,7 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:background="@drawable/bg_btn_curved_accent_color"
-            android:text="@string/import_str"
+            android:text="@string/student_save"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
