@@ -41,7 +41,7 @@
                     android:textSize="20sp" />
 
                 <ImageView
-                    android:id="@+id/std_edit"
+                    android:id="@+id/btn_delete_std"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:layout_gravity="center"

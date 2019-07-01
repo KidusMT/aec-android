@@ -15,6 +15,8 @@
 
 package com.aait.aec;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
@@ -43,6 +45,7 @@ public class MvpApp extends Application {
 
     private ApplicationComponent mApplicationComponent;
 
+    @SuppressLint("StaticFieldLeak")
     public static Context context;
 
     @Override
@@ -55,7 +58,6 @@ public class MvpApp extends Application {
         mApplicationComponent.inject(this);
 
         AppLogger.init();
-
 
         CalligraphyConfig.initDefault(mCalligraphyConfig);
 
@@ -75,4 +77,5 @@ public class MvpApp extends Application {
     public static Context getContext(){
         return context;
     }
+
 }

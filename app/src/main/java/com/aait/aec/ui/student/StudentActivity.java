@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseActivity;
+import com.aait.aec.ui.studentEdit.EditStudentDialog;
 import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.FileDialog;
 
@@ -308,20 +309,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
             }
 
         }
-
-//        printDataToLog();
-    }
-
-    private void printDataToLog() {
-        Log.d(TAG, "printDataToLog: Printing data to log...");
-
-//        for (int i = 0; i < importedStudentList.size(); i++) {
-//            double x = importedStudentList.get(i).getX();
-//            double y = importedStudentList.get(i).getY();
-//            Log.d(TAG, "printDataToLog: (x,y): (" +
-//                    String.valueOf(importedStudentList.get(i).getName()) + "," +
-//                    String.valueOf(importedStudentList.get(i).getId()) + ")");
-//        }
     }
 
     @Override
@@ -363,6 +350,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
 
     @Override
     public void onItemClicked(Student student) {
-        CommonUtils.toast(student.getName());
+        EditStudentDialog.newInstance(student).show(getSupportFragmentManager(), "");
     }
 }

@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aait.aec.R;
@@ -32,6 +33,9 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
 
     @BindView(R.id.dialog_std_id)
     TextView mStdId;
+
+    @BindView(R.id.btn_delete_std)
+    ImageView btnDelete;
 
     private Student student;
 
