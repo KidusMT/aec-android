@@ -36,6 +36,8 @@ public final class AppConstants {
 
     public static final String TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss";
 
+    public static final String STUDENT_KEY = "STUDENT_KEY";
+
     private AppConstants() {
         // This utility class is not publicly instantiable
     }

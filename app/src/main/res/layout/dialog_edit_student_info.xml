@@ -20,7 +20,7 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/dialog_measurement_title"
+                android:id="@+id/dialog_std_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -51,7 +51,7 @@
                         android:background="@drawable/rounded_grey_rectangle">
 
                         <EditText
-                            android:id="@+id/dialog_measurement_id"
+                            android:id="@+id/dialog_std_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/vertical_margin_12"
@@ -70,7 +70,7 @@
                         android:background="@drawable/rounded_grey_rectangle">
 
                         <EditText
-                            android:id="@+id/dialog_measurement_name"
+                            android:id="@+id/dialog_std_id"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/vertical_margin_12"

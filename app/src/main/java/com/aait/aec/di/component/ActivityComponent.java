@@ -27,6 +27,7 @@ import com.aait.aec.ui.register.RegisterActivity;
 import com.aait.aec.ui.result.ResultActivity;
 import com.aait.aec.ui.splash.SplashActivity;
 import com.aait.aec.ui.student.StudentActivity;
+import com.aait.aec.ui.studentEdit.EditStudentDialog;
 import com.aait.aec.ui.subject.SubjectActivity;
 
 import dagger.Component;
@@ -60,5 +61,7 @@ public interface ActivityComponent {
     void inject(ResultActivity activity);
 
     void inject(FeedActivity activity);
+
+    void inject(EditStudentDialog dialog);
 
 }

@@ -5,8 +5,10 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Generated;
 
+import java.io.Serializable;
+
 @Entity(nameInDb = "student")
-public class Student {
+public class Student implements Serializable {
 
     @Id(autoincrement = true)
     private Long id;

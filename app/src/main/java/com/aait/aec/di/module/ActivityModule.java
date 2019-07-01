@@ -58,6 +58,9 @@ import com.aait.aec.ui.student.StudentAdapter;
 import com.aait.aec.ui.student.StudentMvpPresenter;
 import com.aait.aec.ui.student.StudentMvpView;
 import com.aait.aec.ui.student.StudentPresenter;
+import com.aait.aec.ui.studentEdit.EditStudentMvpPresenter;
+import com.aait.aec.ui.studentEdit.EditStudentMvpView;
+import com.aait.aec.ui.studentEdit.EditStudentPresenter;
 import com.aait.aec.ui.subject.SubjectMvpPresenter;
 import com.aait.aec.ui.subject.SubjectMvpView;
 import com.aait.aec.ui.subject.SubjectPresenter;
@@ -171,6 +174,13 @@ public class ActivityModule {
             ResultPresenter<ResultMvpView> presenter) {
         return presenter;
     }
+
+    @Provides
+    EditStudentMvpPresenter<EditStudentMvpView> provideEditStudentMvpPresenter(
+            EditStudentPresenter<EditStudentMvpView> presenter) {
+        return presenter;
+    }
+
 
     @Provides
     AddAnswerMvpPresenter<AddAnswerMvpView> provideAddAnswerMvpPresenter(
