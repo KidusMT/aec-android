@@ -15,6 +15,7 @@
 
 package com.aait.aec.ui.student;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,7 @@ import com.aait.aec.R;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseViewHolder;
 import com.aait.aec.utils.CommonUtils;
+import com.google.android.gms.tasks.Task;
 
 import java.util.List;
 
@@ -38,6 +40,7 @@ import butterknife.ButterKnife;
 public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     List<Student> albumList;
+    private Callback mCallback;
 
     public StudentAdapter(List<Student> categories) {
         this.albumList = categories;
@@ -62,6 +65,13 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         notifyDataSetChanged();
     }
 
+    public void setOnLongClick(Callback callback) {
+        mCallback = callback;
+    }
+
+    public interface Callback {
+        void onItemClicked(Student student);
+    }
     @Override
     public int getItemCount() {
         return albumList.size();
@@ -96,6 +106,8 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
                 itemView.setOnClickListener(view -> CommonUtils.toast(album.getName()));
             }
+
+            itemView.setOnClickListener(v -> mCallback.onItemClicked(album));
 
         }
 

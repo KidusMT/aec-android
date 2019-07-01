@@ -47,7 +47,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class StudentActivity extends BaseActivity implements StudentMvpView {
+public class StudentActivity extends BaseActivity implements StudentMvpView, StudentAdapter.Callback {
 
     public static final String TAG = "StudentActivity";
 
@@ -94,6 +94,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         setUnBinder(ButterKnife.bind(this));
 
         mPresenter.onAttach(StudentActivity.this);
+        mAdapter.setOnLongClick(this);
 
         CommonUtils.hideKeyboard(this);
 
@@ -358,5 +359,10 @@ public class StudentActivity extends BaseActivity implements StudentMvpView {
         //});
         //fileDialog.setSelectDirectoryOption(false);
         fileDialog.showDialog();
+    }
+
+    @Override
+    public void onItemClicked(Student student) {
+
     }
 }
