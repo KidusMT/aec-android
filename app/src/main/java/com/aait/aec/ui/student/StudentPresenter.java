@@ -63,4 +63,9 @@ public class StudentPresenter<V extends StudentMvpView> extends BasePresenter<V>
         else
             CommonUtils.toast("Empty excel file, Please add some entries.");
     }
+
+    @Override
+    public void onAddClicked(Student student) {
+        getDataManager().insertStudent(student);
+    }
 }

@@ -33,6 +33,8 @@ public interface DbHelper {
 
     Observable<String> insertStudents(List<Student> students);
 
+    Observable<String> insertStudent(Student student);
+
     Observable<List<User>> getAllUsers();
 
     Observable<List<Student>> getStudents();

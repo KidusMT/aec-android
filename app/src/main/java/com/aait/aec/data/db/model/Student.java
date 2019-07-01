@@ -22,6 +22,8 @@ public class Student implements Serializable {
     @Property(nameInDb = "stdId")
     private String stdId;
 
+    private static final long serialVersionUID = 1L;
+
 
     public Student(String name, String score, String stdId) {
         this.name = name;

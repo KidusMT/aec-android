@@ -109,6 +109,13 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
         hideLoading();
     }
 
+    @OnClick(R.id.btn_add)
+    void onAddClicked() {
+        // on Add Clicked with input Student
+//        mPresenter.onAddClicked();
+        hideLoading();
+    }
+
     @Override
     protected void onDestroy() {
         mPresenter.onDetach();
