@@ -19,6 +19,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aait.aec.R;
@@ -87,6 +88,9 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @BindView(R.id.std_id)
         TextView stdId;
 
+        @BindView(R.id.std_edit)
+        ImageView btnEdit;
+
         Student album;
 
         public MyViewHolder(View view) {
@@ -103,14 +107,12 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 stdName.setText(String.valueOf(album.getName()));
                 stdId.setText(String.valueOf(album.getStdId()));
 
-//                itemView.setOnClickListener(view -> CommonUtils.toast(album.getName()));
+                btnEdit.setOnClickListener(v -> mCallback.onItemClicked(album));
+                stdName.setOnClickListener(v -> CommonUtils.toast(album.getName()));
             }
 
-            itemView.setOnLongClickListener(v -> {
-                mCallback.onItemClicked(album);
-                return true;
-            });
 
+//
         }
 
         @Override
