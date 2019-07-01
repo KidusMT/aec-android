@@ -15,7 +15,6 @@
 
 package com.aait.aec.ui.student;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +25,6 @@ import com.aait.aec.R;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseViewHolder;
 import com.aait.aec.utils.CommonUtils;
-import com.google.android.gms.tasks.Task;
 
 import java.util.List;
 
@@ -69,12 +67,13 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         mCallback = callback;
     }
 
-    public interface Callback {
-        void onItemClicked(Student student);
-    }
     @Override
     public int getItemCount() {
         return albumList.size();
+    }
+
+    public interface Callback {
+        void onItemClicked(Student student);
     }
 
     public class MyViewHolder extends BaseViewHolder {
@@ -100,14 +99,17 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             album = albumList.get(position);
             if (album != null) {
 
-                stdRow.setText(String.valueOf(position+1));
+                stdRow.setText(String.valueOf(position + 1));
                 stdName.setText(String.valueOf(album.getName()));
                 stdId.setText(String.valueOf(album.getStdId()));
 
-                itemView.setOnClickListener(view -> CommonUtils.toast(album.getName()));
+//                itemView.setOnClickListener(view -> CommonUtils.toast(album.getName()));
             }
 
-            itemView.setOnClickListener(v -> mCallback.onItemClicked(album));
+            itemView.setOnLongClickListener(v -> {
+                mCallback.onItemClicked(album);
+                return true;
+            });
 
         }
 

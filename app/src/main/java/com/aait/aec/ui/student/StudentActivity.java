@@ -363,6 +363,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
 
     @Override
     public void onItemClicked(Student student) {
-
+        CommonUtils.toast(student.getName());
     }
 }
