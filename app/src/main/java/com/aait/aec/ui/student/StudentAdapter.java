@@ -92,7 +92,7 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
                 stdRow.setText(String.valueOf(position+1));
                 stdName.setText(String.valueOf(album.getName()));
-                stdId.setText(String.valueOf(album.getId()));
+                stdId.setText(String.valueOf(album.getStdId()));
 
                 itemView.setOnClickListener(view -> CommonUtils.toast(album.getName()));
             }
