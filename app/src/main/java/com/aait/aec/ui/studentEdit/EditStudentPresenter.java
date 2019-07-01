@@ -34,28 +34,4 @@ public class EditStudentPresenter<V extends EditStudentMvpView> extends BasePres
         getMvpView().closeDialog();
     }
 
-//    @Override
-//    public void onEditMeasurementClicked(Measurement measurement) {
-//
-//    }
-
-//    @Override
-//    public void onDeleteMeasurementClicked(String sensorId, String measurementId) {
-//        getMvpView().showLoading();
-//        getCompositeDisposable().add(getDataManager().deleteMeasurement(sensorId, measurementId)
-//                .subscribeOn(getSchedulerProvider().io())
-//                .observeOn(getSchedulerProvider().ui()).subscribe(responseBody -> {
-//                            if (!isViewAttached())
-//                                return;
-//
-//                            loadMeasurements(sensorId);
-//                        }, throwable -> {
-//                            if (!isViewAttached())
-//                                return;
-//
-//                            getMvpView().hideLoading();
-//                            getMvpView().onError(CommonUtils.getErrorMessage(throwable));
-//                        }
-//                ));
-//    }
 }
