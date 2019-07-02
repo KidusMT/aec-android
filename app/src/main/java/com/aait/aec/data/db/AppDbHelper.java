@@ -38,27 +38,27 @@ public class AppDbHelper implements DbHelper {
     }
 
     @Override
-    public Observable<String> insertStudents(List<Student> students) {
+    public Observable<Boolean> insertStudents(List<Student> students) {
         mDaoSession.getStudentDao().insertOrReplaceInTx(students);
-        return Observable.fromCallable(() -> "successful");
+        return Observable.fromCallable(() -> true);
     }
 
     @Override
-    public Observable<String> insertStudent(Student student) {
+    public Observable<Boolean> insertStudent(Student student) {
         mDaoSession.getStudentDao().insertOrReplace(student);
-        return Observable.fromCallable(() -> "successful");
+        return Observable.fromCallable(() -> true);
     }
 
     @Override
-    public Observable<String> deleteStudent(Student student) {
+    public Observable<Boolean> deleteStudent(Student student) {
         mDaoSession.getStudentDao().delete(student);
-        return Observable.fromCallable(() -> "successful");
+        return Observable.fromCallable(() -> true);
     }
 
     @Override
-    public Observable<String> updateStudent(Student student) {
+    public Observable<Boolean> updateStudent(Student student) {
         mDaoSession.getStudentDao().update(student);
-        return Observable.fromCallable(() -> "successful");
+        return Observable.fromCallable(() -> true);
     }
 
 }

@@ -90,22 +90,22 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<String> insertStudents(List<Student> students) {
+    public Observable<Boolean> insertStudents(List<Student> students) {
         return mDbHelper.insertStudents(students);
     }
 
     @Override
-    public Observable<String> insertStudent(Student student) {
+    public Observable<Boolean> insertStudent(Student student) {
         return mDbHelper.insertStudent(student);
     }
 
     @Override
-    public Observable<String> deleteStudent(Student student) {
+    public Observable<Boolean> deleteStudent(Student student) {
         return mDbHelper.deleteStudent(student);
     }
 
     @Override
-    public Observable<String> updateStudent(Student student) {
+    public Observable<Boolean> updateStudent(Student student) {
         return mDbHelper.updateStudent(student);
     }
 

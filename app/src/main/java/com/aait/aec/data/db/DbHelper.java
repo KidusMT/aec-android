@@ -31,13 +31,13 @@ public interface DbHelper {
 
     Observable<Long> insertUser(final User user);
 
-    Observable<String> insertStudents(List<Student> students);
+    Observable<Boolean> insertStudents(List<Student> students);
 
-    Observable<String> insertStudent(Student student);
+    Observable<Boolean> insertStudent(Student student);
 
-    Observable<String> deleteStudent(Student student);
+    Observable<Boolean> deleteStudent(Student student);
 
-    Observable<String> updateStudent(Student student);
+    Observable<Boolean> updateStudent(Student student);
 
     Observable<List<User>> getAllUsers();
 

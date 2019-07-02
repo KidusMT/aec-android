@@ -102,7 +102,11 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
 
     @OnClick(R.id.btn_dialog_update)
     void onUpdateClicked() {
-        mPresenter.onUpdateClicked(student);
+        if (student != null) {
+            student.setName(String.valueOf(mStdName.getText()));
+            student.setStdId(String.valueOf(mStdId.getText()));
+            mPresenter.onUpdateClicked(student);
+        }
     }
 
     @Override
