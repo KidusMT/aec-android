@@ -110,6 +110,11 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Observable<Boolean> deleteAllStudents() {
+        return mDbHelper.deleteAllStudents();
+    }
+
+    @Override
     public Observable<List<User>> getAllUsers() {
         return mDbHelper.getAllUsers();
     }

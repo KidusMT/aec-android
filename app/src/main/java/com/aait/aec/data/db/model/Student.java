@@ -31,6 +31,11 @@ public class Student implements Serializable {
         this.stdId = stdId;
     }
 
+    public Student(String name, String stdId) {
+        this.name = name;
+        this.stdId = stdId;
+    }
+
     @Generated(hash = 672288817)
     public Student(Long id, String name, String score, String stdId) {
         this.id = id;

@@ -89,6 +89,10 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
                 student.setName(String.valueOf(mStdName.getText()));
                 student.setStdId(String.valueOf(mStdId.getText()));
                 mPresenter.onUpdateClicked(student);
+            } else {
+                // add new student
+                mPresenter.onAddClicked(new Student(String.valueOf(mStdName.getText()),
+                        String.valueOf(mStdId.getText())));
             }
         });
 
