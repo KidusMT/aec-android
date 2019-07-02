@@ -113,6 +113,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
     void onAddClicked() {
         // on Add Clicked with input Student
 //        mPresenter.onAddClicked();
+//        EditStudentDialog.newInstance().show(getSupportFragmentManager(), "");
         hideLoading();
     }
 

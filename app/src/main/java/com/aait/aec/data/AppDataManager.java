@@ -95,6 +95,11 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Observable<String> insertStudent(Student student) {
+        return mDbHelper.insertStudent(student);
+    }
+
+    @Override
     public Observable<List<User>> getAllUsers() {
         return mDbHelper.getAllUsers();
     }

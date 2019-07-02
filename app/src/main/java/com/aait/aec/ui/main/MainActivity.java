@@ -26,6 +26,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -329,7 +330,17 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
                             CommonUtils.toast(getString(R.string.settings));
                             return true;
                         case R.id.nav_item_logout:
-                            mPresenter.onDrawerOptionLogoutClick();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                            builder.setMessage(R.string.are_you_sure_you_want_to_logout)
+                                    .setPositiveButton(getString(R.string.logout), (dialog, id) -> {
+                                        mPresenter.onDrawerOptionLogoutClick();
+                                    })
+                                    .setNegativeButton(getString(R.string.btn_cancel), (dialog, id) -> {
+                                        dialog.dismiss();
+                                    });
+                            AlertDialog alert = builder.create();
+                            alert.show();
+
                             return true;
                         default:
                             return false;
