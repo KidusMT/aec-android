@@ -6,5 +6,6 @@ import com.aait.aec.ui.base.MvpPresenter;
 @PerActivity
 public interface ProfileMvpPresenter<V extends ProfileMvpView> extends MvpPresenter<V> {
 
+    void loadProfileData();
 
 }

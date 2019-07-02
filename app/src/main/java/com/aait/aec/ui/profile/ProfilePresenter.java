@@ -21,4 +21,8 @@ public class ProfilePresenter<V extends ProfileMvpView> extends BasePresenter<V>
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 
+    @Override
+    public void loadProfileData() {
+
+    }
 }
