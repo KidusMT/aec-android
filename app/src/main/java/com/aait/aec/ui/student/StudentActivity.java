@@ -333,6 +333,8 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
             finish();
         else if (item.getItemId() == R.id.action_import) {
             selectFile();
+        } else if (item.getItemId() == R.id.action_clear_all) {
+            mPresenter.onClearAllClicked();
         }
 
         return super.onOptionsItemSelected(item);
@@ -343,7 +345,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
         fileDialog = new FileDialog(this, mPath, ".xlsx");
         fileDialog.addFileListener(new FileDialog.FileSelectedListener() {
             public void fileSelected(File file) {
-//                CommonUtils.toast(String.format( "selected file %s" , file.getAbsolutePath()));
                 Log.d(getClass().getName(), "selected file " + file.toString());
                 loadStudentsFromExcelFile(file.getAbsolutePath());
             }
@@ -364,7 +365,6 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
 
     @Override
     public void updateView() {
-        if (mAdapter != null)
-            mAdapter.notifyDataSetChanged();
+        mPresenter.loadStudentsFromDb();
     }
 }

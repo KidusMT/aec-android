@@ -39,6 +39,8 @@ public interface DbHelper {
 
     Observable<Boolean> updateStudent(Student student);
 
+    Observable<Boolean> deleteAllStudents();
+
     Observable<List<User>> getAllUsers();
 
     Observable<List<Student>> getStudents();

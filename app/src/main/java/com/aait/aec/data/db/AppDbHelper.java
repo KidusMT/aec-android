@@ -51,13 +51,19 @@ public class AppDbHelper implements DbHelper {
 
     @Override
     public Observable<Boolean> deleteStudent(Student student) {
-        mDaoSession.getStudentDao().delete(student);
+        mDaoSession.getStudentDao().deleteByKey(student.getId());
         return Observable.fromCallable(() -> true);
     }
 
     @Override
     public Observable<Boolean> updateStudent(Student student) {
         mDaoSession.getStudentDao().update(student);
+        return Observable.fromCallable(() -> true);
+    }
+
+    @Override
+    public Observable<Boolean> deleteAllStudents() {
+        mDaoSession.getStudentDao().deleteAll();
         return Observable.fromCallable(() -> true);
     }
 

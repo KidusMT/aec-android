@@ -68,4 +68,10 @@ public class StudentPresenter<V extends StudentMvpView> extends BasePresenter<V>
     public void onAddClicked(Student student) {
         getDataManager().insertStudent(student);
     }
+
+    @Override
+    public void onClearAllClicked() {
+        getDataManager().deleteAllStudents();
+        loadStudentsFromDb();
+    }
 }

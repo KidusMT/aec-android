@@ -38,6 +38,9 @@ public final class AppConstants {
 
     public static final String STUDENT_KEY = "STUDENT_KEY";
 
+    public static final String ADD_NEW = "addNew";
+    public static final String UPDATE = "update";
+
     private AppConstants() {
         // This utility class is not publicly instantiable
     }

@@ -32,4 +32,5 @@ public interface StudentMvpPresenter<V extends StudentMvpView> extends MvpPresen
     void loadStudentsFromDb();
     void onSaveClicked(List<Student> list);
     void onAddClicked(Student student);
+    void onClearAllClicked();
 }

@@ -16,4 +16,7 @@ public interface EditStudentMvpPresenter<V extends EditStudentMvpView> extends M
     void onCancelClicked();
 
     void onDeleteClicked(Student student);
+
+    void onAddClicked(Student student);
+
 }

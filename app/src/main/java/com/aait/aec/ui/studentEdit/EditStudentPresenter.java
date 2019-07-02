@@ -44,4 +44,11 @@ public class EditStudentPresenter<V extends EditStudentMvpView> extends BasePres
         getMvpView().closeDialog();
     }
 
+    @Override
+    public void onAddClicked(Student student) {
+        getMvpView().showLoading();
+        getDataManager().insertStudent(student);
+        getMvpView().closeDialog();
+    }
+
 }

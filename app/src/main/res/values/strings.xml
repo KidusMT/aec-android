@@ -137,4 +137,6 @@
     <string name="error_something_wrong_happened">Something wrong happened. Please try again later.</string>
     <string name="no_exam_list_found">No exam list found.</string>
     <string name="delete_dialog_student">Are you sure you want to delete this student?</string>
+    <string name="btn_dialog_add">ADD</string>
+    <string name="add_new_student">Add New Student</string>
 </resources>
