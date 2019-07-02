@@ -29,7 +29,7 @@ import static com.aait.aec.utils.AppConstants.UPDATE;
 
 public class EditStudentDialog extends BaseDialog implements EditStudentMvpView {
 
-    private static String status;
+    private static String mode;
     @Inject
     EditStudentMvpPresenter<EditStudentMvpView> mPresenter;
     @BindView(R.id.dialog_std_name)
@@ -51,7 +51,7 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
 
     public static EditStudentDialog newInstance(Student student) {
         EditStudentDialog fragment = new EditStudentDialog();
-        status = UPDATE;
+        mode = UPDATE;
         Bundle bundle = new Bundle();
         bundle.putSerializable(STUDENT_KEY, student);
         fragment.setArguments(bundle);
@@ -60,7 +60,7 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
     }
 
     public static EditStudentDialog newInstance() {
-        status = ADD_NEW;
+        mode = ADD_NEW;
         return new EditStudentDialog();
     }
 
@@ -97,7 +97,7 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
         });
 
         // only when its on update mode is possible to delete
-        if (status.equals(UPDATE))
+        if (mode.equals(UPDATE))
             btnDelete.setOnClickListener(v -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getBaseActivity());
                 builder.setMessage(getString(R.string.delete_dialog_student))

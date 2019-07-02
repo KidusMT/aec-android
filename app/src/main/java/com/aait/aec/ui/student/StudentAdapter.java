@@ -42,6 +42,8 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     List<Student> albumList;
     private Callback mCallback;
 
+    private boolean hide;
+
     public StudentAdapter(List<Student> categories) {
         this.albumList = categories;
     }
@@ -59,9 +61,12 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         holder.onBind(position);
     }
 
-    public void addItems(List<Student> students) {
+    public void addItems(List<Student> students, boolean hide) {
+        if (hide)
+            this.hide = true;//only when first time should hide edit btn
         this.albumList.clear();
         this.albumList.addAll(students);
+
         notifyDataSetChanged();
     }
 
@@ -100,6 +105,9 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
 
         public void onBind(int position) {
+
+            if (hide)
+                btnEdit.setVisibility(View.GONE);
 
             album = albumList.get(position);
             if (album != null) {

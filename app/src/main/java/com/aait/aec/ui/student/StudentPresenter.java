@@ -34,7 +34,7 @@ import io.reactivex.disposables.CompositeDisposable;
 public class StudentPresenter<V extends StudentMvpView> extends BasePresenter<V>
         implements StudentMvpPresenter<V> {
 
-    private static final String TAG = "RegisterPresenter";
+    private static final String TAG = StudentPresenter.class.getSimpleName();
 
     @Inject
     public StudentPresenter(DataManager dataManager,
@@ -57,10 +57,11 @@ public class StudentPresenter<V extends StudentMvpView> extends BasePresenter<V>
 
     @Override
     public void onSaveClicked(List<Student> list) {
-        getMvpView().showLoading();
-        if (list.size() > 0)
-            getDataManager().insertStudents(list);
-        else
+        getMvpView().updateStatus(false);
+        if (list.size() > 0) {
+            if (getDataManager().insertStudents(list).blockingFirst())
+                loadStudentsFromDb();
+        } else
             CommonUtils.toast("Empty excel file, Please add some entries.");
     }
 

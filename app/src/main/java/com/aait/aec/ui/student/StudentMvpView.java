@@ -30,4 +30,6 @@ public interface StudentMvpView extends MvpView {
 
     void showStudents(List<Student> students);
 
+    void updateStatus(boolean value);
+
 }

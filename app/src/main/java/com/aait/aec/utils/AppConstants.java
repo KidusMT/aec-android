@@ -40,6 +40,7 @@ public final class AppConstants {
 
     public static final String ADD_NEW = "addNew";
     public static final String UPDATE = "update";
+    public static final String FIRST_TIME = "firstTime";
 
     private AppConstants() {
         // This utility class is not publicly instantiable
