@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -334,7 +335,13 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
         else if (item.getItemId() == R.id.action_import) {
             selectFile();
         } else if (item.getItemId() == R.id.action_clear_all) {
-            mPresenter.onClearAllClicked();
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(getString(R.string.are_you_sure_delete_dialog_student))
+                    .setPositiveButton(getString(R.string.btn_delete), (dialog, id) -> mPresenter.onClearAllClicked())
+                    .setNegativeButton(getString(R.string.btn_cancel), (dialog, id) -> dialog.dismiss());
+            AlertDialog alert = builder.create();
+            alert.show();
         }
 
         return super.onOptionsItemSelected(item);
