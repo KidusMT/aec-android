@@ -42,6 +42,12 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     }
 
     @Override
+    public void onAttach(V mvpView) {
+        super.onAttach(mvpView);
+        loadExams();
+    }
+
+    @Override
     public void onDrawerOptionAboutClick() {
         getMvpView().closeNavigationDrawer();
     }
@@ -49,7 +55,6 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     @Override
     public void onDrawerOptionLogoutClick() {
         getMvpView().showLoading();
-
         getDataManager().setUserAsLoggedOut();
         getMvpView().hideLoading();
         getMvpView().openLoginActivity();
@@ -96,8 +101,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                     }
 
                     getMvpView().showExams(exams);
-//
-//                    Log.e(TAG, String.format("userId:===> %s", getDataManager().getCurrentUserId()));
+
                 }, throwable -> {
                     if (!isViewAttached()) {
                         return;

@@ -33,6 +33,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -68,36 +69,27 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MainMvpView, MainAdapter.Callback {
 
+    public static final String TAG = MainActivity.class.getSimpleName();
     @Inject
     MainMvpPresenter<MainMvpView> mPresenter;
-
     @Inject
     MainAdapter mAdapter;
-
     @Inject
     LinearLayoutManager mLayoutManager;
-
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-
     @BindView(R.id.drawer_view)
     DrawerLayout mDrawer;
-
     @BindView(R.id.navigation_view)
     NavigationView mNavigationView;
-
     @BindView(R.id.tv_app_version)
     TextView mAppVersionTextView;
-
     @BindView(R.id.exam_recycler)
     RecyclerView mRecyclerView;
-
     @BindView(R.id.tv_no_exam)
     TextView tvNoExams;
-
     @BindView(R.id.exam_swipe_to_refresh)
     SwipeRefreshLayout mSwipeRefreshLayout;
-
     List<Exam> exams = new ArrayList<>();
     private TextView mNameTextView;
     private TextView mEmailTextView;
@@ -196,21 +188,22 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     @Override
     public void showExams(List<Exam> exams) {
-        if (exams != null) {
-            if (exams.size() > 0) {
-                if (tvNoExams != null && tvNoExams.getVisibility() == View.VISIBLE)
-                    tvNoExams.setVisibility(View.GONE);
-                if (mRecyclerView != null && mRecyclerView.getVisibility() == View.GONE)
-                    mRecyclerView.setVisibility(View.VISIBLE);
-                mAdapter.addItems(exams);
-            } else {
-                if (tvNoExams != null && tvNoExams.getVisibility() == View.GONE) {
-                    tvNoExams.setVisibility(View.VISIBLE);
-                    tvNoExams.setText("No exam list found");
-                }
-                if (mRecyclerView != null && mRecyclerView.getVisibility() == View.VISIBLE)
-                    mRecyclerView.setVisibility(View.GONE);
+        Log.e(TAG, "===> exams != null");
+        if (exams.size() > 0) {
+            Log.e(TAG, "===> exams.size() > 0");
+            if (tvNoExams != null && tvNoExams.getVisibility() == View.VISIBLE)
+                tvNoExams.setVisibility(View.GONE);
+            if (mRecyclerView != null && mRecyclerView.getVisibility() == View.GONE)
+                mRecyclerView.setVisibility(View.VISIBLE);
+            mAdapter.addItems(exams);
+        } else {
+            Log.e(TAG, "====exam list=====>");
+            if (tvNoExams != null && tvNoExams.getVisibility() == View.GONE) {
+                tvNoExams.setVisibility(View.VISIBLE);
+                tvNoExams.setText("No exam list found");
             }
+            if (mRecyclerView != null && mRecyclerView.getVisibility() == View.VISIBLE)
+                mRecyclerView.setVisibility(View.GONE);
         }
         hideLoading();
     }
@@ -297,7 +290,6 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.addItemDecoration(new MyDividerItemDecoration(this, DividerItemDecoration.VERTICAL, 36));
         mRecyclerView.setAdapter(mAdapter);
-
     }
 
     private void setupCardContainerView() {
