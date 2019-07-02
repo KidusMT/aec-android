@@ -1,5 +1,6 @@
 package com.aait.aec.ui.studentEdit;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,6 +34,7 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
 
     @BindView(R.id.dialog_std_id)
     TextView mStdId;
+    StudentCommunicator communicator;
     private Student student;
 
     public static EditStudentDialog newInstance(Student student) {
@@ -42,6 +44,10 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
         fragment.setArguments(bundle);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    public static EditStudentDialog newInstance() {
+        return new EditStudentDialog();
     }
 
     @OnClick(R.id.btn_delete_std)
@@ -82,6 +88,12 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
         return view;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        communicator = (StudentCommunicator) context;
+    }
+
     @OnClick(R.id.btn_dialog_cancel)
     void onCancelClicked() {
         mPresenter.onCancelClicked();
@@ -107,6 +119,7 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
 
     @Override
     public void closeDialog() {
+        communicator.updateView();
         hideLoading();
         dismiss();
     }

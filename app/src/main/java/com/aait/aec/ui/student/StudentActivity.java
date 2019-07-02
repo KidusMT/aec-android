@@ -21,6 +21,7 @@ import com.aait.aec.R;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.studentEdit.EditStudentDialog;
+import com.aait.aec.ui.studentEdit.StudentCommunicator;
 import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.FileDialog;
 
@@ -48,7 +49,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class StudentActivity extends BaseActivity implements StudentMvpView, StudentAdapter.Callback {
+public class StudentActivity extends BaseActivity implements StudentMvpView, StudentAdapter.Callback, StudentCommunicator {
 
     public static final String TAG = "StudentActivity";
 
@@ -113,7 +114,7 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
     void onAddClicked() {
         // on Add Clicked with input Student
 //        mPresenter.onAddClicked();
-//        EditStudentDialog.newInstance().show(getSupportFragmentManager(), "");
+        EditStudentDialog.newInstance().show(getSupportFragmentManager(), "");
         hideLoading();
     }
 
@@ -359,5 +360,11 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
     @Override
     public void onItemClicked(Student student) {
         EditStudentDialog.newInstance(student).show(getSupportFragmentManager(), "");
+    }
+
+    @Override
+    public void updateView() {
+        if (mAdapter != null)
+            mAdapter.notifyDataSetChanged();
     }
 }

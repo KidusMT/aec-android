@@ -58,9 +58,9 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         holder.onBind(position);
     }
 
-    public void addItems(List<Student> sensors) {
+    public void addItems(List<Student> students) {
         this.albumList.clear();
-        this.albumList.addAll(sensors);
+        this.albumList.addAll(students);
         notifyDataSetChanged();
     }
 
