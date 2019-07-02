@@ -42,9 +42,9 @@ import butterknife.ButterKnife;
 
 public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> implements Filterable {
 
-    List<Exam> albumList;
-    List<Exam> filteredAlbumList;
-    Callback mCallback;
+    private List<Exam> albumList;
+    private List<Exam> filteredAlbumList;
+    private Callback mCallback;
 
     public MainAdapter(List<Exam> categories) {
         this.albumList = categories;
@@ -65,7 +65,6 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
         holder.onBind(position);
     }
 
-
     public void addItems(List<Exam> sensors) {
         albumList.clear();
         albumList.addAll(sensors);
@@ -74,7 +73,6 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
         filteredAlbumList.addAll(sensors);
         notifyDataSetChanged();
     }
-
 
     @Override
     public int getItemCount() {

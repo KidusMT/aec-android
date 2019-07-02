@@ -33,6 +33,8 @@ public class ProfileActivity extends BaseActivity implements ProfileMvpView {
         setUnBinder(ButterKnife.bind(this));
 
         CommonUtils.hideKeyboard(this);
+
+        setUp();
     }
 
     @Override
@@ -40,22 +42,17 @@ public class ProfileActivity extends BaseActivity implements ProfileMvpView {
 
         setSupportActionBar(mToolbar);
 
-        if (getSupportActionBar() != null) {
+        if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
+        if (item.getItemId() == android.R.id.home) {
             finish();
+        }
 
         return super.onOptionsItemSelected(item);
     }

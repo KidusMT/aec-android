@@ -189,6 +189,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     @Override
     public void openProfileActivity() {
+        closeNavigationDrawer();
         startActivity(ProfileActivity.getStartIntent(this));
     }
 
@@ -359,6 +360,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     @Override
     public void openStudentsActivity() {
+        closeNavigationDrawer();
         startActivity(StudentActivity.getStartIntent(this));
     }
 
