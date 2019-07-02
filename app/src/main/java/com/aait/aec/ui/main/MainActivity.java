@@ -48,6 +48,7 @@ import com.aait.aec.ui.create.CreateExamActivity;
 import com.aait.aec.ui.custom.RoundedImageView;
 import com.aait.aec.ui.feed.FeedActivity;
 import com.aait.aec.ui.login.LoginActivity;
+import com.aait.aec.ui.profile.ProfileActivity;
 import com.aait.aec.ui.result.ResultActivity;
 import com.aait.aec.ui.student.StudentActivity;
 import com.aait.aec.utils.CommonUtils;
@@ -187,6 +188,11 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     }
 
     @Override
+    public void openProfileActivity() {
+        startActivity(ProfileActivity.getStartIntent(this));
+    }
+
+    @Override
     public void showExams(List<Exam> exams) {
         Log.e(TAG, "===> exams != null");
         if (exams.size() > 0) {
@@ -304,6 +310,11 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
         mProfileImageView = headerLayout.findViewById(R.id.iv_profile_pic);
         mNameTextView = headerLayout.findViewById(R.id.tv_name);
         mEmailTextView = headerLayout.findViewById(R.id.tv_email);
+
+
+        mProfileImageView.setOnClickListener(v -> openProfileActivity());
+        mNameTextView.setOnClickListener(v -> openProfileActivity());
+        mEmailTextView.setOnClickListener(v -> openProfileActivity());
 
         mNavigationView.setNavigationItemSelectedListener(
                 item -> {

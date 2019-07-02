@@ -32,6 +32,10 @@
     <color name="fb">#3b5998</color>
     <color name="google">#d34836</color>
 
+    <color name="startblue">#09c6df</color>
+    <color name="endblue">#0bcce6</color>
+    <color name="graylight">#fafafa</color>
+
     <color name="email_password_field_background_color">#f1f1f1</color>
 
     <!--Design colors-->

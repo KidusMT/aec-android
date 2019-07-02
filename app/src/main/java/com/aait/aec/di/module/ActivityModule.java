@@ -44,6 +44,9 @@ import com.aait.aec.ui.main.MainAdapter;
 import com.aait.aec.ui.main.MainMvpPresenter;
 import com.aait.aec.ui.main.MainMvpView;
 import com.aait.aec.ui.main.MainPresenter;
+import com.aait.aec.ui.profile.ProfileMvpPresenter;
+import com.aait.aec.ui.profile.ProfileMvpView;
+import com.aait.aec.ui.profile.ProfilePresenter;
 import com.aait.aec.ui.register.RegisterMvpPresenter;
 import com.aait.aec.ui.register.RegisterMvpView;
 import com.aait.aec.ui.register.RegisterPresenter;
@@ -178,6 +181,12 @@ public class ActivityModule {
     @Provides
     EditStudentMvpPresenter<EditStudentMvpView> provideEditStudentMvpPresenter(
             EditStudentPresenter<EditStudentMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    ProfileMvpPresenter<ProfileMvpView> provideProfileMvpPresenter(
+            ProfilePresenter<ProfileMvpView> presenter) {
         return presenter;
     }
 

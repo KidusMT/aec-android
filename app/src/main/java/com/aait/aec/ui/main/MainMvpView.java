@@ -31,5 +31,7 @@ public interface MainMvpView extends MvpView {
 
     void unlockDrawer();
 
+    void openProfileActivity();
+
     void showExams(List<Exam> exams);
 }
