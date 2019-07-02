@@ -336,7 +336,10 @@ public class StudentActivity extends BaseActivity implements StudentMvpView, Stu
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(getString(R.string.are_you_sure_delete_dialog_student))
-                    .setPositiveButton(getString(R.string.btn_delete), (dialog, id) -> mPresenter.onClearAllClicked())
+                    .setPositiveButton(getString(R.string.btn_delete), (dialog, id) -> {
+                        mPresenter.onClearAllClicked();
+                        importedStudentList = new ArrayList<>();
+                    })
                     .setNegativeButton(getString(R.string.btn_cancel), (dialog, id) -> dialog.dismiss());
             AlertDialog alert = builder.create();
             alert.show();
