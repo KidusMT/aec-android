@@ -62,8 +62,8 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     public void addItems(List<Student> students, boolean hide) {
-        if (hide)
-            this.hide = true;//only when first time should hide edit btn
+        //only when first time should hide edit btn
+        this.hide = hide;
         this.albumList.clear();
         this.albumList.addAll(students);
 
@@ -108,6 +108,8 @@ public class StudentAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
             if (hide)
                 btnEdit.setVisibility(View.GONE);
+            else
+                btnEdit.setVisibility(View.VISIBLE);
 
             album = albumList.get(position);
             if (album != null) {
