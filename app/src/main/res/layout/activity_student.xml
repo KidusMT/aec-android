@@ -26,6 +26,7 @@
 
     <RelativeLayout
         android:id="@+id/flContent"
+        android:background="@color/material_grey_100"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -33,8 +34,8 @@
             android:id="@+id/import_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             android:layout_marginTop="3dp"
-            android:background="@color/white"
             android:layout_marginBottom="70dp"
             android:scrollbars="vertical"
             tools:listitem="@layout/item_student" />
@@ -45,11 +46,10 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_margin="5dp"
-            android:text="@string/no_category_items"
+            android:text="@string/no_student_items"
             android:textAlignment="center"
             android:textColor="@color/black_effective"
-            android:textSize="18sp"
-            android:visibility="gone" />
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
