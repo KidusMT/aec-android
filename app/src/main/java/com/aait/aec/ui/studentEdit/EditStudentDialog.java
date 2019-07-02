@@ -3,11 +3,11 @@ package com.aait.aec.ui.studentEdit;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aait.aec.R;
@@ -33,10 +33,6 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
 
     @BindView(R.id.dialog_std_id)
     TextView mStdId;
-
-    @BindView(R.id.btn_delete_std)
-    ImageView btnDelete;
-
     private Student student;
 
     public static EditStudentDialog newInstance(Student student) {
@@ -46,6 +42,21 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
         fragment.setArguments(bundle);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @OnClick(R.id.btn_delete_std)
+    void onDeleteClicked() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getBaseActivity());
+        builder.setMessage(getString(R.string.delete_dialog_student))
+                .setPositiveButton(getString(R.string.btn_delete), (dialog, id) -> {
+                    if (student != null)
+                        mPresenter.onDeleteClicked(student);
+                })
+                .setNegativeButton(getString(R.string.btn_cancel), (dialog, id) -> {
+                    dialog.dismiss();
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     @Nullable
@@ -77,6 +88,11 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
 
     }
 
+    @OnClick(R.id.btn_dialog_update)
+    void onUpdateClicked() {
+        mPresenter.onUpdateClicked(student);
+    }
+
     @Override
     protected void setUp(View view) {
         if (student != null) {
@@ -91,6 +107,7 @@ public class EditStudentDialog extends BaseDialog implements EditStudentMvpView 
 
     @Override
     public void closeDialog() {
+        hideLoading();
         dismiss();
     }
 

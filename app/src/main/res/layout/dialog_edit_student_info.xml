@@ -124,7 +124,7 @@
                         android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/btn_dialog_submit"
+                        android:id="@+id/btn_dialog_update"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"

@@ -1,6 +1,7 @@
 package com.aait.aec.ui.studentEdit;
 
 import com.aait.aec.data.DataManager;
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.ui.base.BasePresenter;
 import com.aait.aec.utils.rx.SchedulerProvider;
 
@@ -25,12 +26,21 @@ public class EditStudentPresenter<V extends EditStudentMvpView> extends BasePres
     }
 
     @Override
-    public void onSubmitClicked() {
-
+    public void onUpdateClicked(Student student) {
+        getMvpView().showLoading();
+        getDataManager().updateStudent(student);
+        getMvpView().closeDialog();
     }
 
     @Override
     public void onCancelClicked() {
+        getMvpView().closeDialog();
+    }
+
+    @Override
+    public void onDeleteClicked(Student student) {
+        getMvpView().showLoading();
+        getDataManager().deleteStudent(student);
         getMvpView().closeDialog();
     }
 

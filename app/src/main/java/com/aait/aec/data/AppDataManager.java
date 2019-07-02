@@ -100,6 +100,16 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Observable<String> deleteStudent(Student student) {
+        return mDbHelper.deleteStudent(student);
+    }
+
+    @Override
+    public Observable<String> updateStudent(Student student) {
+        return mDbHelper.updateStudent(student);
+    }
+
+    @Override
     public Observable<List<User>> getAllUsers() {
         return mDbHelper.getAllUsers();
     }

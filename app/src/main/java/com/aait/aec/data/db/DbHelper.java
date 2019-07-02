@@ -35,6 +35,10 @@ public interface DbHelper {
 
     Observable<String> insertStudent(Student student);
 
+    Observable<String> deleteStudent(Student student);
+
+    Observable<String> updateStudent(Student student);
+
     Observable<List<User>> getAllUsers();
 
     Observable<List<Student>> getStudents();

@@ -1,5 +1,6 @@
 package com.aait.aec.ui.studentEdit;
 
+import com.aait.aec.data.db.model.Student;
 import com.aait.aec.di.PerActivity;
 import com.aait.aec.ui.base.MvpPresenter;
 
@@ -10,7 +11,9 @@ import com.aait.aec.ui.base.MvpPresenter;
 @PerActivity
 public interface EditStudentMvpPresenter<V extends EditStudentMvpView> extends MvpPresenter<V> {
 
-    void onSubmitClicked();
+    void onUpdateClicked(Student student);
 
     void onCancelClicked();
+
+    void onDeleteClicked(Student student);
 }
