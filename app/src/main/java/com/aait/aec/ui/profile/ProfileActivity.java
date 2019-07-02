@@ -4,16 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.aait.aec.R;
-import com.aait.aec.data.db.model.User;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
 
-import butterknife.BindInt;
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,6 +33,9 @@ public class ProfileActivity extends BaseActivity implements ProfileMvpView {
     @BindView(R.id.profile_address)
     TextView mProfilePhoneAddress;
 
+    @Inject
+    ProfileMvpPresenter<ProfileMvpView> mPresenter;
+
     public static Intent getStartIntent(Context context) {
         return new Intent(context, ProfileActivity.class);
     }
@@ -49,6 +51,8 @@ public class ProfileActivity extends BaseActivity implements ProfileMvpView {
 
         CommonUtils.hideKeyboard(this);
 
+        mPresenter.onAttach(this);
+
         setUp();
     }
 
@@ -57,10 +61,12 @@ public class ProfileActivity extends BaseActivity implements ProfileMvpView {
 
         setSupportActionBar(mToolbar);
 
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+
+        mPresenter.loadProfileData();
     }
 
     @Override
@@ -73,9 +79,8 @@ public class ProfileActivity extends BaseActivity implements ProfileMvpView {
     }
 
     @Override
-    public void loadProfile(User user) {
-        if (user!=null){
-            mProfileName.setText(user.getName());
-        }
+    public void loadProfile(String name, String email) {
+        mProfileName.setText(name);
+        mProfileName.setText(email);
     }
 }

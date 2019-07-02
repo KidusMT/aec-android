@@ -2,6 +2,7 @@ package com.aait.aec.ui.profile;
 
 import com.aait.aec.data.DataManager;
 import com.aait.aec.ui.base.BasePresenter;
+import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
@@ -23,6 +24,6 @@ public class ProfilePresenter<V extends ProfileMvpView> extends BasePresenter<V>
 
     @Override
     public void loadProfileData() {
-
+        getMvpView().loadProfile(getDataManager().getCurrentUserName(), getDataManager().getCurrentUserEmail());
     }
 }
