@@ -30,7 +30,10 @@ import java.util.List;
 public interface StudentMvpPresenter<V extends StudentMvpView> extends MvpPresenter<V> {
 
     void loadStudentsFromDb();
+
     void onSaveClicked(List<Student> list);
+
     void onAddClicked(Student student);
+
     void onClearAllClicked();
 }

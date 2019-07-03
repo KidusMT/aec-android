@@ -12,4 +12,6 @@ import okhttp3.MultipartBody;
 public interface ResultMvpPresenter<V extends ResultMvpView> extends MvpPresenter<V> {
 
     void onUploadClicked(String container, List<MultipartBody.Part> parts);
+
+    void loadStudentsFromDb();
 }

@@ -48,7 +48,7 @@ public class ResultPresenter<V extends ResultMvpView> extends BasePresenter<V>
         super.onAttach(mvpView);
 
         getMvpView().showLoading();
-        getMvpView().hideLoading();
+        loadStudentsFromDb();
     }
 
     @Override
@@ -69,5 +69,11 @@ public class ResultPresenter<V extends ResultMvpView> extends BasePresenter<V>
                             getMvpView().hideLoading();
                             getMvpView().onError(CommonUtils.getErrorMessage(throwable));
                         }));
+    }
+
+    @Override
+    public void loadStudentsFromDb() {
+        getMvpView().showLoading();
+        getMvpView().showStudents(getDataManager().getStudents().blockingFirst());
     }
 }

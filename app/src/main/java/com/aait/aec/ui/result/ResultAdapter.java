@@ -101,12 +101,10 @@ public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             album = albumList.get(position);
             if (album != null) {
 
-//                stdRow.setText(String.format(" %d", album.getRow()));
-//                stdName.setText(String.valueOf(album.getName()));
-//                stdId.setText(String.valueOf(album.getId()));
-//                strScore.setText(String.valueOf(album.getScore()));
-
-//                resultInstor.setText(album.get);
+                stdRow.setText(String.format(" %s", position));
+                stdName.setText(String.valueOf(album.getName()));
+                stdId.setText(String.valueOf(album.getId()));
+                strScore.setText(String.valueOf(album.getScore()));
 
                 itemView.setOnClickListener(view -> mCallback.onItemClicked(album));
             }

@@ -25,6 +25,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.aait.aec.R;
@@ -68,6 +69,9 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
 
     @BindView(R.id.import_recycler)
     RecyclerView mRecyclerView;
+
+    @BindView(R.id.tv_no_students_result)
+    TextView tvNoStudents;
 
     @BindView(R.id.detail_result_date)
     TextView result_date;
@@ -210,6 +214,26 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
     }
 
     @Override
+    public void showStudents(List<Student> students) {
+        if (students.size() > 0) {
+            if (tvNoStudents != null && tvNoStudents.getVisibility() == View.VISIBLE)
+                tvNoStudents.setVisibility(View.GONE);
+            if (mRecyclerView != null && mRecyclerView.getVisibility() == View.GONE)
+                mRecyclerView.setVisibility(View.VISIBLE);
+            mAdapter.addItems(students);
+        } else {
+            if (tvNoStudents != null && tvNoStudents.getVisibility() == View.GONE) {
+                tvNoStudents.setVisibility(View.VISIBLE);
+                tvNoStudents.setText(getText(R.string.no_student_items));
+            }
+            if (mRecyclerView != null && mRecyclerView.getVisibility() == View.VISIBLE)
+                mRecyclerView.setVisibility(View.GONE);
+        }
+
+        hideLoading();
+    }
+
+    @Override
     protected void onDestroy() {
         mPresenter.onDetach();
         super.onDestroy();
@@ -245,7 +269,6 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
         }
 
         setUpRecyclerView();
-        prepareStudents();
 
         //need to check the permissions
         checkFilePermissions();
@@ -255,7 +278,6 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mAdapter);
-
     }
 
     @Override

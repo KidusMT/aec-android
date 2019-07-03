@@ -239,7 +239,7 @@
             tools:listitem="@layout/item_result" />
 
         <TextView
-            android:id="@+id/tv_no_exam"
+            android:id="@+id/tv_no_students_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
