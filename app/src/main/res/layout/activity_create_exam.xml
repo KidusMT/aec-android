@@ -150,7 +150,7 @@
                         android:cursorVisible="true"
                         android:gravity="center|left|bottom"
                         android:hint="Exam weight"
-                        android:inputType="textVisiblePassword|textNoSuggestions"
+                        android:inputType="textNoSuggestions|number"
                         android:maxLength="50"
                         android:paddingBottom="5dp"
                         android:textColor="@color/black_effective"

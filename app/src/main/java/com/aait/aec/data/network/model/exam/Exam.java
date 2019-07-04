@@ -1,9 +1,10 @@
-
 package com.aait.aec.data.network.model.exam;
 
-import java.util.List;
+import com.aait.aec.data.db.model.Student;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class Exam {
 
@@ -31,6 +32,15 @@ public class Exam {
     @SerializedName("students")
     @Expose
     private List<Student> students = null;
+
+    public Exam(String examName, String examType, Integer examWeight, Answers answers, String userId, List<Student> students) {
+        this.examName = examName;
+        this.examType = examType;
+        this.examWeight = examWeight;
+        this.answers = answers;
+        this.userId = userId;
+        this.students = students;
+    }
 
     public String getExamName() {
         return examName;
@@ -93,15 +103,6 @@ public class Exam {
     }
 
     public void setStudents(List<Student> students) {
-        this.students = students;
-    }
-
-    public Exam(String examName, String examType, Integer examWeight, Answers answers, String userId, List<Student> students) {
-        this.examName = examName;
-        this.examType = examType;
-        this.examWeight = examWeight;
-        this.answers = answers;
-        this.userId = userId;
         this.students = students;
     }
 }
