@@ -114,6 +114,8 @@ dependencies {
 
     // Firebase - core
     implementation 'com.google.firebase:firebase-core:16.0.9'
+
+    implementation 'com.github.thunder413:DateTimeUtils:3.0'
 }
 
 configurations.all {

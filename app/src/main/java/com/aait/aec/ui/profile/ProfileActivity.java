@@ -79,7 +79,6 @@ public class ProfileActivity extends BaseActivity implements ProfileMvpView {
     @Override
     public void loadProfile(String fullName, String email, String phoneNo, String username) {
         mProfileName.setText(fullName);
-        mProfileName.setText(email);
         mProfilePhoneNumber.setText(phoneNo);
         mProfileUsername.setText(username);
     }

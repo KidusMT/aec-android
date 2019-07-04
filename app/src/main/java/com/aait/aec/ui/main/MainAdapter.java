@@ -14,6 +14,9 @@ import com.aait.aec.R;
 import com.aait.aec.data.network.model.exam.Exam;
 import com.aait.aec.ui.base.BaseViewHolder;
 import com.aait.aec.utils.CommonUtils;
+import com.github.thunder413.datetimeutils.DateTimeStyle;
+import com.github.thunder413.datetimeutils.DateTimeUnits;
+import com.github.thunder413.datetimeutils.DateTimeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -136,14 +139,14 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
             album = filteredAlbumList.get(position);
             if (album != null) {
 
-                exDate.setText(String.valueOf(album.getCreatedDate()));
+//
+                exDate.setText(String.valueOf(DateTimeUtils.formatWithStyle(album.getCreatedDate(), DateTimeStyle.MEDIUM)));
                 exInst.setText(String.valueOf(album.getUserId()));
                 exTitle.setText(String.valueOf(album.getExamName()));
                 exWeight.setText(String.valueOf(album.getExamWeight()));
                 exType.setText(String.valueOf(album.getExamType()));
 
                 itemView.setOnClickListener(view -> {
-                    CommonUtils.toast(album.getExamName());
                     mCallback.onItemClicked(album);
                 });
             }
