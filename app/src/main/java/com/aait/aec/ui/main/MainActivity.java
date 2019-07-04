@@ -184,19 +184,16 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     @Override
     public void showExams(List<Exam> exams) {
-        Log.e(TAG, "===> exams != null");
         if (exams.size() > 0) {
-            Log.e(TAG, "===> exams.size() > 0");
             if (tvNoExams != null && tvNoExams.getVisibility() == View.VISIBLE)
                 tvNoExams.setVisibility(View.GONE);
             if (mRecyclerView != null && mRecyclerView.getVisibility() == View.GONE)
                 mRecyclerView.setVisibility(View.VISIBLE);
             mAdapter.addItems(exams);
         } else {
-            Log.e(TAG, "====exam list=====>");
             if (tvNoExams != null && tvNoExams.getVisibility() == View.GONE) {
                 tvNoExams.setVisibility(View.VISIBLE);
-                tvNoExams.setText("No exam list found");
+                tvNoExams.setText(getString(R.string.no_exam_items));
             }
             if (mRecyclerView != null && mRecyclerView.getVisibility() == View.VISIBLE)
                 mRecyclerView.setVisibility(View.GONE);
