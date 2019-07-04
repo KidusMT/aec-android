@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable;
 public class SubjectPresenter<V extends SubjectMvpView> extends BasePresenter<V>
         implements SubjectMvpPresenter<V> {
 
-    private static final String TAG = "RegisterPresenter";
+    private static final String TAG = SubjectPresenter.class.getSimpleName();
 
     @Inject
     public SubjectPresenter(DataManager dataManager,

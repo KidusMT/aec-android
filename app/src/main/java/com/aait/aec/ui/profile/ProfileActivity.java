@@ -30,8 +30,8 @@ public class ProfileActivity extends BaseActivity implements ProfileMvpView {
     @BindView(R.id.profile_phone_number)
     TextView mProfilePhoneNumber;
 
-    @BindView(R.id.profile_address)
-    TextView mProfilePhoneAddress;
+    @BindView(R.id.profile_username)
+    TextView mProfileUsername;
 
     @Inject
     ProfileMvpPresenter<ProfileMvpView> mPresenter;
@@ -79,8 +79,10 @@ public class ProfileActivity extends BaseActivity implements ProfileMvpView {
     }
 
     @Override
-    public void loadProfile(String name, String email) {
-        mProfileName.setText(name);
+    public void loadProfile(String fullName, String email, String phoneNo, String username) {
+        mProfileName.setText(fullName);
         mProfileName.setText(email);
+        mProfilePhoneNumber.setText(phoneNo);
+        mProfileUsername.setText(username);
     }
 }

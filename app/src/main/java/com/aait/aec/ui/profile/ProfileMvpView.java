@@ -4,5 +4,5 @@ import com.aait.aec.ui.base.MvpView;
 
 public interface ProfileMvpView extends MvpView {
 
-    void loadProfile(String name, String email);
+    void loadProfile(String fullName, String email, String phoneNo, String username);
 }

@@ -24,6 +24,11 @@ public class ProfilePresenter<V extends ProfileMvpView> extends BasePresenter<V>
 
     @Override
     public void loadProfileData() {
-        getMvpView().loadProfile(getDataManager().getCurrentUserName(), getDataManager().getCurrentUserEmail());
+        String fullName = String.valueOf(getDataManager().getCurrentUserName());
+        String email = String.valueOf(getDataManager().getCurrentUserEmail());
+        String phoneNumber = String.valueOf(getDataManager().getCurrentUserEmail());
+        String username = String.valueOf(getDataManager().getCurrentUserId());
+
+        getMvpView().loadProfile(fullName, email, phoneNumber, username);
     }
 }

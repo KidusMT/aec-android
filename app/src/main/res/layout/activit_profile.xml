@@ -162,7 +162,27 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:text="kidusmamuye@gmail.com"
+                android:text="example@domain.com"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp">
+
+            <TextView
+                android:id="@+id/profile_username"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="username"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -180,24 +200,6 @@
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:text="+251964312709"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:orientation="horizontal"
-            android:paddingLeft="25dp">
-
-            <TextView
-                android:id="@+id/profile_address"
-                android:layout_width="wrap_content"
-
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:text="Addis Ababa"
                 android:textStyle="bold" />
         </LinearLayout>
 
