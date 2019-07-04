@@ -161,6 +161,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         answerSet.add(answers2);
     }
 
+    // works only for 15 choices the one answer list
     public Answers getAnswerSet(List<String> answers) {
         Answers ans = new Answers();
         for (int i = 0; i < answers.size(); i++) {

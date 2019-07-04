@@ -1,5 +1,6 @@
 package com.aait.aec.ui.create;
 
+import com.aait.aec.R;
 import com.aait.aec.data.DataManager;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.data.network.model.exam.Answers;
@@ -54,6 +55,7 @@ public class CreateExamPresenter<V extends CreateExamMvpView> extends BasePresen
                         return;
                     }
 
+                    getMvpView().showMessage(R.string.exams_created_successfully);
 
                 }, throwable -> {
                     if (!isViewAttached()) {
