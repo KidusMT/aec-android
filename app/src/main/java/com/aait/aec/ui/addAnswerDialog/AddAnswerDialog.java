@@ -1,5 +1,6 @@
 package com.aait.aec.ui.addAnswerDialog;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +16,9 @@ import com.aait.aec.R;
 import com.aait.aec.di.component.ActivityComponent;
 import com.aait.aec.ui.base.BaseDialog;
 import com.aait.aec.ui.main.MainActivity;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.inject.Inject;
 
@@ -40,6 +44,8 @@ public class AddAnswerDialog extends BaseDialog implements AddAnswerMvpView, Ans
 
 
     private String[] answerList;
+
+    AnswerDialogCommunicator communicator;
 
     public static AddAnswerDialog newInstance(int numberOfQuestions) {
         numOfQuest = numberOfQuestions;
@@ -68,6 +74,12 @@ public class AddAnswerDialog extends BaseDialog implements AddAnswerMvpView, Ans
         setUp(view);
 
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        communicator = (AnswerDialogCommunicator) context;
     }
 
     @OnClick(R.id.btn_dialog_cancel)
@@ -100,12 +112,8 @@ public class AddAnswerDialog extends BaseDialog implements AddAnswerMvpView, Ans
 
     @Override
     public void openConfirmReturnDialog() {
-        // todo has to update the list in the home activity
-        // todo has to send the list of answers to the api when the api is ready
+        communicator.submitAnswers(new ArrayList<>(Arrays.asList(answerList)));
         dismiss();
-//        startActivity(MainActivity.getStartIntent(getBaseActivity()));
-//        getBaseActivity().finish();// finishing the parent activity's activity rather than opening a new one
-
     }
 
     @Override

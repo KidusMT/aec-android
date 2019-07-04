@@ -1,6 +1,7 @@
 package com.aait.aec.data.network;
 
 import com.aait.aec.data.network.model.BlogResponse;
+import com.aait.aec.data.network.model.Course;
 import com.aait.aec.data.network.model.Image.ImageUploadResponse;
 import com.aait.aec.data.network.model.LoginRequest;
 import com.aait.aec.data.network.model.LoginResponse;
@@ -34,4 +35,6 @@ public interface ApiHelper {
     Observable<Exam> createExam(Exam exam);
 
     Single<OpenSourceResponse> getOpenSourceApiCall();
+
+    Observable<List<Course>> getCourses();
 }

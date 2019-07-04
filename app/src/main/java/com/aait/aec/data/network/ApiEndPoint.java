@@ -32,6 +32,9 @@ public final class ApiEndPoint {
     public static final String EXAM = BuildConfig.BASE_URL
             + "exams";
 
+    public static final String COURSES = BuildConfig.BASE_URL
+            + "courses";
+
     public static final String UPLOAD = BuildConfig.BASE_URL
             + "Containers/{container}/upload";
 

@@ -1,11 +1,12 @@
-
 package com.aait.aec.data.network.model.exam;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Answers {
-
+    @SerializedName("0")
+    @Expose
+    private String _0;
     @SerializedName("1")
     @Expose
     private String _1;
@@ -48,24 +49,14 @@ public class Answers {
     @SerializedName("14")
     @Expose
     private String _14;
-    @SerializedName("15")
-    @Expose
-    private String _15;
-    @SerializedName("16")
-    @Expose
-    private String _16;
-    @SerializedName("17")
-    @Expose
-    private String _17;
-    @SerializedName("18")
-    @Expose
-    private String _18;
-    @SerializedName("19")
-    @Expose
-    private String _19;
-    @SerializedName("20")
-    @Expose
-    private String _20;
+
+    public String get0() {
+        return _0;
+    }
+
+    public void set0(String _0) {
+        this._0 = _0;
+    }
 
     public String get1() {
         return _1;
@@ -177,54 +168,6 @@ public class Answers {
 
     public void set14(String _14) {
         this._14 = _14;
-    }
-
-    public String get15() {
-        return _15;
-    }
-
-    public void set15(String _15) {
-        this._15 = _15;
-    }
-
-    public String get16() {
-        return _16;
-    }
-
-    public void set16(String _16) {
-        this._16 = _16;
-    }
-
-    public String get17() {
-        return _17;
-    }
-
-    public void set17(String _17) {
-        this._17 = _17;
-    }
-
-    public String get18() {
-        return _18;
-    }
-
-    public void set18(String _18) {
-        this._18 = _18;
-    }
-
-    public String get19() {
-        return _19;
-    }
-
-    public void set19(String _19) {
-        this._19 = _19;
-    }
-
-    public String get20() {
-        return _20;
-    }
-
-    public void set20(String _20) {
-        this._20 = _20;
     }
 
 }

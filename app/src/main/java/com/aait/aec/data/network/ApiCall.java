@@ -1,6 +1,7 @@
 package com.aait.aec.data.network;
 
 import com.aait.aec.BuildConfig;
+import com.aait.aec.data.network.model.Course;
 import com.aait.aec.data.network.model.Image.ImageUploadResponse;
 import com.aait.aec.data.network.model.LoginRequest;
 import com.aait.aec.data.network.model.LoginResponse;
@@ -16,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -47,6 +47,10 @@ public interface ApiCall {
     @GET(ApiEndPoint.EXAM)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
     Observable<List<Exam>> loadExams();
+
+    @GET(ApiEndPoint.COURSES)
+    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
+    Observable<List<Course>> loadCourses();
 
     @POST(ApiEndPoint.EXAM)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)

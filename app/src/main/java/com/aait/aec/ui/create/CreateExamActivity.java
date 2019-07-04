@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://mindorks.com/license/apache-v2
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License
- */
-
 package com.aait.aec.ui.create;
 
 import android.app.DatePickerDialog;
@@ -24,14 +9,20 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.aait.aec.R;
+import com.aait.aec.data.db.model.Student;
+import com.aait.aec.data.network.model.exam.Answers;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerDialog;
+import com.aait.aec.ui.addAnswerDialog.AnswerDialogCommunicator;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -40,12 +31,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
-/**
- * Created by janisharali on 27/01/17.
- */
-
-public class CreateExamActivity extends BaseActivity implements CreateExamMvpView {
+public class CreateExamActivity extends BaseActivity implements CreateExamMvpView, AnswerDialogCommunicator {
 
     final Calendar myCalendar = Calendar.getInstance();
 
@@ -60,10 +46,21 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     ImageView ivCalendar;
 
     @BindView(R.id.create_assessment_date)
-    EditText assessmentDate;
+    EditText examDate;
+
+    @BindView(R.id.et_weight)
+    EditText examWeight;
+
+    @BindView(R.id.exam_course_name)
+    Spinner examNameSpinner;
+
+    @BindView(R.id.exam_type)
+    Spinner examTypeSpinner;
 
     @BindView(R.id.et_number_of_question)
     EditText numberOfQuestion;
+    List<Student> students = new ArrayList<>();
+    private Answers answers;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, CreateExamActivity.class);
@@ -84,7 +81,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
 
         setUp();
 
-        assessmentDate.setOnClickListener(v -> new DatePickerDialog(CreateExamActivity.this, date, myCalendar
+        examDate.setOnClickListener(v -> new DatePickerDialog(CreateExamActivity.this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show());
 
@@ -122,7 +119,17 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        assessmentDate.setText(sdf.format(myCalendar.getTime()));
+        examDate.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    @OnClick(R.id.btn_create)
+    void onCreateClicked() {
+        String examName = examNameSpinner.getSelectedItem().toString();
+        String examType = examTypeSpinner.getSelectedItem().toString();
+
+        // todo show messages for different scenarios
+        if (answers != null && students.size() > 0)
+            mPresenter.createExam(examName, examType, Integer.parseInt(examWeight.getText().toString()), answers, students);
     }
 
     @Override
@@ -146,4 +153,44 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         }
     }
 
+    @Override
+    public void submitAnswers(List<String> answers) {
+        for (int i = 0; i < answers.size(); i++) {
+            if (i == 0)
+                this.answers.set0(answers.get(i));
+            if (i == 1)
+                this.answers.set1(answers.get(i));
+            if (i == 2)
+                this.answers.set2(answers.get(i));
+            if (i == 3)
+                this.answers.set3(answers.get(i));
+            if (i == 4)
+                this.answers.set4(answers.get(i));
+            if (i == 5)
+                this.answers.set5(answers.get(i));
+            if (i == 6)
+                this.answers.set6(answers.get(i));
+            if (i == 7)
+                this.answers.set7(answers.get(i));
+            if (i == 8)
+                this.answers.set8(answers.get(i));
+            if (i == 9)
+                this.answers.set9(answers.get(i));
+            if (i == 10)
+                this.answers.set10(answers.get(i));
+            if (i == 11)
+                this.answers.set11(answers.get(i));
+            if (i == 12)
+                this.answers.set12(answers.get(i));
+            if (i == 13)
+                this.answers.set13(answers.get(i));
+            if (i == 14)
+                this.answers.set14(answers.get(i));
+        }
+    }
+
+    @Override
+    public void updateExam(List<Student> students) {
+        this.students = students;
+    }
 }
