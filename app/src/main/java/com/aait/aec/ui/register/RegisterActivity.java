@@ -17,11 +17,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
-/**
- * Created by janisharali on 27/01/17.
- */
-
 public class RegisterActivity extends BaseActivity implements RegisterMvpView {
 
     @Inject

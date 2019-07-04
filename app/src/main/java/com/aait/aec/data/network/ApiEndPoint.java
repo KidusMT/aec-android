@@ -34,6 +34,7 @@ public final class ApiEndPoint {
 
     public static final String UPLOAD = BuildConfig.BASE_URL
             + "Containers/{container}/upload";
+
     private ApiEndPoint() {
         // This class is not publicly instantiable
     }

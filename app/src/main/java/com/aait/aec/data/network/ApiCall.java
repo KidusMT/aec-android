@@ -48,7 +48,7 @@ public interface ApiCall {
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
     Observable<List<Exam>> loadExams();
 
-    @GET(ApiEndPoint.EXAM)
+    @POST(ApiEndPoint.EXAM)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
     Observable<Exam> createExam(@Body Exam exam);
 

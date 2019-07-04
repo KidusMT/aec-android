@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://mindorks.com/license/apache-v2
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License
- */
-
 package com.aait.aec.ui.main;
 
 import android.app.SearchManager;
@@ -64,38 +49,42 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * Created by janisharali on 27/01/17.
- */
-
 public class MainActivity extends BaseActivity implements MainMvpView, MainAdapter.Callback {
 
     public static final String TAG = MainActivity.class.getSimpleName();
+
     @Inject
     MainMvpPresenter<MainMvpView> mPresenter;
+
     @Inject
     MainAdapter mAdapter;
+
     @Inject
     LinearLayoutManager mLayoutManager;
+
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
+
     @BindView(R.id.drawer_view)
     DrawerLayout mDrawer;
+
     @BindView(R.id.navigation_view)
     NavigationView mNavigationView;
+
     @BindView(R.id.tv_app_version)
     TextView mAppVersionTextView;
+
     @BindView(R.id.exam_recycler)
     RecyclerView mRecyclerView;
+
     @BindView(R.id.tv_no_exam)
     TextView tvNoExams;
+
     @BindView(R.id.exam_swipe_to_refresh)
     SwipeRefreshLayout mSwipeRefreshLayout;
-    List<Exam> exams = new ArrayList<>();
+
     private TextView mNameTextView;
     private TextView mEmailTextView;
-    private RoundedImageView mProfileImageView;
-    private ActionBarDrawerToggle mDrawerToggle;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, MainActivity.class);
@@ -262,7 +251,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     @Override
     protected void setUp() {
         setSupportActionBar(mToolbar);
-        mDrawerToggle = new ActionBarDrawerToggle(
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 mDrawer,
                 mToolbar,
@@ -308,7 +297,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     void setupNavMenu() {
         View headerLayout = mNavigationView.getHeaderView(0);
-        mProfileImageView = headerLayout.findViewById(R.id.iv_profile_pic);
+        RoundedImageView mProfileImageView = headerLayout.findViewById(R.id.iv_profile_pic);
         mNameTextView = headerLayout.findViewById(R.id.tv_name);
         mEmailTextView = headerLayout.findViewById(R.id.tv_email);
 

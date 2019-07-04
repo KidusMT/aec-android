@@ -33,9 +33,7 @@ import com.aait.aec.ui.subject.SubjectActivity;
 
 import dagger.Component;
 
-/**
- * Created by janisharali on 27/01/17.
- */
+
 
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
