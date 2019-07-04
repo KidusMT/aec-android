@@ -23,6 +23,12 @@ public class ProfilePresenter<V extends ProfileMvpView> extends BasePresenter<V>
     }
 
     @Override
+    public void onAttach(V mvpView) {
+        super.onAttach(mvpView);
+        loadProfileData();
+    }
+
+    @Override
     public void loadProfileData() {
         String fullName = String.valueOf(getDataManager().getCurrentUserName());
         String email = String.valueOf(getDataManager().getCurrentUserEmail());

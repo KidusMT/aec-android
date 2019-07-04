@@ -65,8 +65,6 @@ public class ProfileActivity extends BaseActivity implements ProfileMvpView {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
-//        mPresenter.loadProfileData();
     }
 
     @Override
