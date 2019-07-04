@@ -27,13 +27,13 @@ import com.aait.aec.ui.addAnswerDialog.AddAnswerMvpPresenter;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerMvpView;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerPresenter;
 import com.aait.aec.ui.addAnswerDialog.AnswerAdapter;
+import com.aait.aec.ui.course.CoursePagerAdapter;
 import com.aait.aec.ui.create.CreateExamMvpPresenter;
 import com.aait.aec.ui.create.CreateExamMvpView;
 import com.aait.aec.ui.create.CreateExamPresenter;
-import com.aait.aec.ui.feed.FeedMvpPresenter;
-import com.aait.aec.ui.feed.FeedMvpView;
-import com.aait.aec.ui.feed.FeedPagerAdapter;
-import com.aait.aec.ui.feed.FeedPresenter;
+import com.aait.aec.ui.course.CourseMvpPresenter;
+import com.aait.aec.ui.course.CourseMvpView;
+import com.aait.aec.ui.course.CoursePresenter;
 import com.aait.aec.ui.forgot.ForgotMvpPresenter;
 import com.aait.aec.ui.forgot.ForgotMvpView;
 import com.aait.aec.ui.forgot.ForgotPresenter;
@@ -150,14 +150,14 @@ public class ActivityModule {
     }
 
     @Provides
-    FeedMvpPresenter<FeedMvpView> provideFeedPresenter(
-            FeedPresenter<FeedMvpView> presenter) {
+    CourseMvpPresenter<CourseMvpView> provideFeedPresenter(
+            CoursePresenter<CourseMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    FeedPagerAdapter provideFeedPagerAdapter() {
-        return new FeedPagerAdapter(new ArrayList<Category>());
+    CoursePagerAdapter provideFeedPagerAdapter() {
+        return new CoursePagerAdapter(new ArrayList<Category>());
     }
 
     @Provides

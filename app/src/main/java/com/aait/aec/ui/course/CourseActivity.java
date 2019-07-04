@@ -1,4 +1,4 @@
-package com.aait.aec.ui.feed;
+package com.aait.aec.ui.course;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,13 +24,13 @@ import butterknife.ButterKnife;
 
 import static com.aait.aec.utils.ViewUtils.dpToPx;
 
-public class FeedActivity extends BaseActivity implements FeedMvpView {
+public class CourseActivity extends BaseActivity implements CourseMvpView {
 
     @Inject
-    FeedMvpPresenter<FeedMvpView> mPresenter;
+    CourseMvpPresenter<CourseMvpView> mPresenter;
 
     @Inject
-    FeedPagerAdapter mPagerAdapter;
+    CoursePagerAdapter mPagerAdapter;
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -41,7 +41,7 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
     List<Category> categoryList = new ArrayList<>();
 
     public static Intent getStartIntent(Context context) {
-        return new Intent(context, FeedActivity.class);
+        return new Intent(context, CourseActivity.class);
     }
 
     @Override

@@ -1,7 +1,6 @@
-package com.aait.aec.ui.feed;
+package com.aait.aec.ui.course;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import com.aait.aec.data.db.model.Category;
 import com.aait.aec.ui.base.BaseViewHolder;
 import com.aait.aec.utils.CommonUtils;
 import com.bumptech.glide.Glide;
-import com.google.android.gms.common.internal.service.Common;
 
 import java.util.List;
 
@@ -24,11 +22,11 @@ import butterknife.ButterKnife;
  * Created by Janisharali on 25/05/2017.
  */
 
-public class FeedPagerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+public class CoursePagerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     List<Category> albumList;
 
-    public FeedPagerAdapter(List<Category> categories) {
+    public CoursePagerAdapter(List<Category> categories) {
         this.albumList = categories;
     }
 

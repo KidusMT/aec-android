@@ -18,7 +18,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,7 +30,7 @@ import com.aait.aec.data.network.model.exam.Exam;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.create.CreateExamActivity;
 import com.aait.aec.ui.custom.RoundedImageView;
-import com.aait.aec.ui.feed.FeedActivity;
+import com.aait.aec.ui.course.CourseActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.profile.ProfileActivity;
 import com.aait.aec.ui.result.ResultActivity;
@@ -40,7 +39,6 @@ import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.MyDividerItemDecoration;
 import com.aait.aec.utils.ScreenUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -359,7 +357,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
 
     @Override
     public void openMyFeedActivity() {
-        startActivity(FeedActivity.getStartIntent(this));
+        startActivity(CourseActivity.getStartIntent(this));
     }
 
     private void prepareExams() {
