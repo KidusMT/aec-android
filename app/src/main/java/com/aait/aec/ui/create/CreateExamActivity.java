@@ -156,7 +156,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     @Override
     public void submitAnswers(List<String> answers) {
         Answers answers1 = getAnswerSet(answers.subList(0, answers.size() / 2));
-        Answers answers2 = getAnswerSet(answers.subList((answers.size() / 2) + 1, answers.size() - 1));
+        Answers answers2 = getAnswerSet(answers.subList((answers.size() / 2) , answers.size() ));
         answerSet.add(answers1);
         answerSet.add(answers2);
     }
