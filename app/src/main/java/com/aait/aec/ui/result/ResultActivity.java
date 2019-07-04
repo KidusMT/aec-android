@@ -33,6 +33,8 @@ import com.aait.aec.data.db.model.Student;
 import com.aait.aec.data.network.model.exam.Exam;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
+import com.github.thunder413.datetimeutils.DateTimeStyle;
+import com.github.thunder413.datetimeutils.DateTimeUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -159,8 +161,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
         return null;
     }
 
-    public static String getDataColumn(Context context, Uri uri, String selection,
-                                       String[] selectionArgs) {
+    public static String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) {
 
         Cursor cursor = null;
         final String column = "_data";
@@ -252,7 +253,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
         }
 
         if (mExam.getCreatedDate() != null) {
-            result_date.setText(String.valueOf(mExam.getCreatedDate()));
+            result_date.setText(String.valueOf(DateTimeUtils.formatWithStyle(mExam.getCreatedDate(), DateTimeStyle.MEDIUM)));
         }
 
         if (mExam.getExamWeight() != null) {
