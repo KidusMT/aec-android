@@ -45,20 +45,20 @@ public interface ApiCall {
     Observable<RegistrationRequest> register(@Body RegistrationRequest request);
 
     @GET(ApiEndPoint.EXAM)
-    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
+    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<List<Exam>> loadExams();
 
     @GET(ApiEndPoint.COURSES)
-    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
+    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<List<Course>> loadCourses();
 
     @POST(ApiEndPoint.EXAM)
-    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
+    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<Exam> createExam(@Body Exam exam);
 
     @Multipart
     @POST(ApiEndPoint.UPLOAD)
-    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
+    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<ImageUploadResponse> upload(@Path("container") String container, @Part List<MultipartBody.Part> files);
 
     class Factory {

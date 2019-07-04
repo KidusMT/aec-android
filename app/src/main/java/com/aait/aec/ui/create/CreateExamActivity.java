@@ -128,7 +128,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         String examType = examTypeSpinner.getSelectedItem().toString();
 
         // todo show messages for different scenarios
-        if (answerSet.size()>0 && students.size() > 0)
+        if (answerSet.size() > 0 && students.size() > 0)
             mPresenter.createExam(examName, examType, Integer.parseInt(examWeight.getText().toString()), answerSet, students);
     }
 
@@ -155,45 +155,45 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
 
     @Override
     public void submitAnswers(List<String> answers) {
-        Answers answers1 = getAnswerSet(answers, 0);
-        Answers answers2 = getAnswerSet(answers, (answers.size() / 2) - 1);
+        Answers answers1 = getAnswerSet(answers.subList(0, answers.size() / 2));
+        Answers answers2 = getAnswerSet(answers.subList((answers.size() / 2) + 1, answers.size() - 1));
         answerSet.add(answers1);
         answerSet.add(answers2);
     }
 
-    public Answers getAnswerSet(List<String> answers, int start) {
+    public Answers getAnswerSet(List<String> answers) {
         Answers ans = new Answers();
-        for (int i = start; i < answers.size() / 2; i++) {
-            if (i == 0)
-                ans.set0(answers.get(i));
-            if (i == 1)
-                ans.set1(answers.get(i));
-            if (i == 2)
-                ans.set2(answers.get(i));
-            if (i == 3)
-                ans.set3(answers.get(i));
-            if (i == 4)
-                ans.set4(answers.get(i));
-            if (i == 5)
-                ans.set5(answers.get(i));
-            if (i == 6)
-                ans.set6(answers.get(i));
-            if (i == 7)
-                ans.set7(answers.get(i));
-            if (i == 8)
-                ans.set8(answers.get(i));
-            if (i == 9)
-                ans.set9(answers.get(i));
-            if (i == 10)
-                ans.set10(answers.get(i));
-            if (i == 11)
-                ans.set11(answers.get(i));
-            if (i == 12)
-                ans.set12(answers.get(i));
-            if (i == 13)
-                ans.set13(answers.get(i));
-            if (i == 14)
-                ans.set14(answers.get(i));
+        for (int i = 0; i < answers.size(); i++) {
+                if (i == 0)
+                    ans.set0(answers.get(i));
+                if (i == 1)
+                    ans.set1(answers.get(i));
+                if (i == 2)
+                    ans.set2(answers.get(i));
+                if (i == 3)
+                    ans.set3(answers.get(i));
+                if (i == 4)
+                    ans.set4(answers.get(i));
+                if (i == 5)
+                    ans.set5(answers.get(i));
+                if (i == 6)
+                    ans.set6(answers.get(i));
+                if (i == 7)
+                    ans.set7(answers.get(i));
+                if (i == 8)
+                    ans.set8(answers.get(i));
+                if (i == 9)
+                    ans.set9(answers.get(i));
+                if (i == 10)
+                    ans.set10(answers.get(i));
+                if (i == 11)
+                    ans.set11(answers.get(i));
+                if (i == 12)
+                    ans.set12(answers.get(i));
+                if (i == 13)
+                    ans.set13(answers.get(i));
+                if (i == 14)
+                    ans.set14(answers.get(i));
         }
 
         return ans;

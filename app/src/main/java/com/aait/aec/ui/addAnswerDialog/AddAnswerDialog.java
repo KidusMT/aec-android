@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.aait.aec.R;
+import com.aait.aec.data.network.model.exam.Answers;
 import com.aait.aec.di.component.ActivityComponent;
 import com.aait.aec.ui.base.BaseDialog;
 import com.aait.aec.ui.main.MainActivity;
@@ -117,11 +118,11 @@ public class AddAnswerDialog extends BaseDialog implements AddAnswerMvpView, Ans
     }
 
     @Override
-    public void onItemClicked(int position, String answer) {
+    public void onItemClicked(int position, int answer) {
         //the position will help on updating the value when a new value is introduced
         //answerList.add(position, answer);
-        answerList[position] = answer;
+        answerList[position] = String.valueOf(answer);
         Log.e("---->position", String.valueOf(position));
-        Log.e("---->answer", answer);
+        Log.e("---->answer", String.valueOf(answer));
     }
 }
