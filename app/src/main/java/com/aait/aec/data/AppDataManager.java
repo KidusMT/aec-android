@@ -177,9 +177,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public void updateApiHeader(String userId, String accessToken) {
-//        mApiHelper.getApiHeader().getProtectedApiHeader().setUserId(userId);
-//        mApiHelper.getApiHeader().getProtectedApiHeader().setAccessToken(accessToken);
+    public void updateApiHeader(String accessToken) {
+        mApiHelper.getApiHeader().setAccessToken(accessToken);//.setAccessToken(accessToken);
     }
 
     @Override
@@ -196,7 +195,7 @@ public class AppDataManager implements DataManager {
         setCurrentUserName(userName);
         setCurrentUserEmail(email);
 
-        updateApiHeader(userId, accessToken);
+        updateApiHeader(accessToken);
     }
 
     @Override
