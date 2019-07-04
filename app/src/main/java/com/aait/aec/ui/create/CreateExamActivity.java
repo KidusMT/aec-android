@@ -60,7 +60,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     @BindView(R.id.et_number_of_question)
     EditText numberOfQuestion;
     List<Student> students = new ArrayList<>();
-    private Answers answers;
+    private List<Answers> answerSet = new ArrayList<>();
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, CreateExamActivity.class);
@@ -128,8 +128,8 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         String examType = examTypeSpinner.getSelectedItem().toString();
 
         // todo show messages for different scenarios
-        if (answers != null && students.size() > 0)
-            mPresenter.createExam(examName, examType, Integer.parseInt(examWeight.getText().toString()), answers, students);
+        if (answerSet.size()>0 && students.size() > 0)
+            mPresenter.createExam(examName, examType, Integer.parseInt(examWeight.getText().toString()), answerSet, students);
     }
 
     @Override
@@ -155,38 +155,48 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
 
     @Override
     public void submitAnswers(List<String> answers) {
-        for (int i = 0; i < answers.size(); i++) {
+        Answers answers1 = getAnswerSet(answers, 0);
+        Answers answers2 = getAnswerSet(answers, (answers.size() / 2) - 1);
+        answerSet.add(answers1);
+        answerSet.add(answers2);
+    }
+
+    public Answers getAnswerSet(List<String> answers, int start) {
+        Answers ans = new Answers();
+        for (int i = start; i < answers.size() / 2; i++) {
             if (i == 0)
-                this.answers.set0(answers.get(i));
+                ans.set0(answers.get(i));
             if (i == 1)
-                this.answers.set1(answers.get(i));
+                ans.set1(answers.get(i));
             if (i == 2)
-                this.answers.set2(answers.get(i));
+                ans.set2(answers.get(i));
             if (i == 3)
-                this.answers.set3(answers.get(i));
+                ans.set3(answers.get(i));
             if (i == 4)
-                this.answers.set4(answers.get(i));
+                ans.set4(answers.get(i));
             if (i == 5)
-                this.answers.set5(answers.get(i));
+                ans.set5(answers.get(i));
             if (i == 6)
-                this.answers.set6(answers.get(i));
+                ans.set6(answers.get(i));
             if (i == 7)
-                this.answers.set7(answers.get(i));
+                ans.set7(answers.get(i));
             if (i == 8)
-                this.answers.set8(answers.get(i));
+                ans.set8(answers.get(i));
             if (i == 9)
-                this.answers.set9(answers.get(i));
+                ans.set9(answers.get(i));
             if (i == 10)
-                this.answers.set10(answers.get(i));
+                ans.set10(answers.get(i));
             if (i == 11)
-                this.answers.set11(answers.get(i));
+                ans.set11(answers.get(i));
             if (i == 12)
-                this.answers.set12(answers.get(i));
+                ans.set12(answers.get(i));
             if (i == 13)
-                this.answers.set13(answers.get(i));
+                ans.set13(answers.get(i));
             if (i == 14)
-                this.answers.set14(answers.get(i));
+                ans.set14(answers.get(i));
         }
+
+        return ans;
     }
 
     @Override

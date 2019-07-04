@@ -11,7 +11,7 @@ import java.util.List;
 @PerActivity
 public interface CreateExamMvpPresenter<V extends CreateExamMvpView> extends MvpPresenter<V> {
 
-    void createExam(String examName, String examType, int examWeight, Answers answers, List<Student> students);
+    void createExam(String examName, String examType, int examWeight, List<Answers> answers, List<Student> students);
 
     void loadCourse();
 

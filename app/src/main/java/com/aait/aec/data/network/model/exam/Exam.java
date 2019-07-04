@@ -22,7 +22,7 @@ public class Exam {
     private Integer examWeight;
     @SerializedName("answers")
     @Expose
-    private Answers answers;
+    private List<Answers> answers;
     @SerializedName("id")
     @Expose
     private String id;
@@ -33,7 +33,7 @@ public class Exam {
     @Expose
     private List<Student> students = null;
 
-    public Exam(String examName, String examType, Integer examWeight, Answers answers, String userId, List<Student> students) {
+    public Exam(String examName, String examType, Integer examWeight, List<Answers> answers, String userId, List<Student> students) {
         this.examName = examName;
         this.examType = examType;
         this.examWeight = examWeight;
@@ -74,11 +74,11 @@ public class Exam {
         this.examWeight = examWeight;
     }
 
-    public Answers getAnswers() {
+    public List<Answers> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(Answers answers) {
+    public void setAnswers(List<Answers> answers) {
         this.answers = answers;
     }
 

@@ -35,7 +35,7 @@ public class CreateExamPresenter<V extends CreateExamMvpView> extends BasePresen
     }
 
     @Override
-    public void createExam(String examName, String examType, int examWeight, Answers answers, List<Student> students) {
+    public void createExam(String examName, String examType, int examWeight, List<Answers> answers, List<Student> students) {
 
         Exam exam = new Exam(
                 examName,// exam name

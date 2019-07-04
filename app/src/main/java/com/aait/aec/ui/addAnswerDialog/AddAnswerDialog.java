@@ -119,7 +119,7 @@ public class AddAnswerDialog extends BaseDialog implements AddAnswerMvpView, Ans
     @Override
     public void onItemClicked(int position, String answer) {
         //the position will help on updating the value when a new value is introduced
-//        answerList.add(position, answer);
+        //answerList.add(position, answer);
         answerList[position] = answer;
         Log.e("---->position", String.valueOf(position));
         Log.e("---->answer", answer);
