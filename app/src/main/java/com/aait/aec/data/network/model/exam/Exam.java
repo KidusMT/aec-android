@@ -33,6 +33,8 @@ public class Exam {
     @Expose
     private List<Student> students = null;
 
+    private String container_name;
+
     public Exam(String examName, String examType, Integer examWeight, List<Answers> answers, String userId, List<Student> students) {
         this.examName = examName;
         this.examType = examType;
@@ -104,5 +106,13 @@ public class Exam {
 
     public void setStudents(List<Student> students) {
         this.students = students;
+    }
+
+    public String getContainer_name() {
+        return container_name;
+    }
+
+    public void setContainer_name(String container_name) {
+        this.container_name = container_name;
     }
 }

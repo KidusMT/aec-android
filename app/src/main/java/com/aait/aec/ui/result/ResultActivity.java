@@ -22,6 +22,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -349,7 +350,15 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         ArrayList<Uri> fileUris = new ArrayList<>();
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+        String containerName;
+        if (mExam != null && !TextUtils.isEmpty(mExam.getExamName())) {
+            containerName = mExam.getExamName().trim()//remove space at both ends
+                    .toLowerCase()//changes the case to lower case
+                    .replace(" ", "_");//replace the space with _ (under score)
+        } else
+            containerName = "images";// shouldn't be happening but for error handling todo find a better way
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {// when uploading images
             filePath = data.getData();
             ClipData clipData = data.getClipData();
             if (clipData != null) {
@@ -364,8 +373,8 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
 
                         parts.add(prepareFilePart(getPath(this, uri)));
                     }
-
-                    mPresenter.onUploadClicked("images", parts);
+                    mExam.setContainer_name(containerName);
+                    mPresenter.onUploadClicked(containerName, parts);
                 }
             } else { // for single image
                 Uri singleUri = data.getData();
@@ -375,9 +384,10 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
                 Log.e("Single ", filename + " " + fileUris.size());
 
                 parts.add(prepareFilePart(getPath(this, singleUri)));
-                mPresenter.onUploadClicked("images", parts);
+                mExam.setContainer_name(containerName);
+                mPresenter.onUploadClicked(containerName, parts);
             }
-        } else if (requestCode == 1) {
+        } else if (requestCode == 1) { // -----> when taking picture
             File f = new File(Environment.getExternalStorageDirectory().toString());
             for (File temp : f.listFiles()) {
                 if (temp.getName().equals("temp.jpg")) {
