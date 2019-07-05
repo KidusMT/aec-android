@@ -18,7 +18,6 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class LanguageActivity extends BaseActivity implements View.OnClickListener {
 
@@ -36,7 +35,6 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
         setContentView(R.layout.activity_language_list);
 
 
-
         mRadioButton_amharic = findViewById(R.id.check_amharic);
         mRadioButton_english = findViewById(R.id.check_english);
 
@@ -47,16 +45,16 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
         findViewById(R.id.check_amharic_container).setOnClickListener(this);
 
         sharedPreferences = getApplicationContext().getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE);
-        String currentLanguage = sharedPreferences.getString("PREF_KEY_CURRENT_LANGUAGE","en");
+        String currentLanguage = sharedPreferences.getString("PREF_KEY_CURRENT_LANGUAGE", "en");
 
         ButterKnife.bind(this);
 
         setUp();
 
-        if(currentLanguage.equals("en")){
+        if (currentLanguage.equals("en")) {
             mRadioButton_english.setChecked(true);
             mRadioButton_amharic.setChecked(false);
-        }else if(currentLanguage.equals("am")){
+        } else if (currentLanguage.equals("am")) {
             mRadioButton_english.setChecked(false);
             mRadioButton_amharic.setChecked(true);
         }
@@ -65,7 +63,7 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
 
             case R.id.check_english:
             case R.id.check_english_container:
@@ -76,7 +74,7 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
                 getBaseContext().getResources().updateConfiguration(config,
                         getBaseContext().getResources().getDisplayMetrics());
 
-                sharedPreferences.edit().putString("PREF_KEY_CURRENT_LANGUAGE","en").apply();
+                sharedPreferences.edit().putString("PREF_KEY_CURRENT_LANGUAGE", "en").apply();
                 mRadioButton_amharic.setChecked(false);
                 try {
                     Thread.sleep(650);
@@ -99,7 +97,7 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
                 getBaseContext().getResources().updateConfiguration(configa,
                         getBaseContext().getResources().getDisplayMetrics());
 
-                sharedPreferences.edit().putString("PREF_KEY_CURRENT_LANGUAGE","am").apply();
+                sharedPreferences.edit().putString("PREF_KEY_CURRENT_LANGUAGE", "am").apply();
                 mRadioButton_english.setChecked(false);
                 try {
                     Thread.sleep(650);

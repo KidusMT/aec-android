@@ -1,31 +1,15 @@
-/*
- * Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://mindorks.com/license/apache-v2
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License
- */
-
 package com.aait.aec.ui.forgot;
 
+import com.aait.aec.R;
 import com.aait.aec.data.DataManager;
 import com.aait.aec.ui.base.BasePresenter;
+import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.rx.SchedulerProvider;
+import com.google.android.gms.common.internal.service.Common;
 
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
-
-/**
- * Created by janisharali on 27/01/17.
- */
 
 public class ForgotPresenter<V extends ForgotMvpView> extends BasePresenter<V>
         implements ForgotMvpPresenter<V> {
@@ -42,5 +26,20 @@ public class ForgotPresenter<V extends ForgotMvpView> extends BasePresenter<V>
     @Override
     public void onLoginClicked() {
         getMvpView().openLoginActivity();
+    }
+
+    @Override
+    public void onSubmitClicked(String email) {
+        //validate email and password
+        if (email == null || email.isEmpty()) {
+            getMvpView().onError(R.string.empty_email);
+            return;
+        }
+        if (!CommonUtils.isEmailValid(email)) {
+            getMvpView().onError(R.string.invalid_email);
+            return;
+        }
+
+        getMvpView().showMessage(R.string.password_reset_request_sent_to_registrar);
     }
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AEC</string>
     <string name="about">ስለ</string>
     <string name="account_settings">መለያ ቅንጅቶች</string>
     <string name="add_new_student">" አዲስ ተማሪን አክል"</string>
@@ -62,4 +61,9 @@
     <string name="student_add">አክል</string>
     <string name="student_save">አስቀምጥ</string>
     <string name="submit">አስገባ</string>
+    <string name="app_name" translatable="false">AEC</string>
+    <string name="search">ፈልግ</string>
+    <string name="impt">አስመጣ</string>
+    <string name="clear_all">ሁሉንም ያፅዱ</string>
+    <string name="empty_email">እባክዎ ባዶ ያልሆነ ኢሜል ያቅርቡ.</string>
 </resources>

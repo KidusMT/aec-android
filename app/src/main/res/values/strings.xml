@@ -37,7 +37,7 @@
     <string name="password">Password</string>
 
     <!--Login Validation-->
-    <string name="empty_username">Please provide a non empty email.</string>
+    <string name="empty_username">Please provide a non empty username.</string>
     <string name="empty_first_name">Please provide a non empty first name.</string>
     <string name="empty_last_name">Please provide a non empty last name.</string>
     <string name="empty_age">Please provide a non empty age.</string>
@@ -45,6 +45,9 @@
     <string name="empty_confirmation">Please provide a non empty password.</string>
     <string name="invalid_email">Please provide a valid email.</string>
     <string name="empty_password">Please provide a non empty password.</string>
+
+    <!--Forgot Password-->
+    <string name="empty_email">Please provide a non empty email.</string>
 
     <!--about fragment-->
     <string name="project_info" translatable="false">This sample app implements MVP architecture using Dagger2, GreenDao, RxJava, FastAndroidNetworking and PlaceholderView</string>
@@ -140,4 +143,8 @@
     <string name="language">Language</string>
     <string name="english">English</string>
     <string name="amharic">Amharic</string>
+    <string name="search">Search</string>
+    <string name="impt">import</string>
+    <string name="clear_all">Clear All</string>
+    <string name="password_reset_request_sent_to_registrar">Password reset request sent to registrar.</string>
 </resources>

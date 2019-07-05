@@ -31,6 +31,8 @@ import com.aait.aec.R;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -64,6 +66,17 @@ public final class CommonUtils {
         } else {
             return null;
         }
+    }
+
+    public static boolean isEmailValid(String email) {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN =
+                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 
     @SuppressLint("all")
