@@ -20,6 +20,9 @@ import com.aait.aec.ui.create.CreateExamPresenter;
 import com.aait.aec.ui.course.CourseMvpPresenter;
 import com.aait.aec.ui.course.CourseMvpView;
 import com.aait.aec.ui.course.CoursePresenter;
+import com.aait.aec.ui.detail.ExamDetailMvpPresenter;
+import com.aait.aec.ui.detail.ExamDetailMvpView;
+import com.aait.aec.ui.detail.ExamDetailPresenter;
 import com.aait.aec.ui.forgot.ForgotMvpPresenter;
 import com.aait.aec.ui.forgot.ForgotMvpView;
 import com.aait.aec.ui.forgot.ForgotPresenter;
@@ -106,6 +109,13 @@ public class ActivityModule {
     @PerActivity
     LoginMvpPresenter<LoginMvpView> provideLoginPresenter(
             LoginPresenter<LoginMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    ExamDetailMvpPresenter<ExamDetailMvpView> provideExamDetailPresenter(
+            ExamDetailPresenter<ExamDetailMvpView> presenter) {
         return presenter;
     }
 

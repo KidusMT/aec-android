@@ -5,6 +5,7 @@ import com.aait.aec.di.module.ActivityModule;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerDialog;
 import com.aait.aec.ui.course.CourseActivity;
 import com.aait.aec.ui.create.CreateExamActivity;
+import com.aait.aec.ui.detail.ExamDetailDialog;
 import com.aait.aec.ui.forgot.ForgotActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.main.MainActivity;
@@ -47,6 +48,8 @@ public interface ActivityComponent {
     void inject(CourseActivity activity);
 
     void inject(EditStudentDialog dialog);
+
+    void inject(ExamDetailDialog dialog);
 
     void inject(ProfileActivity activity);
 
