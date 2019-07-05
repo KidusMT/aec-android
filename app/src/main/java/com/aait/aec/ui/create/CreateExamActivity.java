@@ -237,7 +237,6 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
 
     public List<String> getCourseList(List<Course> courses) {
         List<String> courseList = new ArrayList<>();
-        Log.e(TAG, "--asd-> " + courses.size());
 
         for (Course crs : courses) {
             courseList.add(crs.getTitle());
