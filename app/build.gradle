@@ -115,7 +115,11 @@ dependencies {
     // Firebase - core
     implementation 'com.google.firebase:firebase-core:16.0.9'
 
+    // Image date formatter
     implementation 'com.github.thunder413:DateTimeUtils:3.0'
+
+    // MPAndroidChart - PieChart library
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
 
 configurations.all {
