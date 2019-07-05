@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -40,6 +41,10 @@ public class SettingsActivity extends BaseActivity implements SettingsMvpView {
     @BindView(R.id.switch_camera)
     SwitchCompat mCameraSwitch;
 
+    @BindView(R.id.settings_toolbar)
+    Toolbar mToolbar;
+
+
     public static Intent getStartIntent(Context context) {
         return new Intent(context, SettingsActivity.class);
     }
@@ -67,6 +72,13 @@ public class SettingsActivity extends BaseActivity implements SettingsMvpView {
 
     @Override
     protected void setUp() {
+
+        setSupportActionBar(mToolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         mStorageSwitch.setClickable(false);
         mLocationSwitch.setClickable(false);

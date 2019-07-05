@@ -1,17 +1,17 @@
 <resources>
-    <string name="app_name">AEC</string>
+    <string name="app_name" translatable="false">AEC</string>
 
     <!--Toolbar menus-->
     <string name="clear">Clear</string>
-    <string name="cut">Cut</string>
-    <string name="copy">Copy</string>
+    <string name="cut" translatable="false">Cut</string>
+    <string name="copy" translatable="false">Copy</string>
     <string name="paste">Paste</string>
     <string name="delete">Delete</string>
     <string name="share">Share</string>
 
     <!--Drawer-->
-    <string name="open_drawer">Drawer Open</string>
-    <string name="close_drawer">Drawer Close</string>
+    <string name="open_drawer" translatable="false">Drawer Open</string>
+    <string name="close_drawer" translatable="false">Drawer Close</string>
 
     <!--Drawer Menus-->
     <string name="about">About</string>
@@ -20,7 +20,7 @@
     <string name="btn_cancel">CANCEL</string>
     <string name="btn_delete">DELETE</string>
     <string name="are_you_sure_you_want_to_logout">Are you sure you want to logout?</string>
-    <string name="feed">My Feed</string>
+    <string name="feed" translatable="false">My Feed</string>
 
     <!--Alert Dialog-->
 
@@ -31,7 +31,7 @@
     <string name="connection_error">Internet connection lost!</string>
 
     <!--Login-->
-    <string name="login_dummy">Login Dummy</string>
+    <string name="login_dummy" translatable="false">Login Dummy</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -47,37 +47,37 @@
     <string name="empty_password">Please provide a non empty password.</string>
 
     <!--about fragment-->
-    <string name="project_info">This sample app implements MVP architecture using Dagger2, GreenDao, RxJava, FastAndroidNetworking and PlaceholderView</string>
-    <string name="link_mvp_blog">1. https://blog.mindorks.com</string>
-    <string name="link_mvp_repo">2. https://github.com/MindorksOpenSource/android-mvp-architecture</string>
-    <string name="link_mindorks_blog">3. https://blog.mindorks.com</string>
-    <string name="link_mindorks_repo">4. https://github.com/MindorksOpenSource</string>
+    <string name="project_info" translatable="false">This sample app implements MVP architecture using Dagger2, GreenDao, RxJava, FastAndroidNetworking and PlaceholderView</string>
+    <string name="link_mvp_blog" translatable="false">1. https://blog.mindorks.com</string>
+    <string name="link_mvp_repo" translatable="false">2. https://github.com/MindorksOpenSource/android-mvp-architecture</string>
+    <string name="link_mindorks_blog" translatable="false">3. https://blog.mindorks.com</string>
+    <string name="link_mindorks_repo" translatable="false">4. https://github.com/MindorksOpenSource</string>
     <string name="version">"version"</string>
 
     <!--rating dialog-->
-    <string name="rate_us">Rate Us</string>
-    <string name="rating_message">Please let us know, how can we improve ourselves?</string>
-    <string name="rating_play_store_redirect_message_line_1">Awesome! Thank you for the 5 stars.</string>
-    <string name="rating_play_store_redirect_message_line_2">Please help others, in knowing some good things about this app.</string>
-    <string name="rating_play_store_text">Rate us on Play Store</string>
-    <string name="rating_not_provided_error">Please provide us stars.</string>
-    <string name="rating_thanks">Thank you!</string>
+    <string name="rate_us" translatable="false">Rate Us</string>
+    <string name="rating_message" translatable="false">Please let us know, how can we improve ourselves?</string>
+    <string name="rating_play_store_redirect_message_line_1" translatable="false">Awesome! Thank you for the 5 stars.</string>
+    <string name="rating_play_store_redirect_message_line_2" translatable="false">Please help others, in knowing some good things about this app.</string>
+    <string name="rating_play_store_text" translatable="false">Rate us on Play Store</string>
+    <string name="rating_not_provided_error" translatable="false">Please provide us stars.</string>
+    <string name="rating_thanks" translatable="false">Thank you!</string>
 
     <!--play store-->
-    <string name="app_google_play_store_link">"https://play.google.com/store/apps/details?id="</string>
-    <string name="app_market_link">"market://details?id="</string>
+    <string name="app_google_play_store_link" translatable="false">"https://play.google.com/store/apps/details?id="</string>
+    <string name="app_market_link" translatable="false">"market://details?id="</string>
 
     <!--button-->
     <string name="later">Later</string>
     <string name="submit">Submit</string>
 
     <!--feed-->
-    <string name="title">My Feed</string>
-    <string name="open_source">Open Source</string>
-    <string name="blog">Blog</string>
+    <string name="title" translatable="false">My Feed</string>
+    <string name="open_source" translatable="false">Open Source</string>
+    <string name="blog" translatable="false">Blog</string>
 
     <!--empty state-->
-    <string name="empty_screen">We do not have anything\nhere right now.</string>
+    <string name="empty_screen" translatable="false">We do not have anything\nhere right now.</string>
     <string name="please_retry">Please Retry</string>
     <string name="retry">Retry</string>
     <string name="settings">Settings</string>
@@ -124,7 +124,7 @@
     <string name="error_something_wrong_happened">Something wrong happened. Please try again later.</string>
     <string name="no_exam_list_found">No exam list found.</string>
     <string name="delete_dialog_student">Are you sure you want to delete this student?</string>
-    <string name="are_you_sure_delete_dialog_student">Are you sure you want to delete all students from the list?</string>
+    <string name="are_you_sure_delete_dialog_student">Are you ssure you want to delete all students from the list?</string>
     <string name="btn_dialog_add">ADD</string>
     <string name="add_new_student">Add New Student</string>
     <string name="exams_created_successfully">Created Exams Successfully.</string>

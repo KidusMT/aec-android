@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
@@ -15,6 +16,7 @@ import com.aait.aec.utils.AppConstants;
 
 import java.util.Locale;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -24,6 +26,9 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
     RadioButton mRadioButton_english;
 
     SharedPreferences sharedPreferences;
+
+    @BindView(R.id.languages_toolbar)
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,8 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
         String currentLanguage = sharedPreferences.getString("PREF_KEY_CURRENT_LANGUAGE","en");
 
         ButterKnife.bind(this);
+
+        setUp();
 
         if(currentLanguage.equals("en")){
             mRadioButton_english.setChecked(true);
@@ -111,7 +118,12 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void setUp() {
+        setSupportActionBar(mToolbar);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
     }
 
     @Override
