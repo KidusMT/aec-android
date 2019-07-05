@@ -7,16 +7,16 @@ import com.google.gson.annotations.SerializedName;
 
 public class Files {
 
-    @SerializedName("data")
+    @SerializedName("image")
     @Expose
-    private List<Datum> data = null;
+    private List<Image> image = null;
 
-    public List<Datum> getData() {
-        return data;
+    public List<Image> getImage() {
+        return image;
     }
 
-    public void setData(List<Datum> data) {
-        this.data = data;
+    public void setImage(List<Image> image) {
+        this.image = image;
     }
 
 }
