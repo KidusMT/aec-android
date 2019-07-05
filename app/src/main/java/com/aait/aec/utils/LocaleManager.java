@@ -27,7 +27,7 @@ public class LocaleManager {
 
     public static String getLanguage(Context c) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(c);
-        return prefs.getString(LANGUAGE_KEY, LANGUAGE_AMHARIC);//set the default language in here
+        return prefs.getString(LANGUAGE_KEY, LANGUAGE_ENGLISH);//set the default language in here = ENGLISH
     }
 
     @SuppressLint("ApplySharedPref")
@@ -35,7 +35,7 @@ public class LocaleManager {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(c);
         // use commit() instead of apply(), because sometimes we kill the application process immediately
         // which will prevent apply() to finish
-        prefs.edit().putString(LANGUAGE_KEY, language).commit();
+        prefs.edit().putString(LANGUAGE_KEY, language).apply();
     }
 
     private static Context updateResources(Context context, String language) {

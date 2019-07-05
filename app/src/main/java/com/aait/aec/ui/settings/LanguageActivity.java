@@ -29,8 +29,6 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
     RadioButton mRadioButton_amharic;
     RadioButton mRadioButton_english;
 
-    SharedPreferences sharedPreferences;
-
     @BindView(R.id.languages_toolbar)
     Toolbar mToolbar;
 
@@ -49,18 +47,14 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
         findViewById(R.id.check_english_container).setOnClickListener(this);
         findViewById(R.id.check_amharic_container).setOnClickListener(this);
 
-        sharedPreferences = getApplicationContext().getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE);
-        String currentLanguage = sharedPreferences.getString(PREF_KEY_CURRENT_LANGUAGE, LANGUAGE_ENGLISH);
-
         ButterKnife.bind(this);
 
         setUp();
 
-        assert currentLanguage != null;
-        if (currentLanguage.equals(LANGUAGE_ENGLISH)) {
+        if (LocaleManager.getLanguage(this).equals(LANGUAGE_ENGLISH)) {
             mRadioButton_english.setChecked(true);
             mRadioButton_amharic.setChecked(false);
-        } else if (currentLanguage.equals(LANGUAGE_AMHARIC)) {
+        } else {
             mRadioButton_english.setChecked(false);
             mRadioButton_amharic.setChecked(true);
         }
@@ -70,7 +64,7 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
 
-            case R.id.check_english:
+            case R.id.check_english://==> ENGLISH
             case R.id.check_english_container:
 //                Locale locale = new Locale(LANGUAGE_ENGLISH);
 //                Locale.setDefault(locale);
@@ -79,14 +73,14 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
 //                getBaseContext().getResources().updateConfiguration(config,
 //                        getBaseContext().getResources().getDisplayMetrics());
 //
-                sharedPreferences.edit().putString(PREF_KEY_CURRENT_LANGUAGE, LANGUAGE_ENGLISH).apply();
+//                sharedPreferences.edit().putString(PREF_KEY_CURRENT_LANGUAGE, LANGUAGE_ENGLISH).apply();
                 mRadioButton_amharic.setChecked(false);
 
                 setNewLocale(LANGUAGE_ENGLISH);
 
 //                onConfigurationChanged(config);
                 break;
-            case R.id.check_amharic:
+            case R.id.check_amharic://==> AMHARIC
             case R.id.check_amharic_container:
 //                Locale localea = new Locale(LANGUAGE_AMHARIC);
 //                Locale.setDefault(localea);
@@ -95,7 +89,7 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
 //                getBaseContext().getResources().updateConfiguration(configa,
 //                        getBaseContext().getResources().getDisplayMetrics());
 
-                sharedPreferences.edit().putString(PREF_KEY_CURRENT_LANGUAGE, LANGUAGE_AMHARIC).apply();
+//                sharedPreferences.edit().putString(PREF_KEY_CURRENT_LANGUAGE, LANGUAGE_AMHARIC).apply();
                 mRadioButton_english.setChecked(false);
 
                 setNewLocale(LANGUAGE_AMHARIC);
@@ -104,10 +98,11 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
                 break;
             default:
                 setNewLocale(LANGUAGE_ENGLISH);// default language - english
+                break;
         }
     }
 
-    private boolean setNewLocale(String language) {
+    private void setNewLocale(String language) {
         LocaleManager.setNewLocale(this, language);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -120,8 +115,6 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
                 });
         AlertDialog alert = builder.create();
         alert.show();
-
-        return true;
     }
 
     public void restartApplication(boolean restartProcess) {
