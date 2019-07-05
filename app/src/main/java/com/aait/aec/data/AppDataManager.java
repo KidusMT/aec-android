@@ -1,6 +1,5 @@
 package com.aait.aec.data;
 
-
 import android.content.Context;
 
 import com.aait.aec.data.db.DbHelper;
@@ -231,5 +230,15 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<List<Course>> getCourses() {
         return mApiHelper.getCourses();
+    }
+
+    @Override
+    public String getCurrentLanguage() {
+        return mPreferencesHelper.getCurrentLanguage();
+    }
+
+    @Override
+    public void setCurrentLanguage(String language) {
+        mPreferencesHelper.setCurrentLanguage(language);
     }
 }
