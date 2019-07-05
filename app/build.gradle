@@ -17,13 +17,13 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"http://192.168.8.100:3000/api/\"")//http://192.168.43.242/~snow/UploadImage/
+            buildConfigField("String", "BASE_URL", "\"http://192.168.8.102:3000/api/\"")//http://192.168.43.242/~snow/UploadImage/
             buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", "\"http://192.168.8.100:3000/api/\"")
+            buildConfigField("String", "BASE_URL", "\"http://192.168.8.102:3000/api/\"")
             buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
     }

@@ -18,5 +18,7 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
 
     void onNavMenuCreated();
 
+    void onDrawerOptionSettingsClicked();
+
     void loadExams();
 }

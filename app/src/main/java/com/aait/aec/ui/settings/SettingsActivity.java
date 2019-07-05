@@ -41,8 +41,7 @@ public class SettingsActivity extends BaseActivity implements SettingsMvpView {
     SwitchCompat mCameraSwitch;
 
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, SettingsActivity.class);
-        return intent;
+        return new Intent(context, SettingsActivity.class);
     }
 
     @Override

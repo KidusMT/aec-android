@@ -12,6 +12,7 @@ import com.aait.aec.ui.addAnswerDialog.AddAnswerMvpPresenter;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerMvpView;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerPresenter;
 import com.aait.aec.ui.addAnswerDialog.AnswerAdapter;
+import com.aait.aec.ui.base.MvpPresenter;
 import com.aait.aec.ui.course.CoursePagerAdapter;
 import com.aait.aec.ui.create.CreateExamMvpPresenter;
 import com.aait.aec.ui.create.CreateExamMvpView;
@@ -39,6 +40,9 @@ import com.aait.aec.ui.result.ResultAdapter;
 import com.aait.aec.ui.result.ResultMvpPresenter;
 import com.aait.aec.ui.result.ResultMvpView;
 import com.aait.aec.ui.result.ResultPresenter;
+import com.aait.aec.ui.settings.SettingsMvpPresenter;
+import com.aait.aec.ui.settings.SettingsMvpView;
+import com.aait.aec.ui.settings.SettingsPresenter;
 import com.aait.aec.ui.splash.SplashMvpPresenter;
 import com.aait.aec.ui.splash.SplashMvpView;
 import com.aait.aec.ui.splash.SplashPresenter;
@@ -115,6 +119,12 @@ public class ActivityModule {
     @Provides
     RegisterMvpPresenter<RegisterMvpView> provideRegisterMvpPresenter(
             RegisterPresenter<RegisterMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    SettingsMvpPresenter<SettingsMvpView> provideSettingsMvpPresenter(
+            SettingsPresenter<SettingsMvpView> presenter) {
         return presenter;
     }
 

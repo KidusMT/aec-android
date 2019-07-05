@@ -34,6 +34,7 @@ import com.aait.aec.ui.course.CourseActivity;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.ui.profile.ProfileActivity;
 import com.aait.aec.ui.result.ResultActivity;
+import com.aait.aec.ui.settings.SettingsActivity;
 import com.aait.aec.ui.student.StudentActivity;
 import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.MyDividerItemDecoration;
@@ -315,7 +316,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
                             mPresenter.onDrawerCourseClick();
                             return true;
                         case R.id.nav_settings:
-                            CommonUtils.toast(getString(R.string.settings));
+                            mPresenter.onDrawerOptionSettingsClicked();
                             return true;
                         case R.id.nav_item_logout:
                             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -358,6 +359,11 @@ public class MainActivity extends BaseActivity implements MainMvpView, MainAdapt
     @Override
     public void openMyFeedActivity() {
         startActivity(CourseActivity.getStartIntent(this));
+    }
+
+    @Override
+    public void openSettingsActivity() {
+        startActivity(SettingsActivity.getStartIntent(this));
     }
 
     private void prepareExams() {

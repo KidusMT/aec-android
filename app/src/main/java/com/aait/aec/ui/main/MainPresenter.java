@@ -71,6 +71,11 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     }
 
     @Override
+    public void onDrawerOptionSettingsClicked() {
+        getMvpView().openSettingsActivity();
+    }
+
+    @Override
     public void loadExams() {
         getMvpView().showLoading();
         getCompositeDisposable().add(getDataManager()
