@@ -13,13 +13,15 @@ import android.widget.TextView;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
-import com.aait.aec.ui.main.MainActivity;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.aait.aec.utils.LocaleManager.LANGUAGE_AMHARIC;
+import static com.aait.aec.utils.LocaleManager.LANGUAGE_ENGLISH;
 
 public class SettingsActivity extends BaseActivity implements SettingsMvpView {
 
@@ -84,37 +86,36 @@ public class SettingsActivity extends BaseActivity implements SettingsMvpView {
         mLocationSwitch.setClickable(false);
         mMicrophoneSwitch.setClickable(false);
         mCameraSwitch.setClickable(false);
-        mPresenter.resolveCurrentLanguge();
-
+        mPresenter.resolveCurrentLanguage();
     }
 
     @Override
     public void setCurrentLanguage(String language) {
-        if(language.equals("en")){
+        if (language.equals(LANGUAGE_ENGLISH)) {
             mCurrentLanguage.setText("English");
-        }else if(language.equals("am")){
+        } else if (language.equals(LANGUAGE_AMHARIC)) {
             mCurrentLanguage.setText("Amharic");
         }
     }
 
     @OnClick(R.id.layout_current_language)
-    public void onClickCurrentLanguage(View view){
+    public void onClickCurrentLanguage(View view) {
         startActivity(new Intent(this, LanguageActivity.class));
     }
 
-    private boolean checkLocationPermissionStatus(){
+    private boolean checkLocationPermissionStatus() {
         return hasPermission(Manifest.permission.ACCESS_FINE_LOCATION);
     }
 
-    private boolean checkStoragePermissionStatus(){
+    private boolean checkStoragePermissionStatus() {
         return hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
-    private boolean checkMicrophonePermissionStatus(){
+    private boolean checkMicrophonePermissionStatus() {
         return hasPermission(Manifest.permission.RECORD_AUDIO);
     }
 
-    private boolean checkCameraPermissionStatus(){
+    private boolean checkCameraPermissionStatus() {
         return hasPermission(Manifest.permission.CAMERA);
     }
 
@@ -124,28 +125,28 @@ public class SettingsActivity extends BaseActivity implements SettingsMvpView {
         resolvePermissionSatuses();
     }
 
-    private void resolvePermissionSatuses(){
-        if(checkCameraPermissionStatus()){
+    private void resolvePermissionSatuses() {
+        if (checkCameraPermissionStatus()) {
             mCameraSwitch.setChecked(true);
-        }else {
+        } else {
             mCameraSwitch.setChecked(false);
         }
 
-        if(checkLocationPermissionStatus()){
+        if (checkLocationPermissionStatus()) {
             mLocationSwitch.setChecked(true);
-        }else{
+        } else {
             mLocationSwitch.setChecked(false);
         }
 
-        if(checkMicrophonePermissionStatus()){
+        if (checkMicrophonePermissionStatus()) {
             mMicrophoneSwitch.setChecked(true);
-        }else{
+        } else {
             mMicrophoneSwitch.setChecked(false);
         }
 
-        if(checkStoragePermissionStatus()){
+        if (checkStoragePermissionStatus()) {
             mStorageSwitch.setChecked(true);
-        }else{
+        } else {
             mStorageSwitch.setChecked(false);
         }
     }
@@ -157,8 +158,8 @@ public class SettingsActivity extends BaseActivity implements SettingsMvpView {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick({R.id.switch_storage_wrapper,R.id.switch_camera_wrapper,R.id.switch_location_wrapper,R.id.switch_microphone_wrapper})
-    public void goToPermissionsSetting(View v){
+    @OnClick({R.id.switch_storage_wrapper, R.id.switch_camera_wrapper, R.id.switch_location_wrapper, R.id.switch_microphone_wrapper})
+    public void goToPermissionsSetting(View v) {
         Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                 Uri.fromParts("package", getPackageName(), null));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

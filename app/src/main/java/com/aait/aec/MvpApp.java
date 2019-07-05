@@ -13,6 +13,7 @@ import com.aait.aec.di.component.DaggerApplicationComponent;
 import com.aait.aec.di.module.ApplicationModule;
 import com.aait.aec.utils.AppConstants;
 import com.aait.aec.utils.AppLogger;
+import com.aait.aec.utils.LocaleManager;
 
 import java.util.Locale;
 
@@ -29,6 +30,8 @@ public class MvpApp extends Application {
 
     @Inject
     CalligraphyConfig mCalligraphyConfig;
+
+    public static final String TAG = MvpApp.class.getSimpleName();
 
     private ApplicationComponent mApplicationComponent;
 
@@ -49,14 +52,11 @@ public class MvpApp extends Application {
         CalligraphyConfig.initDefault(mCalligraphyConfig);
 
         context = this;
-
-        setupLanguagePreferences();
     }
 
     public ApplicationComponent getComponent() {
         return mApplicationComponent;
     }
-
 
     // Needed to replace the component with a test specific one
     public void setComponent(ApplicationComponent applicationComponent) {
@@ -67,19 +67,16 @@ public class MvpApp extends Application {
         return context;
     }
 
-    private void setupLanguagePreferences(){
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleManager.setLocale(base));
+        Log.d(TAG, "attachBaseContext");
+    }
 
-        String default_language = getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE)
-                .getString(PREF_KEY_CURRENT_LANGUAGE,"en");
-
-        Log.e("Language:P",default_language + "");
-
-        Locale locale = new Locale(default_language);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config,
-                getBaseContext().getResources().getDisplayMetrics());
-
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        LocaleManager.setLocale(this);
+        Log.d(TAG, "onConfigurationChanged: " + newConfig.locale.getLanguage());
     }
 }

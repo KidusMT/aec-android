@@ -29,6 +29,7 @@ import com.aait.aec.di.module.ActivityModule;
 import com.aait.aec.ui.login.LoginActivity;
 import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.ConnectivityUtil;
+import com.aait.aec.utils.LocaleManager;
 
 import butterknife.Unbinder;
 
@@ -84,7 +85,7 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
+        super.attachBaseContext(LocaleManager.setLocale(newBase));//.wrap(newBase));
         Log.d(TAG, "attachBaseContext");
     }
 

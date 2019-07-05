@@ -20,11 +20,9 @@ public class SettingsPresenter<V extends SettingsMvpView> extends BasePresenter<
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 
-
     @Override
-    public void resolveCurrentLanguge() {
+    public void resolveCurrentLanguage() {
         getMvpView().setCurrentLanguage(getDataManager().getCurrentLanguage());
-
     }
 
 }

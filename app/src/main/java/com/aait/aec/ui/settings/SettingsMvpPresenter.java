@@ -6,6 +6,6 @@ import com.aait.aec.ui.base.MvpPresenter;
 @PerActivity
 public interface SettingsMvpPresenter<V extends SettingsMvpView> extends MvpPresenter<V> {
 
-    void resolveCurrentLanguge();
+    void resolveCurrentLanguage();
 
 }
