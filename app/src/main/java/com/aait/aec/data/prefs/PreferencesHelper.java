@@ -2,7 +2,6 @@ package com.aait.aec.data.prefs;
 
 import com.aait.aec.data.DataManager;
 
-
 public interface PreferencesHelper {
 
     int getCurrentUserLoggedInMode();

@@ -4,12 +4,17 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.util.Log;
 
 import com.aait.aec.data.DataManager;
 import com.aait.aec.di.component.ApplicationComponent;
 import com.aait.aec.di.component.DaggerApplicationComponent;
 import com.aait.aec.di.module.ApplicationModule;
+import com.aait.aec.utils.AppConstants;
 import com.aait.aec.utils.AppLogger;
+
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -42,6 +47,8 @@ public class MvpApp extends Application {
         CalligraphyConfig.initDefault(mCalligraphyConfig);
 
         context = this;
+
+        setupLanguagePreferences();
     }
 
     public ApplicationComponent getComponent() {
@@ -58,4 +65,19 @@ public class MvpApp extends Application {
         return context;
     }
 
+    private void setupLanguagePreferences(){
+
+        String default_language = getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE).getString("PREF_KEY_CURRENT_LANGUAGE","en");
+
+        Log.e("Language:P",default_language + "");
+
+        Locale locale = new Locale(default_language);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+
+
+    }
 }

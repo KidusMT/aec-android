@@ -34,7 +34,6 @@ import butterknife.Unbinder;
 
 import static android.content.pm.PackageManager.GET_META_DATA;
 
-
 public abstract class BaseActivity extends AppCompatActivity
         implements MvpView, BaseFragment.Callback {
 

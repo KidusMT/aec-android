@@ -13,7 +13,6 @@ import com.aait.aec.utils.CommonUtils;
 
 import butterknife.Unbinder;
 
-
 public abstract class BaseFragment extends Fragment implements MvpView, OnBackPressed {
 
     private BaseActivity mActivity;
