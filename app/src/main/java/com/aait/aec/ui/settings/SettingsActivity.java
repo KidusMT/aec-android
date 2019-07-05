@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -58,8 +59,6 @@ public class SettingsActivity extends BaseActivity implements SettingsMvpView {
 
         setUp();
     }
-
-
 
     @Override
     protected void onDestroy() {
@@ -141,9 +140,10 @@ public class SettingsActivity extends BaseActivity implements SettingsMvpView {
     }
 
     @Override
-    public void onBackPressed() {
-//        super.onBackPressed();
-        startActivity(new Intent(this, MainActivity.class));
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 
     @OnClick({R.id.switch_storage_wrapper,R.id.switch_camera_wrapper,R.id.switch_location_wrapper,R.id.switch_microphone_wrapper})

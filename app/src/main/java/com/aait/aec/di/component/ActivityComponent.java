@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://mindorks.com/license/apache-v2
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License
- */
-
 package com.aait.aec.di.component;
 
 import com.aait.aec.di.PerActivity;
@@ -26,14 +11,14 @@ import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.ui.profile.ProfileActivity;
 import com.aait.aec.ui.register.RegisterActivity;
 import com.aait.aec.ui.result.ResultActivity;
+import com.aait.aec.ui.settings.LanguageActivity;
+import com.aait.aec.ui.settings.SettingsActivity;
 import com.aait.aec.ui.splash.SplashActivity;
 import com.aait.aec.ui.student.StudentActivity;
 import com.aait.aec.ui.studentEdit.EditStudentDialog;
 import com.aait.aec.ui.subject.SubjectActivity;
 
 import dagger.Component;
-
-
 
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
@@ -64,5 +49,9 @@ public interface ActivityComponent {
     void inject(EditStudentDialog dialog);
 
     void inject(ProfileActivity activity);
+
+    void inject(LanguageActivity activity);
+
+    void inject(SettingsActivity activity);
 
 }

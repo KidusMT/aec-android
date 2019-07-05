@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 
@@ -18,9 +19,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LanguageActivity extends BaseActivity implements View.OnClickListener {
-
-
-
 
     RadioButton mRadioButton_amharic;
     RadioButton mRadioButton_english;
@@ -57,8 +55,6 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
         }
 
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -118,9 +114,10 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
 
     }
 
-    @OnClick(R.id.back_button)
-    public void onBackClick(View v){
-        startActivity(new Intent(this,SettingsActivity.class));
-        finish();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }
