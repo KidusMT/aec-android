@@ -89,7 +89,7 @@ public class SettingsActivity extends BaseActivity implements SettingsMvpView {
 
     @OnClick(R.id.layout_current_language)
     public void onClickCurrentLanguage(View view){
-        startActivity(new Intent(this,LanguageList.class));
+        startActivity(new Intent(this, LanguageActivity.class));
     }
 
     private boolean checkLocationPermissionStatus(){
@@ -139,14 +139,6 @@ public class SettingsActivity extends BaseActivity implements SettingsMvpView {
             mStorageSwitch.setChecked(false);
         }
     }
-
-
-    @OnClick(R.id.back_button)
-    public void OnClickBack(View view){
-        onBackPressed();
-        finish();
-    }
-
 
     @Override
     public void onBackPressed() {

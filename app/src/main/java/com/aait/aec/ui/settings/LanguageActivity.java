@@ -17,7 +17,7 @@ import java.util.Locale;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LanguageList extends BaseActivity implements View.OnClickListener {
+public class LanguageActivity extends BaseActivity implements View.OnClickListener {
 
 
 
@@ -80,7 +80,7 @@ public class LanguageList extends BaseActivity implements View.OnClickListener {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Intent intent = new Intent(this,LanguageList.class);
+                Intent intent = new Intent(this, LanguageActivity.class);
                 startActivity(intent);
                 finish();
 
@@ -103,7 +103,7 @@ public class LanguageList extends BaseActivity implements View.OnClickListener {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Intent intent1 = new Intent(this,LanguageList.class);
+                Intent intent1 = new Intent(this, LanguageActivity.class);
                 startActivity(intent1);
                 finish();
 
