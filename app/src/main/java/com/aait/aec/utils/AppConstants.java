@@ -37,6 +37,7 @@ public final class AppConstants {
     public static final String TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss";
 
     public static final String STUDENT_KEY = "STUDENT_KEY";
+    public static final String PREF_KEY_CURRENT_LANGUAGE = "PREF_KEY_CURRENT_LANGUAGE";
 
     public static final String ADD_NEW = "addNew";
     public static final String UPDATE = "update";

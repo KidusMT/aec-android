@@ -61,9 +61,16 @@
     <string name="student_add">አክል</string>
     <string name="student_save">አስቀምጥ</string>
     <string name="submit">አስገባ</string>
-    <string name="app_name" translatable="false">AEC</string>
     <string name="search">ፈልግ</string>
     <string name="impt">አስመጣ</string>
     <string name="clear_all">ሁሉንም ያፅዱ</string>
     <string name="empty_email">እባክዎ ባዶ ያልሆነ ኢሜል ያቅርቡ.</string>
+    <string name="choice_a">ሀ </string>
+    <string name="choice_b">ለ </string>
+    <string name="choice_c">ሐ </string>
+    <string name="choice_d">መ  </string>
+    <string name="choice_e">ሠ</string>
+    <string name="password_reset_request_sent_to_registrar">" የይለፍ ቃል ዳግም ማስጀመር ጥያቄ ወደ መዝጋቢው ተልኳል."</string>
+    <string name="question_answer">ለጥያቄው መልስ</string>
+    <string name="btn_confirm">አረጋግጥ</string>
 </resources>

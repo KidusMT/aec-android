@@ -20,6 +20,8 @@ import javax.inject.Inject;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
+import static com.aait.aec.utils.AppConstants.PREF_KEY_CURRENT_LANGUAGE;
+
 public class MvpApp extends Application {
 
     @Inject
@@ -67,7 +69,8 @@ public class MvpApp extends Application {
 
     private void setupLanguagePreferences(){
 
-        String default_language = getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE).getString("PREF_KEY_CURRENT_LANGUAGE","en");
+        String default_language = getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE)
+                .getString(PREF_KEY_CURRENT_LANGUAGE,"en");
 
         Log.e("Language:P",default_language + "");
 
@@ -77,7 +80,6 @@ public class MvpApp extends Application {
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
-
 
     }
 }

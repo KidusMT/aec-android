@@ -139,7 +139,6 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
             album = filteredAlbumList.get(position);
             if (album != null) {
 
-//
                 exDate.setText(String.valueOf(DateTimeUtils.formatWithStyle(album.getCreatedDate(), DateTimeStyle.MEDIUM)));
                 exInst.setText(String.valueOf(album.getUserId()));
                 exTitle.setText(String.valueOf(album.getExamName()));

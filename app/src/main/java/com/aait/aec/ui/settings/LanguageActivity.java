@@ -19,6 +19,8 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.aait.aec.utils.AppConstants.PREF_KEY_CURRENT_LANGUAGE;
+
 public class LanguageActivity extends BaseActivity implements View.OnClickListener {
 
     RadioButton mRadioButton_amharic;
@@ -51,6 +53,7 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
 
         setUp();
 
+        assert currentLanguage != null;
         if (currentLanguage.equals("en")) {
             mRadioButton_english.setChecked(true);
             mRadioButton_amharic.setChecked(false);
@@ -97,7 +100,7 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
                 getBaseContext().getResources().updateConfiguration(configa,
                         getBaseContext().getResources().getDisplayMetrics());
 
-                sharedPreferences.edit().putString("PREF_KEY_CURRENT_LANGUAGE", "am").apply();
+                sharedPreferences.edit().putString(PREF_KEY_CURRENT_LANGUAGE, "am").apply();
                 mRadioButton_english.setChecked(false);
                 try {
                     Thread.sleep(650);

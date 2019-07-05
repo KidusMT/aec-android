@@ -27,14 +27,85 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginBottom="5dp"
-                android:textAlignment="center"
                 android:layout_weight="0.1"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:maxLines="3"
-                android:text="Question Answer"
+                android:text="@string/question_answer"
+                android:textAlignment="center"
                 android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/choice_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/choice_a" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/choice_b" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/choice_c" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/choice_d" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/choice_e" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/answer_recycler"
@@ -61,7 +132,7 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="@dimen/horizontal_margin_8"
                     android:padding="5dp"
-                    android:text="CANCEL"
+                    android:text="@string/btn_cancel"
                     android:textSize="14sp" />
 
                 <TextView
@@ -71,7 +142,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/horizontal_margin_8"
                     android:padding="5dp"
-                    android:text="CONFIRM"
+                    android:text="@string/btn_confirm"
                     android:textSize="14sp" />
 
             </LinearLayout>

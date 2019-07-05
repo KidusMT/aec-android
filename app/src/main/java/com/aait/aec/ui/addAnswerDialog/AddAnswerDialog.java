@@ -43,7 +43,6 @@ public class AddAnswerDialog extends BaseDialog implements AddAnswerMvpView, Ans
     @Inject
     AnswerAdapter mAdapter;
 
-
     private String[] answerList;
 
     AnswerDialogCommunicator communicator;
