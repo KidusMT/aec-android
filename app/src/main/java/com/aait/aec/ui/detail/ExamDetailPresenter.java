@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable;
 public class ExamDetailPresenter<V extends ExamDetailMvpView> extends BasePresenter<V>
         implements ExamDetailMvpPresenter<V> {
 
-    private static final String TAG = "SplashPresenter";
+    private static final String TAG = ExamDetailPresenter.class.getSimpleName();
 
     @Inject
     public ExamDetailPresenter(DataManager dataManager,

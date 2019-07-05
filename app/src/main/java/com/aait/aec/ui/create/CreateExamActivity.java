@@ -86,7 +86,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
 
         CommonUtils.hideKeyboard(this);
 
-        mPresenter.loadCourse();
+        setUp();
 
         examDate.setOnClickListener(v -> new DatePickerDialog(CreateExamActivity.this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show());
@@ -105,7 +105,8 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     protected void setUp() {
 
         // loads the course from the API // todo has to load till the internet fetches all the courses
-//        mPresenter.loadCourse();
+        mPresenter.loadCourse();
+        mPresenter.loadStudents();
 
         setSupportActionBar(mToolbar);
 
@@ -122,19 +123,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         };
 
         // todo should add the amharic word here
-        if (this.courses.size() > 0) {
-            Toast.makeText(this, String.valueOf(courses.size()), Toast.LENGTH_SHORT).show();
-            List<String> coursesList = getCourseList(courses);
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                    this, android.R.layout.simple_spinner_item, coursesList);
-
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-            examNameSpinner.setAdapter(adapter);
-        }else{
-            Log.e(TAG, "----->else");
-        }
 
     }
 
@@ -226,13 +215,24 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     @Override
     public void updateExam(List<Student> students) {
         this.students = students;
-        setUp();
     }
 
     @Override
     public void getCourses(List<Course> courses) {
         this.courses = courses;
-        mPresenter.loadStudents();
+
+        if (courses.size() > 0) {
+            List<String> coursesList = getCourseList(courses);
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_spinner_item, coursesList);
+
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            examNameSpinner.setAdapter(adapter);
+        }else{
+            Log.e(TAG, "----->else");
+        }
     }
 
     public List<String> getCourseList(List<Course> courses) {
