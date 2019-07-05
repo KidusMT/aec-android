@@ -6,6 +6,7 @@ import com.aait.aec.data.network.model.Image.ImageUploadResponse;
 import com.aait.aec.data.network.model.LoginRequest;
 import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.RegistrationRequest;
+import com.aait.aec.data.network.model.correct.CorrectRequest;
 import com.aait.aec.data.network.model.exam.Exam;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,6 +61,10 @@ public interface ApiCall {
     @POST(ApiEndPoint.UPLOAD)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<ImageUploadResponse> upload(@Path("container") String container, @Part List<MultipartBody.Part> files);
+
+    @POST(ApiEndPoint.EXAM_CORRECT)
+    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
+    Observable<ImageUploadResponse> correct(@Body CorrectRequest request);
 
     class Factory {
 

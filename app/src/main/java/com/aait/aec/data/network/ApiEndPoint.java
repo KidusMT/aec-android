@@ -13,6 +13,9 @@ public final class ApiEndPoint {
     public static final String EXAM = BuildConfig.BASE_URL
             + "exams";
 
+    public static final String EXAM_CORRECT = BuildConfig.BASE_URL
+            + "exams/correct";
+
     public static final String COURSES = BuildConfig.BASE_URL
             + "courses";
 

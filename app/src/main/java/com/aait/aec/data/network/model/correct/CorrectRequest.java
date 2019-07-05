@@ -3,7 +3,7 @@ package com.aait.aec.data.network.model.correct;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Correct {
+public class CorrectRequest {
 
     @SerializedName("conainer_name")
     @Expose
