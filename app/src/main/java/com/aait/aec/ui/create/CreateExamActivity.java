@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Student;
@@ -37,8 +39,8 @@ import butterknife.OnClick;
 
 public class CreateExamActivity extends BaseActivity implements CreateExamMvpView, AnswerDialogCommunicator {
 
+    public static final String TAG = CreateExamActivity.class.getSimpleName();
     final Calendar myCalendar = Calendar.getInstance();
-
     DatePickerDialog.OnDateSetListener date;
 
     @Inject
@@ -84,7 +86,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
 
         CommonUtils.hideKeyboard(this);
 
-        setUp();
+        mPresenter.loadCourse();
 
         examDate.setOnClickListener(v -> new DatePickerDialog(CreateExamActivity.this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show());
@@ -103,7 +105,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     protected void setUp() {
 
         // loads the course from the API // todo has to load till the internet fetches all the courses
-        mPresenter.loadCourse();
+//        mPresenter.loadCourse();
 
         setSupportActionBar(mToolbar);
 
@@ -120,7 +122,8 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         };
 
         // todo should add the amharic word here
-        if (courses.size() > 0) {
+        if (this.courses.size() > 0) {
+            Toast.makeText(this, String.valueOf(courses.size()), Toast.LENGTH_SHORT).show();
             List<String> coursesList = getCourseList(courses);
 
             ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -129,6 +132,8 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
             examNameSpinner.setAdapter(adapter);
+        }else{
+            Log.e(TAG, "----->else");
         }
 
     }
@@ -221,15 +226,18 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     @Override
     public void updateExam(List<Student> students) {
         this.students = students;
+        setUp();
     }
 
     @Override
     public void getCourses(List<Course> courses) {
         this.courses = courses;
+        mPresenter.loadStudents();
     }
 
     public List<String> getCourseList(List<Course> courses) {
         List<String> courseList = new ArrayList<>();
+        Log.e(TAG, "--asd-> " + courses.size());
 
         for (Course crs : courses) {
             courseList.add(crs.getTitle());

@@ -29,13 +29,6 @@ public class CreateExamPresenter<V extends CreateExamMvpView> extends BasePresen
     }
 
     @Override
-    public void onAttach(V mvpView) {
-        super.onAttach(mvpView);
-        loadCourse();// from the api
-        loadStudents();// from the db
-    }
-
-    @Override
     public void createExam(String examName, String examType, int examWeight, List<Answers> answers, List<Student> students) {
 
         Exam exam = new Exam(
