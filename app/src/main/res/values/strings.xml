@@ -154,4 +154,9 @@
     <string name="choice_b">B </string>
     <string name="choice_a">A </string>
     <string name="question_answer">Question Answer</string>
+
+
+    <string name="application_going_to_restart">Application need to restart before taking an effect. \nRestart now?</string>
+    <string name="btn_restart">RESTART</string>
+    <string name="btn_later">LATER</string>
 </resources>

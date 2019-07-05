@@ -73,4 +73,7 @@
     <string name="password_reset_request_sent_to_registrar">" የይለፍ ቃል ዳግም ማስጀመር ጥያቄ ወደ መዝጋቢው ተልኳል."</string>
     <string name="question_answer">ለጥያቄው መልስ</string>
     <string name="btn_confirm">አረጋግጥ</string>
+    <string name="application_going_to_restart">" አፕሊኬሽን ከመቀጠል በፊት መተግበሪያ ዳግም መጀመር ያስፈልገዋል. \\ n አሁን እንደገና ይጀመር?"</string>
+    <string name="btn_later">በኋላ</string>
+    <string name="btn_restart">" እንደገና ጀምር"</string>
 </resources>

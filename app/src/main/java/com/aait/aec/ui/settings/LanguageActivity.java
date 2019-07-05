@@ -3,8 +3,8 @@ package com.aait.aec.ui.settings;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +16,6 @@ import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.main.MainActivity;
 import com.aait.aec.utils.AppConstants;
 import com.aait.aec.utils.LocaleManager;
-
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,21 +50,20 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
         findViewById(R.id.check_amharic_container).setOnClickListener(this);
 
         sharedPreferences = getApplicationContext().getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE);
-        String currentLanguage = sharedPreferences.getString("PREF_KEY_CURRENT_LANGUAGE", "en");
+        String currentLanguage = sharedPreferences.getString(PREF_KEY_CURRENT_LANGUAGE, LANGUAGE_ENGLISH);
 
         ButterKnife.bind(this);
 
         setUp();
 
         assert currentLanguage != null;
-        if (currentLanguage.equals("en")) {
+        if (currentLanguage.equals(LANGUAGE_ENGLISH)) {
             mRadioButton_english.setChecked(true);
             mRadioButton_amharic.setChecked(false);
-        } else if (currentLanguage.equals("am")) {
+        } else if (currentLanguage.equals(LANGUAGE_AMHARIC)) {
             mRadioButton_english.setChecked(false);
             mRadioButton_amharic.setChecked(true);
         }
-
     }
 
     @Override
@@ -75,45 +72,60 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
 
             case R.id.check_english:
             case R.id.check_english_container:
-//                Locale locale = new Locale("en");
+//                Locale locale = new Locale(LANGUAGE_ENGLISH);
 //                Locale.setDefault(locale);
 //                Configuration config = new Configuration();
 //                config.locale = locale;
 //                getBaseContext().getResources().updateConfiguration(config,
 //                        getBaseContext().getResources().getDisplayMetrics());
 //
-//                sharedPreferences.edit().putString("PREF_KEY_CURRENT_LANGUAGE", "en").apply();
-//                mRadioButton_amharic.setChecked(false);
+                sharedPreferences.edit().putString(PREF_KEY_CURRENT_LANGUAGE, LANGUAGE_ENGLISH).apply();
+                mRadioButton_amharic.setChecked(false);
 
-                setNewLocale(LANGUAGE_AMHARIC, true);
+                setNewLocale(LANGUAGE_ENGLISH);
 
 //                onConfigurationChanged(config);
                 break;
             case R.id.check_amharic:
             case R.id.check_amharic_container:
-
-//                Locale localea = new Locale("am");
+//                Locale localea = new Locale(LANGUAGE_AMHARIC);
 //                Locale.setDefault(localea);
 //                Configuration configa = new Configuration();
 //                configa.locale = localea;
 //                getBaseContext().getResources().updateConfiguration(configa,
 //                        getBaseContext().getResources().getDisplayMetrics());
-//
-//                sharedPreferences.edit().putString(PREF_KEY_CURRENT_LANGUAGE, "am").apply();
-//                mRadioButton_english.setChecked(false);
 
-                setNewLocale(LANGUAGE_ENGLISH, true);
+                sharedPreferences.edit().putString(PREF_KEY_CURRENT_LANGUAGE, LANGUAGE_AMHARIC).apply();
+                mRadioButton_english.setChecked(false);
+
+                setNewLocale(LANGUAGE_AMHARIC);
 
 //                onConfigurationChanged(configa);
                 break;
+            default:
+                setNewLocale(LANGUAGE_ENGLISH);// default language - english
         }
     }
 
-    private boolean setNewLocale(String language, boolean restartProcess) {
+    private boolean setNewLocale(String language) {
         LocaleManager.setNewLocale(this, language);
 
-        // TODO tell the user it's going to restart before restarting the application
-        startActivity(SettingsActivity.getStartIntent(LanguageActivity.this)
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.application_going_to_restart)
+                .setPositiveButton(getString(R.string.btn_restart), (dialog, id) -> {
+                    restartApplication(true);
+                })
+                .setNegativeButton(getString(R.string.btn_later), (dialog, id) -> {
+                    dialog.dismiss();
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+        return true;
+    }
+
+    public void restartApplication(boolean restartProcess) {
+        startActivity(MainActivity.getStartIntent(LanguageActivity.this)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
 
         if (restartProcess) {
@@ -121,9 +133,7 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
         } else {
             Toast.makeText(this, "Activity restarted", Toast.LENGTH_SHORT).show();
         }
-        return true;
     }
-
 
     @Override
     protected void setUp() {
