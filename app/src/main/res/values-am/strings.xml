@@ -84,4 +84,5 @@
     <string name="exam_weight">የፈተና ክብደት</string>
     <string name="number_of_questions">" የጥያቄዎች ቁጥር"</string>
     <string name="add_answer">መልስ ያስገቡ</string>
+    <string name="exam_course_type_item">" የፈተና ኮርስ ይምረጡ"</string>
 </resources>

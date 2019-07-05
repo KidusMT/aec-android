@@ -77,6 +77,7 @@ public class CreateExamPresenter<V extends CreateExamMvpView> extends BasePresen
                         return;
                     }
 
+                    getMvpView().getCourses(courses);
                 }, throwable -> {
                     if (!isViewAttached()) {
                         return;

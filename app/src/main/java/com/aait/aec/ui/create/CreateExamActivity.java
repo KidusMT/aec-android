@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Student;
+import com.aait.aec.data.network.model.Course;
 import com.aait.aec.data.network.model.exam.Answers;
 import com.aait.aec.ui.addAnswerDialog.AddAnswerDialog;
 import com.aait.aec.ui.addAnswerDialog.AnswerDialogCommunicator;
@@ -62,6 +64,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     @BindView(R.id.et_number_of_question)
     EditText numberOfQuestion;
     List<Student> students = new ArrayList<>();
+    List<Course> courses = new ArrayList<>();
     private List<Answers> answerSet = new ArrayList<>();
 
     public static Intent getStartIntent(Context context) {
@@ -99,6 +102,9 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     @Override
     protected void setUp() {
 
+        // loads the course from the API // todo has to load till the internet fetches all the courses
+        mPresenter.loadCourse();
+
         setSupportActionBar(mToolbar);
 
         if (getSupportActionBar() != null) {
@@ -112,6 +118,18 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             updateLabel();
         };
+
+        // todo should add the amharic word here
+        if (courses.size() > 0) {
+            List<String> coursesList = getCourseList(courses);
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_spinner_item, coursesList);
+
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            examNameSpinner.setAdapter(adapter);
+        }
 
     }
 
@@ -156,7 +174,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     @Override
     public void submitAnswers(List<String> answers) {
         Answers answers1 = getAnswerSet(answers.subList(0, answers.size() / 2));
-        Answers answers2 = getAnswerSet(answers.subList((answers.size() / 2) , answers.size() ));
+        Answers answers2 = getAnswerSet(answers.subList((answers.size() / 2), answers.size()));
         answerSet.add(answers1);
         answerSet.add(answers2);
     }
@@ -165,36 +183,36 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     public Answers getAnswerSet(List<String> answers) {
         Answers ans = new Answers();
         for (int i = 0; i < answers.size(); i++) {
-                if (i == 0)
-                    ans.set0(answers.get(i));
-                if (i == 1)
-                    ans.set1(answers.get(i));
-                if (i == 2)
-                    ans.set2(answers.get(i));
-                if (i == 3)
-                    ans.set3(answers.get(i));
-                if (i == 4)
-                    ans.set4(answers.get(i));
-                if (i == 5)
-                    ans.set5(answers.get(i));
-                if (i == 6)
-                    ans.set6(answers.get(i));
-                if (i == 7)
-                    ans.set7(answers.get(i));
-                if (i == 8)
-                    ans.set8(answers.get(i));
-                if (i == 9)
-                    ans.set9(answers.get(i));
-                if (i == 10)
-                    ans.set10(answers.get(i));
-                if (i == 11)
-                    ans.set11(answers.get(i));
-                if (i == 12)
-                    ans.set12(answers.get(i));
-                if (i == 13)
-                    ans.set13(answers.get(i));
-                if (i == 14)
-                    ans.set14(answers.get(i));
+            if (i == 0)
+                ans.set0(answers.get(i));
+            if (i == 1)
+                ans.set1(answers.get(i));
+            if (i == 2)
+                ans.set2(answers.get(i));
+            if (i == 3)
+                ans.set3(answers.get(i));
+            if (i == 4)
+                ans.set4(answers.get(i));
+            if (i == 5)
+                ans.set5(answers.get(i));
+            if (i == 6)
+                ans.set6(answers.get(i));
+            if (i == 7)
+                ans.set7(answers.get(i));
+            if (i == 8)
+                ans.set8(answers.get(i));
+            if (i == 9)
+                ans.set9(answers.get(i));
+            if (i == 10)
+                ans.set10(answers.get(i));
+            if (i == 11)
+                ans.set11(answers.get(i));
+            if (i == 12)
+                ans.set12(answers.get(i));
+            if (i == 13)
+                ans.set13(answers.get(i));
+            if (i == 14)
+                ans.set14(answers.get(i));
         }
 
         return ans;
@@ -203,5 +221,22 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
     @Override
     public void updateExam(List<Student> students) {
         this.students = students;
+    }
+
+    @Override
+    public void getCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public List<String> getCourseList(List<Course> courses) {
+        List<String> courseList = new ArrayList<>();
+
+        for (Course crs : courses) {
+            courseList.add(crs.getTitle());
+        }
+
+        courseList.add(0, getString(R.string.exam_course_type_item));
+
+        return courseList;
     }
 }
