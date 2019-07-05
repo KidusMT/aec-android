@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">AEC</string>
+    <string name="app_name">AEC</string>
 
     <!--Toolbar menus-->
     <string name="clear">Clear</string>
@@ -159,4 +159,11 @@
     <string name="application_going_to_restart">Application need to restart before taking an effect. \nRestart now?</string>
     <string name="btn_restart">RESTART</string>
     <string name="btn_later">LATER</string>
+    <string name="students_list">Student\'s List</string>
+    <string name="create_exam">Create Exam</string>
+    <string name="exam_date">Exam date</string>
+    <string name="exam_weight">Exam weight</string>
+    <string name="number_of_questions">Number of questions</string>
+    <string name="exam_description">Exam Description</string>
+    <string name="add_answer">Add Answer</string>
 </resources>

@@ -17,7 +17,7 @@
             android:id="@+id/settings_toolbar"
             style="@style/Toolbar"
             app:subtitleTextColor="@color/white"
-            app:title="Settings"
+            app:title="@string/settings"
             app:titleTextAppearance="@style/Toolbar.TitleText"
             app:titleTextColor="@color/white" />
 

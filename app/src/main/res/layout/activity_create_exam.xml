@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:subtitleTextColor="@color/white"
-            app:title="Create Exam"
+            app:title="@string/create_exam"
             app:titleTextAppearance="@style/Toolbar.TitleText"
             app:titleTextColor="@color/white" />
 
@@ -97,7 +97,7 @@
                         android:editable="false"
                         android:focusable="false"
                         android:gravity="center|left|bottom"
-                        android:hint="Exam date"
+                        android:hint="@string/exam_date"
                         android:inputType="textVisiblePassword|textNoSuggestions"
                         android:maxLength="50"
                         android:paddingBottom="5dp"
@@ -149,7 +149,7 @@
                         android:background="@color/transparent"
                         android:cursorVisible="true"
                         android:gravity="center|left|bottom"
-                        android:hint="Exam weight"
+                        android:hint="@string/exam_weight"
                         android:inputType="textNoSuggestions|number"
                         android:maxLength="50"
                         android:paddingBottom="5dp"
@@ -175,7 +175,7 @@
                         android:background="@color/transparent"
                         android:cursorVisible="true"
                         android:gravity="center|left|bottom"
-                        android:hint="Number of questions"
+                        android:hint="@string/number_of_questions"
                         android:inputType="textNoSuggestions|number"
                         android:maxLength="50"
                         android:paddingBottom="5dp"
@@ -200,7 +200,7 @@
                         android:background="@drawable/bg_dashed_border"
                         android:ems="10"
                         android:gravity="center"
-                        android:hint="Add Answer"
+                        android:hint="@string/add_answer"
                         android:scrollbars="vertical" />
 
                 </LinearLayout>
@@ -222,7 +222,7 @@
                         android:background="@color/transparent"
                         android:ems="10"
                         android:gravity="top"
-                        android:hint="Exam Description"
+                        android:hint="@string/exam_description"
                         android:padding="8dp"
                         android:scrollbars="vertical" />
 

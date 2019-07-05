@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.aait.aec.R;
 import com.aait.aec.ui.base.BaseActivity;
+import com.aait.aec.utils.LocaleManager;
 
 import javax.inject.Inject;
 
@@ -91,10 +92,10 @@ public class SettingsActivity extends BaseActivity implements SettingsMvpView {
 
     @Override
     public void setCurrentLanguage(String language) {
-        if (language.equals(LANGUAGE_ENGLISH)) {
-            mCurrentLanguage.setText("English");
-        } else if (language.equals(LANGUAGE_AMHARIC)) {
-            mCurrentLanguage.setText("Amharic");
+        if (LocaleManager.getLanguage(this).equals(LANGUAGE_ENGLISH)) {
+            mCurrentLanguage.setText(getString(R.string.english));
+        } else {
+            mCurrentLanguage.setText(getString(R.string.amharic));
         }
     }
 

@@ -76,4 +76,12 @@
     <string name="application_going_to_restart">" አፕሊኬሽን ከመቀጠል በፊት መተግበሪያ ዳግም መጀመር ያስፈልገዋል. \\ n አሁን እንደገና ይጀመር?"</string>
     <string name="btn_later">በኋላ</string>
     <string name="btn_restart">" እንደገና ጀምር"</string>
+    <string name="students_list">የተማሪው ዝርዝር</string>
+    <string name="app_name">AEC</string>
+    <string name="create_exam">ፈተና ፍጠር</string>
+    <string name="exam_date">የፈተና ቀን</string>
+    <string name="exam_description">የፈተና መግለጫ</string>
+    <string name="exam_weight">የፈተና ክብደት</string>
+    <string name="number_of_questions">" የጥያቄዎች ቁጥር"</string>
+    <string name="add_answer">መልስ ያስገቡ</string>
 </resources>
