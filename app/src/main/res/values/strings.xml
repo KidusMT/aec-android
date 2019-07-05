@@ -128,4 +128,16 @@
     <string name="btn_dialog_add">ADD</string>
     <string name="add_new_student">Add New Student</string>
     <string name="exams_created_successfully">Created Exams Successfully.</string>
+
+
+    <string name="account_settings">Account settings</string>
+    <string name="available_language">Available languages</string>
+    <string name="permissions">Permissions</string>
+    <string name="camera">Camera</string>
+    <string name="location">Location</string>
+    <string name="microphone">Microphone</string>
+    <string name="storage">Storage</string>
+    <string name="language">Language</string>
+    <string name="english">English</string>
+    <string name="amharic">Amharic</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.aait.aec.ui.result;
 
-
 import com.aait.aec.di.PerActivity;
 import com.aait.aec.ui.base.MvpPresenter;
 

@@ -18,6 +18,8 @@ import com.aait.aec.ui.addAnswerDialog.AddAnswerDialog;
 import com.aait.aec.ui.addAnswerDialog.AnswerDialogCommunicator;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.utils.CommonUtils;
+import com.github.thunder413.datetimeutils.DateTimeStyle;
+import com.github.thunder413.datetimeutils.DateTimeUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -82,12 +84,10 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         setUp();
 
         examDate.setOnClickListener(v -> new DatePickerDialog(CreateExamActivity.this, date, myCalendar
-                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                myCalendar.get(Calendar.DAY_OF_MONTH)).show());
+                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show());
 
         ivCalendar.setOnClickListener(v -> new DatePickerDialog(CreateExamActivity.this, date, myCalendar
-                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                myCalendar.get(Calendar.DAY_OF_MONTH)).show());
+                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show());
     }
 
     @Override
@@ -119,7 +119,7 @@ public class CreateExamActivity extends BaseActivity implements CreateExamMvpVie
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        examDate.setText(sdf.format(myCalendar.getTime()));
+        examDate.setText(DateTimeUtils.formatWithStyle(myCalendar.getTime(), DateTimeStyle.MEDIUM));
     }
 
     @OnClick(R.id.btn_create)

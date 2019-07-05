@@ -17,6 +17,7 @@
     <color name="translucent_white">#88ffffff</color>
     <color name="fb">#3b5998</color>
     <color name="google">#d34836</color>
+    <color name="separator">#e1e1e1</color>
 
     <color name="startblue">#09c6df</color>
     <color name="endblue">#0bcce6</color>

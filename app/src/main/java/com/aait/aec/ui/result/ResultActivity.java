@@ -84,7 +84,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
     @BindView(R.id.detail_result_type_value)
     TextView resultType;
 
-    @BindView(R.id.detail_result_weight)
+    @BindView(R.id.detail_result_weight_value)
     TextView resultWeight;
     Uri photoURI;
 
