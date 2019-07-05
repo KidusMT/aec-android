@@ -85,5 +85,17 @@
     <string name="number_of_questions">" የጥያቄዎች ቁጥር"</string>
     <string name="add_answer">መልስ ያስገቡ</string>
     <string name="exam_course_type_item">" - የፈተና ኮርስ ይምረጡ -"</string>
-    <string name="exam_exam_marking_type_item">- የመለያ ዓይነት ይምረጡ -</string>
+
+    <string-array name="exam_exam_marking_type">
+        <item>- የመለያ ዓይነት ይምረጡ -</item>
+        <item>Human Marked(OMR)</item>
+        <item>Character(Human Hand Written)</item>
+    </string-array>
+
+    <string-array name="exam_type">
+        <item>- የፈተና አይነት ይምረጡ -</item>
+        <item>Quiz</item>
+        <item>Mid Exam</item>
+        <item>Final Exam</item>
+    </string-array>
 </resources>
