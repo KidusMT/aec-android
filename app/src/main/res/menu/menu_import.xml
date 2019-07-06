@@ -13,4 +13,10 @@
         android:title="@string/clear_all"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_chart_report"
+        android:orderInCategory="100"
+        android:title="@string/chart_report"
+        app:showAsAction="never" />
+
 </menu>

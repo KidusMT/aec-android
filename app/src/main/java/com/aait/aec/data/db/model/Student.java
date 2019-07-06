@@ -27,7 +27,7 @@ public class Student implements Serializable {
     @Expose
     private String score;
 
-    @SerializedName("ID")
+    @SerializedName("student_id")
     @Property(nameInDb = "stdId")
     @Expose
     private String stdId;

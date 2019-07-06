@@ -148,6 +148,7 @@
     <string name="search">Search</string>
     <string name="impt">import</string>
     <string name="clear_all">Clear All</string>
+    <string name="chart_report">Chart Report</string>
     <string name="password_reset_request_sent_to_registrar">Password reset request sent to registrar.</string>
     <string name="choice_e">E</string>
     <string name="choice_d">D  </string>

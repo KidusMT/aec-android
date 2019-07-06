@@ -98,4 +98,5 @@
         <item>Mid Exam</item>
         <item>Final Exam</item>
     </string-array>
+    <string name="chart_report">ቻርት ሪፖርት</string>
 </resources>

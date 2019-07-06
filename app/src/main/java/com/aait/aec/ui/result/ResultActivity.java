@@ -27,12 +27,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Student;
 import com.aait.aec.data.network.model.exam.Exam;
 import com.aait.aec.ui.base.BaseActivity;
+import com.aait.aec.ui.detail.ExamDetailDialog;
 import com.aait.aec.utils.CommonUtils;
 import com.github.thunder413.datetimeutils.DateTimeStyle;
 import com.github.thunder413.datetimeutils.DateTimeUtils;
@@ -49,6 +51,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -88,8 +91,9 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
     @BindView(R.id.detail_result_weight_value)
     TextView resultWeight;
     Uri photoURI;
-
+    ImageView mChartReport;
     List<MultipartBody.Part> parts = new ArrayList<>();
+    List<Student> students = new ArrayList<>();
     private Uri filePath;
 
     public static Intent getStartIntent(Context context, Exam exam) {
@@ -215,6 +219,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
 
     @Override
     public void showStudents(List<Student> students) {
+        this.students = students;
         if (students.size() > 0) {
             if (tvNoStudents != null && tvNoStudents.getVisibility() == View.VISIBLE)
                 tvNoStudents.setVisibility(View.GONE);
@@ -272,6 +277,14 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
 
         //need to check the permissions
         checkFilePermissions();
+    }
+
+    @OnClick(R.id.iv_chart_report)
+    void onReportClicked() {
+        Log.e(TAG, "working working working");
+//        Toast.makeText(this, "working", Toast.LENGTH_SHORT).show();
+        if (this.students != null)
+            ExamDetailDialog.newInstance(this.students).show(getSupportFragmentManager(), "");
     }
 
     private void setUpRecyclerView() {
