@@ -5,19 +5,19 @@ import com.google.gson.annotations.SerializedName;
 
 public class CorrectRequest {
 
-    @SerializedName("conainer_name")
+    @SerializedName("container_name")
     @Expose
-    private String conainerName;
+    private String containerName;
     @SerializedName("exam_id")
     @Expose
     private String examId;
 
     public String getConainerName() {
-        return conainerName;
+        return containerName;
     }
 
-    public void setConainerName(String conainerName) {
-        this.conainerName = conainerName;
+    public void setConainerName(String containerName) {
+        this.containerName = containerName;
     }
 
     public String getExamId() {
@@ -28,4 +28,8 @@ public class CorrectRequest {
         this.examId = examId;
     }
 
+    public CorrectRequest(String containerName, String examId) {
+        this.containerName = containerName;
+        this.examId = examId;
+    }
 }

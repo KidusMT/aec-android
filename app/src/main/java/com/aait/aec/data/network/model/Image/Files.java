@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Files {
 
-    @SerializedName("image")
+    @SerializedName("images")
     @Expose
     private List<Image> image = null;
 

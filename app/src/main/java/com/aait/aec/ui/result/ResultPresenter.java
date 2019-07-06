@@ -1,6 +1,7 @@
 package com.aait.aec.ui.result;
 
 import com.aait.aec.data.DataManager;
+import com.aait.aec.data.network.model.correct.CorrectRequest;
 import com.aait.aec.ui.base.BasePresenter;
 import com.aait.aec.utils.CommonUtils;
 import com.aait.aec.utils.rx.SchedulerProvider;
@@ -33,7 +34,7 @@ public class ResultPresenter<V extends ResultMvpView> extends BasePresenter<V>
     }
 
     @Override
-    public void onUploadClicked(String container, List<MultipartBody.Part> parts) {
+    public void onUploadClicked(String container, List<MultipartBody.Part> parts, CorrectRequest request) {
 
         getCompositeDisposable().add(getDataManager()
                 .upload(container, parts)
@@ -41,6 +42,10 @@ public class ResultPresenter<V extends ResultMvpView> extends BasePresenter<V>
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(imageUploadResponse -> {
 
+                            if (!isViewAttached())
+                                return;
+
+                            onCorrect(request);
                         },
                         throwable -> {
 
@@ -56,5 +61,22 @@ public class ResultPresenter<V extends ResultMvpView> extends BasePresenter<V>
     public void loadStudentsFromDb() {
         getMvpView().showLoading();
         getMvpView().showStudents(getDataManager().getStudents().blockingFirst());
+    }
+
+    @Override
+    public void onCorrect(CorrectRequest request) {
+
+        getCompositeDisposable().add(getDataManager()
+                .correct(request)
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(o -> {
+
+                    if (!isViewAttached())
+                        return;
+
+                    getMvpView().showMessage("Successfully Marked");
+
+                }));
     }
 }

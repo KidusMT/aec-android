@@ -64,7 +64,7 @@ public interface ApiCall {
 
     @POST(ApiEndPoint.EXAM_CORRECT)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
-    Observable<ImageUploadResponse> correct(@Body CorrectRequest request);
+    Observable correct(@Body CorrectRequest request);
 
     class Factory {
 

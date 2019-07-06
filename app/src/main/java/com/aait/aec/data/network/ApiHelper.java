@@ -8,6 +8,7 @@ import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.LogoutResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
 import com.aait.aec.data.network.model.RegistrationRequest;
+import com.aait.aec.data.network.model.correct.CorrectRequest;
 import com.aait.aec.data.network.model.exam.Exam;
 
 import java.util.List;
@@ -37,4 +38,6 @@ public interface ApiHelper {
     Single<OpenSourceResponse> getOpenSourceApiCall();
 
     Observable<List<Course>> getCourses();
+
+    Observable correct(CorrectRequest request);
 }

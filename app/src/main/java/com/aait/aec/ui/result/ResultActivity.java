@@ -32,6 +32,7 @@ import android.widget.TextView;
 
 import com.aait.aec.R;
 import com.aait.aec.data.db.model.Student;
+import com.aait.aec.data.network.model.correct.CorrectRequest;
 import com.aait.aec.data.network.model.exam.Exam;
 import com.aait.aec.ui.base.BaseActivity;
 import com.aait.aec.ui.detail.ExamDetailDialog;
@@ -371,6 +372,8 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
         } else
             containerName = "images";// shouldn't be happening but for error handling todo find a better way
 
+        CorrectRequest request = new CorrectRequest(containerName, mExam.getId());
+
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {// when uploading images
             filePath = data.getData();
             ClipData clipData = data.getClipData();
@@ -387,7 +390,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
                         parts.add(prepareFilePart(getPath(this, uri)));
                     }
                     mExam.setContainer_name(containerName);
-                    mPresenter.onUploadClicked(containerName, parts);
+                    mPresenter.onUploadClicked(containerName, parts, request);
                 }
             } else { // for single image
                 Uri singleUri = data.getData();
@@ -398,7 +401,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
 
                 parts.add(prepareFilePart(getPath(this, singleUri)));
                 mExam.setContainer_name(containerName);
-                mPresenter.onUploadClicked(containerName, parts);
+                mPresenter.onUploadClicked(containerName, parts, request);
             }
         } else if (requestCode == 1) { // -----> when taking picture
             File f = new File(Environment.getExternalStorageDirectory().toString());

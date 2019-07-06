@@ -34,6 +34,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ExamDetailDialog extends BaseDialog implements ExamDetailMvpView, OnChartValueSelectedListener {
 
@@ -185,6 +186,11 @@ public class ExamDetailDialog extends BaseDialog implements ExamDetailMvpView, O
                 + h.getDataSetIndex());
     }
 
+    @OnClick(R.id.btn_dialog_decline)
+    void onCancelClicked() {
+        closeDialog();
+    }
+
     @Override
     public void onNothingSelected() {
         Log.i("PieChart", "nothing selected");
@@ -203,7 +209,7 @@ public class ExamDetailDialog extends BaseDialog implements ExamDetailMvpView, O
                     getResources().getDrawable(R.drawable.star)));
         }
 
-        PieDataSet dataSet = new PieDataSet(entries, "Election Results");
+        PieDataSet dataSet = new PieDataSet(entries, "Student Results");
 
         dataSet.setDrawIcons(false);
 

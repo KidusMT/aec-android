@@ -8,6 +8,7 @@ import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.LogoutResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
 import com.aait.aec.data.network.model.RegistrationRequest;
+import com.aait.aec.data.network.model.correct.CorrectRequest;
 import com.aait.aec.data.network.model.exam.Exam;
 
 import java.util.List;
@@ -79,6 +80,11 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Observable<List<Course>> getCourses() {
         return mApiCall.loadCourses();
+    }
+
+    @Override
+    public Observable correct(CorrectRequest request) {
+        return mApiCall.correct(request);
     }
 }
 
