@@ -8,6 +8,7 @@ import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.LogoutResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
 import com.aait.aec.data.network.model.RegistrationRequest;
+import com.aait.aec.data.network.model.Student;
 import com.aait.aec.data.network.model.correct.CorrectRequest;
 import com.aait.aec.data.network.model.exam.Exam;
 
@@ -83,7 +84,12 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Observable correct(CorrectRequest request) {
+    public Observable<List<Student>> getStudentsResult() {
+        return mApiCall.getStudents();
+    }
+
+    @Override
+    public Observable<String> correct(CorrectRequest request) {
         return mApiCall.correct(request);
     }
 }

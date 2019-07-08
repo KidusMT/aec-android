@@ -16,4 +16,6 @@ public interface ResultMvpPresenter<V extends ResultMvpView> extends MvpPresente
     void loadStudentsFromDb();
 
     void onCorrect(CorrectRequest request);
+
+    void getStudentsResult();
 }

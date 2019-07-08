@@ -95,6 +95,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
     ImageView mChartReport;
     List<MultipartBody.Part> parts = new ArrayList<>();
     List<Student> students = new ArrayList<>();
+    List<com.aait.aec.data.network.model.Student> stdList = new ArrayList<>();
     private Uri filePath;
 
     public static Intent getStartIntent(Context context, Exam exam) {
@@ -240,6 +241,27 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
     }
 
     @Override
+    public void showStudentResult(List<com.aait.aec.data.network.model.Student> students1) {
+        this.stdList = students1;
+        if (students1.size() > 0) {
+            if (tvNoStudents != null && tvNoStudents.getVisibility() == View.VISIBLE)
+                tvNoStudents.setVisibility(View.GONE);
+            if (mRecyclerView != null && mRecyclerView.getVisibility() == View.GONE)
+                mRecyclerView.setVisibility(View.VISIBLE);
+            mAdapter.updateItems(students1);
+        } else {
+            if (tvNoStudents != null && tvNoStudents.getVisibility() == View.GONE) {
+                tvNoStudents.setVisibility(View.VISIBLE);
+                tvNoStudents.setText(getText(R.string.no_student_items));
+            }
+            if (mRecyclerView != null && mRecyclerView.getVisibility() == View.VISIBLE)
+                mRecyclerView.setVisibility(View.GONE);
+        }
+
+        hideLoading();
+    }
+
+    @Override
     protected void onDestroy() {
         mPresenter.onDetach();
         super.onDestroy();
@@ -297,7 +319,7 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.menu_import, menu);
+        getMenuInflater().inflate(R.menu.menu_import_ex, menu);
         return true;
     }
 
@@ -307,6 +329,10 @@ public class ResultActivity extends BaseActivity implements ResultMvpView, Resul
             finish();
         else if (item.getItemId() == R.id.action_import) {
             chooseImage();
+        }
+        else if (item.getItemId() == R.id.action_update) {
+//            chooseImage();
+            mPresenter.getStudentsResult();
         }
 
         return super.onOptionsItemSelected(item);

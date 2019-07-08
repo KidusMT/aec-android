@@ -6,6 +6,7 @@ import com.aait.aec.data.network.model.Image.ImageUploadResponse;
 import com.aait.aec.data.network.model.LoginRequest;
 import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.RegistrationRequest;
+import com.aait.aec.data.network.model.Student;
 import com.aait.aec.data.network.model.correct.CorrectRequest;
 import com.aait.aec.data.network.model.exam.Exam;
 import com.google.gson.Gson;
@@ -49,6 +50,18 @@ public interface ApiCall {
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<List<Exam>> loadExams();
 
+    @GET(ApiEndPoint.STUDENTS)
+    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
+    Observable<List<Student>> getStudents();
+
+    @GET(ApiEndPoint.IMAGE_DOWNLOAD)
+    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
+    Observable<String> getImage();
+
+    @GET(ApiEndPoint.STUDENTS)
+    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
+    Observable<String> getResult();
+
     @GET(ApiEndPoint.COURSES)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<List<Course>> loadCourses();
@@ -64,7 +77,7 @@ public interface ApiCall {
 
     @POST(ApiEndPoint.EXAM_CORRECT)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
-    Observable correct(@Body CorrectRequest request);
+    Observable<String> correct(@Body CorrectRequest request);
 
     class Factory {
 

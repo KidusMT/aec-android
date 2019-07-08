@@ -8,10 +8,12 @@ import com.aait.aec.data.network.model.LoginResponse;
 import com.aait.aec.data.network.model.LogoutResponse;
 import com.aait.aec.data.network.model.OpenSourceResponse;
 import com.aait.aec.data.network.model.RegistrationRequest;
+import com.aait.aec.data.network.model.Student;
 import com.aait.aec.data.network.model.correct.CorrectRequest;
 import com.aait.aec.data.network.model.exam.Exam;
 
 import java.util.List;
+import java.util.Observer;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -39,5 +41,8 @@ public interface ApiHelper {
 
     Observable<List<Course>> getCourses();
 
-    Observable correct(CorrectRequest request);
+
+    Observable<List<Student>> getStudentsResult();
+
+    Observable<String> correct(CorrectRequest request);
 }

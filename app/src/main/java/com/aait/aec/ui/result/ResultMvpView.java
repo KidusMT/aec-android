@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ResultMvpView extends MvpView {
     void showStudents(List<Student> students);
+    void showStudentResult(List<com.aait.aec.data.network.model.Student> students);
 }

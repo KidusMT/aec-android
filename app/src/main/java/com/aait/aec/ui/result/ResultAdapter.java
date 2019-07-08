@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     List<Student> albumList;
+    List<com.aait.aec.data.network.model.Student> students;
     private Callback mCallback;
 
     public ResultAdapter(List<Student> categories) {
@@ -40,6 +41,13 @@ public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     public void addItems(List<Student> sensors) {
         this.albumList.clear();
         this.albumList.addAll(sensors);
+        notifyDataSetChanged();
+    }
+
+    public void updateItems(List<com.aait.aec.data.network.model.Student> students) {
+        this.students.clear();
+        this.albumList.clear();
+        this.students.addAll(students);
         notifyDataSetChanged();
     }
 
@@ -72,6 +80,8 @@ public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         Student album;
 
+        com.aait.aec.data.network.model.Student std;
+
         public MyViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, itemView);
@@ -79,16 +89,34 @@ public class ResultAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         public void onBind(int position) {
 
-            album = albumList.get(position);
-            if (album != null) {
 
-                stdRow.setText(String.format(" %s", position + 1));
-                stdName.setText(String.valueOf(album.getName()));
-                stdId.setText(String.valueOf(album.getStdId()));
-                strScore.setText(String.valueOf(album.getScore()));
+            if (albumList != null && albumList.size() > 0) {
+                album = albumList.get(position);
+                if (album != null) {
 
-                itemView.setOnClickListener(view -> mCallback.onItemClicked(album));
+                    stdRow.setText(String.format(" %s", position + 1));
+                    stdName.setText(String.valueOf(album.getName()));
+                    stdId.setText(String.valueOf(album.getStdId()));
+                    strScore.setText(String.valueOf(album.getScore()));
+
+                    itemView.setOnClickListener(view -> mCallback.onItemClicked(album));
+                }
             }
+
+
+            if (students != null && students.size() > 0) {
+                std = students.get(position);
+//                if (std != null) {
+
+                    stdRow.setText(String.format(" %s", position + 1));
+                    stdName.setText(String.valueOf(std.getName()));
+                    stdId.setText(String.valueOf(std.getId()));
+                    strScore.setText(String.valueOf(std.getResult()));
+
+//                    itemView.setOnClickListener(view -> mCallback.onItemClicked(std));
+//                }
+            }
+
 
         }
 

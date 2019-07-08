@@ -234,7 +234,12 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable correct(CorrectRequest request) {
+    public Observable<List<com.aait.aec.data.network.model.Student>> getStudentsResult() {
+        return mApiHelper.getStudentsResult();
+    }
+
+    @Override
+    public Observable<String> correct(CorrectRequest request) {
         return mApiHelper.correct(request);
     }
 

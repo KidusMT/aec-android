@@ -1,5 +1,7 @@
 package com.aait.aec.ui.result;
 
+import android.util.Log;
+
 import com.aait.aec.data.DataManager;
 import com.aait.aec.data.network.model.correct.CorrectRequest;
 import com.aait.aec.ui.base.BasePresenter;
@@ -16,7 +18,7 @@ import okhttp3.MultipartBody;
 public class ResultPresenter<V extends ResultMvpView> extends BasePresenter<V>
         implements ResultMvpPresenter<V> {
 
-    private static final String TAG = "RegisterPresenter";
+    private static final String TAG = "ResultPresenter";
 
     @Inject
     public ResultPresenter(DataManager dataManager,
@@ -44,7 +46,7 @@ public class ResultPresenter<V extends ResultMvpView> extends BasePresenter<V>
 
                             if (!isViewAttached())
                                 return;
-
+                            Log.e(TAG, "-----success-----");
                             onCorrect(request);
                         },
                         throwable -> {
@@ -77,6 +79,33 @@ public class ResultPresenter<V extends ResultMvpView> extends BasePresenter<V>
 
                     getMvpView().showMessage("Successfully Marked");
 
+                },throwable -> {
+                    if (!isViewAttached())
+                        return;
+
+                    getMvpView().hideLoading();
+                    getMvpView().onError(CommonUtils.getErrorMessage(throwable));
+                }));
+    }
+
+    @Override
+    public void getStudentsResult() {
+        getCompositeDisposable().add(getDataManager()
+                .getStudentsResult()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(students -> {
+
+                    if (!isViewAttached())
+                        return;
+                    getMvpView().showStudentResult(students);
+
+                },throwable -> {
+                    if (!isViewAttached())
+                        return;
+
+                    getMvpView().hideLoading();
+                    getMvpView().onError(CommonUtils.getErrorMessage(throwable));
                 }));
     }
 }
